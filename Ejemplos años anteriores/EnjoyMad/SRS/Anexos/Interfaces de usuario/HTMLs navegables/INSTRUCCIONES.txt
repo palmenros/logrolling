@@ -1,0 +1,2 @@
+Para abrir el HTML navegable se debe abrir la carpeta correspondiente y hacer doble click en el archivo HTML con el nombre
+de la carpeta. Por ejemplo, en la carpeta "Usuario" habrá que ejecutar el archivo "Usuario.html".
