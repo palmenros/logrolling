@@ -1,0 +1,9 @@
+Pantalla de registro, no se puede volver a la de iniciar sesión (en ninguna de las 2)
+Tras aceptar los términos y condiciones, no se pueden desmarcar
+Conectar el primer favor con la página de realizar favor
+Hacer bien el scroll de la página realizar favor y ajustar el último botón. Hacer que conecte con la principal de favores.
+En mis favores, pedir nuevo favor no conecta con lo que debe.
+En realizar favor, el botón de mensajes se descuadra al scrollear y el de realizar favor se pone por encima de la barrita
+Conectar pedir favor y realizar favor con sus páginas correspondientes.
+En configuración, poner el botón que lleva a mi perfil como un rectángulo horizontal para que el hitbox sea más grande
+En mi perfil, hacer que el botón guardar cambios lleve a configuración
