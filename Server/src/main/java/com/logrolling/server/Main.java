@@ -24,8 +24,6 @@ public class Main implements ServletContextListener {
 
     public void contextDestroyed(ServletContextEvent e) {
         // Perform action during application's shutdown
-
-        // TODO: Close database data and free memory
     }
 }
 
