@@ -4,7 +4,7 @@ public class MigrationManager {
 
     //TODO: Create migration abstract class and an array of migrations to call on migrate and fill
 
-    public static void migrate() {
+    public synchronized static void migrate() {
 
         //TODO: Implement migrations
 
@@ -18,7 +18,7 @@ public class MigrationManager {
         //Create tables
     }
 
-    public static void fill() {
+    public synchronized static void fill() {
         //Fill databases with dummy data
     }
 }

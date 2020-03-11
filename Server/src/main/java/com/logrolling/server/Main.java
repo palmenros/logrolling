@@ -1,6 +1,7 @@
 package com.logrolling.server;
 
-import com.logrolling.server.database.MySQLDatabase;
+import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.database.factories.MySQLDatabaseFactory;
 import com.logrolling.server.database.migrations.MigrationManager;
 
 import javax.servlet.ServletContextEvent;
@@ -10,9 +11,11 @@ public class Main implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent e) {
         // Perform action during application's startup
-        MySQLDatabase.init();
 
-        // TODO: Remove when depolying in production
+        //Use MySQL database by default
+        DatabaseFactory.setFactory(new MySQLDatabaseFactory());
+
+        // TODO: Remove when deploying in production
 
         // Migrate all databases and fill them with dummy data for development and testing
         MigrationManager.migrate();
