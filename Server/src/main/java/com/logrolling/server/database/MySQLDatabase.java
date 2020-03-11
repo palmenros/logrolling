@@ -8,7 +8,7 @@ public class MySQLDatabase extends Database {
         //Possible MySQLDatabase creation:
 
         //Class.forName("com.mysql.jdbc.Driver");
-        //Connection connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/logrolling","root", "");
+        //Connection connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/logrolling?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "");
     }
 
     public static void init(/* args */) {
