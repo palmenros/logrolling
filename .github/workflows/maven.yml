@@ -25,5 +25,15 @@ jobs:
       run: |
         mvn clean compile 
         mvn package
-        mkdir -p bin
-        cp target/tomcat-embedded-example-1.0-SNAPSHOT.jar "bin/tomcat-embedded-server-$(date +%F_%R).jar"
+  upload:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Upload artifact
+    - uses: actions/upload-artifact@v1.0.0
+      with:
+      # Artifact name
+        name: Server
+      # Directory containing files to upload
+        path: ./Server/target/tomcat-embedded-example-1.0-SNAPSHOT.jar
