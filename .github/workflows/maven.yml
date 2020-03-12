@@ -5,10 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+    paths:
+      - 'Server/**'
+      - '.github/**'
 jobs:
   build:
 
@@ -25,11 +24,6 @@ jobs:
       run: |
         mvn clean compile 
         mvn package
-  upload:
-
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Upload Server.jar compiled file
       uses: actions/upload-artifact@v1.0.0
       with:
