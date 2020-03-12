@@ -32,6 +32,6 @@ jobs:
         upload_url: https://uploads.github.com/repos/palmenros/logrolling/releases/24453966/assets{?name,label} # find out this value by opening https://api.github.com/repos/<owner>/<repo>/releases in your browser and copy the full "upload_url" value including the {?name,label} part
         release_id: 24453966 # same as above (id can just be taken out the upload_url, it's used to find old releases)
         asset_path: ./Server/target/tomcat-embedded-example-1.0-SNAPSHOT.jar # path to archive to upload
-        asset_name: logrolling_server-CI-$$.zip # name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
+        asset_name: logrolling_server-CI-$$.jar # name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
         asset_content_type: application/zip # required by GitHub API
-        max_releases: 5 # optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
+        max_releases: 1 # optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
