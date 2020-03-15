@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Configuracion">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".Regalos">
+
+        <TextView
+            android:id="@+id/parteAbajo"
+            android:layout_width="413dp"
+            android:layout_height="71dp"
+            android:background="@color/azul"
+            android:textColor="@color/blanco"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/favores"
+            android:layout_width="55dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/azul"
+            android:onClick="favores"
+            android:text="@string/Favores"
+            android:textColor="@color/blanco"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/misFavores"
+            android:layout_width="85dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/azul"
+            android:onClick="misFavores"
+            android:text="@string/MisFavores"
+            android:textColor="@color/blanco"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="@+id/parteAbajo"
+            app:layout_constraintStart_toEndOf="@+id/favores" />
+
+        <TextView
+            android:id="@+id/Regalos"
+            android:layout_width="58dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/azul"
+            android:onClick="regalos"
+            android:text="@string/Regalos"
+            android:textColor="@color/blanco"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mensajes" />
+
+        <TextView
+            android:id="@+id/ParteAbajo"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/azul"
+            android:text="@string/Configuracion"
+            android:textColor="@color/blanco"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Regalos" />
+
+        <TextView
+            android:id="@+id/mensajes"
+            android:layout_width="65dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/azul"
+            android:onClick="mensajes"
+            android:text="@string/Mensajes"
+            android:textColor="@color/blanco"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/misFavores" />
+
+        <TextView
+            android:id="@+id/parteArriba"
+            android:layout_width="413dp"
+            android:layout_height="71dp"
+            android:background="@color/azul"
+            android:textColor="@color/blanco"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ConfiguracionTitulo"
+            android:layout_width="219dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/azul"
+            android:text="@string/Configuracion"
+            android:textColor="@color/blanco"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+            app:layout_constraintEnd_toEndOf="@+id/parteArriba"
+            app:layout_constraintHorizontal_bias="0.617"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.157" />
+
+        <TextView
+            android:id="@+id/Perfil"
+            android:layout_width="75dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="44dp"
+            android:onClick="miPerfil"
+            android:text="@string/Perfil"
+            android:textColor="@color/negro"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+
+        <TextView
+            android:id="@+id/Notificacion"
+            android:layout_width="132dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/blanco"
+            android:onClick="notificaciones"
+            android:text="@string/Notificaciones"
+            android:textColor="@color/negro"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoNotificaciones"
+            app:layout_constraintTop_toBottomOf="@+id/textoPerfil" />
+
+        <TextView
+            android:id="@+id/InvitarAmigo"
+            android:layout_width="152dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/blanco"
+            android:onClick="invitarAmigos"
+            android:text="@string/Amigo"
+            android:textColor="@color/negro"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoAmigo"
+            app:layout_constraintTop_toBottomOf="@+id/textoNotificaciones" />
+
+        <TextView
+            android:id="@+id/Ayuda"
+            android:layout_width="152dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/blanco"
+            android:onClick="ayuda"
+            android:text="@string/Ayuda"
+            android:textColor="@color/negro"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoAyuda"
+            app:layout_constraintTop_toBottomOf="@+id/TextoAmigo" />
+
+        <TextView
+            android:id="@+id/Idioma"
+            android:layout_width="152dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/blanco"
+            android:onClick="idioma"
+            android:text="@string/Idioma"
+            android:textColor="@color/negro"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoIdioma"
+            app:layout_constraintTop_toBottomOf="@+id/TextoAyuda" />
+
+        <TextView
+            android:id="@+id/CerrarSesion"
+            android:layout_width="152dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/blanco"
+            android:onClick="cerrarSesion"
+            android:text="@string/CerrarSesion"
+            android:textColor="@color/negro"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
+            app:layout_constraintTop_toBottomOf="@+id/textoIdioma" />
+
+        <TextView
+            android:id="@+id/CuadroGrollies"
+            android:layout_width="134dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/blanco"
+            android:onClick="comprarGrollies"
+            app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/parteArriba" />
+
+        <ImageView
+            android:id="@+id/ComprarGrollies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="112dp"
+            android:layout_marginLeft="112dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/blanco"
+            android:onClick="comprarGrollies"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/logoGrollies"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="8dp"
+            android:onClick="comprarGrollies"
+            app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+            app:srcCompat="@drawable/grollies" />
+
+        <TextView
+            android:id="@+id/grollies3"
+            android:layout_width="62dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="11dp"
+            android:onClick="comprarGrollies"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+            tools:text="grollies" />
+
+        <ImageView
+            android:id="@+id/iconoPerfil"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="44dp"
+            android:background="@color/blanco"
+            android:onClick="miPerfil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parteArriba"
+            app:srcCompat="@android:drawable/ic_menu_myplaces" />
+
+        <TextView
+            android:id="@+id/textoPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:onClick="miPerfil"
+            android:text="@string/TextoPerfil"
+            android:textColor="@color/grisClaro"
+            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/Perfil" />
+
+        <TextView
+            android:id="@+id/textoNotificaciones"
+            android:layout_width="221dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:onClick="notificaciones"
+            android:text="@string/TextoNotificaciones"
+            android:textColor="@color/grisClaro"
+            app:layout_constraintStart_toEndOf="@+id/iconoNotificaciones"
+            app:layout_constraintTop_toBottomOf="@+id/Notificacion" />
+
+        <TextView
+            android:id="@+id/TextoAmigo"
+            android:layout_width="255dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:onClick="invitarAmigos"
+            android:text="@string/TextoAmigo"
+            android:textColor="@color/grisClaro"
+            app:layout_constraintStart_toEndOf="@+id/iconoAmigo"
+            app:layout_constraintTop_toBottomOf="@+id/InvitarAmigo" />
+
+        <TextView
+            android:id="@+id/TextoAyuda"
+            android:layout_width="258dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:onClick="ayuda"
+            android:text="@string/TextoAyuda"
+            android:textColor="@color/grisClaro"
+            app:layout_constraintStart_toEndOf="@+id/iconoAyuda"
+            app:layout_constraintTop_toBottomOf="@+id/Ayuda" />
+
+        <TextView
+            android:id="@+id/textoIdioma"
+            android:layout_width="281dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:onClick="idioma"
+            android:text="@string/TextoIdioma"
+            android:textColor="@color/grisClaro"
+            app:layout_constraintStart_toEndOf="@+id/iconoIdioma"
+            app:layout_constraintTop_toBottomOf="@+id/Idioma" />
+
+        <TextView
+            android:id="@+id/textoCerrarSesion"
+            android:layout_width="281dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:onClick="cerrarSesion"
+            android:text="@string/TextoCerrarSesion"
+            android:textColor="@color/grisClaro"
+            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
+            app:layout_constraintTop_toBottomOf="@+id/CerrarSesion" />
+
+        <ImageView
+            android:id="@+id/iconoNotificaciones"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="44dp"
+            android:onClick="notificaciones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconoPerfil"
+            app:srcCompat="@android:drawable/ic_popup_reminder" />
+
+        <ImageView
+            android:id="@+id/iconoAmigo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="48dp"
+            android:onClick="invitarAmigos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconoNotificaciones"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <ImageView
+            android:id="@+id/iconoAyuda"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="48dp"
+            android:background="#FFFFFF"
+            android:onClick="ayuda"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconoAmigo"
+            app:srcCompat="@android:drawable/ic_dialog_info" />
+
+        <ImageView
+            android:id="@+id/iconoCerrar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="50dp"
+            android:onClick="cerrarSesion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconoIdioma"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+        <ImageView
+            android:id="@+id/iconoIdioma"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="48dp"
+            android:onClick="idioma"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconoAyuda"
+            app:srcCompat="@android:drawable/ic_menu_mapmode" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

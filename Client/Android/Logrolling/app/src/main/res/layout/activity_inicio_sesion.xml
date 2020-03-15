@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InicioSesion">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/azul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".PantallaInicial">
+
+        <ImageView
+            android:id="@+id/logo_logrolling"
+            android:layout_width="179dp"
+            android:layout_height="172dp"
+            android:layout_marginTop="116dp"
+            android:contentDescription="@string/Logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logrolling_logo" />
+
+        <TextView
+            android:id="@+id/IniciarSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="@string/IniciarSesion"
+            android:textColor="@color/blancoSucio"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/NombreUsuario"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="378dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="88dp"
+            android:alpha="@android:dimen/notification_large_icon_height"
+            android:drawableStart="@android:drawable/ic_menu_myplaces"
+            android:drawableLeft="@android:drawable/ic_menu_myplaces"
+            android:ems="10"
+            android:fadeScrollbars="false"
+            android:hint="@string/NombreUsuario"
+            android:inputType="textPersonName"
+            android:scrollbarSize="45sp"
+            android:scrollbarStyle="insideInset"
+            android:singleLine="false"
+            android:textColor="@color/blancoSucio"
+            android:textColorHint="@color/blancoSucio"
+            android:textIsSelectable="false"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:typeface="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo_logrolling" />
+
+        <EditText
+            android:id="@+id/Contrasenna"
+            android:layout_width="379dp"
+            android:layout_height="78dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@android:drawable/ic_lock_idle_lock"
+            android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+            android:ems="10"
+            android:hint="@string/Cotraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/blancoSucio"
+            android:textColorHint="@color/blancoSucio"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/NombreUsuario" />
+
+        <Button
+            android:id="@+id/InicioSesion"
+            android:layout_width="283dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/blanco"
+            android:onClick="iniciarSesion"
+            android:text="@string/IniciarSesion"
+            android:textColor="@color/azul"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Contrasenna" />
+
+        <TextView
+            android:id="@+id/Cuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/Cuenta"
+            android:textColor="@color/blanco"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InicioSesion" />
+
+        <TextView
+            android:id="@+id/cuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="30dp"
+            android:onClick="registrarse"
+            android:text="@string/Registrate"
+            android:textColor="@color/blanco"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintStart_toEndOf="@+id/Cuenta"
+            app:layout_constraintTop_toBottomOf="@+id/InicioSesion" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
