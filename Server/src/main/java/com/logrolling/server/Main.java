@@ -1,5 +1,6 @@
 package com.logrolling.server;
 
+import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.factories.MySQLDatabaseFactory;
 import com.logrolling.server.database.migrations.MigrationManager;
@@ -18,8 +19,12 @@ public class Main implements ServletContextListener {
         // TODO: Remove when deploying in production
 
         // Migrate all databases and fill them with dummy data for development and testing
-        MigrationManager.migrate();
-        MigrationManager.fill();
+        try {
+            MigrationManager.migrate();
+            MigrationManager.fillDummy();
+        } catch(DatabaseException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void contextDestroyed(ServletContextEvent e) {

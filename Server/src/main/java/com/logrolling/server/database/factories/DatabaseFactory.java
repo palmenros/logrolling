@@ -1,6 +1,9 @@
 package com.logrolling.server.database.factories;
 
 import com.logrolling.server.database.Database;
+import com.logrolling.server.database.DatabaseException;
+
+import javax.xml.crypto.Data;
 
 /**
  *  Factory for database. Should be used to create new databases, to ensure
@@ -10,7 +13,7 @@ public class DatabaseFactory {
 
     private static Factory<Database> factory = null;
 
-    public synchronized static Database createInstance() {
+    public synchronized static Database createInstance() throws DatabaseException {
         if(factory == null) {
             throw new IllegalStateException("No database factory has been set yet");
         }
