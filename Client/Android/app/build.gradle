@@ -5,8 +5,8 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.logrolling.androidclient"
-        minSdkVersion 21
+        applicationId "com.logrolling.client"
+        minSdkVersion 14
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
