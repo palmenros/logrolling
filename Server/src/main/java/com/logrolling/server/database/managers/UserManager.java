@@ -46,7 +46,7 @@ public class UserManager {
 
     @NotNull
     public static List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<User>();
 
         Database db = DatabaseFactory.createInstance();
         ResultSet rs = db.executeQuery("select * from users");

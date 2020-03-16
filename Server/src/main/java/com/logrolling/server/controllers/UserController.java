@@ -16,7 +16,7 @@ public class UserController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<TransferUser> getMessage()  {
-        List<TransferUser> transferList = new ArrayList<>();
+        List<TransferUser> transferList = new ArrayList<TransferUser>();
 
         for(User u : UserManager.getAllUsers()) {
             transferList.add(new TransferUser(u));
