@@ -5,6 +5,7 @@ import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.model.User;
 import com.logrolling.server.transfer.TransferUser;
+import com.mysql.cj.protocol.Resultset;
 
 import javax.validation.constraints.NotNull;
 import java.sql.ResultSet;
@@ -31,17 +32,61 @@ public class UserManager {
         db.close();
     }
 
-    public static User getUserById(int id) {
-        //TODO: Implement
-        return null;
+    public static User getUserByName(String username) {
+
+        User user;
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery(
+                "select * from users where Username = ?;",
+                new String[]{
+                        username
+                }
+        );
+        try {
+           if(rs.next()){
+               user = getUserFromResultSet(rs);
+               db.close();
+               return user;
+           }
+           else
+               db.close();
+               return null;
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+
     }
 
-    public static void updateUser(int id, User newUser) {
-         //TODO: Implement
+    public static void updateUserbyName(String username, User newUser) {
+        Database db = DatabaseFactory.createInstance();
+        User user = getUserByName(username);
+
+        int id = user.getId();
+
+        db.executeUpdate("replace into users values(?, ?, ?);",
+                new String[]{
+
+                        Integer.toString(id),
+                        newUser.getUsername(),
+                        newUser.getPassword()
+                });
+
+        db.close();
     }
 
-    public static void deleteUser(int id) {
-        //TODO: Implement
+    public static void deleteUserByName(String username) {
+        Database db = DatabaseFactory.createInstance();
+        User user = getUserByName(username);
+        db.executeUpdate("delete from users where username = ?",
+                new String[]{
+                        username,
+
+                });
+
+        db.close();
+
+
+
     }
 
     @NotNull
@@ -59,6 +104,7 @@ public class UserManager {
         }  catch(SQLException e) {
             throw new DatabaseException(e);
         }
+        db.close();
 
         return users;
     }

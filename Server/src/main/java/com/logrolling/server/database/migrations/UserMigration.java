@@ -26,6 +26,8 @@ public class UserMigration implements Migration {
         db.executeUpdate(sqlQuery);
     }
 
+
+
     /**
      * Fills tables affected by this migration with dummy data
      */
