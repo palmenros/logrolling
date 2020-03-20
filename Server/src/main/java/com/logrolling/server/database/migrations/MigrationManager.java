@@ -13,7 +13,8 @@ public class MigrationManager {
      * Executed in declaration order
      */
     private static Migration[] migrations = new Migration[]{
-        new UserMigration()
+        new UserMigration(),
+        new FavorMigration()
     };
 
     /**

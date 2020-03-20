@@ -76,7 +76,6 @@ public class UserManager {
 
     public static void deleteUserByName(String username) {
         Database db = DatabaseFactory.createInstance();
-        User user = getUserByName(username);
         db.executeUpdate("delete from users where username = ?",
                 new String[]{
                         username,
