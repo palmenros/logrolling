@@ -21,6 +21,9 @@ public class FavorMigration implements Migration{
                         "title varchar(50) not null," +
                         "description varchar(150) not null," +
                         "dueTime integer," +
+                        "reward int," +
+                        "latitude int," +
+                        "longitude int," +
                         "constraint users_pk primary key (id)" +
                         ");";
 
@@ -37,8 +40,8 @@ public class FavorMigration implements Migration{
     public void fillDummy() {
 
         Favor[] favorList = new Favor[] {
-                new Favor("Pedro", "Ir a la compra", "Necesito tomates y lechuga", 30),
-                new Favor("Pablo", "Pasear al perro", "Darle un paseo por el campo", 60),
+                new Favor("Pedro", "Ir a la compra", "Necesito tomates y lechuga", 30, 100, 40.384408, -3.932032),
+                new Favor("Pablo", "Pasear al perro", "Darle un paseo por el campo", 30, 13,40.388425, -3.941058),
 
         };
 

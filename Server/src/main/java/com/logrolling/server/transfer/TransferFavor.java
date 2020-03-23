@@ -1,5 +1,6 @@
 package com.logrolling.server.transfer;
 
+import com.logrolling.server.model.Coordinates;
 import com.logrolling.server.model.Favor;
 
 public class TransferFavor {
@@ -8,17 +9,21 @@ public class TransferFavor {
     private String title;
     private String description;
     private Integer dueTime;
+    private int reward;
+    private Coordinates coordinates;
 
-    public TransferFavor(int id, String creator,  String title, String description, Integer dueTime) {
+    public TransferFavor(int id, String creator,  String title, String description, Integer dueTime, int reward, Coordinates coordinates) {
         this.id = id;
         this.creator = creator;
         this.title = title;
         this.description = description;
         this.dueTime = dueTime;
+        this.reward = reward;
+        this.coordinates = coordinates;
     }
 
     public TransferFavor(Favor favor) {
-        this(favor.getId(), favor.getCreator(), favor.getTitle(), favor.getDescription(), favor.getDueTime());
+        this(favor.getId(), favor.getCreator(), favor.getTitle(), favor.getDescription(), favor.getDueTime(), favor.getReward(), favor.getCoordinates());
     }
 
     public int getId() {
@@ -50,5 +55,13 @@ public class TransferFavor {
     public Integer getDueTime(){ return dueTime; }
 
     public void setDueTime(Integer dueTime){ this.dueTime = dueTime; }
+
+    public Integer getReward(){ return reward; }
+
+    public void setReward(int reward){ this.reward = reward; }
+
+    public Coordinates getCoordinates(){ return coordinates; }
+
+    public void setCoordinates(Coordinates coordinates){ this.coordinates = coordinates; }
 
 }

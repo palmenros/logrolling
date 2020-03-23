@@ -5,6 +5,7 @@ import com.logrolling.server.model.Favor;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.DatabaseException;
+import com.logrolling.server.model.Filter;
 import com.logrolling.server.model.User;
 
 import java.sql.ResultSet;
@@ -19,12 +20,15 @@ public class FavorManager {
 
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate(
-                "INSERT INTO favors (creator, title, description, dueTime) VALUES (?, ?, ?, ?);",
+                "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?);",
                 new String[]{
                         favor.getCreator(),
                         favor.getTitle(),
                         favor.getDescription(),
-                        favor.getDueTime().toString()
+                        favor.getDueTime().toString(),
+                        favor.getReward().toString(),
+                        favor.getLatCoord().toString(),
+                        favor.getLongCoord().toString()
 
                 });
 
@@ -104,7 +108,58 @@ public class FavorManager {
                 rs.getString("creator"),
                 rs.getString("title"),
                 rs.getString("description"),
-                rs.getInt("dueTime")
+                rs.getInt("dueTime"),
+                rs.getInt("reward"),
+                rs.getDouble("latitude"),
+                rs.getDouble("longitude")
         );
+    }
+
+    public static List<Favor> getFavorsByFilter(Filter filter){
+
+        List<Favor> favors = new ArrayList<Favor>();
+
+        Database db = DatabaseFactory.createInstance();
+        if(filter.getMaxDistance() == -1) {
+            ResultSet rs = db.executeQuery("select * from favors where reward >= ?",
+                    new String[]{
+                            filter.getMinGrollies().toString()//Ver como buscar por coordenadas
+                    });
+
+            try {
+                while (rs.next()) {
+                    Favor favor = getFavorFromResultSet(rs);
+                    favors.add(favor);
+                }
+            } catch (SQLException e) {
+                throw new DatabaseException(e);
+            }
+        }
+        else{
+            ResultSet rs = db.executeQuery("select * from favors where reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
+                    new String[]{
+
+                            filter.getMinGrollies().toString(),
+                            filter.getCoordinates().getLatitude().toString(),
+                            filter.getCoordinates().getLongitude().toString(),
+                            filter.getCoordinates().getLatitude().toString(),
+                            filter.getMaxDistance().toString()
+
+                    });
+
+            try {
+                while (rs.next()) {
+                    Favor favor = getFavorFromResultSet(rs);
+                    favors.add(favor);
+                }
+            } catch (SQLException e) {
+                throw new DatabaseException(e);
+            }
+        }
+
+
+        db.close();
+
+        return favors;
     }
 }
