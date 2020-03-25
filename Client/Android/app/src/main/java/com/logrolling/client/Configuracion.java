@@ -46,18 +46,6 @@ public class Configuracion extends AppCompatActivity {
         Intent i = new Intent(this, MiPerfil.class);
         startActivity(i);
     }
-    public void notificaciones(View view) {
-
-    }
-    public void idioma(View view) {
-
-    }
-    public void invitarAmigos(View view) {
-
-    }
-    public void ayuda(View view) {
-
-    }
     public void cerrarSesion(View view) {
 
     }

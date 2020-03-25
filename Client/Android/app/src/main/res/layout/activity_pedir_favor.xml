@@ -9,6 +9,7 @@
     <ScrollView
         android:layout_width="418dp"
         android:layout_height="571dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parteArriba">
@@ -54,6 +55,7 @@
                     android:layout_width="350dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="18dp"
+                    android:drawableStart="@drawable/ic_today_black_24dp"
                     android:ems="10"
                     android:hint="@string/FechaLimite"
                     android:inputType="date"
@@ -68,6 +70,7 @@
                     android:layout_width="350dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="18dp"
+                    android:drawableEnd="@drawable/grollies_mini2"
                     android:ems="10"
                     android:hint="@string/Recompensa"
                     android:inputType="numberDecimal"
@@ -81,6 +84,7 @@
                     android:layout_width="350dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="18dp"
+                    android:drawableStart="@drawable/ic_pin_drop_black_24dp"
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
                     android:inputType="textPersonName"
@@ -95,6 +99,7 @@
                     android:layout_width="350dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="18dp"
+                    android:drawableStart="@drawable/ic_place_black_24dp"
                     android:ems="10"
                     android:hint="@string/LugarRealiz"
                     android:inputType="textPersonName"
@@ -112,7 +117,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor"
-                    app:srcCompat="@android:drawable/ic_menu_camera" />
+                    app:srcCompat="@drawable/ic_insert_photo_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/iconoImagen2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="70dp"
+                    android:onClick="cambiarFoto"
+                    app:layout_constraintStart_toStartOf="@+id/Foto"
+                    app:layout_constraintTop_toTopOf="@+id/Foto"
+                    app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
 
                 <Button
                     android:id="@+id/pedirFavor"
@@ -129,6 +146,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
@@ -142,14 +160,15 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Favores"
         android:layout_width="55dp"
         android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="favores"
@@ -163,10 +182,10 @@
 
     <TextView
         android:id="@+id/MisFavores"
-        android:layout_width="85dp"
+        android:layout_width="82dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="misFavores"
@@ -199,8 +218,8 @@
         android:id="@+id/configuracion"
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="configuracion"
@@ -216,8 +235,8 @@
         android:id="@+id/mensajes"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="mensajes"
@@ -312,5 +331,58 @@
         app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
         app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
         tools:text="grollies" />
+
+    <ImageView
+        android:id="@+id/configIcon7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="configuracion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/configuracion"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+    <ImageView
+        android:id="@+id/favoresIcon7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="favores"
+        app:layout_constraintEnd_toEndOf="@+id/Favores"
+        app:layout_constraintStart_toStartOf="@+id/Favores"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    <ImageView
+        android:id="@+id/misFavoresIcon8"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="misFavores"
+        app:layout_constraintEnd_toEndOf="@+id/MisFavores"
+        app:layout_constraintStart_toStartOf="@+id/MisFavores"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <ImageView
+        android:id="@+id/regalosIcon7"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:onClick="regalos"
+        app:layout_constraintEnd_toEndOf="@+id/regalos"
+        app:layout_constraintStart_toStartOf="@+id/regalos"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_card_giftcard_black_24dp" />
+
+    <ImageView
+        android:id="@+id/mensajesIcon7"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:onClick="mensajes"
+        app:layout_constraintEnd_toEndOf="@+id/mensajes"
+        app:layout_constraintStart_toStartOf="@+id/mensajes"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

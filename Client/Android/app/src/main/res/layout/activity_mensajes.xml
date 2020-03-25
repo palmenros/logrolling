@@ -8,14 +8,163 @@
 
     <ListView
         android:id="@+id/ListaMensajes"
-        android:layout_width="406dp"
-        android:layout_height="596dp"
+        android:layout_width="410dp"
+        android:layout_height="622dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parteArriba2">
 
     </ListView>
+
+    <TextView
+        android:id="@+id/parteAbajo2"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/favores2"
+        android:layout_width="55dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="favores"
+        android:text="@string/Favores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/parteAbajo2" />
+
+    <TextView
+        android:id="@+id/misFavores2"
+        android:layout_width="82dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="misFavores"
+        android:text="@string/MisFavores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteAbajo2"
+        app:layout_constraintStart_toEndOf="@+id/favores2" />
+
+    <TextView
+        android:id="@+id/regalos2"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="regalos"
+        android:text="@string/Regalos"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mensajes2" />
+
+    <TextView
+        android:id="@+id/parteAbajo4"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="configuracion"
+        android:text="@string/Configuracion"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/regalos2" />
+
+    <TextView
+        android:id="@+id/mensajes2"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:text="@string/Mensajes"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/misFavores2" />
+
+    <ImageView
+        android:id="@+id/configIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="configuracion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/parteAbajo4"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo2"
+        app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+    <ImageView
+        android:id="@+id/regalosIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:onClick="regalos"
+        app:layout_constraintEnd_toEndOf="@+id/regalos2"
+        app:layout_constraintStart_toStartOf="@+id/regalos2"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo2"
+        app:srcCompat="@drawable/ic_card_giftcard_black_24dp" />
+
+    <ImageView
+        android:id="@+id/mensajesIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="@+id/mensajes2"
+        app:layout_constraintStart_toStartOf="@+id/mensajes2"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo2"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
+
+    <ImageView
+        android:id="@+id/misFavoresIcon2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="misFavores"
+        app:layout_constraintEnd_toEndOf="@+id/misFavores2"
+        app:layout_constraintStart_toStartOf="@+id/misFavores2"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo2"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <ImageView
+        android:id="@+id/favoresIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="favores"
+        app:layout_constraintEnd_toEndOf="@+id/favores2"
+        app:layout_constraintStart_toStartOf="@+id/favores2"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo2"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
     <TextView
         android:id="@+id/parteArriba2"
@@ -25,6 +174,7 @@
         android:textColor="@color/blanco"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,8 +182,8 @@
         android:id="@+id/cuadroGrollies"
         android:layout_width="134dp"
         android:layout_height="47dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
         android:background="@color/blanco"
         android:onClick="comprarGrollies"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba2"
@@ -92,100 +242,5 @@
         app:layout_constraintStart_toStartOf="@+id/cuadroGrollies"
         app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
         tools:text="grollies" />
-
-    <TextView
-        android:id="@+id/parteAbajo"
-        android:layout_width="413dp"
-        android:layout_height="71dp"
-        android:background="@color/azul"
-        android:textColor="@color/blanco"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/Favores"
-        android:layout_width="55dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/azul"
-        android:onClick="favores"
-        android:text="@string/Favores"
-        android:textColor="@color/blanco"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/rubik"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/MisFavores"
-        android:layout_width="85dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/azul"
-        android:onClick="misFavores"
-        android:text="@string/MisFavores"
-        android:textColor="@color/blanco"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/rubik"
-        app:layout_constraintBottom_toBottomOf="@+id/parteAbajo"
-        app:layout_constraintStart_toEndOf="@+id/Favores" />
-
-    <TextView
-        android:id="@+id/regalos"
-        android:layout_width="58dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/azul"
-        android:onClick="regalos"
-        android:text="@string/Regalos"
-        android:textColor="@color/blanco"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/rubik"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mensajes" />
-
-    <TextView
-        android:id="@+id/configuracion"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/azul"
-        android:onClick="configuracion"
-        android:text="@string/Configuracion"
-        android:textColor="@color/blanco"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/rubik"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/regalos" />
-
-    <TextView
-        android:id="@+id/mensajes"
-        android:layout_width="65dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/azul"
-        android:text="@string/Mensajes"
-        android:textColor="@color/blanco"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/rubik"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/MisFavores" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

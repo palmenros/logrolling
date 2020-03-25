@@ -10,6 +10,7 @@
         android:id="@+id/ListaMensajes"
         android:layout_width="412dp"
         android:layout_height="589dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
@@ -23,14 +24,15 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Favores"
         android:layout_width="55dp"
         android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="favores"
@@ -44,10 +46,10 @@
 
     <TextView
         android:id="@+id/MisFavores"
-        android:layout_width="85dp"
+        android:layout_width="82dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="misFavores"
@@ -79,8 +81,8 @@
         android:id="@+id/configuracion"
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="configuracion"
@@ -96,8 +98,8 @@
         android:id="@+id/mensajes"
         android:layout_width="65dp"
         android:layout_height="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/azul"
         android:onClick="mensajes"
@@ -190,5 +192,60 @@
         app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
         app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
         tools:text="grollies" />
+
+    <ImageView
+        android:id="@+id/mensajesIcon5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:onClick="mensajes"
+        app:layout_constraintEnd_toEndOf="@+id/mensajes"
+        app:layout_constraintStart_toStartOf="@+id/mensajes"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
+
+    <ImageView
+        android:id="@+id/misFavoresIcon6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="13dp"
+        android:onClick="misFavores"
+        app:layout_constraintBottom_toBottomOf="@+id/MisFavores"
+        app:layout_constraintEnd_toEndOf="@+id/MisFavores"
+        app:layout_constraintStart_toStartOf="@+id/MisFavores"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <ImageView
+        android:id="@+id/regalosIcon5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/regalos"
+        app:layout_constraintStart_toStartOf="@+id/regalos"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_card_giftcard_black_24dp" />
+
+    <ImageView
+        android:id="@+id/favoresIcon5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="13dp"
+        android:onClick="favores"
+        app:layout_constraintBottom_toBottomOf="@+id/Favores"
+        app:layout_constraintEnd_toEndOf="@+id/Favores"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/Favores"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    <ImageView
+        android:id="@+id/configIcon6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="configuracion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/configuracion"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_settings_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

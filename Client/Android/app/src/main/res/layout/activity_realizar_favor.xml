@@ -6,298 +6,355 @@
     android:layout_height="match_parent"
     tools:context=".RealizarFavor">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ScrollView
+        android:layout_width="410dp"
+        android:layout_height="509dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".Regalos">
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba">
 
-        <Button
-            android:id="@+id/pedirFavor"
-            android:layout_width="283dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/blanco"
-            android:fadingEdge="horizontal|vertical"
-            android:fontFamily="@font/rubik"
-            android:onClick="realizarFavor"
-            android:text="@string/RealizarFavor"
-            android:textColor="@color/azul"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
-
-        <TextView
-            android:id="@+id/lugarRealizacion"
-            android:layout_width="330dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="18dp"
-            android:ems="10"
-            android:hint="@string/LugarRealiz"
-            android:inputType="textPersonName"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Foto" />
-
-        <TextView
-            android:id="@+id/lugarEntrega"
-            android:layout_width="330dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="28dp"
-            android:ems="10"
-            android:hint="@string/LugarEntrega"
-            android:inputType="textPersonName"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lugarRealizacion" />
-
-        <TextView
-            android:id="@+id/parteAbajo"
-            android:layout_width="413dp"
-            android:layout_height="71dp"
-            android:background="@color/azul"
-            android:textColor="@color/blanco"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/Favores"
-            android:layout_width="55dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/azul"
-            android:onClick="favores"
-            android:text="@string/Favores"
-            android:textColor="@color/blanco"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/MisFavores"
-            android:layout_width="85dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/azul"
-            android:onClick="misFavores"
-            android:text="@string/MisFavores"
-            android:textColor="@color/blanco"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintBottom_toBottomOf="@+id/parteAbajo"
-            app:layout_constraintStart_toEndOf="@+id/Favores" />
-
-        <TextView
-            android:id="@+id/regalos"
-            android:layout_width="58dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/azul"
-            android:onClick="regalos"
-            android:text="@string/Regalos"
-            android:textColor="@color/blanco"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/mensajes" />
-
-        <TextView
-            android:id="@+id/configuracion"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/azul"
-            android:onClick="configuracion"
-            android:text="@string/Configuracion"
-            android:textColor="@color/blanco"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/regalos" />
-
-        <TextView
-            android:id="@+id/mensajes"
-            android:layout_width="65dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/azul"
-            android:onClick="mensajes"
-            android:text="@string/Mensajes"
-            android:textColor="@color/blanco"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/MisFavores" />
-
-        <TextView
-            android:id="@+id/parteArriba"
-            android:layout_width="413dp"
-            android:layout_height="71dp"
-            android:background="@color/azul"
-            android:textColor="@color/blanco"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/MensajesTit"
-            android:layout_width="242dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="160dp"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="17dp"
-            android:background="@color/azul"
-            android:text="@string/RealizarFavor"
-            android:textColor="@color/blanco"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
-            app:layout_constraintEnd_toEndOf="@+id/parteArriba"
-            app:layout_constraintHorizontal_bias="0.617"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.157" />
-
-        <TextView
-            android:id="@+id/CuadroGrollies"
-            android:layout_width="134dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:background="@color/blanco"
-            android:onClick="comprarGrollies"
-            app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/parteArriba" />
-
-        <ImageView
-            android:id="@+id/ComprarGrollies"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            android:layout_marginLeft="112dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/blanco"
-            android:contentDescription="ComprarGrollies"
-            android:onClick="comprarGrollies"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/Grollieslogo"
-            android:layout_width="30dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="72dp"
-            android:layout_marginLeft="72dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="IconoGrollies"
-            android:onClick="comprarGrollies"
-            app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
-            app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
-            app:srcCompat="@drawable/grollies" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="800dp">
 
-        <TextView
-            android:id="@+id/grollies3"
-            android:layout_width="62dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="11dp"
-            android:onClick="comprarGrollies"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
-            app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
-            tools:text="grollies" />
+                <TextView
+                    android:id="@+id/Recompensa"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:hint="@string/Recompensa"
+                    android:inputType="numberDecimal"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
 
-        <TextView
-            android:id="@+id/Nombre"
-            android:layout_width="330dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="@string/Nombre"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+                <TextView
+                    android:id="@+id/DescripcionFavor"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:hint="@string/Descripcion"
+                    android:inputType="textPersonName"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Nombre" />
 
-        <TextView
-            android:id="@+id/DescripcionFavor"
-            android:layout_width="330dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="18dp"
-            android:ems="10"
-            android:hint="@string/Descripcion"
-            android:inputType="textPersonName"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Nombre" />
+                <TextView
+                    android:id="@+id/lugarRealizacion"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:hint="@string/LugarRealiz"
+                    android:inputType="textPersonName"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Foto" />
 
-        <TextView
-            android:id="@+id/FechaLimite"
-            android:layout_width="330dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="18dp"
-            android:ems="10"
-            android:hint="@string/FechaLimite"
-            android:inputType="date"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lugarEntrega" />
+                <ImageView
+                    android:id="@+id/Foto"
+                    android:layout_width="180dp"
+                    android:layout_height="119dp"
+                    android:layout_marginTop="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor"
+                    app:srcCompat="@android:drawable/ic_menu_camera" />
 
-        <TextView
-            android:id="@+id/Recompensa"
-            android:layout_width="330dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="18dp"
-            android:ems="10"
-            android:hint="@string/Recompensa"
-            android:inputType="numberDecimal"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
+                <TextView
+                    android:id="@+id/Nombre"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="50dp"
+                    android:ems="10"
+                    android:hint="@string/Nombre"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/Foto"
-            android:layout_width="180dp"
-            android:layout_height="119dp"
-            android:layout_marginTop="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor"
-            app:srcCompat="@android:drawable/ic_menu_camera" />
+                <TextView
+                    android:id="@+id/FechaLimite"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:hint="@string/FechaLimite"
+                    android:inputType="date"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lugarEntrega" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/pedirFavor"
+                    android:layout_width="283dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/blanco"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="realizarFavor"
+                    android:text="@string/RealizarFavor"
+                    android:textColor="@color/azul"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
+
+                <TextView
+                    android:id="@+id/lugarEntrega"
+                    android:layout_width="330dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:hint="@string/LugarEntrega"
+                    android:inputType="textPersonName"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lugarRealizacion" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/parteArriba"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/MensajesTit"
+        android:layout_width="242dp"
+        android:layout_height="37dp"
+        android:background="@color/azul"
+        android:text="@string/RealizarFavor"
+        android:textColor="@color/blanco"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CuadroGrollies"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CuadroGrollies"
+        android:layout_width="134dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/blanco"
+        android:onClick="comprarGrollies"
+        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/grollies3"
+        android:layout_width="62dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:onClick="comprarGrollies"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/CuadroGrollies"
+        app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
+        app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+        tools:text="grollies" />
+
+    <ImageView
+        android:id="@+id/ComprarGrollies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:background="@color/blanco"
+        android:contentDescription="ComprarGrollies"
+        android:onClick="comprarGrollies"
+        app:layout_constraintBottom_toBottomOf="@+id/CuadroGrollies"
+        app:layout_constraintStart_toStartOf="@+id/parteArriba"
+        app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <ImageView
+        android:id="@+id/Grollieslogo"
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:contentDescription="IconoGrollies"
+        android:onClick="comprarGrollies"
+        app:layout_constraintBottom_toBottomOf="@+id/CuadroGrollies"
+        app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
+        app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+        app:srcCompat="@drawable/grollies" />
+
+    <TextView
+        android:id="@+id/parteAbajo"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/mensajes"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="mensajes"
+        android:text="@string/Mensajes"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteAbajo"
+        app:layout_constraintStart_toEndOf="@+id/MisFavores" />
+
+    <TextView
+        android:id="@+id/MisFavores"
+        android:layout_width="82dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="misFavores"
+        android:text="@string/MisFavores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Favores" />
+
+    <TextView
+        android:id="@+id/regalos"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="regalos"
+        android:text="@string/Regalos"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mensajes" />
+
+    <TextView
+        android:id="@+id/Favores"
+        android:layout_width="55dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="favores"
+        android:text="@string/Favores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteAbajo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/configuracion"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="configuracion"
+        android:text="@string/Configuracion"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/regalos" />
+
+    <ImageView
+        android:id="@+id/mensajesIcon4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:onClick="mensajes"
+        app:layout_constraintEnd_toEndOf="@+id/mensajes"
+        app:layout_constraintStart_toStartOf="@+id/mensajes"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
+
+    <ImageView
+        android:id="@+id/favoresIcon4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="favores"
+        app:layout_constraintEnd_toEndOf="@+id/Favores"
+        app:layout_constraintStart_toStartOf="@+id/Favores"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    <ImageView
+        android:id="@+id/configIcon4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="configuracion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/configuracion"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+    <ImageView
+        android:id="@+id/misFavoresIcon5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="misFavores"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="661dp" />
+
+    <ImageView
+        android:id="@+id/regalosIcon4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:onClick="regalos"
+        app:layout_constraintEnd_toEndOf="@+id/regalos"
+        app:layout_constraintStart_toStartOf="@+id/regalos"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_card_giftcard_black_24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

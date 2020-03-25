@@ -107,7 +107,7 @@
         android:layout_width="357dp"
         android:layout_height="54dp"
         android:layout_marginTop="55dp"
-        android:drawableStart="@android:drawable/ic_menu_myplaces"
+        android:drawableStart="@drawable/ic_person_white_24dp"
         android:ems="10"
         android:fontFamily="@font/rubik"
         android:hint="@string/NombreUsuario"

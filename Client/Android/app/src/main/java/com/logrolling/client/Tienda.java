@@ -16,6 +16,7 @@ public class Tienda extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
         restantes=(TextView)findViewById(R.id.restantes);
+        videosRestantes=10;
     }
 
 
@@ -45,9 +46,17 @@ public class Tienda extends AppCompatActivity {
 
     }
     public void DiezGrollies(View view) {
-       //Meter video
+
         videosRestantes--;
-        restantes.setText("("+videosRestantes+"restantes)");
+        if(videosRestantes<0){
+            videosRestantes=0;
+            //Mensaje de info
+        }else{
+            //Meter video
+            //sumarGrollies
+            restantes.setText("("+videosRestantes+" restantes)");
+        }
+
     }
     public void DosMilGrollies(View view) {
        //Pagos por 0.99
