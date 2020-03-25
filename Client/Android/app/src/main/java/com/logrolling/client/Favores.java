@@ -11,12 +11,12 @@ import android.widget.ListView;
 
 public class Favores extends AppCompatActivity {
     private ListView listaFavores;
-    private String[]favores={"Apuntes","Perro","Compra"};
+    private String[]favores={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favores);
-        listaFavores=(ListView)findViewById(R.id.ListaRegalos);
+        listaFavores=(ListView)findViewById(R.id.ListaMensajes);
 
         ArrayAdapter<String> adapter=new ArrayAdapter(this,R.layout.list_favores, favores);
         listaFavores.setAdapter(adapter);

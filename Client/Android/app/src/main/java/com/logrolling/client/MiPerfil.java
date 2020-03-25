@@ -55,9 +55,11 @@ public class MiPerfil extends AppCompatActivity {
 
 
     public void guardarCambios(View view){
-        if(contrasenna.getText().toString().equals(repContrasenna.getText().toString())){//Condiciones en las que modificas el perfil
+       /* if(contrasenna.getText().toString().equals(repContrasenna.getText().toString())){//Condiciones en las que modificas el perfil
             //Enviar datos o lo que sea
-        }
+        }*/
+        Intent i = new Intent(this, Configuracion.class);
+        startActivity(i);
     }
     public void cambiarFoto(View view){
 

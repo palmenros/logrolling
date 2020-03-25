@@ -166,7 +166,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/pedirFavorTit"
+            android:id="@+id/MensajesTit"
             android:layout_width="242dp"
             android:layout_height="37dp"
             android:layout_marginStart="160dp"

@@ -11,12 +11,13 @@ import android.widget.ListView;
 
 public class Mensajes extends AppCompatActivity {
     private ListView listaChat;
-    private String[]chats={"Luis","Felipe","Olga"};
+    private String[]chats={"Luis","Felipe","Olga","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe",
+            "Luis","Felipe","Luis","Felipe","Olga","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favores);
-        listaChat=(ListView)findViewById(R.id.ListaRegalos);
+        setContentView(R.layout.activity_mensajes);
+        listaChat=(ListView)findViewById(R.id.ListaMensajes);
 
         ArrayAdapter<String> adapter=new ArrayAdapter(this,R.layout.list_favores, chats);
         listaChat.setAdapter(adapter);
