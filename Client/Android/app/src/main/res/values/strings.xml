@@ -17,7 +17,7 @@
     <string name="Configuracion">Configuración</string>
     <string name="Mensajes">Mensajes</string>
     <string name="GuardarCambios">Guardar Cambios</string>
-    <string name="Nombre">\ Nombre</string>
+    <string name="Nombre">Nombre del favor</string>
     <string name="Descripcion">\ Descripción del favor</string>
     <string name="LugarRealiz">\ Lugar de realización</string>
     <string name="LugarEntrega">\ Lugar de entrega</string>
@@ -52,11 +52,14 @@
     <string name="restantes">(10 restantes)</string>
     <string name="RealizarFavor">Realizar favor</string>
     <string name="BuscarF">\  Buscar favor</string>
-    <string name="RecompensaG">Recompensa de grollies</string>
+    <string name="RecompensaG">Recompensa mínima de grollies</string>
     <string name="TiempoRealizacion">Tiempo de realización</string>
-    <string name="Min">Min.</string>
-    <string name="Max">Max.</string>
+    <string name="DistanciaMaxima">Distancia máxima</string>
     <string name="UnaHora">1 hora</string>
     <string name="DiezDias">10 días</string>
     <string name="Buscar">Buscar</string>
+    <string name="G">G</string>
+    <string name="distancias">500m \ 1km \  2km \  3km \  5km \  7km \  10km  \ 20km</string>
+    <string name="FavoresARealizar">Favores a realizar</string>
+    <string name="FavoresPedidos">Favores pedidos</string>
 </resources>

@@ -63,7 +63,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.506"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lugarEntrega" />
+                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega" />
 
                 <EditText
                     android:id="@+id/Recompensa"
@@ -80,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
 
                 <EditText
-                    android:id="@+id/lugarEntrega"
+                    android:id="@+id/LugarEntrega"
                     android:layout_width="350dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="18dp"
@@ -320,7 +320,7 @@
         app:srcCompat="@drawable/grollies" />
 
     <TextView
-        android:id="@+id/grollies3"
+        android:id="@+id/grollies"
         android:layout_width="62dp"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"

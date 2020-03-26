@@ -8,10 +8,21 @@
     tools:context=".MisFavores">
 
     <ListView
-        android:id="@+id/listaFavoresMios"
+        android:id="@+id/listaFavoresARealizar"
         android:layout_width="398dp"
         android:layout_height="506dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba">
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/listaFavoresPedidos"
+        android:layout_width="398dp"
+        android:layout_height="506dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parteArriba">
@@ -193,7 +204,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Grollies"
+        android:id="@+id/grollies"
         android:layout_width="62dp"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"
@@ -272,5 +283,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Nada" />
+
+    <Button
+        android:id="@+id/favoresARealizar"
+        android:layout_width="197dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/azul"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/rubik"
+        android:onClick="mostrarFavoresARealizar"
+        android:text="@string/FavoresARealizar"
+        android:textColor="@color/blanco"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+
+    <Button
+        android:id="@+id/FavoresPedidos"
+        android:layout_width="197dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/azul"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/rubik"
+        android:onClick="mostrarFavoresPedidos"
+        android:text="@string/FavoresPedidos"
+        android:textColor="@color/blanco"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

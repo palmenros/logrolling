@@ -200,7 +200,7 @@
         app:srcCompat="@drawable/grollies" />
 
     <TextView
-        android:id="@+id/grollies3"
+        android:id="@+id/grollies"
         android:layout_width="62dp"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"

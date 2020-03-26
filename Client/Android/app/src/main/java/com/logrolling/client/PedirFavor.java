@@ -5,13 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class PedirFavor extends AppCompatActivity {
-
+    private TextView numGrollies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedir_favor);
+
+        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
+
+
     }
 
     //Panel Inferior

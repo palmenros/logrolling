@@ -8,15 +8,18 @@ import android.view.View;
 import android.widget.TextView;
 
 public class Tienda extends AppCompatActivity {
-
+    private TextView numGrollies;
     public TextView restantes;
-    private int videosRestantes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tienda);
         restantes=(TextView)findViewById(R.id.restantes);
-        videosRestantes=10;
+
+
+        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
     }
 
 
@@ -46,17 +49,16 @@ public class Tienda extends AppCompatActivity {
 
     }
     public void DiezGrollies(View view) {
-
-        videosRestantes--;
-        if(videosRestantes<0){
-            videosRestantes=0;
+        //Pedir videosRestantes=lo que sea
+        /*
+        if(videosRestantes<=0){
             //Mensaje de info
         }else{
             //Meter video
-            //sumarGrollies
-            restantes.setText("("+videosRestantes+" restantes)");
+            restantes.setText("("+(videosRestantes-1)+" restantes)");
+            //notificar a quien sea que ha gastado un video
         }
-
+        */
     }
     public void DosMilGrollies(View view) {
        //Pagos por 0.99

@@ -2,14 +2,12 @@ package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Constraints;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -18,13 +16,12 @@ import android.widget.TextView;
 public class Favores extends AppCompatActivity {
     private ListView listaFavores;
     private String[]favores={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
-    private String [] distancias={"Menos de 1 kilómetro","Menos de 2 kilómetro", "De 2 a 5 kilómetros", "De 5 a 10 kilómetros", "Más de 10 kilómetros" };
-    private Spinner distancia;
     private boolean filtros;
     private ConstraintLayout constrainFiltros;
-    private TextView minMaxGrollies, minMaxHoras;
-    private SeekBar minGrolliesBar,maxGrolliesBar, minTiempoBar, maxTiempoBar;
-    public int minGrollies=10,maxGrollies=10,minHoras=1,maxHoras=1;
+    private TextView minGrolliesText, minHorasText,maxDistanciaText;
+    private SeekBar minGrolliesBar, minTiempoBar, maxDistanciaBar;
+    public int minGrollies=10,minHoras=1;
+    public double distancia=0.5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +32,7 @@ public class Favores extends AppCompatActivity {
         constrainFiltros.setVisibility(View.INVISIBLE);
 
 
-        distancia=(Spinner)findViewById(R.id.spinner);
-        ArrayAdapter<String> adapterSpinner=new ArrayAdapter(this,R.layout.spinner_distancias, distancias);
-        distancia.setAdapter(adapterSpinner);
+
 
         listaFavores=(ListView)findViewById(R.id.ListaMensajes);
         ArrayAdapter<String> adapterLista=new ArrayAdapter(this,R.layout.list_favores, favores);
@@ -53,13 +48,13 @@ public class Favores extends AppCompatActivity {
         });
 
         minGrolliesBar=(SeekBar)findViewById(R.id.minGrolliesBar);
-        maxGrolliesBar=(SeekBar)findViewById(R.id.maxGrolliesBar);
         minTiempoBar=(SeekBar)findViewById(R.id.minTiempoBar);
-        maxTiempoBar=(SeekBar)findViewById(R.id.maxTiempoBar);
+        maxDistanciaBar=(SeekBar)findViewById(R.id.maxDistanciaBar);
 
         listeners_barras();
-        minMaxGrollies=(TextView)findViewById(R.id.MinMaxGrollies);
-        minMaxHoras=(TextView)findViewById(R.id.MinMaxTiempo);
+        minGrolliesText=(TextView)findViewById(R.id.MinGrollies);
+        minHorasText=(TextView)findViewById(R.id.MinTiempo);
+        maxDistanciaText=(TextView)findViewById(R.id.MaxDistancia);
     }
 
     //Panel Inferior
@@ -115,18 +110,13 @@ public class Favores extends AppCompatActivity {
                     minGrollies=truncar(minGrollies);
                 }
 
-                String texto="Min: ";
+                String text="";
                 if(minGrollies>=1000){
-                    texto+=minGrollies/1000+"K G Max: ";
+                    text+=minGrollies/1000+"."+(minGrollies%1000==0?"000":minGrollies%1000)+" G";
                 }else{
-                    texto+=minGrollies+" G Max: ";
+                    text+=minGrollies+" G";
                 }
-                if(maxGrollies>=1000){
-                    texto+=maxGrollies/1000+"K G";
-                }else{
-                    texto+=maxGrollies+" G";
-                }
-                minMaxGrollies.setText(texto);
+                minGrolliesText.setText(text);
             }
 
             @Override
@@ -139,46 +129,13 @@ public class Favores extends AppCompatActivity {
 
             }
         });
-        maxGrolliesBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                maxGrollies=(int)(2*Math.pow(progress, 2.5))+10;
-                if(progress==100){
-                    maxGrollies=200000;
-                }
-                if(maxGrollies>100){
-                    maxGrollies=truncar(maxGrollies);
-                }
-                String texto="Min: ";
-                if(minGrollies>=1000){
-                    texto+=minGrollies/1000+"K G Max: ";
-                }else{
-                    texto+=minGrollies+" G Max: ";
-                }
-                if(maxGrollies>=1000){
-                    texto+=maxGrollies/1000+"K G";
-                }else{
-                    texto+=maxGrollies+" G";
-                }
-                minMaxGrollies.setText(texto);
-            }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
         minTiempoBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 minHoras=(int)(2.39*progress)+1;
 
-                minMaxHoras.setText("Min: "+toHoras(minHoras)+" Max: "+toHoras(maxHoras));
+                minHorasText.setText("Dentro de "+toHoras(minHoras));
             }
 
             @Override
@@ -191,11 +148,46 @@ public class Favores extends AppCompatActivity {
 
             }
         });
-        maxTiempoBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        maxDistanciaBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                maxHoras=(int)(2.39*progress)+1;
-                minMaxHoras.setText("Min: "+toHoras(minHoras)+" Max: "+toHoras(maxHoras));
+                String dist="";
+                switch(progress){
+                    case 0:
+                        dist="500 m";
+                        distancia=0.5;
+                        break;
+                    case 1:
+                        dist="1 km";
+                        distancia=1;
+                        break;
+                    case 2:
+                        dist="2 km";
+                        distancia=2;
+                        break;
+                    case 3:
+                        dist="3 km";
+                        distancia=3;
+                        break;
+                    case 4:
+                        dist="5 km";
+                        distancia=5;
+                        break;
+                    case 5:
+                        dist="7 km";
+                        distancia=7;
+                        break;
+                    case 6:
+                        dist="10 km";
+                        distancia=10;
+                        break;
+                    case 7:
+                        dist="20 km";
+                        distancia=20;
+                        break;
+
+                }
+                maxDistanciaText.setText("En un radio de "+dist);
             }
 
             @Override

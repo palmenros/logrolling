@@ -11,7 +11,7 @@
         android:id="@+id/logo_logrolling"
         android:layout_width="179dp"
         android:layout_height="172dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="105dp"
         android:contentDescription="@string/Logo"
         android:onClick="avanzar"
         app:layout_constraintEnd_toEndOf="parent"
