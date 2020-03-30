@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MiPerfil extends AppCompatActivity {
     private EditText usuario,contrasenna,repContrasenna;
-
+    private TextView numGrollies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,9 @@ public class MiPerfil extends AppCompatActivity {
         usuario=(EditText)findViewById(R.id.NombreUsuario);
         contrasenna=(EditText)findViewById(R.id.Contrasenna);
         repContrasenna=(EditText)findViewById(R.id.RepContrasenna);
+
+        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
     }
 
 
@@ -55,9 +59,11 @@ public class MiPerfil extends AppCompatActivity {
 
 
     public void guardarCambios(View view){
-        if(contrasenna.getText().toString().equals(repContrasenna.getText().toString())){//Condiciones en las que modificas el perfil
+       /* if(contrasenna.getText().toString().equals(repContrasenna.getText().toString())){//Condiciones en las que modificas el perfil
             //Enviar datos o lo que sea
-        }
+        }*/
+        Intent i = new Intent(this, Configuracion.class);
+        startActivity(i);
     }
     public void cambiarFoto(View view){
 

@@ -4,32 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@color/azul"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo_logrolling"
+        android:layout_width="179dp"
+        android:layout_height="172dp"
+        android:layout_marginTop="105dp"
+        android:contentDescription="@string/Logo"
+        android:onClick="avanzar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logrolling_logo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/azul"
         android:onClick="avanzar"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity"
-        tools:visibility="visible">
+        app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:id="@+id/logo_logrolling"
-            android:layout_width="179dp"
-            android:layout_height="172dp"
-            android:layout_marginTop="116dp"
-            android:contentDescription="@string/Logo"
-            android:onClick="avanzar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logrolling_logo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

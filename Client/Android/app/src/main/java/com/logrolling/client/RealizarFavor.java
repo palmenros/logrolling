@@ -9,21 +9,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RealizarFavor extends AppCompatActivity {
-    private TextView nombre, descripcion, lugarRealizacion, lugarEntrega, fechaEntrga, recompensa;
+    private TextView nombre, descripcion, lugarEntrega, fechaEntrega, recompensa;
     private ImageView foto;
+    private TextView numGrollies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realizar_favor);
-        nombre=(TextView)findViewById(R.id.Nombre);
-        descripcion=(TextView)findViewById(R.id.DescripcionFavor);
-        lugarRealizacion=(TextView)findViewById(R.id.lugarRealizacion);
+        nombre=(TextView)findViewById(R.id.nombre);
+        descripcion=(TextView)findViewById(R.id.descripcionFavor);
         lugarEntrega=(TextView)findViewById(R.id.lugarEntrega);
-        fechaEntrga=(TextView)findViewById(R.id.FechaLimite);
-        recompensa=(TextView)findViewById(R.id.Recompensa);
+        fechaEntrega=(TextView)findViewById(R.id.fechaLimite);
+        recompensa=(TextView)findViewById(R.id.recompensa);
         foto=(ImageView)findViewById(R.id.Foto);
 
+
+        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
         //Sets
+        //Ejemplo
+        nombre.setText("Ir a la compra");
+        descripcion.setText("Comprar los siguientes artículos por un precio total máximo de 10 €: \n\n  o 3kg de Naranjas \n  o Bolsa de patas \n  o Barra de pan \n  o Botella CocaCola 2l");
+        lugarEntrega.setText("Paseo de los Melancólicos Nº 15");
+        fechaEntrega.setText("Dentro de 3 horas");
+        recompensa.setText("500 grollies");
+
     }
 
     //Panel Inferior

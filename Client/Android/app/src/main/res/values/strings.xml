@@ -1,18 +1,15 @@
 <resources>
     <string name="app_name">Logrolling</string>
     <string name="IniciarSesion">Iniciar sesión</string>
-    <string name="NombreUsuario">Nombre de usuario</string>
+    <string name="NombreUsuario">\ Nombre de usuario</string>
     <string name="Cuenta">¿No tienes una cuenta?</string>
     <string name="Registrate">Regístrate</string>
-    <string name="Cotraseña">Contraseña</string>
-    <string name="RepCotraseña">Repetir contraseña</string>
+    <string name="Cotraseña">\ Contraseña</string>
+    <string name="RepCotraseña">\ Repetir contraseña</string>
     <string name="Registro">Registro</string>
     <string name="Logo">Logrolling</string>
-    <string name="Correo">Correo electrónico</string>
     <string name="TerminosCondiciones">Acepto los Términos y condiciones y la política de privacidad</string>
     <string name="CuentaYa">¿Ya tienes una cuenta?</string>
-    <string name="RegistroExito">Hemos enviado un mensaje de confirmación a tu correo electrónico.\n \n Sigue las instrucciones para unirte a nosotros.</string>
-    <string name="Exito">¡Éxito!</string>
     <string name="Favores">Favores</string>
     <string name="MisFavores">Mis Favores</string>
     <string name="Perfil">Mi Perfil</string>
@@ -20,12 +17,12 @@
     <string name="Configuracion">Configuración</string>
     <string name="Mensajes">Mensajes</string>
     <string name="GuardarCambios">Guardar Cambios</string>
-    <string name="Nombre">Nombre</string>
-    <string name="Descripcion">Descripción del favor</string>
-    <string name="LugarRealiz">Lugar de realización</string>
-    <string name="LugarEntrega">Lugar de entrega</string>
-    <string name="FechaLimite">Fecha límite</string>
-    <string name="Recompensa">Recompensa ofrecida</string>
+    <string name="Nombre">Nombre del favor</string>
+    <string name="Descripcion">\ Descripción del favor</string>
+    <string name="LugarRealiz">\ Lugar de realización</string>
+    <string name="LugarEntrega">\ Lugar de entrega</string>
+    <string name="FechaLimite">\ Fecha límite</string>
+    <string name="Recompensa">\ Recompensa ofrecida</string>
     <string name="PedirFavor">Pedir nuevo favor</string>
     <string name="TextoPerfil">Cambia tu foto, nombre o contraseña</string>
     <string name="TextoNotificaciones">Cambia la luz, la configuración de notificaciones...</string>
@@ -45,6 +42,7 @@
     <string name="CuarentaMil">40.000</string>
     <string name="NoventaMil">90.000</string>
     <string name="DosCientosMil">200.000</string>
+    <string name="DiezMil">10.000</string>
     <string name="Gratis">Gratis</string>
     <string name="Uno">0.99€</string>
     <string name="Cinco">4.99€</string>
@@ -53,5 +51,15 @@
     <string name="Sesenta">59.99€</string>
     <string name="restantes">(10 restantes)</string>
     <string name="RealizarFavor">Realizar favor</string>
-
+    <string name="BuscarF">\  Buscar favor</string>
+    <string name="RecompensaG">Recompensa mínima de grollies</string>
+    <string name="TiempoRealizacion">Tiempo de realización</string>
+    <string name="DistanciaMaxima">Distancia máxima</string>
+    <string name="UnaHora">1 hora</string>
+    <string name="DiezDias">10 días</string>
+    <string name="Buscar">Buscar</string>
+    <string name="G">G</string>
+    <string name="distancias">500m \ 1km \  2km \  3km \  5km \  7km \  10km  \ 20km</string>
+    <string name="FavoresARealizar">Favores a realizar</string>
+    <string name="FavoresPedidos">Favores pedidos</string>
 </resources>

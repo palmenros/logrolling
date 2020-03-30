@@ -8,15 +8,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class Regalos extends AppCompatActivity {
     private ListView listaFavores;
-    private String[]regalos={"Play","Xbox","Tarjeta regalo"};
+    private TextView numGrollies;
+    private String[]regalos={"Play","Xbox","Tarjeta regalo","Play","Xbox","Tarjeta regalo","Play","Xbox",
+            "Tarjeta regalo","Play","Xbox","Tarjeta regalo","Play","Xbox","Tarjeta regalo","Play","Xbox","Tarjeta regalo"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regalos);
-        listaFavores=(ListView)findViewById(R.id.ListaRegalos);
+        listaFavores=(ListView)findViewById(R.id.ListaMensajes);
+
+
+        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
+
 
         ArrayAdapter<String> adapter=new ArrayAdapter(this,R.layout.list_regalos, regalos);
         listaFavores.setAdapter(adapter);
