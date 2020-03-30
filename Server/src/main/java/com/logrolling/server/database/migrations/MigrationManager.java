@@ -14,7 +14,8 @@ public class MigrationManager {
      */
     private static Migration[] migrations = new Migration[]{
         new UserMigration(),
-        new FavorMigration()
+        new FavorMigration(),
+        new TokenMigration()
     };
 
     /**

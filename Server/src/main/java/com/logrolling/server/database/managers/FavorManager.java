@@ -111,7 +111,8 @@ public class FavorManager {
                 rs.getInt("dueTime"),
                 rs.getInt("reward"),
                 rs.getDouble("latitude"),
-                rs.getDouble("longitude")
+                rs.getDouble("longitude"),
+                rs.getString("worker")
         );
     }
 

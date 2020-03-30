@@ -1,10 +1,13 @@
 package com.logrolling.server.controllers;
 
 import com.logrolling.server.database.managers.FavorManager;
+import com.logrolling.server.database.managers.TokenManager;
 import com.logrolling.server.database.managers.UserManager;
 import com.logrolling.server.model.Favor;
 import com.logrolling.server.model.Filter;
+import com.logrolling.server.model.Token;
 import com.logrolling.server.transfer.TransferFavor;
+import com.logrolling.server.transfer.TransferToken;
 import com.logrolling.server.transfer.TransferUser;
 
 import javax.ws.rs.GET;
@@ -18,11 +21,11 @@ import java.util.List;
 public class TestController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<TransferFavor> getMessage()  {
-        List<TransferFavor> transferList = new ArrayList<TransferFavor>();
-        Filter filter = new Filter(40.383929, -3.933405, 100);
-        for(Favor u : FavorManager.getFavorsByFilter(filter)) {
-            transferList.add(new TransferFavor(u));
+    public List<TransferToken> getMessage()  {
+        List<TransferToken> transferList = new ArrayList<TransferToken>();
+
+        for(Token u : TokenManager.getAllTokens()) {
+            transferList.add(new TransferToken(u));
         }
         return transferList;
     }

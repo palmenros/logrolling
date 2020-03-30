@@ -1,10 +1,15 @@
 package com.logrolling.server.model;
 
+import java.util.Date;
+
 public class Filter {
 
     private int minGrollies;
     private Coordinates coordinates;
     private double maxDistance;//EN KM
+
+    private boolean awarded;//Implement
+    private Date minDate;//Implement
 
 
     public Filter(){
@@ -18,6 +23,7 @@ public class Filter {
         this.minGrollies = minGrollies;
         this.coordinates = new Coordinates(latitude, longitude);
         this.maxDistance = maxDistance;
+
     }
 
     public Filter(double latitude, double longitude, double maxDistance){

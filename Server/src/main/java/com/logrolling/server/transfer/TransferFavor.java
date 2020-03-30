@@ -11,6 +11,7 @@ public class TransferFavor {
     private Integer dueTime;
     private int reward;
     private Coordinates coordinates;
+    //Rest of attributes from favor
 
     public TransferFavor(int id, String creator,  String title, String description, Integer dueTime, int reward, Coordinates coordinates) {
         this.id = id;
