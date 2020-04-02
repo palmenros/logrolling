@@ -1,4 +1,4 @@
-package com.logrolling.server.resources;
+package com.logrolling.server.controllers;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Path("/favor")
-public class FavorResource {
+public class FavorController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<TransferFavor> getFavors(){
         List<Favor> favors = FavorManager.getAllFavors();
-        List<TransferFavor> transfers = new ArrayList<>();
+        List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
         }
@@ -41,7 +41,7 @@ public class FavorResource {
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public void deleteMessage(@PathParam("id") int id){
+    public void deleteFavor(@PathParam("id") int id){
         // Favor f = FavorManager.getFavor(id);
         // FavorManager.deleteFavorFromCreatorAndTitle(f.getCreator(), f.getTitle());
     }
