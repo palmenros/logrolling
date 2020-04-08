@@ -17,10 +17,10 @@ public class RealizarFavor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realizar_favor);
         nombre=(TextView)findViewById(R.id.nombre);
-        descripcion=(TextView)findViewById(R.id.descripcionFavor);
-        lugarEntrega=(TextView)findViewById(R.id.lugarEntrega);
-        fechaEntrega=(TextView)findViewById(R.id.fechaLimite);
-        recompensa=(TextView)findViewById(R.id.recompensa);
+        descripcion=(TextView)findViewById(R.id.descripcionFavor1);
+        lugarEntrega=(TextView)findViewById(R.id.LugarEntrega1);
+        fechaEntrega=(TextView)findViewById(R.id.FechaLimite);
+        recompensa=(TextView)findViewById(R.id.Recompensa);
         foto=(ImageView)findViewById(R.id.Foto);
 
 

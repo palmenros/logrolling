@@ -63,7 +63,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.506"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega" />
+                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega1" />
 
                 <EditText
                     android:id="@+id/Recompensa"
@@ -80,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
 
                 <EditText
-                    android:id="@+id/LugarEntrega"
+                    android:id="@+id/LugarEntrega1"
                     android:layout_width="350dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="18dp"

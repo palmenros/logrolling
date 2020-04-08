@@ -28,9 +28,9 @@
                     android:id="@+id/Recompensa"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
                     android:ems="10"
                     android:hint="@string/Recompensa"
                     android:inputType="numberDecimal"
@@ -40,10 +40,10 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fechaLimite" />
+                    app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
 
                 <TextView
-                    android:id="@+id/recompensa"
+                    android:id="@+id/Recompensa"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
                     android:ems="10"
@@ -75,7 +75,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
                 <TextView
-                    android:id="@+id/descripcionFavor"
+                    android:id="@+id/descripcionFavor1"
                     android:layout_width="330dp"
                     android:layout_height="200dp"
                     android:ems="10"
@@ -95,7 +95,7 @@
                     android:layout_marginTop="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/descripcionFavor"
+                    app:layout_constraintTop_toBottomOf="@+id/descripcionFavor1"
                     app:srcCompat="@drawable/ic_insert_photo_black_24dp"
                     tools:srcCompat="@drawable/ic_insert_photo_black_24dp" />
 
@@ -129,10 +129,10 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lugarEntrega" />
+                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega1" />
 
                 <TextView
-                    android:id="@+id/fechaLimite"
+                    android:id="@+id/FechaLimite"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
                     android:ems="10"
@@ -158,10 +158,10 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recompensa" />
+                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
 
                 <TextView
-                    android:id="@+id/LugarEntrega"
+                    android:id="@+id/LugarEntrega1"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="30dp"
@@ -179,7 +179,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/Foto" />
 
                 <TextView
-                    android:id="@+id/lugarEntrega"
+                    android:id="@+id/LugarEntrega1"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
                     android:ems="10"
@@ -189,7 +189,7 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega" />
+                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

@@ -5,14 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class FavorPedido extends AppCompatActivity {
+
+    boolean adjudicado = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favor_pedido);
     }
+
+    //Botones //Dependiendo de si el favor está adjudicado hacer una cosa u otra
+    public void borrar(View view) { //TENDRÁ QUE BORRAR
+        Intent i = new Intent(this, MisFavores.class);
+        startActivity(i);
+    }
+    public void editar(View view) { //TENDRÁ QUE HABILITAR LA OPCION DE EDITAR
+
+    }
+
+    public void chat(View view) { //TENDRÁ QUE LLEVAR A CHAT CON UNA PERSONA DETERMINADA
+
+    }
+
 
     //Panel Inferior
     public void favores(View view) {
@@ -34,13 +51,6 @@ public class FavorPedido extends AppCompatActivity {
     }
     public void regalos(View view) {
         Intent i = new Intent(this, Regalos.class);
-        startActivity(i);
-    }
-
-
-    public void realizarFavor(View view) {
-        //realizar Favor
-        Intent i = new Intent(this, Favores.class);
         startActivity(i);
     }
 
