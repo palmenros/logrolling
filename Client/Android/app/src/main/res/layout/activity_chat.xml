@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/parteAbajo"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/favores"
+        android:layout_width="55dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="favores"
+        android:text="@string/Favores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/misFavores"
+        android:layout_width="82dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="misFavores"
+        android:text="@string/MisFavores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteAbajo"
+        app:layout_constraintStart_toEndOf="@+id/favores" />
+
+    <TextView
+        android:id="@+id/regalos"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="regalos"
+        android:text="@string/Regalos"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mensajes" />
+
+    <TextView
+        android:id="@+id/Configuracion"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:text="@string/Configuracion"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/regalos" />
+
+    <TextView
+        android:id="@+id/mensajes"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="mensajes"
+        android:text="@string/Mensajes"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/misFavores" />
+
+    <TextView
+        android:id="@+id/parteArriba"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/NombreChatTitulo"
+        android:layout_width="215dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:background="@color/azul"
+        android:text="@string/NombreChat"
+        android:textColor="@color/blanco"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintEnd_toEndOf="@+id/parteArriba"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/favoresIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="favores"
+        app:layout_constraintEnd_toEndOf="@+id/favores"
+        app:layout_constraintStart_toStartOf="@+id/favores"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/misFavoresIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="misFavores"
+        app:layout_constraintEnd_toEndOf="@+id/misFavores"
+        app:layout_constraintStart_toStartOf="@+id/misFavores"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/mensajesIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:onClick="mensajes"
+        app:layout_constraintEnd_toEndOf="@+id/mensajes"
+        app:layout_constraintStart_toStartOf="@+id/mensajes"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_message_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/regalosIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:onClick="regalos"
+        app:layout_constraintEnd_toEndOf="@+id/regalos"
+        app:layout_constraintStart_toStartOf="@+id/regalos"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_card_giftcard_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/configIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/Configuracion"
+        app:layout_constraintStart_toStartOf="@+id/Configuracion"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo"
+        app:srcCompat="@drawable/ic_settings_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <EditText
+        android:id="@+id/EscribirMensaje"
+        android:layout_width="350dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textShortMessage|textLongMessage|text"
+        android:text="Escribe un mensaje"
+        android:textColor="@color/grisClaro"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/enviarMensaje"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:background="@color/blanco"
+        android:onClick="escribir"
+        android:tint="@color/azul"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/EscribirMensaje"
+        app:srcCompat="@android:drawable/ic_menu_send" />
+
+    <ImageView
+        android:id="@+id/Atras"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginRight="124dp"
+        android:layout_marginBottom="7dp"
+        android:onClick="misFavores"
+        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintEnd_toStartOf="@+id/NombreChatTitulo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <ImageView
+        android:id="@+id/FotoPerfil"
+        android:layout_width="61dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintEnd_toStartOf="@+id/NombreChatTitulo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Atras"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_person_white_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListaMensajes"
+        android:layout_width="409dp"
+        android:layout_height="541dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp"
+        tools:listitem="@layout/item_list" />
+</androidx.constraintlayout.widget.ConstraintLayout>
