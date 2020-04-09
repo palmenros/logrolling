@@ -18,7 +18,7 @@ public class InicioSesion extends AppCompatActivity {
         usuario=(EditText)findViewById(R.id.NombreUsuario);
         contrasenna=(EditText)findViewById(R.id.Contrasenna);
     }
-    public void registrarse(View view){
+    public void registro(View view){
         Intent i=new Intent(this, Registro.class);
         startActivity(i);
     }

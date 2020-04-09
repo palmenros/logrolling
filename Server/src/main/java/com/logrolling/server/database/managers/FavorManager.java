@@ -36,7 +36,7 @@ public class FavorManager {
 
     }
 
-    public static void deleteFavorFromCretorandTitle(String creator, String title){
+    public static void deleteFavorFromCreatorAndTitle(String creator, String title){
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate("delete from favors where creator = ? and title = ?",
         new String[]{

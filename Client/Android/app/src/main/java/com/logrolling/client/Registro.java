@@ -12,18 +12,16 @@ import android.widget.TextView;
 public class Registro extends AppCompatActivity {
     private EditText usuario,contrasenna,repContrasenna;
     private Switch condiciones;
-    private TextView numGrollies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
         usuario=(EditText)findViewById(R.id.NombreUsuario);
         contrasenna=(EditText)findViewById(R.id.Contrasenna);
         repContrasenna=(EditText)findViewById(R.id.RepContrasenna);
         condiciones=(Switch)findViewById(R.id.Condiciones);
 
-        numGrollies=(TextView)findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
     }
 
     public void iniciarSesion(View view){

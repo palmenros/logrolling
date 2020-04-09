@@ -43,6 +43,8 @@ public class MisFavores extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Lo que sea
+                Intent i = new Intent(MisFavores.this, FavorPedido.class);
+                startActivity(i);
             }
         });
         listaFavoresARealizar=(ListView)findViewById(R.id.listaFavoresARealizar);
@@ -53,6 +55,7 @@ public class MisFavores extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Lo que sea
+
             }
         });
         mostrarFavoresPedidos();
