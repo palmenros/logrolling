@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TokenManager {
 
-    public static void createToken(Token token){
+    public static void createToken(Token token) {
 
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate(
@@ -24,6 +24,38 @@ public class TokenManager {
                 });
 
         db.close();
+    }
+
+    public static void deleteToken(Token token) {
+        Database db = DatabaseFactory.createInstance();
+        db.executeUpdate("delete from tokens where id = ?",
+                new String[]{
+                        Integer.toString(token.getId())
+
+                });
+
+        db.close();
+    }
+
+    public static Token getTokenFromUser(String user){
+
+        Token token = null;
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from tokens where user = ?",
+                new String[]{
+                        user
+                });
+        try {
+            while (rs.next()) {
+                token = getTokenFromResultSet(rs);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        return token;
+
 
     }
 
@@ -53,4 +85,5 @@ public class TokenManager {
                 rs.getString("user")
         );
     }
+
 }

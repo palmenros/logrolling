@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.logrolling</OriginalElement>
+  <nodes>
+    <node x="1795.1541666666667" y="65.0">com.logrolling.server.database.factories.Factory</node>
+    <node x="225.65575793650805" y="1861.0">com.logrolling.server.controllers.TestController</node>
+    <node x="1974.8388333333332" y="1850.0">com.logrolling.server.database.migrations.GiftMigration</node>
+    <node x="2511.4953968253967" y="1187.0">com.logrolling.Settings</node>
+    <node x="457.0" y="2347.0">com.logrolling.server.transfer.TransferMessage</node>
+    <node x="1347.072424603175" y="460.0">com.logrolling.server.model.User</node>
+    <node x="2372.4953968253967" y="1785.0">com.logrolling.server.database.MySQLDatabase</node>
+    <node x="1644.8541666666665" y="1861.0">com.logrolling.server.controllers.UserController</node>
+    <node x="1992.4953968253967" y="427.0">com.logrolling.server.model.Gift</node>
+    <node x="832.0" y="2347.0">com.logrolling.server.model.Message</node>
+    <node x="252.0" y="2347.0">com.logrolling.server.database.migrations.MessageMigration</node>
+    <node x="788.1974246031749" y="405.0">com.logrolling.server.model.Filter</node>
+    <node x="0.0" y="2426.0">com.logrolling.Launcher</node>
+    <node x="2554.4953968253967" y="515.0">com.logrolling.DatabaseSetting</node>
+    <node x="1720.6041666666665" y="1264.0">com.logrolling.server.transfer.TransferUser</node>
+    <node x="1507.7041666666664" y="10.0">com.logrolling.server.database.Database</node>
+    <node x="1061.9320912698415" y="2060.0">com.logrolling.server.database.migrations.MigrationManager</node>
+    <node x="1366.8287301587302" y="1850.0">com.logrolling.server.database.migrations.UserMigration</node>
+    <node x="2184.4953968253967" y="570.0">com.logrolling.server.database.DatabaseException</node>
+    <node x="628.4791666666666" y="0.0">com.logrolling.server.model.Coordinates</node>
+    <node x="13.0" y="2347.0">com.logrolling.JerseyConfiguration</node>
+    <node x="2427.145833333333" y="2092.0">com.logrolling.server.database.factories.MySQLDatabaseFactory</node>
+    <node x="526.197424603175" y="273.0">com.logrolling.server.model.Favor</node>
+    <node x="1068.530757936508" y="1318.0">com.logrolling.server.database.migrations.Migration</node>
+    <node x="1656.1541666666667" y="526.0">com.logrolling.server.database.factories.DatabaseFactory</node>
+    <node x="923.0154246031749" y="1850.0">com.logrolling.server.database.migrations.TokenMigration</node>
+    <node x="1977.9737579365083" y="2227.0">com.logrolling.server.Main</node>
+    <node x="1250.530757936508" y="1341.0">com.logrolling.server.database.managers</node>
+    <node x="0.0" y="1066.0">com.logrolling.server.transfer.TransferFavor</node>
+    <node x="655.0" y="2347.0">com.logrolling.server.transfer.TransferGift</node>
+    <node x="247.0" y="1231.0">com.logrolling.server.transfer.TransferToken</node>
+    <node x="334.197424603175" y="460.0">com.logrolling.server.model.Token</node>
+    <node x="1182.2037301587302" y="1850.0">com.logrolling.server.database.migrations.FavorMigration</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.model.Gift">
+      <point x="52.36363636363626" y="-14.5" />
+      <point x="1374.8943943001445" y="1036.0" />
+      <point x="2021.1620634920632" y="1036.0" />
+      <point x="-57.333333333333485" y="157.5" />
+    </edge>
+    <edge source="com.logrolling.server.controllers.TestController" target="com.logrolling.server.model.Token">
+      <point x="-86.625" y="-26.5" />
+      <point x="254.53075793650805" y="1765.0" />
+      <point x="236.5" y="1765.0" />
+      <point x="236.5" y="1026.0" />
+      <point x="348.5307579365083" y="1026.0" />
+      <point x="-71.66666666666674" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.TokenMigration" target="com.logrolling.server.model.Token">
+      <point x="-60.83333333333326" y="-37.5" />
+      <point x="935.1820912698416" y="1745.0" />
+      <point x="450.1458333333335" y="1745.0" />
+      <point x="450.1458333333335" y="1036.0" />
+      <point x="405.86409126984177" y="1036.0" />
+      <point x="-14.333333333333258" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.controllers.UserController" target="com.logrolling.server.database.managers">
+      <point x="-83.25" y="-26.5" />
+      <point x="1672.6041666666665" y="1705.0" />
+      <point x="1358.530757936508" y="1705.0" />
+      <point x="36.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.UserMigration" target="com.logrolling.server.database.managers">
+      <point x="-34.75" y="-37.5" />
+      <point x="1401.5787301587302" y="1715.0" />
+      <point x="1334.530757936508" y="1715.0" />
+      <point x="12.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.model.Favor">
+      <point x="-26.181818181818244" y="-14.5" />
+      <point x="1296.34893975469" y="926.0" />
+      <point x="743.9974246031751" y="926.0" />
+      <point x="96.80000000000007" y="311.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.MySQLDatabase" target="com.logrolling.Settings">
+      <point x="85.66666666666652" y="-102.5" />
+      <point x="2586.662063492063" y="1765.0" />
+      <point x="2630.9953968253967" y="1765.0" />
+      <point x="0.0" y="168.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.GiftMigration" target="com.logrolling.server.database.Database">
+      <point x="11.583333333333485" y="-37.5" />
+      <point x="2055.9221666666667" y="1665.0" />
+      <point x="1981.9953968253967" y="1665.0" />
+      <point x="1981.9953968253967" y="233.0" />
+      <point x="1700.4541666666664" y="233.0" />
+      <point x="64.25" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.GiftMigration" target="com.logrolling.server.database.managers">
+      <point x="-34.75" y="-37.5" />
+      <point x="2009.5888333333332" y="1685.0" />
+      <point x="1382.530757936508" y="1685.0" />
+      <point x="60.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.FavorMigration" target="com.logrolling.server.model.Favor">
+      <point x="-36.5" y="-37.5" />
+      <point x="1218.030757936508" y="976.0" />
+      <point x="598.797424603175" y="976.0" />
+      <point x="-48.39999999999998" y="311.5" />
+    </edge>
+    <edge source="com.logrolling.server.transfer.TransferToken" target="com.logrolling.server.model.Token">
+      <point x="0.0" y="-124.5" />
+      <point x="333.0" y="1036.0" />
+      <point x="377.197424603175" y="1036.0" />
+      <point x="-43.0" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.GiftMigration" target="com.logrolling.server.database.migrations.Migration">
+      <point x="-57.916666666666515" y="-37.5" />
+      <point x="1986.4221666666667" y="1695.0" />
+      <point x="1197.602186507937" y="1695.0" />
+      <point x="59.57142857142867" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.GiftMigration" target="com.logrolling.server.database.factories.DatabaseFactory">
+      <point x="-11.583333333333485" y="-37.5" />
+      <point x="2032.7554999999998" y="1675.0" />
+      <point x="1962.6739682539683" y="1675.0" />
+      <point x="1962.6739682539683" y="1016.0" />
+      <point x="1879.0113095238094" y="1016.0" />
+      <point x="102.85714285714289" y="58.5" />
+    </edge>
+    <edge source="com.logrolling.server.transfer.TransferUser" target="com.logrolling.server.model.User">
+      <point x="0.0" y="-91.5" />
+      <point x="1811.6041666666665" y="966.0" />
+      <point x="1513.905757936508" y="966.0" />
+      <point x="75.83333333333326" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.transfer.TransferFavor" target="com.logrolling.server.model.Coordinates">
+      <point x="-75.33333333333326" y="-289.5" />
+      <point x="37.66666666666674" y="1046.0" />
+      <point x="96.03075793650805" y="1046.0" />
+      <point x="96.03075793650805" y="223.0" />
+      <point x="640.2916666666666" y="223.0" />
+      <point x="-82.6875" y="91.5" />
+    </edge>
+    <edge source="com.logrolling.server.controllers.UserController" target="com.logrolling.server.transfer.TransferUser">
+      <point x="27.75" y="-26.5" />
+      <point x="1783.6041666666665" y="1765.0" />
+      <point x="1766.1041666666665" y="1765.0" />
+      <point x="-45.5" y="91.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.MySQLDatabase" target="com.logrolling.server.database.DatabaseException">
+      <point x="-85.66666666666652" y="-102.5" />
+      <point x="2415.32873015873" y="1765.0" />
+      <point x="2301.32873015873" y="1765.0" />
+      <point x="2301.32873015873" y="1046.0" />
+      <point x="2323.662063492063" y="1046.0" />
+      <point x="55.666666666666515" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.database.factories.DatabaseFactory">
+      <point x="39.27272727272725" y="-14.5" />
+      <point x="1361.8034852092355" y="996.0" />
+      <point x="1707.5827380952378" y="996.0" />
+      <point x="-68.57142857142867" y="58.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.factories.DatabaseFactory" target="com.logrolling.server.database.factories.Factory">
+      <point x="90.0" y="-58.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.factories.MySQLDatabaseFactory" target="com.logrolling.server.database.MySQLDatabase">
+      <point x="0.0" y="-26.5" />
+      <point x="2521.145833333333" y="2040.0" />
+      <point x="2500.9953968253967" y="2040.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="com.logrolling.Settings" target="com.logrolling.DatabaseSetting">
+      <point x="-79.66666666666652" y="-168.5" />
+      <point x="2551.32873015873" y="1046.0" />
+      <point x="2579.9953968253967" y="1046.0" />
+      <point x="-51.0" y="69.5" />
+    </edge>
+    <edge source="com.logrolling.server.Main" target="com.logrolling.server.database.DatabaseException">
+      <point x="35.25" y="-37.5" />
+      <point x="2154.2237579365083" y="2197.0" />
+      <point x="2290.32873015873" y="2197.0" />
+      <point x="2290.32873015873" y="1046.0" />
+      <point x="2267.9953968253967" y="1046.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.model.Token">
+      <point x="-52.36363636363626" y="-14.5" />
+      <point x="1270.167121572872" y="946.0" />
+      <point x="491.86409126984154" y="946.0" />
+      <point x="71.66666666666652" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.MigrationManager" target="com.logrolling.server.database.migrations.TokenMigration">
+      <point x="-73.9375" y="-58.5" />
+      <point x="1072.4945912698415" y="2040.0" />
+      <point x="996.0154246031749" y="2040.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.factories.DatabaseFactory" target="com.logrolling.server.database.Database">
+      <point x="-90.0" y="-58.5" />
+      <point x="1686.1541666666667" y="253.0" />
+      <point x="1649.0541666666663" y="253.0" />
+      <point x="12.849999999999909" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.database.Database">
+      <point x="0.0" y="-14.5" />
+      <point x="1322.530757936508" y="233.0" />
+      <point x="1571.9541666666664" y="233.0" />
+      <point x="-64.25" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.UserMigration" target="com.logrolling.server.model.User">
+      <point x="-11.583333333333258" y="-37.5" />
+      <point x="1424.745396825397" y="1765.0" />
+      <point x="1442.2390912698415" y="1765.0" />
+      <point x="1442.2390912698415" y="976.0" />
+      <point x="1422.9057579365083" y="976.0" />
+      <point x="-15.166666666666629" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.controllers.UserController" target="com.logrolling.server.model.User">
+      <point x="-27.75" y="-26.5" />
+      <point x="1728.1041666666665" y="1765.0" />
+      <point x="1710.1041666666665" y="1765.0" />
+      <point x="1710.1041666666665" y="976.0" />
+      <point x="1483.572424603175" y="976.0" />
+      <point x="45.5" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.controllers.TestController" target="com.logrolling.server.database.managers">
+      <point x="86.625" y="-26.5" />
+      <point x="427.78075793650805" y="1755.0" />
+      <point x="1262.530757936508" y="1755.0" />
+      <point x="-60.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.FavorMigration" target="com.logrolling.server.database.managers">
+      <point x="36.5" y="-37.5" />
+      <point x="1291.7037301587302" y="1765.0" />
+      <point x="1310.530757936508" y="1765.0" />
+      <point x="-12.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.TokenMigration" target="com.logrolling.server.database.managers">
+      <point x="60.83333333333326" y="-37.5" />
+      <point x="1056.8487579365083" y="1765.0" />
+      <point x="1286.530757936508" y="1765.0" />
+      <point x="-36.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.factories.MySQLDatabaseFactory" target="com.logrolling.server.database.Database">
+      <point x="-62.666666666666515" y="-26.5" />
+      <point x="2458.4791666666665" y="2040.0" />
+      <point x="2361.9953968253967" y="2040.0" />
+      <point x="2361.9953968253967" y="223.0" />
+      <point x="1726.1541666666662" y="223.0" />
+      <point x="89.94999999999982" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.FavorMigration" target="com.logrolling.server.database.factories.DatabaseFactory">
+      <point x="60.83333333333326" y="-37.5" />
+      <point x="1316.0370634920635" y="1765.0" />
+      <point x="1411.1140912698415" y="1765.0" />
+      <point x="1411.1140912698415" y="1006.0" />
+      <point x="1741.8684523809525" y="1006.0" />
+      <point x="-34.28571428571422" y="58.5" />
+    </edge>
+    <edge source="com.logrolling.server.model.Favor" target="com.logrolling.server.model.Coordinates">
+      <point x="80.66666666666663" y="-311.5" />
+      <point x="727.8640912698417" y="253.0" />
+      <point x="734.7916666666666" y="253.0" />
+      <point x="11.8125" y="91.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.model.Filter">
+      <point x="-13.090909090909008" y="-14.5" />
+      <point x="1309.439848845599" y="916.0" />
+      <point x="905.6974246031749" y="916.0" />
+      <point x="0.0" y="179.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.TokenMigration" target="com.logrolling.server.database.Database">
+      <point x="-12.166666666666742" y="-37.5" />
+      <point x="983.8487579365082" y="1705.0" />
+      <point x="1033.697424603175" y="1705.0" />
+      <point x="1033.697424603175" y="213.0" />
+      <point x="1520.5541666666663" y="213.0" />
+      <point x="-115.65000000000009" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.Main" target="com.logrolling.server.database.factories.DatabaseFactory">
+      <point x="-35.25" y="-37.5" />
+      <point x="2083.7237579365083" y="2197.0" />
+      <point x="1913.1041666666665" y="2197.0" />
+      <point x="1913.1041666666665" y="1026.0" />
+      <point x="1844.7255952380951" y="1026.0" />
+      <point x="68.57142857142844" y="58.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.FavorMigration" target="com.logrolling.server.database.Database">
+      <point x="12.166666666666742" y="-37.5" />
+      <point x="1267.370396825397" y="1735.0" />
+      <point x="1240.030757936508" y="1735.0" />
+      <point x="1240.030757936508" y="223.0" />
+      <point x="1546.2541666666666" y="223.0" />
+      <point x="-89.95000000000005" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.TokenMigration" target="com.logrolling.server.database.migrations.Migration">
+      <point x="36.5" y="-37.5" />
+      <point x="1032.5154246031748" y="1725.0" />
+      <point x="1078.4593293650796" y="1725.0" />
+      <point x="-59.57142857142867" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.factories.MySQLDatabaseFactory" target="com.logrolling.server.database.factories.Factory">
+      <point x="62.666666666666515" y="-26.5" />
+      <point x="2583.8124999999995" y="2040.0" />
+      <point x="2760.9953968253967" y="2040.0" />
+      <point x="2760.9953968253967" y="203.0" />
+      <point x="1913.4874999999997" y="203.0" />
+      <point x="47.33333333333326" y="26.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.FavorMigration" target="com.logrolling.server.database.migrations.Migration">
+      <point x="-60.83333333333326" y="-37.5" />
+      <point x="1194.370396825397" y="1745.0" />
+      <point x="1157.8879007936512" y="1745.0" />
+      <point x="19.85714285714289" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.TokenMigration" target="com.logrolling.server.database.factories.DatabaseFactory">
+      <point x="12.166666666666742" y="-37.5" />
+      <point x="1008.1820912698416" y="1715.0" />
+      <point x="1044.697424603175" y="1715.0" />
+      <point x="1044.697424603175" y="986.0" />
+      <point x="1673.2970238095236" y="986.0" />
+      <point x="-102.85714285714289" y="58.5" />
+    </edge>
+    <edge source="com.logrolling.server.Main" target="com.logrolling.server.database.factories.MySQLDatabaseFactory">
+      <point x="105.75" y="-37.5" />
+      <point x="2224.7237579365083" y="2207.0" />
+      <point x="2521.145833333333" y="2207.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.MigrationManager" target="com.logrolling.server.database.migrations.FavorMigration">
+      <point x="10.5625" y="-58.5" />
+      <point x="1156.9945912698415" y="2010.0" />
+      <point x="1255.2037301587302" y="2010.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.MigrationManager" target="com.logrolling.server.database.migrations.UserMigration">
+      <point x="31.6875" y="-58.5" />
+      <point x="1178.1195912698415" y="2020.0" />
+      <point x="1436.3287301587302" y="2020.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.server.transfer.TransferFavor" target="com.logrolling.server.model.Favor">
+      <point x="75.33333333333331" y="-289.5" />
+      <point x="188.33333333333326" y="1046.0" />
+      <point x="550.3974246031751" y="1046.0" />
+      <point x="-96.79999999999995" y="311.5" />
+    </edge>
+    <edge source="com.logrolling.server.Main" target="com.logrolling.server.database.migrations.MigrationManager">
+      <point x="-105.75" y="-37.5" />
+      <point x="2013.2237579365083" y="2207.0" />
+      <point x="1146.4320912698415" y="2207.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.MigrationManager" target="com.logrolling.server.database.Database">
+      <point x="52.8125" y="-58.5" />
+      <point x="1199.2445912698415" y="2030.0" />
+      <point x="1567.1140912698415" y="2030.0" />
+      <point x="1567.1140912698415" y="253.0" />
+      <point x="1623.3541666666665" y="253.0" />
+      <point x="-12.849999999999909" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.MySQLDatabase" target="com.logrolling.server.database.Database">
+      <point x="0.0" y="-102.5" />
+      <point x="2500.9953968253967" y="213.0" />
+      <point x="1751.8541666666665" y="213.0" />
+      <point x="115.64999999999986" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.UserMigration" target="com.logrolling.server.database.migrations.Migration">
+      <point x="-57.91666666666674" y="-37.5" />
+      <point x="1378.4120634920635" y="1725.0" />
+      <point x="1177.7450436507938" y="1725.0" />
+      <point x="39.71428571428578" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.Launcher" target="com.logrolling.JerseyConfiguration">
+      <point x="0.0" y="-58.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.MigrationManager" target="com.logrolling.server.database.migrations.Migration">
+      <point x="-10.5625" y="-58.5" />
+      <point x="1135.8695912698415" y="2040.0" />
+      <point x="1138.030757936508" y="2040.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.UserMigration" target="com.logrolling.server.database.Database">
+      <point x="34.75" y="-37.5" />
+      <point x="1471.0787301587302" y="1755.0" />
+      <point x="1539.572424603175" y="1755.0" />
+      <point x="1539.572424603175" y="243.0" />
+      <point x="1597.6541666666667" y="243.0" />
+      <point x="-38.549999999999955" y="81.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.database.DatabaseException">
+      <point x="65.4545454545455" y="-14.5" />
+      <point x="1387.9853033910535" y="1046.0" />
+      <point x="2212.32873015873" y="1046.0" />
+      <point x="-55.666666666666515" y="14.5" />
+    </edge>
+    <edge source="com.logrolling.server.model.Filter" target="com.logrolling.server.model.Coordinates">
+      <point x="78.33333333333326" y="-179.5" />
+      <point x="984.0307579365082" y="233.0" />
+      <point x="805.6666666666666" y="233.0" />
+      <point x="82.6875" y="91.5" />
+    </edge>
+    <edge source="com.logrolling.server.controllers.TestController" target="com.logrolling.server.transfer.TransferToken">
+      <point x="-28.875" y="-26.5" />
+      <point x="312.28075793650805" y="1765.0" />
+      <point x="290.0" y="1765.0" />
+      <point x="-43.0" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.MigrationManager" target="com.logrolling.server.database.factories.DatabaseFactory">
+      <point x="73.9375" y="-58.5" />
+      <point x="1220.3695912698415" y="2040.0" />
+      <point x="1634.3541666666665" y="2040.0" />
+      <point x="1634.3541666666665" y="1026.0" />
+      <point x="1810.439880952381" y="1026.0" />
+      <point x="34.28571428571422" y="58.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.managers" target="com.logrolling.server.model.User">
+      <point x="13.090909090909008" y="-14.5" />
+      <point x="1335.621667027417" y="966.0" />
+      <point x="1362.2390912698415" y="966.0" />
+      <point x="-75.83333333333337" y="124.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.GiftMigration" target="com.logrolling.server.model.Gift">
+      <point x="57.916666666666515" y="-37.5" />
+      <point x="2102.2554999999998" y="1765.0" />
+      <point x="2149.520833333333" y="1765.0" />
+      <point x="2149.520833333333" y="1036.0" />
+      <point x="2135.82873015873" y="1036.0" />
+      <point x="57.333333333333485" y="157.5" />
+    </edge>
+    <edge source="com.logrolling.server.database.migrations.UserMigration" target="com.logrolling.server.database.factories.DatabaseFactory">
+      <point x="57.91666666666674" y="-37.5" />
+      <point x="1494.245396825397" y="1765.0" />
+      <point x="1550.572424603175" y="1765.0" />
+      <point x="1550.572424603175" y="1016.0" />
+      <point x="1776.1541666666667" y="1016.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="2444.5" y="1416.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

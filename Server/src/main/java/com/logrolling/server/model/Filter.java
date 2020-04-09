@@ -17,6 +17,8 @@ public class Filter {
         minGrollies = 0;
         coordinates = null;
         maxDistance = -1;
+        awarded = false;
+        minDate = null;
 
     }
     public Filter(int minGrollies, double latitude, double longitude, double maxDistance){
@@ -41,6 +43,14 @@ public class Filter {
     public Integer getMinGrollies(){ return minGrollies; }
 
     public Coordinates getCoordinates(){ return coordinates; }
+
+    public void setAwarded(boolean awarded){ this.awarded = awarded; }
+
+    public boolean getAwarded(){ return awarded; }
+
+    public Date getMinDate(){ return minDate; }
+
+    public void setMinDate(Date minDate){ this.minDate = minDate; }
 
 
 

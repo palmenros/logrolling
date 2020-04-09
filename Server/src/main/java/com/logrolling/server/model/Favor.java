@@ -9,7 +9,6 @@ public class Favor {
     private  Integer dueTime;
     private int reward;
     private Coordinates coordinates;
-
     private String worker;
 
     public Favor(int id, String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude) {
@@ -35,6 +34,16 @@ public class Favor {
 
     public Favor(int id, String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker) {
         this.id = id;
+        this.creator = creator;
+        this.title = title;
+        this.description = description;
+        this.dueTime = dueTime;
+        this.reward = reward;
+        this.coordinates = new Coordinates(latitude, longitude);
+        this.worker = worker;
+    }
+
+    public Favor(String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker) {
         this.creator = creator;
         this.title = title;
         this.description = description;

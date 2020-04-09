@@ -59,7 +59,6 @@ public class FavorManager {
         db.close();
     }
 
-
     public static List<Favor> getFavorsFromUsername(String username){
 
         List<Favor> favors = new ArrayList<Favor>();
@@ -159,6 +158,26 @@ public class FavorManager {
         }
 
 
+        db.close();
+
+        return favors;
+    }
+
+    public static List<Favor> getAwardedFavors(){
+
+        List<Favor> favors = new ArrayList<Favor>();
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from favors where worker is not null");
+
+        try {
+            while (rs.next()) {
+                Favor favor = getFavorFromResultSet(rs);
+                favors.add(favor);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
         db.close();
 
         return favors;

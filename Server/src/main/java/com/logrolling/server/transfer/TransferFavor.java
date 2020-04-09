@@ -11,9 +11,10 @@ public class TransferFavor {
     private Integer dueTime;
     private int reward;
     private Coordinates coordinates;
+    private String worker;
     //Rest of attributes from favor
 
-    public TransferFavor(int id, String creator,  String title, String description, Integer dueTime, int reward, Coordinates coordinates) {
+    public TransferFavor(int id, String creator,  String title, String description, Integer dueTime, int reward, Coordinates coordinates, String worker) {
         this.id = id;
         this.creator = creator;
         this.title = title;
@@ -21,10 +22,11 @@ public class TransferFavor {
         this.dueTime = dueTime;
         this.reward = reward;
         this.coordinates = coordinates;
+        this.worker = worker;
     }
 
     public TransferFavor(Favor favor) {
-        this(favor.getId(), favor.getCreator(), favor.getTitle(), favor.getDescription(), favor.getDueTime(), favor.getReward(), favor.getCoordinates());
+        this(favor.getId(), favor.getCreator(), favor.getTitle(), favor.getDescription(), favor.getDueTime(), favor.getReward(), favor.getCoordinates(), favor.getWorker());
     }
 
     public int getId() {
@@ -64,5 +66,9 @@ public class TransferFavor {
     public Coordinates getCoordinates(){ return coordinates; }
 
     public void setCoordinates(Coordinates coordinates){ this.coordinates = coordinates; }
+
+    public String getWorker(){ return worker; }
+
+    public void setWorker(String worker){ this.worker = worker; }
 
 }
