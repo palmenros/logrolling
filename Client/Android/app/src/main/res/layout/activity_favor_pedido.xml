@@ -27,9 +27,11 @@
 
                 <Button
                     android:id="@+id/editar"
-                    android:layout_width="125dp"
+                    android:layout_width="175dp"
                     android:layout_height="42dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
                     android:background="@color/blanco"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -37,18 +39,16 @@
                     android:text="@string/Editar"
                     android:textColor="@color/azul"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
+                    app:layout_constraintTop_toBottomOf="@+id/recompensa" />
 
                 <Button
                     android:id="@+id/borrar"
-                    android:layout_width="125dp"
+                    android:layout_width="175dp"
                     android:layout_height="42dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:background="@color/blanco"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -57,15 +57,13 @@
                     android:textColor="@color/azul"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.8"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
+                    app:layout_constraintTop_toBottomOf="@+id/recompensa" />
 
                 <Button
                     android:id="@+id/Chat"
-                    android:layout_width="125dp"
-                    android:layout_height="54dp"
-                    android:layout_marginTop="100dp"
+                    android:layout_width="283dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="20dp"
                     android:background="@color/blanco"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -75,7 +73,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/borrar"
                     app:layout_constraintStart_toStartOf="@+id/editar"
-                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
+                    app:layout_constraintTop_toBottomOf="@+id/editar" />
 
                 <ImageView
                     android:id="@+id/foto"
@@ -84,22 +82,9 @@
                     android:layout_marginTop="25dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor"
+                    app:layout_constraintTop_toBottomOf="@+id/descrFavor"
                     app:srcCompat="@drawable/ic_insert_photo_black_24dp"
                     tools:srcCompat="@drawable/ic_insert_photo_black_24dp" />
-
-                <TextView
-                    android:id="@+id/Recompensa"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:ems="10"
-                    android:hint="@string/Recompensa"
-                    android:inputType="numberDecimal"
-                    android:textColor="#42A5F5"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
 
                 <TextView
                     android:id="@+id/Recompensa"
@@ -138,7 +123,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/lugarEntrega" />
 
                 <TextView
-                    android:id="@+id/LugarEntrega1"
+                    android:id="@+id/LugarEntrega"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
                     android:layout_marginEnd="10dp"
@@ -156,7 +141,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/foto" />
 
                 <TextView
-                    android:id="@+id/descripcionFavor1"
+                    android:id="@+id/DescrFavor"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
                     android:layout_marginEnd="10dp"
@@ -175,7 +160,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
                 <TextView
-                    android:id="@+id/DescripcionFavor"
+                    android:id="@+id/descrFavor"
                     android:layout_width="330dp"
                     android:layout_height="200dp"
                     android:ems="10"
@@ -186,7 +171,7 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/descripcionFavor1" />
+                    app:layout_constraintTop_toBottomOf="@+id/DescrFavor" />
 
                 <TextView
                     android:id="@+id/nombre"
@@ -216,6 +201,19 @@
                     app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
 
                 <TextView
+                    android:id="@+id/recompensa"
+                    android:layout_width="330dp"
+                    android:layout_height="25dp"
+                    android:ems="10"
+                    android:hint="@string/Recompensa"
+                    android:inputType="date"
+                    android:textColor="#42A5F5"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
+
+                <TextView
                     android:id="@+id/lugarEntrega"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
@@ -226,7 +224,23 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega1" />
+                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega" />
+
+                <TextView
+                    android:id="@+id/confirmado"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:text="@string/Confirmado"
+                    android:textColor="#08D801"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/rubik"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recompensa" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -284,11 +298,11 @@
         tools:text="grollies" />
 
     <TextView
-        android:id="@+id/mensajesTit"
-        android:layout_width="242dp"
+        android:id="@+id/FavorPedidoTtl"
+        android:layout_width="180dp"
         android:layout_height="37dp"
         android:background="@color/azul"
-        android:text="@string/MiFavor"
+        android:text="@string/FavorPedido"
         android:textColor="@color/blanco"
         android:textSize="26sp"
         android:textStyle="bold"

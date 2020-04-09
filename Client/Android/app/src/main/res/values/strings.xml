@@ -62,8 +62,9 @@
     <string name="distancias">500m \ 1km \  2km \  3km \  5km \  7km \  10km  \ 20km</string>
     <string name="FavoresARealizar">Favores a realizar</string>
     <string name="FavoresPedidos">Favores pedidos</string>
-    <string name="MiFavor">Mi favor</string>
+    <string name="FavorPedido">Favor pedido</string>
     <string name="Editar">Editar</string>
     <string name="Borrar">Borrar</string>
     <string name="ChatRealizador">Chat con Realizador</string>
+    <string name="Confirmado">Confirmado</string>
 </resources>
