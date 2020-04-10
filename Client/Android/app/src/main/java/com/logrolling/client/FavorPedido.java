@@ -65,7 +65,8 @@ public class FavorPedido extends AppCompatActivity {
     }
 
     public void chat(View view) { //TENDRÁ QUE LLEVAR A CHAT CON UNA PERSONA DETERMINADA
-
+        Intent i = new Intent(this, ChatPersona.class);
+        startActivity(i);
     }
 
 

@@ -1,6 +1,8 @@
 package com.logrolling.client;
 
+import android.graphics.Color;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +30,21 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
         }
 
         public void asignarDatos(Pair pair) {
+            dato.setTextSize(20);
+            dato.setWidth(1500);
+            dato.setHeight(700);
             dato.setText((CharSequence) pair.first);
+            int azul= Color.parseColor("#2699FB");
+            int blanco= Color.parseColor("#FFFFFF");
+            if((Boolean) pair.second){
+                dato.setBackgroundColor(azul);
+                dato.setTextColor(blanco);
+                dato.setGravity(Gravity.RIGHT);
+            }else{
+                dato.setBackgroundColor(blanco);
+                dato.setTextColor(azul);
+                dato.setGravity(Gravity.LEFT);
+            }
         }
     }
     public AdapterDatos.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

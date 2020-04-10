@@ -31,6 +31,8 @@ public class Mensajes extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Lo que sea
+                Intent i = new Intent(Mensajes.this, ChatPersona.class);
+                startActivity(i);
             }
         });
     }

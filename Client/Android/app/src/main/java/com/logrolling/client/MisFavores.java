@@ -55,7 +55,8 @@ public class MisFavores extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Lo que sea
-
+                Intent i = new Intent(MisFavores.this, FavorQueRealizar.class);
+                startActivity(i);
             }
         });
         mostrarFavoresPedidos();

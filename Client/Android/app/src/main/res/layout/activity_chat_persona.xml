@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blanco">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListaMensajes"
+        android:layout_width="409dp"
+        android:layout_height="541dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
 
     <TextView
         android:id="@+id/parteAbajo"
@@ -117,12 +125,12 @@
 
     <TextView
         android:id="@+id/NombreChatTitulo"
-        android:layout_width="215dp"
-        android:layout_height="42dp"
+        android:layout_width="218dp"
+        android:layout_height="36dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:background="@color/azul"
-        android:text="@string/NombreChat"
+        android:text="NombreChat"
         android:textColor="@color/blanco"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -189,44 +197,26 @@
         app:srcCompat="@drawable/ic_settings_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
-    <EditText
-        android:id="@+id/EscribirMensaje"
-        android:layout_width="350dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:inputType="textShortMessage|textLongMessage|text"
-        android:text="Escribe un mensaje"
-        android:textColor="@color/grisClaro"
-        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageButton
         android:id="@+id/enviarMensaje"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_width="40dp"
+        android:layout_height="46dp"
         android:background="@color/blanco"
         android:onClick="escribir"
         android:tint="@color/azul"
         app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/EscribirMensaje"
-        app:srcCompat="@android:drawable/ic_menu_send" />
+        app:layout_constraintTop_toTopOf="@+id/EscribirMensaje"
+        app:srcCompat="@drawable/ic_send_black_24dp" />
 
     <ImageView
         android:id="@+id/Atras"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginRight="124dp"
-        android:layout_marginBottom="7dp"
-        android:onClick="misFavores"
+        android:onClick="mensajes"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
-        app:layout_constraintEnd_toStartOf="@+id/NombreChatTitulo"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
     <ImageView
@@ -247,13 +237,18 @@
         app:srcCompat="@drawable/ic_person_white_24dp"
         tools:ignore="VectorDrawableCompat" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ListaMensajes"
-        android:layout_width="409dp"
-        android:layout_height="541dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:listitem="@layout/item_list" />
+    <EditText
+        android:id="@+id/EscribirMensaje"
+        android:layout_width="373dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@color/blanco"
+        android:ems="10"
+        android:hint="@string/Escribe"
+        android:inputType="textShortMessage|textLongMessage|text"
+        android:textColor="@color/grisClaro"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
