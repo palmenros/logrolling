@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -30,20 +32,20 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
         }
 
         public void asignarDatos(Pair pair) {
-            dato.setTextSize(20);
-            dato.setWidth(1500);
-            dato.setHeight(700);
+            //dato.setTextSize(20);
+            //dato.setWidth(1500);
+            //dato.setHeight(700);
             dato.setText((CharSequence) pair.first);
             int azul= Color.parseColor("#2699FB");
             int blanco= Color.parseColor("#FFFFFF");
+
             if((Boolean) pair.second){
-                dato.setBackgroundColor(azul);
+                dato.setBackgroundResource(R.drawable.this_user_message);
+                //dato.setBackgroundColor(azul);
                 dato.setTextColor(blanco);
-                dato.setGravity(Gravity.RIGHT);
+                //dato.setGravity(Gravity.RIGHT);
             }else{
-                dato.setBackgroundColor(blanco);
-                dato.setTextColor(azul);
-                dato.setGravity(Gravity.LEFT);
+                dato.setBackgroundResource(R.drawable.other_user_message);
             }
         }
     }

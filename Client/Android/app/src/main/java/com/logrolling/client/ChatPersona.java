@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
@@ -39,6 +40,7 @@ public class ChatPersona extends AppCompatActivity {
         for(int i=0;i<2;i++){
             listaDatos.add(i,Pair.create("Mensaje"+i,i%2==0?true:false));
         }
+
         AdapterDatos adapter=new AdapterDatos((ArrayList<Pair>) listaDatos);
         recycler.setAdapter(adapter);
 
