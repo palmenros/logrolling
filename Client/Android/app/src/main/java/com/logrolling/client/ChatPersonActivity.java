@@ -19,7 +19,7 @@ public class ChatPersonActivity extends AppCompatActivity {
     private RecyclerView recycler;
     private TextView name;
     private List<Pair> dataList;
-
+    private DataAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,22 +30,25 @@ public class ChatPersonActivity extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         dataList =new ArrayList<Pair>();
         for(int i=0;i<2;i++){
-            dataList.add(i,Pair.create("Mensaje"+i,i%2==0?true:false));
+            dataList.add(i,Pair.create("Mensaje "+i,i%2==0?true:false));
         }
-        DataAdapter adapter=new DataAdapter((ArrayList<Pair>) dataList);
+        adapter=new DataAdapter((ArrayList<Pair>) dataList);
         recycler.setAdapter(adapter);
 
         name =(TextView) findViewById(R.id.NombreChatTitulo);
         writeMessage =(EditText) findViewById(R.id.EscribirMensaje);
-        //Ejemplo
-        name.setText("Manolo");
+
+        recycler.scrollToPosition(dataList.size() - 1);
     }
 
     public void write(View view){
         String mensaje= writeMessage.getText().toString();
         if(mensaje.length()!=0){
             dataList.add(dataList.size(),Pair.create(mensaje,true));
+            adapter.notifyDataSetChanged();
         }
+
+        recycler.scrollToPosition(dataList.size() - 1);
         writeMessage.setText("");
     }
 

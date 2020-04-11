@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,17 +34,27 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolderDato
 
         public void dataAssignment(Pair pair) {
             dato.setText((CharSequence) pair.first);
-            int azul= Color.parseColor("#2699FB");
+
+            int negro = Color.parseColor("#222222");
             int blanco= Color.parseColor("#FFFFFF");
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            params.weight = 1.0f;
+            params.gravity = Gravity.TOP;
+
 
             if((Boolean) pair.second){
                 dato.setBackgroundResource(R.drawable.this_user_message);
-                //dato.setBackgroundColor(azul);
                 dato.setTextColor(blanco);
-                //dato.setGravity(Gravity.RIGHT);
+
+                params.gravity = Gravity.RIGHT;
             }else{
                 dato.setBackgroundResource(R.drawable.other_user_message);
+                dato.setTextColor(negro);
+                params.gravity = Gravity.LEFT;
             }
+
+            dato.setLayoutParams(params);
         }
     }
     public DataAdapter.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
