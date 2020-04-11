@@ -8,17 +8,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MiPerfil extends AppCompatActivity {
-    private EditText usuario,contrasenna,repContrasenna;
+public class MyProfileActivity extends AppCompatActivity {
+    private EditText user, password, repPassword;
     private TextView numGrollies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
-        usuario=(EditText)findViewById(R.id.NombreUsuario);
-        contrasenna=(EditText)findViewById(R.id.Contrasenna);
-        repContrasenna=(EditText)findViewById(R.id.RepContrasenna);
+        user =(EditText)findViewById(R.id.NombreUsuario);
+        password =(EditText)findViewById(R.id.Contrasenna);
+        repPassword =(EditText)findViewById(R.id.RepContrasenna);
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
@@ -28,41 +28,41 @@ public class MiPerfil extends AppCompatActivity {
 
     //Panel Inferior
     public void favores(View view) {
-        Intent i = new Intent(this, Favores.class);
+        Intent i = new Intent(this, FavorsActivity.class);
         startActivity(i);
     }
     public void misFavores(View view) {
-        Intent i = new Intent(this, MisFavores.class);
+        Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
-    public void mensajes(View view) {
-        Intent i = new Intent(this, Mensajes.class);
-        startActivity(i);
-
-    }
-    public void configuracion(View view) {
-        Intent i = new Intent(this, Configuracion.class);
+    public void messages(View view) {
+        Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
 
     }
-    public void regalos(View view) {
-        Intent i = new Intent(this, Regalos.class);
+    public void configuration(View view) {
+        Intent i = new Intent(this, ConfigurationActivity.class);
+        startActivity(i);
+
+    }
+    public void gifts(View view) {
+        Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
     }
 
 
 
-    public void comprarGrollies(View view) {
-        Intent i = new Intent(this, Tienda.class);
+    public void buyGrollies(View view) {
+        Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
     }
 
 
     public void guardarCambios(View view){
-       /* if(contrasenna.getText().toString().equals(repContrasenna.getText().toString())){//Condiciones en las que modificas el perfil
+       /* if(password.getText().toString().equals(repPassword.getText().toString())){//Condiciones en las que modificas el perfil
             //Enviar datos o lo que sea
         }*/
-        Intent i = new Intent(this, Configuracion.class);
+        Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
     public void cambiarFoto(View view){

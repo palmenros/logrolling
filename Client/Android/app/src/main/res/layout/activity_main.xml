@@ -13,7 +13,7 @@
         android:layout_height="172dp"
         android:layout_marginTop="105dp"
         android:contentDescription="@string/Logo"
-        android:onClick="avanzar"
+        android:onClick="advance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick="avanzar"
+        android:onClick="advance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

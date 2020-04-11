@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void avanzar(View view){
+    public void advance(View view){
         //Cuando cargue
-        Intent i=new Intent(this, InicioSesion.class);
+        Intent i=new Intent(this, SignInActivity.class);
         startActivity(i);
     }
 }
