@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azul"
-    tools:context=".InicioSesion">
+    tools:context=".SignInActivity">
 
     <ImageView
         android:id="@+id/logo_logrolling"
@@ -80,7 +80,7 @@
         android:layout_height="42dp"
         android:layout_marginBottom="30dp"
         android:background="@color/blanco"
-        android:onClick="iniciarSesion"
+        android:onClick="signIn"
         android:text="@string/IniciarSesion"
         android:textColor="@color/azul"
         app:layout_constraintBottom_toTopOf="@+id/Cuenta"
@@ -108,7 +108,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginBottom="65dp"
-        android:onClick="registro"
+        android:onClick="registration"
         android:text="@string/Registrate"
         android:textColor="@color/blanco"
         android:textStyle="bold"

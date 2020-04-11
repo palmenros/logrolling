@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDatos> {
+public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolderDatos> {
 
-    ArrayList<Pair> listaDatos;
+    ArrayList<Pair> dataList;
 
-    public AdapterDatos(ArrayList<Pair> listaDatos) {
-        this.listaDatos = listaDatos;
+    public DataAdapter(ArrayList<Pair> listaDatos) {
+        this.dataList = listaDatos;
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
@@ -29,7 +29,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             dato=(TextView)itemView.findViewById(R.id.IdDato);
         }
 
-        public void asignarDatos(Pair pair) {
+        public void dataAssignment(Pair pair) {
             dato.setTextSize(20);
             dato.setWidth(1500);
             dato.setHeight(700);
@@ -47,18 +47,18 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolderDa
             }
         }
     }
-    public AdapterDatos.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DataAdapter.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
         return new ViewHolderDatos(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterDatos.ViewHolderDatos holder, int i) {
-        holder.asignarDatos(listaDatos.get(i));
+    public void onBindViewHolder(@NonNull DataAdapter.ViewHolderDatos holder, int i) {
+        holder.dataAssignment(dataList.get(i));
     }
 
     @Override
     public int getItemCount() {
-        return listaDatos.size();
+        return dataList.size();
     }
 }
