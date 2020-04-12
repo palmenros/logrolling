@@ -12,7 +12,7 @@ import com.logrolling.server.transfer.TransferFavor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/favor")
+@Path("/favors")
 public class FavorController extends AuthenticableController {
 
     @GET
@@ -67,25 +67,22 @@ public class FavorController extends AuthenticableController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public TransferFavor addMessage(TransferFavor f){
-        // FavorManager.createFavor(new Favor(f.getId(), f.getCreator(), f.getTitle(), f.getDescription(), f.getDueTime(), f.getReward(), f.getCoordinates().getLatitude(), f.getCoordinates().getLongitude()));
-        return f;
+    public void addFavor(TransferFavor f){
+        FavorManager.createFavor(new Favor(f));
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public TransferFavor updateMessage(TransferFavor f, @PathParam("id") int id){
-        // FavorManager.createFavor(new Favor(f.getId(), f.getCreator(), f.getTitle(), f.getDescription(), f.getDueTime(), f.getReward(), f.getCoordinates().getLatitude(), f.getCoordinates().getLongitude()));
-        return f;
+    public void updateFavor(TransferFavor f, @PathParam("id") int id){
+        FavorManager.updateFavor(id, new Favor(f));
     }
     
     @DELETE
     @Path("/{id}")
     public void deleteFavor(@PathParam("id") int id){
-        // Favor f = FavorManager.getFavor(id);
-        // FavorManager.deleteFavorFromCreatorAndTitle(f.getCreator(), f.getTitle());
+        FavorManager.deleteFavorFromId(id);
     }
 
 }

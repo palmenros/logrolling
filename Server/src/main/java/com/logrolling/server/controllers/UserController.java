@@ -28,7 +28,7 @@ public class UserController extends AuthenticableController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void createUser(String username, String password){
-        UserManager.createUser(new User(username, password));
+        UserManager.createUser(new User(username, password, 100));
     }
 
     @Path("/{username}")
@@ -41,7 +41,7 @@ public class UserController extends AuthenticableController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateUserByName(TransferUser newUser){
-        User user = new User(newUser.getId(), newUser.getUsername(), UserManager.getUserByName(newUser.getUsername()).getPassword());
+        User user = new User(newUser.getId(), newUser.getUsername(), UserManager.getUserByName(newUser.getUsername()).getPassword(), newUser.getGrollies());
         UserManager.updateUserbyName(newUser.getUsername(), user);
     }
 
