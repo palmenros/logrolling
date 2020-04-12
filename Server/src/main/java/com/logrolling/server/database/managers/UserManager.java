@@ -23,10 +23,11 @@ public class UserManager {
 
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate(
-           "INSERT INTO users (username, password) VALUES (?, ?);",
+           "INSERT INTO users (username, password, grollies) VALUES (?, ?, ?);",
         new String[]{
             user.getUsername(),
-            user.getPassword()
+            user.getPassword(),
+            user.getGrollies().toString()
         });
 
         db.close();
@@ -63,12 +64,13 @@ public class UserManager {
 
         int id = user.getId();
 
-        db.executeUpdate("replace into users values(?, ?, ?);",
+        db.executeUpdate("replace into users values(?, ?, ?, ?);",
                 new String[]{
 
                         Integer.toString(id),
                         newUser.getUsername(),
-                        newUser.getPassword()
+                        newUser.getPassword(),
+                        newUser.getGrollies().toString()
                 });
 
         db.close();
@@ -112,7 +114,8 @@ public class UserManager {
         return new User(
                 rs.getInt("id"),
                 rs.getString("username"),
-                rs.getString("password")
+                rs.getString("password"),
+                rs.getInt("grollies")
         );
     }
 

@@ -16,9 +16,10 @@ public class UserMigration implements Migration {
         //Create User Table
         String sqlQuery =
                 "create table users (" +
-                    "id int auto_increment,"+
+                    "id int auto_increment," +
                     "username varchar(50) not null," +
                     "password varchar(150) not null," +
+                    "grollies int," +
                     "constraint users_pk primary key (id)" +
                 ");";
 
@@ -35,9 +36,9 @@ public class UserMigration implements Migration {
     public void fillDummy() {
 
         User[] userList = new User[] {
-            new User("pedro", "password"),
-            new User("pablo", "1234"),
-            new User ("juancarlos", "defrutos")
+            new User("pedro", "password", 50),
+            new User("pablo", "1234", 30),
+            new User ("juancarlos", "defrutos", 0)
         };
 
         for(User user : userList) {

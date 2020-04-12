@@ -8,14 +8,16 @@ public class TransferUser {
 
     private int id;
     private String username;
+    private int grollies;
 
-    public TransferUser(int id, String username) {
+    public TransferUser(int id, String username, int grollies) {
         this.id = id;
         this.username = username;
+        this.grollies = grollies;
     }
 
     public TransferUser(User user) {
-        this(user.getId(), user.getUsername());
+        this(user.getId(), user.getUsername(), user.getGrollies());
     }
 
     public int getId() {
@@ -33,4 +35,8 @@ public class TransferUser {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public Integer getGrollies(){ return grollies; }
+
+    public void setGrollies(int grollies){ this.grollies = grollies; }
 }

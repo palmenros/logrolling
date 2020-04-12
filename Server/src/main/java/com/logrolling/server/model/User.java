@@ -5,16 +5,19 @@ public class User {
     private int id;
     private String username;
     private String password;
+    private int grollies;
 
-    public User(int id, String username, String password) {
+    public User(int id, String username, String password, int grollies) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.grollies = grollies;
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, int grollies) {
         this.username = username;
         this.password = password;
+        this.grollies = grollies;
     }
 
     public int getId() {
@@ -40,4 +43,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Integer getGrollies(){ return grollies; }
+
+    public void setGrollies(int grollies){ this.grollies = grollies; }
 }

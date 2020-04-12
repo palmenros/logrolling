@@ -36,6 +36,18 @@ public class FavorManager {
 
     }
 
+    public static void deleteFavorFromId(Integer id){
+        Database db = DatabaseFactory.createInstance();
+        db.executeUpdate("delete from favors where id = ?",
+                new String[]{
+                        id.toString()
+                });
+
+        db.close();
+
+
+    }
+
     public static void deleteFavorFromCreatorAndTitle(String creator, String title){
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate("delete from favors where creator = ? and title = ?",
@@ -169,6 +181,49 @@ public class FavorManager {
 
         Database db = DatabaseFactory.createInstance();
         ResultSet rs = db.executeQuery("select * from favors where worker is not null");
+
+        try {
+            while (rs.next()) {
+                Favor favor = getFavorFromResultSet(rs);
+                favors.add(favor);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        return favors;
+    }
+
+    public static List<Favor> getNonAwardedFavors(){
+
+        List<Favor> favors = new ArrayList<Favor>();
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from favors where worker is null");
+
+        try {
+            while (rs.next()) {
+                Favor favor = getFavorFromResultSet(rs);
+                favors.add(favor);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        return favors;
+    }
+
+    public static List<Favor> getAvailableFavors(String username){
+
+        List<Favor> favors = new ArrayList<Favor>();
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from favors where creator <> ? and worker is null",
+                new String[]{
+                        username
+                });
 
         try {
             while (rs.next()) {
