@@ -10,25 +10,25 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class Regalos extends AppCompatActivity {
-    private ListView listaFavores;
+public class GiftsActivity extends AppCompatActivity {
+    private ListView listFavors;
     private TextView numGrollies;
-    private String[]regalos={"Play","Xbox","Tarjeta regalo","Play","Xbox","Tarjeta regalo","Play","Xbox",
+    private String[] gifts ={"Play","Xbox","Tarjeta regalo","Play","Xbox","Tarjeta regalo","Play","Xbox",
             "Tarjeta regalo","Play","Xbox","Tarjeta regalo","Play","Xbox","Tarjeta regalo","Play","Xbox","Tarjeta regalo"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regalos);
-        listaFavores=(ListView)findViewById(R.id.ListaMensajes);
+        listFavors =(ListView)findViewById(R.id.ListaMensajes);
 
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
 
-        ArrayAdapter<String> adapter=new ArrayAdapter(this,R.layout.list_regalos, regalos);
-        listaFavores.setAdapter(adapter);
-        listaFavores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ArrayAdapter<String> adapter=new ArrayAdapter(this,R.layout.list_regalos, gifts);
+        listFavors.setAdapter(adapter);
+        listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -38,28 +38,28 @@ public class Regalos extends AppCompatActivity {
     }
 
     //Panel Inferior
-    public void favores(View view) {
-        Intent i = new Intent(this, Favores.class);
+    public void favors(View view) {
+        Intent i = new Intent(this, FavorsActivity.class);
         startActivity(i);
     }
-    public void misFavores(View view) {
-        Intent i = new Intent(this, MisFavores.class);
+    public void myFavors(View view) {
+        Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
-    public void mensajes(View view) {
-        Intent i = new Intent(this, Mensajes.class);
+    public void messages(View view) {
+        Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
 
     }
-    public void configuracion(View view) {
-        Intent i = new Intent(this, Configuracion.class);
+    public void configuration(View view) {
+        Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
 
 
 
-    public void comprarGrollies(View view) {
-        Intent i = new Intent(this, Tienda.class);
+    public void buyGrollies(View view) {
+        Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
     }
 

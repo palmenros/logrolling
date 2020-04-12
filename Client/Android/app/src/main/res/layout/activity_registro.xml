@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azul"
-    tools:context=".Registro">
+    tools:context=".RegistrationAvtivity">
 
     <TextView
         android:id="@+id/IniciarSesion"
@@ -16,7 +16,7 @@
         android:layout_marginBottom="50dp"
         android:fontFamily="@font/rubik"
         android:linksClickable="true"
-        android:onClick="iniciarSesion"
+        android:onClick="signIn"
         android:text="@string/IniciarSesion"
         android:textColor="@color/blanco"
         android:textSize="16sp"
@@ -33,7 +33,7 @@
         android:background="@color/blanco"
         android:fadingEdge="horizontal|vertical"
         android:fontFamily="@font/rubik"
-        android:onClick="registrarse"
+        android:onClick="register"
         android:text="@string/Registrate"
         android:textAllCaps="true"
         android:textColor="@color/azul"
@@ -127,7 +127,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/rubik"
-        android:onClick="mostrarPolíticaPrivacidad"
+        android:onClick="showPrivacyPolicy"
         android:text="@string/TerminosCondiciones"
         android:textColor="@color/blanco"
         android:textSize="12sp"
