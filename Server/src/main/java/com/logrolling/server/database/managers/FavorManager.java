@@ -129,6 +129,7 @@ public class FavorManager {
 
     public static List<Favor> getFavorsByFilter(Filter filter){
 
+        //TODO: Only return favors that haven't been assigned yet to anyone
         List<Favor> favors = new ArrayList<Favor>();
 
         Database db = DatabaseFactory.createInstance();
