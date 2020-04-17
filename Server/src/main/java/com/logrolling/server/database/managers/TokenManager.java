@@ -21,17 +21,19 @@ public class TokenManager {
     public static String createToken(Token token) {
         Database db = DatabaseFactory.createInstance();
 
+        String hashedContent = Authenticator.hashToken(token.getContent());
+
         db.executeUpdate(
                 "INSERT INTO tokens (content, user) VALUES (?, ?);",
                 new String[]{
-                        token.getContent(),
+                        hashedContent,
                         token.getUser()
                 });
 
         //Get newly inserted id
         ResultSet rs = db.executeQuery("select id from tokens where content = ?",
                 new String[]{
-                    token.getContent()
+                    hashedContent
                 });
 
         int id;

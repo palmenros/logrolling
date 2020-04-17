@@ -5,6 +5,7 @@ import com.logrolling.server.database.managers.TokenManager;
 import com.logrolling.server.database.managers.UserManager;
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.model.Authenticator;
+import com.logrolling.server.model.Token;
 import com.logrolling.server.model.User;
 
 public class AuthenticableController {
@@ -13,20 +14,30 @@ public class AuthenticableController {
 
     //If authentication is not successful, throw an exception
     //If authentication is successful, return username of authenticated user
-    protected String authenticateWithToken(String token) throws AuthenticationException {
+    protected String authenticateWithToken(String tokenString) throws AuthenticationException {
         try {
-            String[] tokenParts = token.split(":", 2);
+            String[] tokenParts = tokenString.split(":", 2);
             int tokenId = Integer.parseInt(tokenParts[0]);
 
+            Token token = TokenManager.getToken(tokenId);
+            if(token == null) {
+                //Invalid token number
+                throw new AuthenticationException();
+            }
 
-            return Integer.toString(tokenId);
+            if(Authenticator.matchToken(token.getContent(), tokenParts[1])) {
+                //Successfully authorized user, return username
+                return token.getUser();
+            } else {
+                //Incorrect token
+                throw new AuthenticationException();
+            }
 
         } catch (Exception e) {
             throw new AuthenticationException();
         }
 
     }
-
 
     /**
      * Authenticate an user with username and password

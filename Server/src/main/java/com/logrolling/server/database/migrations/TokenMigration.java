@@ -34,9 +34,12 @@ public class TokenMigration implements Migration {
     @Override
     public void fillDummy() {
 
+        //For authenticating, use tokens as in comment (without quotes)
         Token[] tokenlist = new Token[] {
-                new Token("Hola", "Pablo"),
-                new Token("Mundo", "Pedro")
+                //authToken = "1:hola"
+                new Token("hola", "pedro"),
+                //authToken = "2:mundo"
+                new Token("mundo", "pablo")
         };
 
         for(Token token : tokenlist) {
