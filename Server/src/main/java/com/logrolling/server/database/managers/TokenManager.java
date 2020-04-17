@@ -3,6 +3,7 @@ package com.logrolling.server.database.managers;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.model.Authenticator;
 import com.logrolling.server.model.Favor;
 import com.logrolling.server.model.Token;
 
@@ -13,9 +14,13 @@ import java.util.List;
 
 public class TokenManager {
 
-    public static void createToken(Token token) {
+    public static String createToken(String username) {
+        return createToken(new Token(Authenticator.generateRandomToken(), username));
+    }
 
+    public static String createToken(Token token) {
         Database db = DatabaseFactory.createInstance();
+
         db.executeUpdate(
                 "INSERT INTO tokens (content, user) VALUES (?, ?);",
                 new String[]{
@@ -23,7 +28,27 @@ public class TokenManager {
                         token.getUser()
                 });
 
+        //Get newly inserted id
+        ResultSet rs = db.executeQuery("select id from tokens where content = ?",
+                new String[]{
+                    token.getContent()
+                });
+
+        int id;
+
+        try {
+            if(rs.next()) {
+                id = rs.getInt("id");
+            } else {
+                throw new DatabaseException("Cannot get newly generated Id from database");
+            }
+        } catch(Exception e) {
+            throw new DatabaseException(e);
+        }
+
         db.close();
+
+        return id + ":" + token.getContent();
     }
 
     public static void deleteToken(Token token) {
@@ -37,13 +62,13 @@ public class TokenManager {
         db.close();
     }
 
-    public static Token getTokenFromUser(String user){
+    public static Token getToken(int id){
 
         Token token = null;
         Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from tokens where user = ?",
+        ResultSet rs = db.executeQuery("select * from tokens where id = ?",
                 new String[]{
-                        user
+                        Integer.toString(id)
                 });
         try {
             while (rs.next()) {

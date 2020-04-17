@@ -66,11 +66,11 @@ public class Authenticator {
     public static boolean matchToken(String storedToken, String token) {
         try {
             String[] rawParts = storedToken.split(":");
-            byte[] storedSalt = hexadecimalToByteArray(rawParts[1]);
-            byte[] storedHash = hexadecimalToByteArray(rawParts[2]);
+            byte[] storedSalt = hexadecimalToByteArray(rawParts[0]);
+            byte[] storedHash = hexadecimalToByteArray(rawParts[1]);
 
             PBEKeySpec keySpecification = new PBEKeySpec(token.toCharArray(), storedSalt, numberOfIterations, keyLength);
-            SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
             byte[] generatedHash = secretKeyFactory.generateSecret(keySpecification).getEncoded();
 
             //Differences will accumulate all differences between storedHash and generatedHash by xor-ing

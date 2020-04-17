@@ -37,7 +37,6 @@ public class TokenMigration implements Migration {
         Token[] tokenlist = new Token[] {
                 new Token("Hola", "Pablo"),
                 new Token("Mundo", "Pedro")
-
         };
 
         for(Token token : tokenlist) {

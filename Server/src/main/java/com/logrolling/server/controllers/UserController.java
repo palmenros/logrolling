@@ -1,8 +1,6 @@
 package com.logrolling.server.controllers;
 
 import com.logrolling.server.database.managers.UserManager;
-import com.logrolling.server.model.Authenticator;
-import com.logrolling.server.model.Token;
 import com.logrolling.server.model.User;
 import com.logrolling.server.transfer.TransferUser;
 
@@ -10,7 +8,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Path("/users")
 public class UserController extends AuthenticableController {
@@ -42,12 +39,18 @@ public class UserController extends AuthenticableController {
     }
     */
 
-    @Path("/{password}")
+    @Path("/auth/{user}/{password}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String hashPassword(@PathParam("password") String password) {
-        //return Authenticator.generateRandomToken();
-        return Authenticator.hashToken(password);
+    public String passowordAuth(@PathParam("user") String user, @PathParam("password") String password) {
+        return authenticateWithPassword(user, password);
+    }
+
+    @Path("/token/{token}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String tokenAuth(@PathParam("token") String token) {
+        return authenticateWithToken(token);
     }
 
 
