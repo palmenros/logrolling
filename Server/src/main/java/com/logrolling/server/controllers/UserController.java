@@ -46,6 +46,7 @@ public class UserController extends AuthenticableController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String hashPassword(@PathParam("password") String password) {
+        //return Authenticator.generateRandomToken();
         return Authenticator.hashToken(password);
     }
 

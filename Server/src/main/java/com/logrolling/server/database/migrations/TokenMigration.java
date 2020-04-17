@@ -16,7 +16,7 @@ public class TokenMigration implements Migration {
         String sqlQuery =
                 "create table tokens (" +
                         "id int auto_increment,"+
-                        "content varchar(50) not null," +
+                        "content varchar(165) not null," +
                         "user varchar(50) not null,"+
                         "constraint tokens_pk primary key (id)" +
                         ");";

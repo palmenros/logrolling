@@ -40,10 +40,10 @@ public class Authenticator {
             PBEKeySpec keySpecification = new PBEKeySpec(rawData, salt, numberOfIterations, keyLength);
 
             //Use secure PBKDF2 With Hmac SHA1 hashing algorithm
-            SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+            SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
 
             //Generated hash
-            byte[] hash = skf.generateSecret(keySpecification).getEncoded();
+            byte[] hash = secretKeyFactory.generateSecret(keySpecification).getEncoded();
 
             //Store format "{salt}:{hash}" both in hexadecimal
             return byteArrayToHexadecimal(salt) + ":" + byteArrayToHexadecimal(hash);
@@ -56,6 +56,7 @@ public class Authenticator {
         }
     }
 
+
     /**
      * Compares a previously stored token or password with a given (unhashed) token or password
      * @param storedToken Previously hashed token or password
@@ -63,9 +64,35 @@ public class Authenticator {
      * @return True if token coincides with storedToken
      */
     public static boolean matchToken(String storedToken, String token) {
-        //TODO: Implement
-        return false;
+        try {
+            String[] rawParts = storedToken.split(":");
+            byte[] storedSalt = hexadecimalToByteArray(rawParts[1]);
+            byte[] storedHash = hexadecimalToByteArray(rawParts[2]);
+
+            PBEKeySpec keySpecification = new PBEKeySpec(token.toCharArray(), storedSalt, numberOfIterations, keyLength);
+            SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            byte[] generatedHash = secretKeyFactory.generateSecret(keySpecification).getEncoded();
+
+            //Differences will accumulate all differences between storedHash and generatedHash by xor-ing
+            //If length isn't the same, both hashes aren't equal
+            int differences = storedHash.length ^ generatedHash.length;
+
+            //For each byte in hashes
+            for (int i = 0; i < storedHash.length && i < generatedHash.length; i++) {
+                //If both bytes aren't the same (XOR is 0), set differences to a value different than 0
+                differences |= storedHash[i] ^ generatedHash[i];
+            }
+
+            //Tokens match only if 0 differences have been found
+            return differences == 0;
+        } catch(Exception e) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            throw new ServerErrorException( Response.serverError().entity(sw.toString()).build());
+        }
     }
+
 
     /**
      * Returns securely random generated token
@@ -89,7 +116,7 @@ public class Authenticator {
     /**
      * Generates salt to be used with hashing algorithm
      * @return  Securely generated salt
-     * @throws NoSuchAlgorithmException
+     * @throws NoSuchAlgorithmException Throws if secure algorithm is not available in device
      */
     private static byte[] generateSalt() throws NoSuchAlgorithmException {
         SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
@@ -120,6 +147,23 @@ public class Authenticator {
         }else{
             return hexString;
         }
+    }
+
+    /**
+     * Converts and hexadecimal string to a byte array
+     * @param string String containing aligned to byte hexadecimal string
+     * @return byte array
+     */
+    private static byte[] hexadecimalToByteArray(String string) {
+
+        //string is aligned to byte boundary
+        byte[] rawData = new byte[string.length() / 2];
+
+        for(int i = 0; i < rawData.length; ++i) {
+            //For each result byte, get corresponding two characters substring and convert to byte
+            rawData[i] = (byte) Integer.parseInt(string.substring(2 * i, 2 * i + 2), 16);
+        }
+        return rawData;
     }
 
 }
