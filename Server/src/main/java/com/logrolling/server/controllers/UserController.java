@@ -25,11 +25,14 @@ public class UserController extends AuthenticableController {
         return transferList;
     }
 
+    /*
+    TODO: Uncomment
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void createUser(String username, String password){
         UserManager.createUser(new User(username, password, 100));
     }
+     */
 
     @Path("/{username}")
     @GET
