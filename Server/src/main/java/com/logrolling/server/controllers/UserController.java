@@ -30,27 +30,12 @@ public class UserController extends AuthenticableController {
     public void createUser(String username, String password){
         UserManager.createUser(new User(username, password, 100));
     }
-
+*/
     @Path("/{username}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public TransferUser getUserByName(@PathParam("username") String username){
         return new TransferUser(UserManager.getUserByName(username));
-    }
-    */
-
-    @Path("/auth/{user}/{password}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String passowordAuth(@PathParam("user") String user, @PathParam("password") String password) {
-        return authenticateWithPassword(user, password);
-    }
-
-    @Path("/token/{token}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String tokenAuth(@PathParam("token") String token) {
-        return authenticateWithToken(token);
     }
 
 
