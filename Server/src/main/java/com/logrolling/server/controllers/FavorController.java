@@ -4,6 +4,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.logrolling.server.database.managers.FavorManager;
+import com.logrolling.server.exceptions.UnauthorizedException;
 import com.logrolling.server.model.Favor;
 import com.logrolling.server.model.Filter;
 import com.logrolling.server.model.Token;
@@ -41,8 +42,9 @@ public class FavorController extends AuthenticableController {
 
     @GET
     @Path("/user")
-    @Produces(MediaType.TEXT_PLAIN)
-    public List<TransferFavor> getFavorsFromUser(@HeaderParam("user") String username){
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<TransferFavor> getFavorsFromUser(@HeaderParam("token") String token){
+        String username = authenticateWithToken(token);
         List<Favor> favors = FavorManager.getFavorsFromUsername(username);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
@@ -51,7 +53,7 @@ public class FavorController extends AuthenticableController {
         return transfers;
     }
 
-    // Change
+    // TODO: Review from here and change
     @GET
     @Path("/awarded")
     @Produces(MediaType.APPLICATION_JSON)
@@ -67,7 +69,9 @@ public class FavorController extends AuthenticableController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void addFavor(TransferFavor f){
+    public void addFavor(TransferFavor f, @HeaderParam("token") String token) {
+        String username = authenticateWithToken(token);
+        f.setCreator(username);
         FavorManager.createFavor(new Favor(f));
     }
 
@@ -75,14 +79,30 @@ public class FavorController extends AuthenticableController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public void updateFavor(TransferFavor f, @PathParam("id") int id){
-        FavorManager.updateFavor(id, new Favor(f));
+    public void updateFavor(TransferFavor f, @PathParam("id") int id, @HeaderParam("token") String token) {
+        String username = authenticateWithToken(token);
+
+        if(FavorManager.getFavorById(id).getCreator().equals(username)) {
+            //Favor was created by current user
+            FavorManager.updateFavor(id, new Favor(f));
+        } else {
+            throw new UnauthorizedException();
+        }
+
     }
     
     @DELETE
     @Path("/{id}")
-    public void deleteFavor(@PathParam("id") int id){
-        FavorManager.deleteFavorFromId(id);
+    public void deleteFavor(@PathParam("id") int id, @HeaderParam("token") String token) {
+        String username = authenticateWithToken(token);
+
+        if(FavorManager.getFavorById(id).getCreator().equals(username)) {
+            //Favor was created by current user
+            FavorManager.deleteFavorFromId(id);
+        } else {
+            throw new UnauthorizedException();
+        }
+
     }
 
 }

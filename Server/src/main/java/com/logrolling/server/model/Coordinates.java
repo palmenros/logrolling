@@ -5,6 +5,10 @@ public class Coordinates {
     double latitude;
     double longitude;
 
+    public Coordinates() {
+
+    }
+
     public Coordinates(double latitude, double longitude){
 
         this.latitude = latitude;
