@@ -1,5 +1,7 @@
 package com.logrolling.server.model;
 
+import com.logrolling.server.transfer.TransferFavor;
+
 public class Favor {
 
     private int id;
@@ -51,6 +53,16 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = worker;
+    }
+
+    public Favor(TransferFavor f){
+        this.creator = f.getCreator();
+        this.title = f.getTitle();
+        this.description = f.getDescription();
+        this.dueTime = f.getDueTime();
+        this.reward = f.getReward();
+        this.coordinates = f.getCoordinates();
+        this.worker = f.getWorker();
     }
 
     public int getId() {

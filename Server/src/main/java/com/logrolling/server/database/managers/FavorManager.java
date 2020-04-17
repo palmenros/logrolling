@@ -60,6 +60,11 @@ public class FavorManager {
 
 
     }
+
+    public static void updateFavor(int id, Favor newFavor){
+
+    }
+
     public static void deleteFavor(Favor favor) {
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate("delete from favors where id = ?",
