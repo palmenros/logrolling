@@ -1,6 +1,7 @@
 package com.logrolling.server.controllers;
 
 import com.logrolling.server.database.managers.UserManager;
+import com.logrolling.server.model.Authenticator;
 import com.logrolling.server.model.Token;
 import com.logrolling.server.model.User;
 import com.logrolling.server.transfer.TransferUser;
@@ -32,7 +33,6 @@ public class UserController extends AuthenticableController {
     public void createUser(String username, String password){
         UserManager.createUser(new User(username, password, 100));
     }
-     */
 
     @Path("/{username}")
     @GET
@@ -40,6 +40,15 @@ public class UserController extends AuthenticableController {
     public TransferUser getUserByName(@PathParam("username") String username){
         return new TransferUser(UserManager.getUserByName(username));
     }
+    */
+
+    @Path("/{password}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String hashPassword(@PathParam("password") String password) {
+        return Authenticator.hashToken(password);
+    }
+
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
