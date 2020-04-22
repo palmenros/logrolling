@@ -13,9 +13,11 @@ public class MigrationManager {
      * Executed in declaration order
      */
     private static Migration[] migrations = new Migration[]{
+
         new UserMigration(),
         new FavorMigration(),
-        new TokenMigration()
+        new TokenMigration(),
+            new GiftMigration()
     };
 
     /**

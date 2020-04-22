@@ -7,7 +7,7 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="MySQL - @localhost" uuid="52a97d80-3345-439a-9615-0cea08872cde">
+    <data-source source="LOCAL" name="logrolling" uuid="3e0854b9-5fbd-4be6-85c0-5505c5df8646">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

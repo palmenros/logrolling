@@ -4,9 +4,7 @@ import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.exceptions.DataNotFoundException;
-import com.logrolling.server.model.Filter;
-import com.logrolling.server.model.Gift;
-import com.logrolling.server.model.Token;
+import com.logrolling.server.model.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,16 +27,6 @@ public class GiftsManager {
         db.close();
     }
 
-    public static void deleteGiftFromId(Integer id){
-        Database db = DatabaseFactory.createInstance();
-        db.executeUpdate("delete from gifts where id = ?",
-                new String[]{
-                        id.toString()
-                });
-
-        db.close();
-    }
-
     public static void deleteGiftFromTitleAndContent(String title, String content){
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate("delete from gifts where title = ? and content = ?",
@@ -50,8 +38,21 @@ public class GiftsManager {
         db.close();
     }
 
-    public static void updateGift(int id, Gift newGift){
-        //TODO: Implement this
+    public static void updateGift(Gift newGift){
+
+        Database db = DatabaseFactory.createInstance();
+
+        int id = newGift.getId();
+
+        db.executeUpdate("replace into gifts values(?, ?, ?, ?);",
+                new String[]{
+                        Integer.toString(id),
+                        newGift.getTitle(),
+                        newGift.getContent(),
+                        newGift.getPrice().toString()
+                });
+
+        db.close();
     }
 
     public static void deleteGift(Gift gift) {
@@ -101,6 +102,30 @@ public class GiftsManager {
         ResultSet rs = db.executeQuery("select * from gifts where title = ?",
                 new String[]{
                         title
+                });
+
+        try {
+            if (rs.next()) {
+                gift = getGiftFromResultSet(rs);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        if(gift == null) {
+            throw new DataNotFoundException("Gift not found");
+        }
+        return gift;
+    }
+
+    public static Gift getGiftByPrice(int price) {
+        Gift gift = null;
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from gifts where price = ?",
+                new String[]{
+                        String.valueOf(price)
                 });
 
         try {
