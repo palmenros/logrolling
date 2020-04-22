@@ -1,5 +1,8 @@
 package com.logrolling.server.transfer;
 
+import com.logrolling.server.model.Gift;
+import com.logrolling.server.model.User;
+
 public class TransferGift {
     private int id;
     private String title;
@@ -18,6 +21,10 @@ public class TransferGift {
         this.title = title;
         this.content = content;
         this.price = price;
+    }
+
+    public TransferGift(Gift gift) {
+        this(gift.getId(), gift.getTitle(), gift.getContent(), gift.getPrice());
     }
 
     public Integer getId(){ return id; }
