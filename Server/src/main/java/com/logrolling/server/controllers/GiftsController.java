@@ -9,58 +9,68 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
+//Uncomment when GiftManager is done
+/*
 @Path("/gifts")
 @Produces(MediaType.TEXT_PLAIN)
 @Consumes(MediaType.APPLICATION_JSON)
-public class GiftsController {
+public class GiftsController implements GiftDao{
+
 
     @GET
-    public List<TransferGift> getGifts(){
+    @Override
+    public List<TransferGift> getAllGifts() {
         // List<Gift> gifts = GiftsController.getGifts();
         List<TransferGift> transfers = new ArrayList<TransferGift>();
         /*for (Gift g : gifts) {
             transfers.add(new TransferGift(f));
-        }*/
+        }
         return transfers;
     }
 
-    /*
-    @POST
-    public void createGift(String title, String content, int price){
-        // UserManager.createGift(new Gift(title, content, price);
-    }
 
-
-
-    @PUT
-    public void updateGiftByName(TransferGift newGift){
-        Gift gift = new Gift(newGift.getId(), newGift.getTitle(), newGift.getContent(), newGift.getPrice());
-        //GiftManager.updateGiftbyTitle(newGift.getTitle(), gift);
-    }
-
-
-
-    @DELETE
-    public void deleteGift(@HeaderParam("gift") String title){
-        //GiftManager.deleteGiftByTitle(title);
-    }
-
-
+    @GET
+    @Path("/filter")
+    public List<TransferFavor> getGiftsFromFilter(Filter filter) {
+        List<Gifts> gifts = GiftsManager.getGiftsByFilter(filter);
+        List<TransferGift> transfers = new ArrayList<TransferGift>();
+        for (Gift f : gifts) {
+            transfers.add(new TransferGift(f));
+        }
+        return transfers;
 
 
     @Path("/{title}")
     @GET
-    public TransferGift getGiftByName(@PathParam("title") String title){
-        //return new TransferGift(GiftManager.getGiftByTitle(title));
+    @Override
+    public TransferGift getGift(@PathParam("title") String title) {
+        return new TransferGift(GiftManager.getGiftByTitle(title));
     }
-
-
 
     @GET
-    @Path("/price")
-    public int getPrice(@HeaderParam("gift") String title){
-        //return GiftManager.getGiftByTitle(title).getPrice();
+    @Path("/{title}/price")
+    @Override
+    public TransferGift getPrice(@HeaderParam("title") String title) {
+        return GiftManager.getGiftByTitle(title).getPrice();
     }
-    */
 
+    @POST
+    @Override
+    public void createGift(TransferGift newGift) {
+        UserManager.createGift(new Gift(title, content, price);
+    }
+
+    @PUT
+    @Override
+    public void updateGiftByName(TransferGift newGift) {
+        Gift gift = new Gift(newGift.getId(), newGift.getTitle(), newGift.getContent(), newGift.getPrice());
+        GiftManager.updateGiftbyTitle(newGift.getTitle(), gift);
+    }
+
+    @DELETE
+    @Override
+    public void deleteGift(@HeaderParam("title") String title) {
+        GiftManager.deleteGiftByTitle(title);
+    }
 }
+ */
