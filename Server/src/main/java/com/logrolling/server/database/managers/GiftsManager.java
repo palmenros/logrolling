@@ -138,8 +138,32 @@ public class GiftsManager {
         db.close();
 
         if(gift == null) {
-            throw new DataNotFoundException("Gift not found");
+            throw new DataNotFoundException("There are no gifts in database with price : " + price);
         }
         return gift;
+    }
+
+    public static boolean alreadyAddedGift(String title){
+        Gift gift = null;
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from gifts where title = ?",
+                new String[]{
+                        title
+                });
+
+        try {
+            if (rs.next()) {
+                gift = getGiftFromResultSet(rs);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        if(gift == null) {
+            return false;
+        }
+        else return true;
     }
 }
