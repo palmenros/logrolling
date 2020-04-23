@@ -30,15 +30,29 @@ public class GiftsController {
     @GET
     @Path("/{title}")
     public TransferGift getGiftbyTitle(@PathParam("title") String title) {
-        if(GiftsManager.alreadyAddedGift(title) == true)
-            return new TransferGift(GiftsManager.getGiftByTitle(title));
-        else throw new DataNotFoundException("The gift does not exist in the database");
+        return new TransferGift(GiftsManager.getGiftByTitle(title));
     }
 
     @GET
     @Path("/price/{price}")
-    public TransferGift getGiftbyPrice(@PathParam("price") int price){
-        return new TransferGift(GiftsManager.getGiftByPrice(price));
+    public List<TransferGift> getGiftsbyPrice(@PathParam("price") int price){
+        List<Gift> gifts = GiftsManager.getGiftsByPrice(price);
+        List<TransferGift> transfers = new ArrayList<TransferGift>();
+        for (Gift g : gifts) {
+            transfers.add(new TransferGift(g));
+        }
+        return transfers;
+    }
+
+    @GET
+    @Path("/content/{content}")
+    public List<TransferGift> getGifsByContent(@PathParam("content") String content){
+        List<Gift> gifts = GiftsManager.getGiftsByContent(content);
+        List<TransferGift> transfers = new ArrayList<TransferGift>();
+        for (Gift g : gifts) {
+            transfers.add(new TransferGift(g));
+        }
+        return transfers;
     }
 
     @POST

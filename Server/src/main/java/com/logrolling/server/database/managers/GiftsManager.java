@@ -119,8 +119,8 @@ public class GiftsManager {
         return gift;
     }
 
-    public static Gift getGiftByPrice(int price) {
-        Gift gift = null;
+    public static List<Gift> getGiftsByPrice(int price) {
+        List<Gift> gifts = new ArrayList<Gift>();
 
         Database db = DatabaseFactory.createInstance();
         ResultSet rs = db.executeQuery("select * from gifts where price = ?",
@@ -130,17 +130,48 @@ public class GiftsManager {
 
         try {
             if (rs.next()) {
-                gift = getGiftFromResultSet(rs);
+                while (rs.next()) {
+                    Gift gift = getGiftFromResultSet(rs);
+                    gifts.add(gift);
+                }
             }
         }  catch(SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(gift == null) {
+        if(gifts.size() == 0) {
             throw new DataNotFoundException("There are no gifts in database with price : " + price);
         }
-        return gift;
+        return gifts;
+    }
+
+
+    public static List<Gift> getGiftsByContent(String content) {
+        List<Gift> gifts = new ArrayList<Gift>();
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from gifts where content = ?",
+                new String[]{
+                        content
+                });
+
+        try {
+            if (rs.next()) {
+                while (rs.next()) {
+                    Gift gift = getGiftFromResultSet(rs);
+                    gifts.add(gift);
+                }
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        if(gifts.size() == 0) {
+            throw new DataNotFoundException("There are no gifts in database with content : " + content);
+        }
+        return gifts;
     }
 
     public static boolean alreadyAddedGift(String title){
