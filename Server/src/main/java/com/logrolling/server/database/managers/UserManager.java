@@ -3,6 +3,7 @@ package com.logrolling.server.database.managers;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.model.Authenticator;
 import com.logrolling.server.model.User;
 import com.logrolling.server.transfer.TransferUser;
 import com.mysql.cj.protocol.Resultset;
@@ -26,7 +27,7 @@ public class UserManager {
            "INSERT INTO users (username, password, grollies) VALUES (?, ?, ?);",
         new String[]{
             user.getUsername(),
-            user.getPassword(),
+            Authenticator.hashToken(user.getPassword()),
             user.getGrollies().toString()
         });
 
@@ -69,7 +70,7 @@ public class UserManager {
 
                         Integer.toString(id),
                         newUser.getUsername(),
-                        newUser.getPassword(),
+                        Authenticator.hashToken(newUser.getPassword()),
                         newUser.getGrollies().toString()
                 });
 

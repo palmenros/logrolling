@@ -1,7 +1,6 @@
 package com.logrolling.server.controllers;
 
 import com.logrolling.server.database.managers.UserManager;
-import com.logrolling.server.model.Token;
 import com.logrolling.server.model.User;
 import com.logrolling.server.transfer.TransferUser;
 
@@ -9,14 +8,14 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Path("/users")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class UserController extends AuthenticableController {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<TransferUser> getMessage()  {
+    public List<TransferUser> getUsers()  {
         List<TransferUser> transferList = new ArrayList<TransferUser>();
 
         for(User u : UserManager.getAllUsers()) {
@@ -25,21 +24,15 @@ public class UserController extends AuthenticableController {
         return transferList;
     }
 
+    /*
+    TODO: Uncomment
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     public void createUser(String username, String password){
         UserManager.createUser(new User(username, password, 100));
     }
-
-    @Path("/{username}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public TransferUser getUserByName(@PathParam("username") String username){
-        return new TransferUser(UserManager.getUserByName(username));
-    }
+    */
 
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
     public void updateUserByName(TransferUser newUser){
         User user = new User(newUser.getId(), newUser.getUsername(), UserManager.getUserByName(newUser.getUsername()).getPassword(), newUser.getGrollies());
         UserManager.updateUserbyName(newUser.getUsername(), user);
@@ -50,11 +43,15 @@ public class UserController extends AuthenticableController {
         UserManager.deleteUserByName(username);
     }
 
-    @Path("/grollies")
     @GET
-    public int getGrollies(@HeaderParam("user") String username){
-        // return UserManager.getUserByName(username).getGrollies;
-        return 0;
+    @Path("/{username}")
+    public TransferUser getUserByName(@PathParam("username") String username){
+        return new TransferUser(UserManager.getUserByName(username));
     }
 
+    @GET
+    @Path("/grollies")
+    public int getGrollies(@HeaderParam("user") String username){
+         return UserManager.getUserByName(username).getGrollies();
+    }
 }

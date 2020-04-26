@@ -1,6 +1,7 @@
 package com.logrolling.server.database.managers;
 
 
+import com.logrolling.server.exceptions.DataNotFoundException;
 import com.logrolling.server.model.Favor;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
@@ -20,7 +21,7 @@ public class FavorManager {
 
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate(
-                "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?);",
+                "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude, worker) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
                 new String[]{
                         favor.getCreator(),
                         favor.getTitle(),
@@ -28,8 +29,8 @@ public class FavorManager {
                         favor.getDueTime().toString(),
                         favor.getReward().toString(),
                         favor.getLatCoord().toString(),
-                        favor.getLongCoord().toString()
-
+                        favor.getLongCoord().toString(),
+                        favor.getWorker()
                 });
 
         db.close();
@@ -57,11 +58,10 @@ public class FavorManager {
         });
 
         db.close();
-
-
     }
-
-    public static void updateFavor(int id, Favor newFavor){//TODO
+    
+    public static void updateFavor(int id, Favor newFavor){
+        //TODO: Implement this
 
     }
 
@@ -133,12 +133,11 @@ public class FavorManager {
     }
 
     public static List<Favor> getFavorsByFilter(Filter filter){
-
         List<Favor> favors = new ArrayList<Favor>();
 
         Database db = DatabaseFactory.createInstance();
         if(filter.getMaxDistance() == -1) {
-            ResultSet rs = db.executeQuery("select * from favors where reward >= ?",
+            ResultSet rs = db.executeQuery("select * from favors where worker is null and reward >= ?",
                     new String[]{
                             filter.getMinGrollies().toString()//Ver como buscar por coordenadas
                     });
@@ -153,7 +152,7 @@ public class FavorManager {
             }
         }
         else{
-            ResultSet rs = db.executeQuery("select * from favors where reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
+            ResultSet rs = db.executeQuery("select * from favors where worker is null and reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
                     new String[]{
 
                             filter.getMinGrollies().toString(),
@@ -241,5 +240,29 @@ public class FavorManager {
         db.close();
 
         return favors;
+    }
+
+    public static Favor getFavorById(int id) {
+        Favor favor = null;
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from favors where id = ?",
+                new String[]{
+                        Integer.toString(id)
+                });
+
+        try {
+            if (rs.next()) {
+                favor = getFavorFromResultSet(rs);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        if(favor == null) {
+            throw new DataNotFoundException("Favor not found");
+        }
+        return favor;
     }
 }

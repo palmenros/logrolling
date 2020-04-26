@@ -18,7 +18,7 @@ public class UserMigration implements Migration {
                 "create table users (" +
                     "id int auto_increment," +
                     "username varchar(50) not null," +
-                    "password varchar(150) not null," +
+                    "password varchar(165) not null," +
                     "grollies int," +
                     "constraint users_pk primary key (id)" +
                 ");";

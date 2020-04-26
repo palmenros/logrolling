@@ -29,6 +29,9 @@ public class TransferFavor {
         this(favor.getId(), favor.getCreator(), favor.getTitle(), favor.getDescription(), favor.getDueTime(), favor.getReward(), favor.getCoordinates(), favor.getWorker());
     }
 
+    public TransferFavor() {
+    }
+
     public int getId() {
         return id;
     }
