@@ -61,7 +61,7 @@ public class FavorManager {
 
     }
 
-    public static void updateFavor(int id, Favor newFavor){
+    public static void updateFavor(int id, Favor newFavor){//TODO
 
     }
 
