@@ -17,6 +17,7 @@ IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no esté
     -Casos de uso (Santiago)
         -Explicar bien como se navega a través de la aplicación (ver diagramas de secuencia)
         -Añadir diagramas de secuencia
+	-Marcar favor como realizado, Iniciar sesion.
         
     -Requisitos lógicos u de la base de datos y atributos: Jaime
         -Actualizarlo
