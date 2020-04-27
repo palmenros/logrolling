@@ -15,9 +15,9 @@ IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no esté
     -Quitar apartado CRC y sustituirlo por diagramas de clase: Rubén   
      
     -Casos de uso (Santiago)
-        -Explicar bien como se navega a través de la aplicación (ver diagramas de secuencia)
+        -Explicar bien como se navega a través de la aplicación (ver diagramas de secuencia) //hecho en CU, falta diagramas de secuencia.
         -Añadir diagramas de secuencia
-	-Marcar favor como realizado, Iniciar sesion.
+	-Marcar favor como realizado, Iniciar sesion, Modificar Favor.//hecho
         
     -Requisitos lógicos u de la base de datos y atributos: Jaime
         -Actualizarlo
@@ -34,17 +34,17 @@ IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no esté
 
 LISTA DE CAMBIOS:
 
--Admin eliminado, eliminadas funciones de banear, etc
+-Admin eliminado, eliminadas funciones de banear, etc //quitado en CU
 -Solo hay un tipo de usuario
--Cambiar idioma / Cambiar email / leer normas de uso / conectarse con Facebook fuera
+-Cambiar idioma / Cambiar email / leer normas de uso / conectarse con Facebook fuera //quitado en CU
 -Favor múltiple fuera
--Negociar grollies fuera
--Email quitado
+-Negociar grollies fuera //quitado en CU
+-Email quitado 
 -Filtro de tiempo quitado
 -Favores a realizar incluidos (ver Android Studio)
 -Doble Tick confirmación quitados
 -Al pulsar en un regalo, te pregunta por la dirección
--Configuración MUY reducida, solo cerrar sesión y modificar perfil
+-Configuración MUY reducida, solo cerrar sesión y modificar perfil //hecho CU
 -Lugar de entrega = Lugar de realización, se elimina lugar de realización
 -Una única foto por favor
 -En mensajes no tienen fechas
