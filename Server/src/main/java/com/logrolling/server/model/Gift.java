@@ -1,12 +1,13 @@
 package com.logrolling.server.model;
 
+import com.logrolling.server.transfer.TransferGift;
+
 public class Gift {
 
     private int id;
     private String title;
     private String content;
     private int price;
-
 
     public Gift(int id, String title, String content, int price){
         this.id = id;
@@ -19,6 +20,15 @@ public class Gift {
         this.title = title;
         this.content = content;
         this.price = price;
+    }
+
+    public Gift(TransferGift g){
+        this.title = g.getTitle();
+        this.content = g.getContent();
+        this.price = g.getPrice();
+    }
+
+    public Gift(){
     }
 
     public Integer getId(){ return id; }

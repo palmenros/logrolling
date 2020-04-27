@@ -1,0 +1,50 @@
+IMPORTANTE: Mirar los ejemplos del año pasado y compararlo
+IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no estén implementados todavía
+
+-SRS:
+    
+    -Introducción y apartado 2 SRS:
+        -Adri, actualizarlo
+    
+    -Interfaces (gráficas, 3.1.1): Rubén
+        -Actualizarlo
+    
+    -Interfaces de software / comunicación: Jaime
+        -Actualizarlo
+        
+    -Quitar apartado CRC y sustituirlo por diagramas de clase: Rubén   
+     
+    -Casos de uso (Santiago)
+        -Explicar bien como se navega a través de la aplicación (ver diagramas de secuencia)
+        -Añadir diagramas de secuencia
+        
+    -Requisitos lógicos u de la base de datos y atributos: Jaime
+        -Actualizarlo
+
+    -Especificación de requisitos
+        -Lista de cambios: Adri
+    -Arquitectura: 
+        -Visión global: Pedro
+        -Vista: Juan Carlos 
+        -Server: Alberto / Jaime / Pablo
+    -Patrones: Pedro
+    
+-Pasarlo todo a bonito: Alberto
+
+LISTA DE CAMBIOS:
+
+-Admin eliminado, eliminadas funciones de banear, etc
+-Solo hay un tipo de usuario
+-Cambiar idioma / Cambiar email / leer normas de uso / conectarse con Facebook fuera
+-Favor múltiple fuera
+-Negociar grollies fuera
+-Email quitado
+-Filtro de tiempo quitado
+-Favores a realizar incluidos (ver Android Studio)
+-Doble Tick confirmación quitados
+-Al pulsar en un regalo, te pregunta por la dirección
+-Configuración MUY reducida, solo cerrar sesión y modificar perfil
+-Lugar de entrega = Lugar de realización, se elimina lugar de realización
+-Una única foto por favor
+-En mensajes no tienen fechas
+-Quitados adjuntar fotos, emoticonos y audios en mensajes

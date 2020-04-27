@@ -59,9 +59,10 @@ public class FavorManager {
 
         db.close();
     }
-
+    
     public static void updateFavor(int id, Favor newFavor){
         //TODO: Implement this
+
     }
 
     public static void deleteFavor(Favor favor) {

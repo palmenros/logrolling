@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Path("/favors")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class FavorController extends AuthenticableController {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public List<TransferFavor> getAvailableFavors(){
         List<Favor> favors = FavorManager.getAllFavors();
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
@@ -29,8 +30,6 @@ public class FavorController extends AuthenticableController {
 
     @GET
     @Path("/filter")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public List<TransferFavor> getFavorsFromFilter(Filter filter) {
         List<Favor> favors = FavorManager.getFavorsByFilter(filter);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
@@ -42,7 +41,6 @@ public class FavorController extends AuthenticableController {
 
     @GET
     @Path("/user")
-    @Produces(MediaType.APPLICATION_JSON)
     public List<TransferFavor> getFavorsFromUser(@HeaderParam("token") String token){
         String username = authenticateWithToken(token);
         List<Favor> favors = FavorManager.getFavorsFromUsername(username);
@@ -56,7 +54,6 @@ public class FavorController extends AuthenticableController {
     // TODO: Review from here and change
     @GET
     @Path("/awarded")
-    @Produces(MediaType.APPLICATION_JSON)
     public List<TransferFavor> getAwardedFavors() {
         List<Favor> favors = FavorManager.getAwardedFavors();
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
@@ -67,8 +64,6 @@ public class FavorController extends AuthenticableController {
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public void addFavor(TransferFavor f, @HeaderParam("token") String token) {
         String username = authenticateWithToken(token);
         f.setCreator(username);
@@ -76,10 +71,7 @@ public class FavorController extends AuthenticableController {
     }
 
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{id}")
-    public void updateFavor(TransferFavor f, @PathParam("id") int id, @HeaderParam("token") String token) {
+    public void updateFavor(TransferFavor f, @HeaderParam("id") int id, @HeaderParam("token") String token) {
         String username = authenticateWithToken(token);
 
         if(FavorManager.getFavorById(id).getCreator().equals(username)) {
@@ -92,8 +84,7 @@ public class FavorController extends AuthenticableController {
     }
     
     @DELETE
-    @Path("/{id}")
-    public void deleteFavor(@PathParam("id") int id, @HeaderParam("token") String token) {
+    public void deleteFavor(@HeaderParam("id") int id, @HeaderParam("token") String token) {
         String username = authenticateWithToken(token);
 
         if(FavorManager.getFavorById(id).getCreator().equals(username)) {

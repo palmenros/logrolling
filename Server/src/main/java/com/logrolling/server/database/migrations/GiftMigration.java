@@ -26,9 +26,10 @@ public class GiftMigration implements Migration {
         sqlQuery =
                 "create table purchasedGifts (" +
                         "id int auto_increment," +
-                        "title varchar(50) not null," +
-                        "content varchar(150) not null," +
+                        "idGift int," +
+                        "address varchar(50) not null," +
                         "user varchar(50) not null," +
+                        "sent boolean," +
                         "constraint purchasedGifts_pk primary key (id)" +
                         ");";
 
@@ -49,6 +50,8 @@ public class GiftMigration implements Migration {
                 new Gift("Ordenador", "El ordenador mas veloz del mercado", 1200)
 
         };
+
+
 
         for(Gift gift : giftsList) {
             GiftsManager.createGift(gift);
