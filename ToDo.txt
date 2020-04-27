@@ -1,7 +1,26 @@
--SRS (cada uno su parte)
--Casos de uso (Santiago)
+IMPORTANTE: Mirar los ejemplos del año pasado y compararlo
+IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no estén implementados todavía
 
--Explicación detallada 
+-SRS:
+    
+    -Introducción y apartado 2 SRS:
+        -Adri, actualizarlo
+    
+    -Interfaces (gráficas, 3.1.1): Rubén
+        -Actualizarlo
+    
+    -Interfaces de software / comunicación: Jaime
+        -Actualizarlo
+        
+    -Quitar apartado CRC y sustituirlo por diagramas de clase: Rubén   
+     
+    -Casos de uso (Santiago)
+        -Explicar bien como se navega a través de la aplicación (ver diagramas de secuencia)
+        -Añadir diagramas de secuencia
+        
+    -Requisitos lógicos u de la base de datos y atributos: Jaime
+        -Actualizarlo
+
     -Especificación de requisitos
         -Lista de cambios: Adri
     -Arquitectura: 
@@ -10,6 +29,7 @@
         -Server: Alberto / Jaime / Pablo
     -Patrones: Pedro
     
+-Pasarlo todo a bonito: Alberto
 
 LISTA DE CAMBIOS:
 
