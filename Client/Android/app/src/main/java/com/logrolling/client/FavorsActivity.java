@@ -64,7 +64,7 @@ public class FavorsActivity extends AppCompatActivity {
 
     private void llenarLista(){
         for(int i=0;i<10;i++) {
-            favorsArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000));
+            favorsArray.add(new Favor("Nombre "+i, "Descripcion "+i, "Direccion "+i, "Favor "+i, R.drawable.ic_person_black_24dp, i*1000, "Hasta mañana a las 12:00", "A 150m de ti"));
         }
     }
     //Panel Inferior

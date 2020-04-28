@@ -73,8 +73,8 @@ public class MyFavorsActivity extends AppCompatActivity {
     }
     private void llenarLista(){
         for(int i=0;i<10;i++) {
-            favorsDoneArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000));
-            favorsAskedArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000));
+            favorsDoneArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000, "Hasta mañana a las 12:00", "A 150m de ti"));
+            favorsAskedArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000, "Hasta mañana a las 12:00", "A 150m de ti"));
         }
     }
 

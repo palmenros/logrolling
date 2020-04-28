@@ -13,60 +13,97 @@
     android:orientation="vertical"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/Photo"
+            android:layout_width="81dp"
+            android:layout_height="81dp"
+            android:background="@drawable/image_background"
+            app:srcCompat="@drawable/profile_photo_test" />
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:padding="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
 
-            <ImageView
-                android:id="@+id/Photo"
-                android:layout_width="81dp"
-                android:layout_height="81dp"
-                app:srcCompat="@drawable/grollies_mini2"
-                android:background="@drawable/image_background"
-                />
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Nombre"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre"
-                    android:textSize="15sp" />
+            <TextView
+                android:id="@+id/Distancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Distancia"
+                android:textSize="16sp"/>
 
-                <TextView
-                    android:id="@+id/Price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Price" />
+              <TextView
+                android:id="@+id/Tiempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tiempo" android:textSize="16sp"/>
 
-                <TextView
-                    android:id="@+id/Favor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Favor"
-                    android:textStyle="bold" />
-
-
-
-            </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/grollie_button_background"
+            android:padding="5dp"
+            android:layout_gravity="right"
+            android:gravity="right">
+
+            <TextView
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:id="@+id/Price"
+                android:text="Price"
+                android:layout_marginRight="4dp"
+                />
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:srcCompat="@drawable/grollies">
+
+            </ImageView>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:paddingTop="2dp"
+        android:textSize="20sp"
+        android:id="@+id/Favor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favor"
+        android:textStyle="bold" />
 
         <TextView
                     android:id="@+id/Adress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Adress" />
+                    android:text="Adress"
+                    android:textSize="16sp"
+            />
 
-                <TextView
-                    android:id="@+id/Descripcion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Esto es una prueba" />
 
 </LinearLayout>

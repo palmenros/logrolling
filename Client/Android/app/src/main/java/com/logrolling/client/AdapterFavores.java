@@ -28,8 +28,9 @@ public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderFavor holder, int position) {
-        holder.name.setText(listaFavores.get(position).getName());
-        holder.description.setText(listaFavores.get(position).getDescription());
+        holder.name.setText("Por: " + listaFavores.get(position).getName());
+        holder.distance.setText(listaFavores.get(position).getDistance());
+        holder.maxTime.setText(listaFavores.get(position).getMaxTime());
         //holder.photo.setImageResource(listaFavores.get(position).getPhoto());
         holder.adress.setText(listaFavores.get(position).getAdress());
         holder.favor.setText(listaFavores.get(position).getFavor());
@@ -42,13 +43,14 @@ public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHold
     }
 
     public class ViewHolderFavor extends RecyclerView.ViewHolder {
-        TextView name,description,adress,favor,price;
+        TextView name,maxTime, distance,adress,favor,price;
         ImageView photo;
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public ViewHolderFavor(@NonNull View itemView) {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.Name);
-            description=(TextView)itemView.findViewById(R.id.Descripcion);
+            maxTime=(TextView)itemView.findViewById(R.id.Tiempo);
+            distance = (TextView) itemView.findViewById(R.id.Distancia);
             photo=(ImageView)itemView.findViewById(R.id.Photo);
             adress=(TextView)itemView.findViewById(R.id.Adress);
             favor=(TextView)itemView.findViewById(R.id.Favor);
