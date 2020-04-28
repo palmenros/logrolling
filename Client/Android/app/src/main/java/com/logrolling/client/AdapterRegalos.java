@@ -24,7 +24,7 @@ public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHold
     @NonNull
     @Override
     public AdapterRegalos.ViewHolderRegalos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_regalos,null,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_regalos,parent,false);
         return new AdapterRegalos.ViewHolderRegalos(view);
     }
 
@@ -32,7 +32,7 @@ public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHold
     public void onBindViewHolder(@NonNull AdapterRegalos.ViewHolderRegalos holder, int position) {
         holder.name.setText(listaRegalos.get(position).getName());
         holder.price.setText(Integer.toString(listaRegalos.get(position).getPrice()));
-        holder.photo.setImageResource(listaRegalos.get(position).getPhoto());
+        //holder.photo.setImageResource(listaRegalos.get(position).getPhoto());
     }
 
     @Override
@@ -49,6 +49,8 @@ public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHold
             name=(TextView)itemView.findViewById(R.id.Name);
             price=(TextView)itemView.findViewById(R.id.price);
             photo=(ImageView)itemView.findViewById(R.id.Photo);
+
+            photo.setClipToOutline(true);
         }
     }
 }
