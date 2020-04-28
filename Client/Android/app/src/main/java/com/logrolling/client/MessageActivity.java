@@ -21,11 +21,12 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensajes);
-        listChat =(RecyclerView)findViewById(R.id.ListaMensajes);
-        listChat.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
         numGrollies=(TextView)findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
+        numGrollies.setText("");//TODO: Pedir el número de grollies a quien sea
+
+        listChat =(RecyclerView)findViewById(R.id.ListaMensajes);
+        listChat.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
         llenarLista();
 
@@ -47,8 +48,6 @@ public class MessageActivity extends AppCompatActivity {
         for(int i=0;i<10;i++) {
             chats.add(new Persona("Persona "+i,"ultimo mensaje",R.drawable.ic_person_black_24dp));
         }
-
-        //adapter.notifyDataSetChanged();
     }
 
     //Panel Inferior

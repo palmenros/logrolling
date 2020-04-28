@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class GiftsActivity extends AppCompatActivity {
     private RecyclerView listFavors;
     private TextView numGrollies;
-    private ArrayList<Gift> gifts ;
+    private ArrayList<Gift> gifts = new ArrayList<Gift>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,8 @@ public class GiftsActivity extends AppCompatActivity {
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
+
+        llenarLista();
 
         AdapterRegalos adapter=new AdapterRegalos(gifts);
         listFavors.setAdapter(adapter);

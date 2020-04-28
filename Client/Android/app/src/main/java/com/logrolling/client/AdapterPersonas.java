@@ -26,7 +26,7 @@ public class AdapterPersonas extends RecyclerView.Adapter<AdapterPersonas.ViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaPersonas.size();
     }
 
     @Override

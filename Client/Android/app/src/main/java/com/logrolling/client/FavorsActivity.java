@@ -2,6 +2,7 @@ package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -33,10 +34,11 @@ public class FavorsActivity extends AppCompatActivity {
         constrainFilters =(ConstraintLayout)findViewById(R.id.filtros);
         constrainFilters.setVisibility(View.INVISIBLE);
 
-
         llenarLista();
 
         listFavors =(RecyclerView)findViewById(R.id.ListFavors);
+        listFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+
         AdapterFavores adapterLista=new AdapterFavores(favorsArray);
         listFavors.setAdapter(adapterLista);
 
@@ -62,7 +64,7 @@ public class FavorsActivity extends AppCompatActivity {
 
     private void llenarLista(){
         for(int i=0;i<10;i++) {
-            favorsArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000));
+            favorsArray.add(new Favor("Nombre "+i, "Descripcion "+i, "Direccion "+i, "Favor "+i, R.drawable.ic_person_black_24dp, i*1000, "Hasta mañana a las 12:00", "A 150m de ti"));
         }
     }
     //Panel Inferior
