@@ -3,8 +3,9 @@ IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no esté
 
 -SRS:
     
-    -Introducción y apartado 2 SRS:
-        -Adri, actualizarlo
+    -Introducción y apartado 2 SRS: Adri
+        -Añadir lista de cambios (redactar los cambios)
+	-Actualizarlo
     
     -Interfaces (gráficas, 3.1.1): Rubén
         -Actualizarlo
