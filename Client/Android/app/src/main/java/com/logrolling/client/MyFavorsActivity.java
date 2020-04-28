@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,17 +13,19 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MyFavorsActivity extends AppCompatActivity {
     public int blue = Color.parseColor("#2699FB");
     public int white = Color.parseColor("#FFFFFF");
-    private ListView listFavorsToBeDone, listDoneFavors;
+    private RecyclerView listFavorsToBeDone, listDoneFavors;
     private TextView numGrollies;
     private Button favorsDo, favorsAsked;
-    private String[] favorsDoneArray ={"Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio",
+    private ArrayList<Favor> favorsDoneArray; /*={"Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio",
             "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar",
-            "Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar"};
-    private String[] favorsAskedArray ={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
-            "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos", "Pedido2"};
+            "Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar"};*/
+    private ArrayList<Favor> favorsAskedArray;/*={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
+            "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos", "Pedido2"};*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +37,10 @@ public class MyFavorsActivity extends AppCompatActivity {
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        listDoneFavors =(ListView)findViewById(R.id.listaFavoresPedidos);
-        ArrayAdapter<String> adapterPedidos=new ArrayAdapter(this,R.layout.list_favores, favorsAskedArray);
+        listDoneFavors =(RecyclerView)findViewById(R.id.listaFavoresPedidos);
+        AdapterFavores adapterPedidos=new AdapterFavores(favorsAskedArray);
         listDoneFavors.setAdapter(adapterPedidos);
-        listDoneFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /* listDoneFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -45,11 +48,11 @@ public class MyFavorsActivity extends AppCompatActivity {
                 Intent i = new Intent(MyFavorsActivity.this, AskedFavorActivity.class);
                 startActivity(i);
             }
-        });
-        listFavorsToBeDone =(ListView)findViewById(R.id.listaFavoresARealizar);
-        ArrayAdapter<String> adapterARealizar=new ArrayAdapter(this,R.layout.list_favores, favorsDoneArray);
+        });*/
+        listFavorsToBeDone =(RecyclerView)findViewById(R.id.listaFavoresARealizar);
+        AdapterFavores adapterARealizar=new AdapterFavores(favorsDoneArray);
         listFavorsToBeDone.setAdapter(adapterARealizar);
-        listFavorsToBeDone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listFavorsToBeDone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,8 +60,14 @@ public class MyFavorsActivity extends AppCompatActivity {
                 Intent i = new Intent(MyFavorsActivity.this, FavorToBeDoneActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
         showAskedFavors();
+    }
+    private void llenarLista(){
+        for(int i=0;i<10;i++) {
+            favorsDoneArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000));
+            favorsAskedArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000));
+        }
     }
 
     public void favors(View view) {

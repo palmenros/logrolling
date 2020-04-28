@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,34 +35,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nombre"
-                    android:textSize="15sp" />
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/Price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Price" />
-
-                <TextView
-                    android:id="@+id/Favor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Favor"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/Adress"
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Adress" />
-
-                <TextView
-                    android:id="@+id/Descripcion"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="15dp"
-                    android:text="Descripcion" />
+                    android:text="9000" />
 
             </LinearLayout>
         </LinearLayout>
@@ -72,6 +55,8 @@
             android:layout_height="1dp"
             android:background="@color/grisClaro"
             android:layout_marginTop="11dp"/>
+
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

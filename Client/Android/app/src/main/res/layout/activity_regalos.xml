@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".GiftsActivity">
 
-    <ListView
-        android:id="@+id/ListaMensajes"
-        android:layout_width="412dp"
-        android:layout_height="589dp"
-        android:layout_marginTop="5dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaRegalos"
+        android:layout_width="417dp"
+        android:layout_height="587dp"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parteArriba" />

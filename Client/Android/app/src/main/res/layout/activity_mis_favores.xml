@@ -7,27 +7,26 @@
     android:background="@color/blancoSucio"
     tools:context=".MyFavorsActivity">
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaFavoresARealizar"
-        android:layout_width="398dp"
-        android:layout_height="506dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="408dp"
+        android:layout_height="555dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba">
+        app:layout_constraintTop_toBottomOf="@+id/favoresARealizar" >
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaFavoresPedidos"
-        android:layout_width="398dp"
-        android:layout_height="506dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="406dp"
+        android:layout_height="605dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba">
-
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/FavoresPedidos"
+        app:layout_constraintVertical_bias="0.109" />
 
     <TextView
         android:id="@+id/parteAbajo7"

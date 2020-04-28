@@ -34,35 +34,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nombre"
-                    android:textSize="15sp" />
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/Price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Price" />
-
-                <TextView
-                    android:id="@+id/Favor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Favor"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/Adress"
+                    android:id="@+id/last_message"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Adress" />
-
-                <TextView
-                    android:id="@+id/Descripcion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:text="Ultimo Mensaje"
                     android:layout_marginBottom="15dp"
-                    android:text="Descripcion" />
-
+                    android:layout_marginRight="10dp"
+                    />
             </LinearLayout>
         </LinearLayout>
 

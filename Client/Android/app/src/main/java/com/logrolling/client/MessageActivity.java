@@ -1,40 +1,50 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MessageActivity extends AppCompatActivity {
-    private ListView listChat;
-    private String[]chats={"Luis","Felipe","Olga","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe",
-            "Luis","Felipe","Luis","Felipe","Olga","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe","Luis","Felipe"};
+    private RecyclerView listChat;
+    private ArrayList<Persona>chats;
     private TextView numGrollies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensajes);
-        listChat =(ListView)findViewById(R.id.ListaMensajes);
+        listChat =(RecyclerView)findViewById(R.id.ListaMensajes);
+        listChat.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        ArrayAdapter<String> adapter=new ArrayAdapter(this,R.layout.list_favores, chats);
+        llenarLista();
+
+        AdapterPersonas adapter=new AdapterPersonas(chats);
         listChat.setAdapter(adapter);
-        listChat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        /*listChat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Lo que sea
-                Intent i = new Intent(MessageActivity.this, ChatPersonActivity.class);
+                Intent i = new Intent(MessageActivity.this, MessageActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
+    }
+
+    private void llenarLista(){
+        for(int i=0;i<10;i++) {
+            chats.add(new Persona("Persona "+i,"ultimo mensaje",R.drawable.ic_person_black_24dp));
+        }
     }
 
     //Panel Inferior
