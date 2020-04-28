@@ -31,13 +31,13 @@ public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHold
     @Override
     public void onBindViewHolder(@NonNull AdapterRegalos.ViewHolderRegalos holder, int position) {
         holder.name.setText(listaRegalos.get(position).getName());
-        holder.price.setText(listaRegalos.get(position).getPrice());
+        holder.price.setText(Integer.toString(listaRegalos.get(position).getPrice()));
         holder.photo.setImageResource(listaRegalos.get(position).getPhoto());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaRegalos.size();
     }
 
     public class ViewHolderRegalos extends RecyclerView.ViewHolder {

@@ -30,12 +30,12 @@ public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHold
         holder.photo.setImageResource(listaFavores.get(position).getPhoto());
         holder.adress.setText(listaFavores.get(position).getAdress());
         holder.favor.setText(listaFavores.get(position).getFavor());
-        holder.price.setText(listaFavores.get(position).getPrice());
+        holder.price.setText(Integer.toString(listaFavores.get(position).getPrice()));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaFavores.size();
     }
 
     public class ViewHolderFavor extends RecyclerView.ViewHolder {

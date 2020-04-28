@@ -2,6 +2,7 @@ package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -33,10 +34,11 @@ public class FavorsActivity extends AppCompatActivity {
         constrainFilters =(ConstraintLayout)findViewById(R.id.filtros);
         constrainFilters.setVisibility(View.INVISIBLE);
 
-
         llenarLista();
 
         listFavors =(RecyclerView)findViewById(R.id.ListFavors);
+        listFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+
         AdapterFavores adapterLista=new AdapterFavores(favorsArray);
         listFavors.setAdapter(adapterLista);
 

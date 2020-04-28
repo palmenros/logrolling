@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -21,10 +22,10 @@ public class MyFavorsActivity extends AppCompatActivity {
     private RecyclerView listFavorsToBeDone, listDoneFavors;
     private TextView numGrollies;
     private Button favorsDo, favorsAsked;
-    private ArrayList<Favor> favorsDoneArray; /*={"Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio",
+    private ArrayList<Favor> favorsDoneArray = new ArrayList<Favor>(); /*={"Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio",
             "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar",
             "Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar"};*/
-    private ArrayList<Favor> favorsAskedArray;/*={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
+    private ArrayList<Favor> favorsAskedArray = new ArrayList<Favor>();/*={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
             "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos", "Pedido2"};*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,10 @@ public class MyFavorsActivity extends AppCompatActivity {
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
         listDoneFavors =(RecyclerView)findViewById(R.id.listaFavoresPedidos);
+        listDoneFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+
+        llenarLista();
+
         AdapterFavores adapterPedidos=new AdapterFavores(favorsAskedArray);
         listDoneFavors.setAdapter(adapterPedidos);
        /* listDoneFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -49,7 +54,10 @@ public class MyFavorsActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });*/
+
         listFavorsToBeDone =(RecyclerView)findViewById(R.id.listaFavoresARealizar);
+        listFavorsToBeDone.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+
         AdapterFavores adapterARealizar=new AdapterFavores(favorsDoneArray);
         listFavorsToBeDone.setAdapter(adapterARealizar);
         /*listFavorsToBeDone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
