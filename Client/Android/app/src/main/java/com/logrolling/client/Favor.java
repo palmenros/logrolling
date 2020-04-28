@@ -1,8 +1,8 @@
 package com.logrolling.client;
 
 public class Favor {
-    private String name,description,adress,favor;
-    private int photo,price;
+    private String name, description, adress, favor;
+    private int photo, price;
 
     public Favor(){
 
