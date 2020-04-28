@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MessageActivity extends AppCompatActivity {
     private RecyclerView listChat;
-    private ArrayList<Persona>chats;
+    private ArrayList<Persona> chats = new ArrayList<Persona>();
     private TextView numGrollies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

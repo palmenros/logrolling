@@ -6,15 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".FavorsActivity">
 
-    <ListView
-        android:id="@+id/ListaMensajes"
-        android:layout_width="409dp"
-        android:layout_height="564dp"
-        android:layout_marginTop="5dp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListFavors"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/filtros"
