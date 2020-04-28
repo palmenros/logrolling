@@ -15,6 +15,8 @@ public class MessageActivity extends AppCompatActivity {
     private RecyclerView listChat;
     private ArrayList<Persona> chats = new ArrayList<Persona>();
     private TextView numGrollies;
+    private AdapterPersonas adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class MessageActivity extends AppCompatActivity {
 
         llenarLista();
 
-        AdapterPersonas adapter=new AdapterPersonas(chats);
+        adapter = new AdapterPersonas(chats);
         listChat.setAdapter(adapter);
 
         /*listChat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,6 +47,8 @@ public class MessageActivity extends AppCompatActivity {
         for(int i=0;i<10;i++) {
             chats.add(new Persona("Persona "+i,"ultimo mensaje",R.drawable.ic_person_black_24dp));
         }
+
+        //adapter.notifyDataSetChanged();
     }
 
     //Panel Inferior

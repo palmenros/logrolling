@@ -27,11 +27,11 @@ public class MyProfileActivity extends AppCompatActivity {
 
 
     //Panel Inferior
-    public void favores(View view) {
+    public void favors(View view) {
         Intent i = new Intent(this, FavorsActivity.class);
         startActivity(i);
     }
-    public void misFavores(View view) {
+    public void myFavors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
