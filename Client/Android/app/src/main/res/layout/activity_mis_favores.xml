@@ -9,22 +9,24 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaFavoresARealizar"
-        android:layout_width="408dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toTopOf="@+id/Nada"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/listaFavoresPedidos"
         app:layout_constraintTop_toBottomOf="@+id/favoresARealizar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaFavoresPedidos"
-        android:layout_width="406dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toTopOf="@+id/Nada"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favoresARealizar"
         app:layout_constraintVertical_bias="0.109" />
 

@@ -1,10 +1,14 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -28,6 +32,34 @@ public class MessageActivity extends AppCompatActivity {
         listChat =(RecyclerView)findViewById(R.id.ListaMensajes);
         listChat.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
+
+        RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
+            private Drawable mDivider = getResources().getDrawable(R.drawable.message_separator_line);
+
+            @Override
+            public void onDraw(Canvas canvas, RecyclerView parent, RecyclerView.State state) {
+                int dividerLeft = parent.getPaddingLeft();
+                int dividerRight = parent.getWidth() - parent.getPaddingRight();
+
+                int childCount = parent.getChildCount();
+                for (int i = 0; i <= childCount - 2; i++) {
+                    View child = parent.getChildAt(i);
+
+                    RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+
+                    int dividerTop = child.getBottom() + params.bottomMargin;
+                    int dividerBottom = dividerTop + mDivider.getIntrinsicHeight();
+
+                    mDivider.setBounds(dividerLeft, dividerTop, dividerRight, dividerBottom);
+                    mDivider.draw(canvas);
+                }
+            }
+        };
+
+
+        listChat.addItemDecoration(decoration);
+
+
         llenarLista();
 
         adapter = new AdapterPersonas(chats);
@@ -45,7 +77,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void llenarLista(){
-        for(int i=0;i<10;i++) {
+        for(int i=0;i<5;i++) {
             chats.add(new Persona("Persona "+i,"ultimo mensaje",R.drawable.ic_person_black_24dp));
         }
     }
