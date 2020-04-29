@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:minWidth ="100000dp"
+    android:layout_height="wrap_content"
+
+    android:paddingLeft="30sp"
+    android:paddingRight="30sp"
+    android:paddingTop="10sp"
+    android:paddingBottom="0sp"
+    >
+
+    <TextView
+
+        android:maxWidth="300dp"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/IdDato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

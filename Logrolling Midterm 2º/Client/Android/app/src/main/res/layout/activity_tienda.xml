@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondotienda"
+    tools:context=".ShopActivity">
+
+    <ScrollView
+        android:layout_width="413dp"
+        android:layout_height="577dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ParteArriba">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="401dp"
+                android:layout_height="673dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="73dp"
+                    android:layout_height="582dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/fondotienda"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/compraraux1" />
+
+                <Button
+                    android:id="@+id/registrarse2"
+                    android:layout_width="91dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/azul"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="TenGrollies"
+                    android:text="@string/Gratis"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blanco"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/registrarse4"
+                    android:layout_width="91dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/azul"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="TwelveThousandGrollies"
+                    android:text="@string/Cinco"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blanco"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/registrarse" />
+
+                <Button
+                    android:id="@+id/registrarse5"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="62dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/azul"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="NinetyThousandGrollies"
+                    android:text="@string/Treinta"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blanco"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/registrarse3" />
+
+                <Button
+                    android:id="@+id/registrarse3"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/azul"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="FortyThousandGrollies"
+                    android:text="@string/Quince"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blanco"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/registrarse4" />
+
+                <Button
+                    android:id="@+id/registrarse"
+                    android:layout_width="91dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="58dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/azul"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="TwoThousandGrollies"
+                    android:text="@string/Uno"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blanco"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/registrarse2" />
+
+                <Button
+                    android:id="@+id/registrarse6"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="58dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/azul"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="TwoHundredThousandGrollies"
+                    android:text="@string/Sesenta"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blanco"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/registrarse5" />
+
+                <ImageView
+                    android:id="@+id/logoGrollies7"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="66dp"
+                    app:layout_constraintStart_toEndOf="@+id/diez5"
+                    app:layout_constraintTop_toBottomOf="@+id/logoGrollies6"
+                    app:srcCompat="@drawable/grollies" />
+
+                <ImageView
+                    android:id="@+id/logoGrollies6"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="66dp"
+                    app:layout_constraintStart_toEndOf="@+id/diez4"
+                    app:layout_constraintTop_toBottomOf="@+id/logoGrollies5"
+                    app:srcCompat="@drawable/grollies" />
+
+                <ImageView
+                    android:id="@+id/logoGrollies5"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="66dp"
+                    app:layout_constraintStart_toEndOf="@+id/diez2"
+                    app:layout_constraintTop_toBottomOf="@+id/logoGrollies4"
+                    app:srcCompat="@drawable/grollies" />
+
+                <ImageView
+                    android:id="@+id/logoGrollies4"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="67dp"
+                    app:layout_constraintStart_toEndOf="@+id/diez2"
+                    app:layout_constraintTop_toBottomOf="@+id/logoGrollies3"
+                    app:srcCompat="@drawable/grollies" />
+
+                <ImageView
+                    android:id="@+id/logoGrollies3"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="67dp"
+                    app:layout_constraintStart_toEndOf="@+id/diez"
+                    app:layout_constraintTop_toBottomOf="@+id/logoGrollies2"
+                    app:srcCompat="@drawable/grollies" />
+
+                <ImageView
+                    android:id="@+id/logoGrollies2"
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintStart_toEndOf="@+id/Diez"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/grollies" />
+
+                <TextView
+                    android:id="@+id/diez5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="56dp"
+                    android:text="@string/DosCientosMil"
+                    android:textColor="@color/negro"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/diez4" />
+
+                <TextView
+                    android:id="@+id/diez4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="57dp"
+                    android:text="@string/NoventaMil"
+                    android:textColor="@color/negro"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/diez3" />
+
+                <TextView
+                    android:id="@+id/diez3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="57dp"
+                    android:text="@string/CuarentaMil"
+                    android:textColor="@color/negro"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/diez2" />
+
+                <TextView
+                    android:id="@+id/diez2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="57dp"
+                    android:text="@string/DoceMil"
+                    android:textColor="@color/negro"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/diez" />
+
+                <TextView
+                    android:id="@+id/diez"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="57dp"
+                    android:text="@string/DosMil"
+                    android:textColor="@color/negro"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/Diez" />
+
+                <TextView
+                    android:id="@+id/Diez"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/Diez"
+                    android:textColor="@color/negro"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/restantes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="92dp"
+                    android:layout_marginLeft="92dp"
+                    android:layout_marginTop="37dp"
+                    android:text="@string/restantes"
+                    android:textColor="@color/negro"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/ParteArriba"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Tienda"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:background="@color/azul"
+        android:text="@string/Tienda"
+        android:textColor="@color/blanco"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/ParteArriba"
+        app:layout_constraintEnd_toEndOf="@+id/ParteArriba"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CuadoGrollies"
+        android:layout_width="134dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/blanco"
+        app:layout_constraintBottom_toBottomOf="@+id/ParteArriba"
+        app:layout_constraintStart_toStartOf="@+id/ParteArriba"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/comprarGrollies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/blanco"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/CuadoGrollies"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <ImageView
+        android:id="@+id/logoGrollies"
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/CuadoGrollies"
+        app:layout_constraintTop_toTopOf="@+id/CuadoGrollies"
+        app:srcCompat="@drawable/grollies" />
+
+    <TextView
+        android:id="@+id/grollies"
+        android:layout_width="62dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="11dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CuadoGrollies"
+        app:layout_constraintTop_toTopOf="@+id/CuadoGrollies"
+        tools:text="grollies" />
+
+    <TextView
+        android:id="@+id/ParteAbajo"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Regalos"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="#2699FB"
+        android:onClick="gifts"
+        android:text="@string/Regalos"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Mensajes" />
+
+    <TextView
+        android:id="@+id/misFvores"
+        android:layout_width="82dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="myFavors"
+        android:text="@string/MisFavores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/favores" />
+
+    <TextView
+        android:id="@+id/Mensajes"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="messages"
+        android:text="@string/Mensajes"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/misFvores" />
+
+    <TextView
+        android:id="@+id/favores"
+        android:layout_width="55dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="favors"
+        android:text="@string/Favores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Configuracion"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="configuration"
+        android:text="@string/Configuracion"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Regalos" />
+
+    <ImageView
+        android:id="@+id/configIcon5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="configuration"
+        app:layout_constraintEnd_toEndOf="@+id/Configuracion"
+        app:layout_constraintStart_toStartOf="@+id/Configuracion"
+        app:layout_constraintTop_toTopOf="@+id/ParteAbajo"
+        app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+    <ImageView
+        android:id="@+id/misFavoresIcon7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="myFavors"
+        app:layout_constraintEnd_toEndOf="@+id/misFvores"
+        app:layout_constraintStart_toStartOf="@+id/misFvores"
+        app:layout_constraintTop_toTopOf="@+id/ParteAbajo"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <ImageView
+        android:id="@+id/mensajesIcon6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:onClick="messages"
+        app:layout_constraintEnd_toEndOf="@+id/Mensajes"
+        app:layout_constraintStart_toStartOf="@+id/Mensajes"
+        app:layout_constraintTop_toTopOf="@+id/ParteAbajo"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
+
+    <ImageView
+        android:id="@+id/regalosIcon6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:onClick="gifts"
+        app:layout_constraintEnd_toEndOf="@+id/Regalos"
+        app:layout_constraintStart_toStartOf="@+id/Regalos"
+        app:layout_constraintTop_toTopOf="@+id/ParteAbajo"
+        app:srcCompat="@drawable/ic_card_giftcard_black_24dp" />
+
+    <ImageView
+        android:id="@+id/favoresIcon6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="favors"
+        app:layout_constraintEnd_toEndOf="@+id/favores"
+        app:layout_constraintStart_toStartOf="@+id/favores"
+        app:layout_constraintTop_toTopOf="@+id/ParteAbajo"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

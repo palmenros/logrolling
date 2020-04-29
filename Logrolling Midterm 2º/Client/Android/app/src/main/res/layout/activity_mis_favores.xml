@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blancoSucio"
+    tools:context=".MyFavorsActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaFavoresARealizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/Nada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/listaFavoresPedidos"
+        app:layout_constraintTop_toBottomOf="@+id/favoresARealizar">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaFavoresPedidos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/Nada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favoresARealizar"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <TextView
+        android:id="@+id/parteAbajo7"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/misFavores6"
+        android:layout_width="82dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:text="@string/MisFavores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/favores5" />
+
+    <TextView
+        android:id="@+id/mensajes5"
+        android:layout_width="65dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="messages"
+        android:text="@string/Mensajes"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/misFavores6" />
+
+    <TextView
+        android:id="@+id/regalos5"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="gifts"
+        android:text="@string/Regalos"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mensajes5" />
+
+    <TextView
+        android:id="@+id/favores5"
+        android:layout_width="55dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="favors"
+        android:text="@string/Favores"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteAbajo7"
+        app:layout_constraintStart_toStartOf="@+id/parteAbajo7" />
+
+    <TextView
+        android:id="@+id/parteAbajo8"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/azul"
+        android:onClick="configuration"
+        android:text="@string/Configuracion"
+        android:textColor="@color/blanco"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/regalos5" />
+
+    <ImageView
+        android:id="@+id/regalosIcon3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:onClick="gifts"
+        app:layout_constraintEnd_toEndOf="@+id/regalos5"
+        app:layout_constraintStart_toStartOf="@+id/regalos5"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo7"
+        app:srcCompat="@drawable/ic_card_giftcard_black_24dp" />
+
+    <ImageView
+        android:id="@+id/mensajesIcon3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:onClick="messages"
+        app:layout_constraintEnd_toEndOf="@+id/mensajes5"
+        app:layout_constraintStart_toStartOf="@+id/mensajes5"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo7"
+        app:srcCompat="@drawable/ic_message_black_24dp" />
+
+    <ImageView
+        android:id="@+id/misFavoresIcon4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/misFavores6"
+        app:layout_constraintStart_toStartOf="@+id/misFavores6"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo7"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <ImageView
+        android:id="@+id/favoresIcon3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="favors"
+        app:layout_constraintEnd_toEndOf="@+id/favores5"
+        app:layout_constraintStart_toStartOf="@+id/favores5"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo7"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    <ImageView
+        android:id="@+id/configIcon3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="configuration"
+        app:layout_constraintEnd_toEndOf="@+id/parteAbajo8"
+        app:layout_constraintStart_toStartOf="@+id/parteAbajo8"
+        app:layout_constraintTop_toTopOf="@+id/parteAbajo7"
+        app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+    <TextView
+        android:id="@+id/parteArriba"
+        android:layout_width="413dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CuadroGrollies"
+        android:layout_width="134dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/blanco"
+        android:onClick="buyGrollies"
+        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintStart_toStartOf="@+id/parteArriba"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/grollies"
+        android:layout_width="62dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="11dp"
+        android:onClick="buyGrollies"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
+        app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+        tools:text="grollies" />
+
+    <ImageView
+        android:id="@+id/comprarGrollies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/blanco"
+        android:onClick="buyGrollies"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <ImageView
+        android:id="@+id/grollies_logo"
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="8dp"
+        android:onClick="buyGrollies"
+        app:layout_constraintStart_toStartOf="@+id/CuadroGrollies"
+        app:layout_constraintTop_toTopOf="@+id/CuadroGrollies"
+        app:srcCompat="@drawable/grollies" />
+
+    <TextView
+        android:id="@+id/MisFavores"
+        android:layout_width="185dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/azul"
+        android:text="@string/MisFavores"
+        android:textColor="@color/blanco"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintStart_toEndOf="@+id/comprarGrollies"
+        app:layout_constraintTop_toTopOf="@+id/parteArriba" />
+
+    <TextView
+        android:id="@+id/Nada"
+        android:layout_width="414dp"
+        android:layout_height="59dp"
+        android:background="@color/blancoSucio"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/PedirFavor"
+        android:layout_width="283dp"
+        android:layout_height="42dp"
+        android:background="@color/blanco"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/rubik"
+        android:onClick="askFavor"
+        android:text="@string/PedirFavor"
+        android:textColor="@color/azul"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Nada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Nada" />
+
+    <Button
+        android:id="@+id/favoresARealizar"
+        android:layout_width="197dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/azul"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/rubik"
+        android:onClick="showFavorsToBeDone"
+        android:text="@string/FavoresARealizar"
+        android:textColor="@color/blanco"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+
+    <Button
+        android:id="@+id/FavoresPedidos"
+        android:layout_width="197dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/azul"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/rubik"
+        android:onClick="showAskedFavors"
+        android:text="@string/FavoresPedidos"
+        android:textColor="@color/blanco"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
