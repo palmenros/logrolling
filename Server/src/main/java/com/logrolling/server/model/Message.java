@@ -1,5 +1,7 @@
 package com.logrolling.server.model;
 
+import com.logrolling.server.transfer.TransferMessage;
+
 import java.util.Date;
 
 public class Message {
@@ -22,6 +24,13 @@ public class Message {
         this.content = content;
     }
 
+    public Message(TransferMessage m) {
+        this.id = m.getId();
+        this.from = m.getFrom();
+        this.to = m.getTo();
+        this.content = m.getContent();
+    }
+
     public Integer getId(){ return id; }
 
     public void setId(int id){ this.id = id; }
@@ -37,7 +46,5 @@ public class Message {
     public String getTo(){ return to; }
 
     public void setTo(String to){ this.to = to; }
-
-
 
 }

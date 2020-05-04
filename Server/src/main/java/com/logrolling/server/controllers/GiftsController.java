@@ -29,13 +29,13 @@ public class GiftsController {
 
     @GET
     @Path("/{title}")
-    public TransferGift getGiftbyTitle(@PathParam("title") String title) {
+    public TransferGift getGiftByTitle(@PathParam("title") String title) {
         return new TransferGift(GiftsManager.getGiftByTitle(title));
     }
 
     @GET
     @Path("/price/{price}")
-    public List<TransferGift> getGiftsbyPrice(@PathParam("price") int price){
+    public List<TransferGift> getGiftsByPrice(@PathParam("price") int price){
         List<Gift> gifts = GiftsManager.getGiftsByPrice(price);
         List<TransferGift> transfers = new ArrayList<TransferGift>();
         for (Gift g : gifts) {
@@ -46,7 +46,7 @@ public class GiftsController {
 
     @GET
     @Path("/content/{content}")
-    public List<TransferGift> getGifsByContent(@PathParam("content") String content){
+    public List<TransferGift> getGiftsByContent(@PathParam("content") String content){
         List<Gift> gifts = GiftsManager.getGiftsByContent(content);
         List<TransferGift> transfers = new ArrayList<TransferGift>();
         for (Gift g : gifts) {
@@ -57,7 +57,7 @@ public class GiftsController {
 
     @POST
     public Response addGift(TransferGift g) {
-        if(GiftsManager.alreadyAddedGift(g.getTitle()) == false) {
+        if(!GiftsManager.alreadyAddedGift(g.getTitle())) {
             GiftsManager.createGift(new Gift(g));
             return Response.status(Response.Status.CREATED).entity("Succesfully created").build();
         }
@@ -66,7 +66,7 @@ public class GiftsController {
 
     @PUT
     public Response updateGiftByName(TransferGift newGift) {
-        if(GiftsManager.alreadyAddedGift(newGift.getTitle()) == true) {
+        if(GiftsManager.alreadyAddedGift(newGift.getTitle())) {
             Gift gift = new Gift(newGift.getId(), newGift.getTitle(), newGift.getContent(), newGift.getPrice());
             GiftsManager.updateGift(gift);
             return Response.status(Response.Status.OK).entity("Succesfully updated").build();
@@ -76,7 +76,7 @@ public class GiftsController {
 
     @DELETE
     public Response deleteGift(@HeaderParam("title") String title) {
-        if(GiftsManager.alreadyAddedGift(title) == true) {
+        if(GiftsManager.alreadyAddedGift(title)) {
             GiftsManager.deleteGift(GiftsManager.getGiftByTitle(title));
             return Response.status(Response.Status.OK).entity("Deleted").build();
         }
