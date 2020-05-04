@@ -12,9 +12,10 @@ public class TransferFavor {
     private int reward;
     private Coordinates coordinates;
     private String worker;
+    private boolean completed;
     //Rest of attributes from favor
 
-    public TransferFavor(int id, String creator,  String title, String description, Integer dueTime, int reward, Coordinates coordinates, String worker) {
+    public TransferFavor(int id, String creator,  String title, String description, Integer dueTime, int reward, Coordinates coordinates, String worker, boolean completed) {
         this.id = id;
         this.creator = creator;
         this.title = title;
@@ -23,10 +24,11 @@ public class TransferFavor {
         this.reward = reward;
         this.coordinates = coordinates;
         this.worker = worker;
+        this.completed = completed;
     }
 
     public TransferFavor(Favor favor) {
-        this(favor.getId(), favor.getCreator(), favor.getTitle(), favor.getDescription(), favor.getDueTime(), favor.getReward(), favor.getCoordinates(), favor.getWorker());
+        this(favor.getId(), favor.getCreator(), favor.getTitle(), favor.getDescription(), favor.getDueTime(), favor.getReward(), favor.getCoordinates(), favor.getWorker(), favor.getCompleted());
     }
 
     public TransferFavor() {
@@ -73,5 +75,9 @@ public class TransferFavor {
     public String getWorker(){ return worker; }
 
     public void setWorker(String worker){ this.worker = worker; }
+
+    public boolean getCompleted(){ return completed; }
+
+    public void setCompleted(boolean b){ this.completed = b; }
 
 }

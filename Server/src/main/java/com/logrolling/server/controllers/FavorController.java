@@ -4,6 +4,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import com.logrolling.server.database.managers.FavorManager;
+import com.logrolling.server.database.migrations.FavorMigration;
 import com.logrolling.server.exceptions.UnauthorizedException;
 import com.logrolling.server.model.Favor;
 import com.logrolling.server.model.Filter;
@@ -19,8 +20,9 @@ import java.util.List;
 public class FavorController extends AuthenticableController {
 
     @GET
-    public List<TransferFavor> getAvailableFavors(){
-        List<Favor> favors = FavorManager.getAllFavors();
+    public List<TransferFavor> getAvailableFavors(@HeaderParam("token") String token){
+        String username = authenticateWithToken(token);
+        List<Favor> favors = FavorManager.getAvailableFavors(username);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
@@ -30,8 +32,9 @@ public class FavorController extends AuthenticableController {
 
     @GET
     @Path("/filter")
-    public List<TransferFavor> getFavorsFromFilter(Filter filter) {
-        List<Favor> favors = FavorManager.getFavorsByFilter(filter);
+    public List<TransferFavor> getFavorsFromFilter(@HeaderParam("token") String token, Filter filter) {
+        String username = authenticateWithToken(token);
+        List<Favor> favors = FavorManager.getFavorsByFilter(username, filter);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
@@ -51,12 +54,32 @@ public class FavorController extends AuthenticableController {
         return transfers;
     }
 
-    // TODO: Review from here and change
+    @PUT
+    @Path("@do")
+    public void doFavor(@HeaderParam("id") int id, @HeaderParam("token") String token){
+        String username = authenticateWithToken(token);
+        FavorManager.doFavor(id, username);
+    }
+
+    @PUT
+    @Path("@complete")
+    public void completeFavor(@HeaderParam("id") int id, @HeaderParam("token") String token){
+        String username = authenticateWithToken(token);
+
+        if(FavorManager.getFavorById(id).getCreator().equals(username)) {
+            //Favor was created by current user
+            FavorManager.completeFavor(id);
+        } else {
+            throw new UnauthorizedException();
+        }
+    }
+
     @GET
     @Path("/awarded")
-    public List<TransferFavor> getAwardedFavors() {
-        List<Favor> favors = FavorManager.getAwardedFavors();
+    public List<TransferFavor> getAwardedFavors(@HeaderParam("token") String token) {
+        String username = authenticateWithToken(token);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
+        List<Favor> favors = FavorManager.getAwardedFavors(username);
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
         }
@@ -66,8 +89,12 @@ public class FavorController extends AuthenticableController {
     @POST
     public void addFavor(TransferFavor f, @HeaderParam("token") String token) {
         String username = authenticateWithToken(token);
-        f.setCreator(username);
-        FavorManager.createFavor(new Favor(f));
+        if(f.getCreator().equals(username)) {
+            //Favor was created by current user
+            FavorManager.createFavor(new Favor(f));
+        } else {
+            throw new UnauthorizedException();
+        }
     }
 
     @PUT
@@ -80,7 +107,6 @@ public class FavorController extends AuthenticableController {
         } else {
             throw new UnauthorizedException();
         }
-
     }
     
     @DELETE
@@ -93,7 +119,6 @@ public class FavorController extends AuthenticableController {
         } else {
             throw new UnauthorizedException();
         }
-
     }
 
 }

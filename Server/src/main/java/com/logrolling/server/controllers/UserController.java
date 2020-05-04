@@ -14,6 +14,8 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserController extends AuthenticableController {
 
+    static final int INITIAL_GROLLIES = 100;
+
     @GET
     public List<TransferUser> getUsers()  {
         List<TransferUser> transferList = new ArrayList<TransferUser>();
@@ -24,13 +26,10 @@ public class UserController extends AuthenticableController {
         return transferList;
     }
 
-    /*
-    TODO: Uncomment
     @POST
     public void createUser(String username, String password){
-        UserManager.createUser(new User(username, password, 100));
+        UserManager.createUser(new User(username, password, INITIAL_GROLLIES));
     }
-    */
 
     @PUT
     public void updateUserByName(TransferUser newUser){
@@ -44,8 +43,8 @@ public class UserController extends AuthenticableController {
     }
 
     @GET
-    @Path("/{username}")
-    public TransferUser getUserByName(@PathParam("username") String username){
+    @Path("/user")
+    public TransferUser getUserByName(@HeaderParam("username") String username){
         return new TransferUser(UserManager.getUserByName(username));
     }
 

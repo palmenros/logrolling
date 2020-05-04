@@ -12,6 +12,7 @@ public class Favor {
     private int reward;
     private Coordinates coordinates;
     private String worker;
+    private boolean completed;
 
     public Favor(int id, String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude) {
         this.id = id;
@@ -22,6 +23,7 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = null;
+        this.completed = false;
     }
 
     public Favor(String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude) {
@@ -32,6 +34,7 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = null;
+        this.completed = false;
     }
 
     public Favor(int id, String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker) {
@@ -43,6 +46,7 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = worker;
+        this.completed = false;
     }
 
     public Favor(String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker) {
@@ -53,6 +57,7 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = worker;
+        this.completed = false;
     }
 
     public Favor(TransferFavor f){
@@ -63,6 +68,7 @@ public class Favor {
         this.reward = f.getReward();
         this.coordinates = f.getCoordinates();
         this.worker = f.getWorker();
+        this.completed = f.getCompleted();
     }
 
     public int getId() {
@@ -114,5 +120,8 @@ public class Favor {
 
     public void setWorker(String worker){ this.worker = worker; }
 
+    public boolean getCompleted(){ return completed; }
+
+    public void setCompleted(boolean b){ this.completed = b; }
 
 }

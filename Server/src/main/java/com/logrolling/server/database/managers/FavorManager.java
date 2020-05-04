@@ -132,7 +132,7 @@ public class FavorManager {
         );
     }
 
-    public static List<Favor> getFavorsByFilter(Filter filter){
+    public static List<Favor> getFavorsByFilter(String username, Filter filter){
         List<Favor> favors = new ArrayList<Favor>();
 
         Database db = DatabaseFactory.createInstance();
@@ -179,7 +179,7 @@ public class FavorManager {
         return favors;
     }
 
-    public static List<Favor> getAwardedFavors(){
+    public static List<Favor> getAwardedFavors(String username){
 
         List<Favor> favors = new ArrayList<Favor>();
 
@@ -199,6 +199,7 @@ public class FavorManager {
         return favors;
     }
 
+    // DELETE
     public static List<Favor> getNonAwardedFavors(){
 
         List<Favor> favors = new ArrayList<Favor>();
@@ -265,4 +266,13 @@ public class FavorManager {
         }
         return favor;
     }
+
+    public static void doFavor(int id, String username){
+
+    }
+
+    public static void completeFavor(int id) {
+
+    }
+
 }
