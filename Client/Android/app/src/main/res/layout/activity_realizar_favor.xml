@@ -7,7 +7,7 @@
     tools:context=".DoFavorActivity">
 
     <ScrollView
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="480dp"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -197,7 +197,7 @@
 
     <TextView
         android:id="@+id/parteArriba"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
@@ -209,7 +209,7 @@
 
     <TextView
         android:id="@+id/MensajesTit"
-        android:layout_width="242dp"
+        android:layout_width="200dp"
         android:layout_height="37dp"
         android:background="@color/azul"
         android:text="@string/RealizarFavor"
@@ -226,8 +226,8 @@
         android:id="@+id/CuadroGrollies"
         android:layout_width="134dp"
         android:layout_height="47dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@color/blanco"
         android:onClick="buyGrollies"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"

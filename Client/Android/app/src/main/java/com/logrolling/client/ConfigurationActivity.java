@@ -1,17 +1,21 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 public class ConfigurationActivity extends AppCompatActivity {
-
+    private ConstraintLayout popUpSignOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
+        popUpSignOut=(ConstraintLayout)findViewById(R.id.PopUpSignOut);
+        popUpSignOut.setVisibility(View.INVISIBLE);
+
     }
 
 
@@ -46,7 +50,18 @@ public class ConfigurationActivity extends AppCompatActivity {
         Intent i = new Intent(this, MyProfileActivity.class);
         startActivity(i);
     }
-    public void signOut(View view) {
 
+    //SignOut
+    public void signOut(View view) {
+        showSignOutConfirm(view);
+    }
+    public void showSignOutConfirm(View view){
+        popUpSignOut.setVisibility(View.VISIBLE);
+    }
+    public void closeSignOutConfirm(View view){
+        popUpSignOut.setVisibility(View.INVISIBLE);
+    }
+    public void signOutConfirmed(View view) {
+        closeSignOutConfirm(view);
     }
 }

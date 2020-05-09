@@ -8,15 +8,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListaMensajes"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/EscribirMensaje"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
 
     <TextView
         android:id="@+id/parteAbajo"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
@@ -112,7 +113,7 @@
 
     <TextView
         android:id="@+id/parteArriba"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
@@ -127,8 +128,6 @@
         android:id="@+id/NombreChatTitulo"
         android:layout_width="218dp"
         android:layout_height="36dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
         android:background="@color/azul"
         android:text="NombreChat"
         android:textColor="@color/blanco"
@@ -137,7 +136,7 @@
         app:fontFamily="@font/rubik"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
         app:layout_constraintEnd_toEndOf="@+id/parteArriba"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/FotoPerfil"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -197,18 +196,6 @@
         app:srcCompat="@drawable/ic_settings_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
-    <ImageButton
-        android:id="@+id/enviarMensaje"
-        android:layout_width="40dp"
-        android:layout_height="46dp"
-        android:background="@color/blanco"
-        android:onClick="write"
-        android:tint="@color/azul"
-        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/EscribirMensaje"
-        app:srcCompat="@drawable/ic_send_black_24dp" />
-
     <ImageView
         android:id="@+id/Atras"
         android:layout_width="50dp"
@@ -225,30 +212,35 @@
         android:layout_height="57dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
-        app:layout_constraintEnd_toStartOf="@+id/NombreChatTitulo"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/ListaMensajes"
         app:layout_constraintStart_toEndOf="@+id/Atras"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="@+id/parteArriba"
         app:srcCompat="@drawable/ic_person_white_24dp"
         tools:ignore="VectorDrawableCompat" />
 
     <EditText
         android:id="@+id/EscribirMensaje"
-        android:layout_width="373dp"
+        android:layout_width="0dp"
         android:layout_height="47dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
         android:background="@color/blanco"
         android:ems="10"
         android:hint="@string/Escribe"
         android:inputType="textShortMessage|textLongMessage|text"
         android:textColor="@color/grisClaro"
         app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/enviarMensaje"
+        android:layout_width="40dp"
+        android:layout_height="46dp"
+        android:background="@color/blanco"
+        android:onClick="write"
+        android:tint="@color/azul"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/EscribirMensaje"
+        app:srcCompat="@drawable/ic_send_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

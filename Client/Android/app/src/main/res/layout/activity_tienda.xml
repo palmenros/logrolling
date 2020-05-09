@@ -8,7 +8,8 @@
     tools:context=".ShopActivity">
 
     <ScrollView
-        android:layout_width="413dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
         android:layout_height="577dp"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +22,7 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="401dp"
+                android:layout_width="match_parent"
                 android:layout_height="673dp">
 
                 <ImageView
@@ -318,12 +319,13 @@
 
     <TextView
         android:id="@+id/ParteArriba"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -348,8 +350,8 @@
         android:id="@+id/CuadoGrollies"
         android:layout_width="134dp"
         android:layout_height="47dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@color/blanco"
         app:layout_constraintBottom_toBottomOf="@+id/ParteArriba"
         app:layout_constraintStart_toStartOf="@+id/ParteArriba"
@@ -538,5 +540,206 @@
         app:layout_constraintStart_toStartOf="@+id/favores"
         app:layout_constraintTop_toTopOf="@+id/ParteAbajo"
         app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopUpConfirm2"
+        android:layout_width="0dp"
+        android:layout_height="411dp"
+        android:background="#00C5BFBF"
+        app:layout_constraintBottom_toTopOf="@+id/ParteAbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="280dp"
+            android:layout_height="368dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/okButton"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/verde"
+                android:fadingEdge="horizontal|vertical"
+                android:fontFamily="@font/rubik"
+                android:onClick="confirmedShop"
+                android:text="@string/Confirmar"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/green"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/verde"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/tick"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/green"
+                app:layout_constraintEnd_toEndOf="@+id/green"
+                app:layout_constraintStart_toStartOf="@+id/green"
+                app:layout_constraintTop_toTopOf="@+id/green"
+                app:srcCompat="@drawable/ic_check_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/menssageOk"
+                android:layout_width="0dp"
+                android:layout_height="89dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/ConfirmacionCompra"
+                android:textColor="@color/negro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/green" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/closeCross"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:onClick="closeConfirmationPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        <ImageView
+            android:id="@+id/closeCircle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:onClick="closeConfirmationPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopUpError1"
+        android:layout_width="0dp"
+        android:layout_height="411dp"
+        android:background="#00C5BFBF"
+        app:layout_constraintBottom_toTopOf="@+id/ParteAbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        app:layout_constraintTop_toTopOf="@+id/scrollView2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="280dp"
+            android:layout_height="368dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/okButtonred"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/rojo"
+                android:fadingEdge="horizontal|vertical"
+                android:fontFamily="@font/rubik"
+                android:text="Close"
+                android:textColor="@color/blanco"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/red"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/rojo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/stop"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/red"
+                app:layout_constraintEnd_toEndOf="@+id/red"
+                app:layout_constraintStart_toStartOf="@+id/red"
+                app:layout_constraintTop_toTopOf="@+id/red"
+                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/messageError"
+                android:layout_width="0dp"
+                android:layout_height="89dp"
+                android:text="Texto de ejemplo"
+                android:textColor="@color/negro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/red" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/closeCross2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        <ImageView
+            android:id="@+id/closeCircle2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

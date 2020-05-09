@@ -7,15 +7,67 @@
     android:background="@color/blancoSucio"
     tools:context=".MyFavorsActivity">
 
+    <LinearLayout
+        android:id="@+id/botonesmisFavores"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba">
+
+        <Button
+            android:id="@+id/favoresARealizar2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@color/azul"
+            android:fadingEdge="horizontal|vertical"
+            android:fontFamily="@font/rubik"
+            android:onClick="showFavorsToBeDone"
+            android:text="@string/FavoresARealizar"
+            android:textColor="@color/blanco"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+
+        <Button
+            android:id="@+id/favoresPedidos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:background="@color/azul"
+            android:fadingEdge="horizontal|vertical"
+            android:fontFamily="@font/rubik"
+            android:onClick="showAskedFavors"
+            android:text="@string/FavoresPedidos"
+            android:textColor="@color/blanco"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaFavoresARealizar"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toTopOf="@+id/Nada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/listaFavoresPedidos"
-        app:layout_constraintTop_toBottomOf="@+id/favoresARealizar">
+        app:layout_constraintTop_toBottomOf="@+id/botonesmisFavores">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -23,12 +75,12 @@
         android:id="@+id/listaFavoresPedidos"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toTopOf="@+id/Nada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favoresARealizar"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintTop_toBottomOf="@+id/botonesmisFavores" />
 
     <TextView
         android:id="@+id/parteAbajo7"
@@ -181,12 +233,13 @@
 
     <TextView
         android:id="@+id/parteArriba"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -194,8 +247,8 @@
         android:id="@+id/CuadroGrollies"
         android:layout_width="134dp"
         android:layout_height="47dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/blanco"
@@ -257,12 +310,13 @@
         android:textStyle="bold"
         app:fontFamily="@font/rubik"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
+        app:layout_constraintEnd_toEndOf="@+id/parteArriba"
         app:layout_constraintStart_toEndOf="@+id/comprarGrollies"
         app:layout_constraintTop_toTopOf="@+id/parteArriba" />
 
     <TextView
         android:id="@+id/Nada"
-        android:layout_width="414dp"
+        android:layout_width="0dp"
         android:layout_height="59dp"
         android:background="@color/blancoSucio"
         app:layout_constraintBottom_toTopOf="@+id/parteAbajo7"
@@ -284,39 +338,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Nada" />
-
-    <Button
-        android:id="@+id/favoresARealizar"
-        android:layout_width="197dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/azul"
-        android:fadingEdge="horizontal|vertical"
-        android:fontFamily="@font/rubik"
-        android:onClick="showFavorsToBeDone"
-        android:text="@string/FavoresARealizar"
-        android:textColor="@color/blanco"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
-
-    <Button
-        android:id="@+id/FavoresPedidos"
-        android:layout_width="197dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@color/azul"
-        android:fadingEdge="horizontal|vertical"
-        android:fontFamily="@font/rubik"
-        android:onClick="showAskedFavors"
-        android:text="@string/FavoresPedidos"
-        android:textColor="@color/blanco"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

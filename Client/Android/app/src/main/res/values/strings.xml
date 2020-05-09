@@ -67,7 +67,12 @@
     <string name="Editar">Editar</string>
     <string name="Borrar">Borrar</string>
     <string name="ChatRealizador">Chat con Realizador</string>
-    <string name="Confirmado">Confirmado</string>
+    <string name="Confirmado">Adjudicado</string>
     <string name="Chatear">Chatear</string>
     <string name="Escribe">Escribe un mensaje</string>
+    <string name="ConfirmacionCompra">¿Estás seguro de que quieres realizar la compra?</string>
+    <string name="Confirmar">Confirmar</string>
+    <string name="ConfirmacionCerrarSesion">¿Estás seguro de que quieres cerrar sesión?</string>
+    <string name="Cerrar">Cerrar</string>
+    <string name="Perfilmodificado">Tu perfil ha sido modificado correctamente</string>
 </resources>

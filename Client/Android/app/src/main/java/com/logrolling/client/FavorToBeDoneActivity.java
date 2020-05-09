@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +12,9 @@ import android.widget.TextView;
 public class FavorToBeDoneActivity extends AppCompatActivity {
 
     private TextView numGrollies;
-    private TextView name, description, deliveryLocation, deliveryDate, reward;
+    private TextView name, description, deliveryLocation, deliveryDate, reward, popUpMessage;
     private ImageView photo;
+    private ConstraintLayout popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,9 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         reward = (TextView) findViewById(R.id.recompensa);
         photo = (ImageView) findViewById(R.id.Foto);
 
-
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError3);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
 
         //Ejemplo
         name.setText("Acercarse a la farmacia");
@@ -68,5 +72,14 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
+    }
+
+    //popUpError
+    public void showErrorPopUp(View view){
+        // popUpMessage.setText();
+        popUpError.setVisibility(View.VISIBLE);
+    }
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
     }
 }

@@ -8,9 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -21,10 +18,11 @@ public class FavorsActivity extends AppCompatActivity {
     private ArrayList<Favor> favorsArray = new ArrayList<Favor>(); // ={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
     private boolean filters;
     private ConstraintLayout constrainFilters;
-    private TextView minGrolliesText, minHoursText, maxDistanceText;
-    private SeekBar minGrolliesBar, minTimeBar, maxDistanceBar;
-    public int minGrollies=10, minHours =1;
+    private TextView minGrolliesText, maxDistanceText, popUpMessage;
+    private SeekBar minGrolliesBar, maxDistanceBar;
+    public int minGrollies=10;
     public double distance =0.5;
+    private ConstraintLayout popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +31,10 @@ public class FavorsActivity extends AppCompatActivity {
         filters =false;
         constrainFilters =(ConstraintLayout)findViewById(R.id.filtros);
         constrainFilters.setVisibility(View.INVISIBLE);
+
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError4);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
 
         llenarLista();
 
@@ -53,12 +55,10 @@ public class FavorsActivity extends AppCompatActivity {
         });*/
 
         minGrolliesBar=(SeekBar)findViewById(R.id.minGrolliesBar);
-        minTimeBar =(SeekBar)findViewById(R.id.minTiempoBar);
         maxDistanceBar =(SeekBar)findViewById(R.id.maxDistanciaBar);
 
         listeners_bars();
         minGrolliesText=(TextView)findViewById(R.id.MinGrollies);
-        minHoursText =(TextView)findViewById(R.id.MinTiempo);
         maxDistanceText =(TextView)findViewById(R.id.MaxDistancia);
     }
 
@@ -140,24 +140,7 @@ public class FavorsActivity extends AppCompatActivity {
             }
         });
 
-        minTimeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minHours =(int)(2.39*progress)+1;
 
-                minHoursText.setText("Dentro de "+ toHours(minHours));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
         maxDistanceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -211,6 +194,16 @@ public class FavorsActivity extends AppCompatActivity {
             }
         });
     }
+
+    //popUpError
+    public void showErrorPopUp(View view){
+        // popUpMessage.setText();
+        popUpError.setVisibility(View.VISIBLE);
+    }
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
+    }
+
     String toHours(double horas){
         String dev="";
         int dias,horass;

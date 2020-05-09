@@ -32,8 +32,8 @@ public class MyFavorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_favores);
 
-        favorsDo =(Button)findViewById(R.id.favoresARealizar);
-        favorsAsked =(Button)findViewById(R.id.FavoresPedidos);
+        favorsDo =(Button)findViewById(R.id.favoresARealizar2);
+        favorsAsked =(Button)findViewById(R.id.favoresPedidos);
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea

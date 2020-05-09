@@ -7,13 +7,14 @@
     tools:context=".AskedFavorActivity">
 
     <ScrollView
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="480dp"
         android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/parteArriba"
         tools:layout_constraintEnd_toEndOf="parent"
-        tools:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="2dp">
+        tools:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,9 +91,9 @@
                     android:id="@+id/Recompensa"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="20dp"
                     android:ems="10"
                     android:hint="@string/Recompensa"
                     android:inputType="numberDecimal"
@@ -108,9 +109,9 @@
                     android:id="@+id/FechaLimite"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="20dp"
                     android:ems="10"
                     android:hint="@string/FechaLimite"
                     android:inputType="date"
@@ -126,9 +127,9 @@
                     android:id="@+id/LugarEntrega"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="30dp"
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
                     android:inputType="textPersonName"
@@ -144,9 +145,9 @@
                     android:id="@+id/DescrFavor"
                     android:layout_width="330dp"
                     android:layout_height="25dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="25dp"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/Descripcion"
@@ -234,7 +235,7 @@
                     android:ems="10"
                     android:inputType="date"
                     android:text="@string/Confirmado"
-                    android:textColor="#08D801"
+                    android:textColor="@color/verde"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/rubik"
@@ -248,7 +249,7 @@
 
     <TextView
         android:id="@+id/parteArriba"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
@@ -262,8 +263,8 @@
         android:id="@+id/cuadroGrollies"
         android:layout_width="134dp"
         android:layout_height="47dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@color/blanco"
         android:onClick="buyGrollies"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
@@ -474,5 +475,110 @@
         app:fontFamily="@font/rubik"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/favores" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopUpError2"
+        android:layout_width="0dp"
+        android:layout_height="411dp"
+        android:background="#00C5BFBF"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="368dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/okButtonred"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/rojo"
+                android:fadingEdge="horizontal|vertical"
+                android:fontFamily="@font/rubik"
+                android:onClick="closeErrorPopUp"
+                android:text="@string/Cerrar"
+                android:textColor="@color/blanco"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/red"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/rojo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/stop"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/red"
+                app:layout_constraintEnd_toEndOf="@+id/red"
+                app:layout_constraintStart_toStartOf="@+id/red"
+                app:layout_constraintTop_toTopOf="@+id/red"
+                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/messageError"
+                android:layout_width="0dp"
+                android:layout_height="89dp"
+                android:gravity="center"
+                android:text="Texto error"
+                android:textColor="@color/negro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/red" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/closeCross2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:onClick="closeErrorPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        <ImageView
+            android:id="@+id/closeCircle2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:onClick="closeErrorPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

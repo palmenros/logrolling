@@ -6,6 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".ConfigurationActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blanco"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parteArriba">
+
+        <ImageView
+            android:id="@+id/iconoCerrar"
+            android:layout_width="78dp"
+            android:layout_height="103dp"
+            android:layout_marginTop="56dp"
+            android:onClick="signOut"
+            app:layout_constraintStart_toStartOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/iconoPerfil"
+            app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
+
+        <TextView
+            android:id="@+id/CerrarSesion"
+            android:layout_width="190dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:background="#00FFFFFF"
+            android:onClick="signOut"
+            android:text="@string/CerrarSesion"
+            android:textColor="@color/negro"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
+            app:layout_constraintTop_toTopOf="@+id/iconoCerrar" />
+
+        <TextView
+            android:id="@+id/Perfil"
+            android:layout_width="124dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="myProfile"
+            android:text="@string/Perfil"
+            android:textColor="@color/negro"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toTopOf="@+id/iconoPerfil" />
+
+        <TextView
+            android:id="@+id/textoPerfil"
+            android:layout_width="254dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="myProfile"
+            android:text="@string/TextoPerfil"
+            android:textColor="@color/grisClaro"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/Perfil" />
+
+        <ImageView
+            android:id="@+id/iconoPerfil"
+            android:layout_width="75dp"
+            android:layout_height="102dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="56dp"
+            android:background="#00FFFFFF"
+            android:onClick="myProfile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_person_black_24dp" />
+
+        <TextView
+            android:id="@+id/textoCerrarSesion"
+            android:layout_width="267dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:onClick="signOut"
+            android:text="@string/TextoCerrarSesion"
+            android:textColor="@color/grisClaro"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
+            app:layout_constraintTop_toBottomOf="@+id/CerrarSesion" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textoCerrarSesion" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/parteAbajo"
         android:layout_width="413dp"
@@ -104,7 +202,7 @@
 
     <TextView
         android:id="@+id/parteArriba"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
@@ -118,8 +216,6 @@
         android:id="@+id/ConfiguracionTitulo"
         android:layout_width="215dp"
         android:layout_height="42dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:background="@color/azul"
         android:text="@string/Configuracion"
         android:textColor="@color/blanco"
@@ -128,15 +224,15 @@
         app:fontFamily="@font/rubik"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
         app:layout_constraintEnd_toEndOf="@+id/parteArriba"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CuadroGrollies"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/CuadroGrollies"
         android:layout_width="134dp"
         android:layout_height="47dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@color/blanco"
         android:onClick="buyGrollies"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
@@ -234,101 +330,110 @@
         app:srcCompat="@drawable/ic_settings_black_24dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopUpSignOut"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/blanco"
+        android:layout_height="430dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00C5BFBF"
         android:elevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/parteAbajo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parteArriba">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/iconoCerrar"
-            android:layout_width="78dp"
-            android:layout_height="103dp"
-            android:layout_marginTop="56dp"
-            android:onClick="signOut"
-            app:layout_constraintStart_toStartOf="@+id/iconoPerfil"
-            app:layout_constraintTop_toBottomOf="@+id/iconoPerfil"
-            app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
-
-        <TextView
-            android:id="@+id/CerrarSesion"
-            android:layout_width="190dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:background="#00FFFFFF"
-            android:onClick="signOut"
-            android:text="@string/CerrarSesion"
-            android:textColor="@color/negro"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
-            app:layout_constraintTop_toTopOf="@+id/iconoCerrar" />
-
-        <TextView
-            android:id="@+id/Perfil"
-            android:layout_width="124dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:onClick="myProfile"
-            android:text="@string/Perfil"
-            android:textColor="@color/negro"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
-            app:layout_constraintTop_toTopOf="@+id/iconoPerfil" />
-
-        <TextView
-            android:id="@+id/textoPerfil"
-            android:layout_width="254dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:onClick="myProfile"
-            android:text="@string/TextoPerfil"
-            android:textColor="@color/grisClaro"
-            android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
-            app:layout_constraintTop_toBottomOf="@+id/Perfil" />
-
-        <ImageView
-            android:id="@+id/iconoPerfil"
-            android:layout_width="75dp"
-            android:layout_height="102dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="56dp"
-            android:background="#00FFFFFF"
-            android:onClick="myProfile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_person_black_24dp" />
-
-        <TextView
-            android:id="@+id/textoCerrarSesion"
-            android:layout_width="267dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:onClick="signOut"
-            android:text="@string/TextoCerrarSesion"
-            android:textColor="@color/grisClaro"
-            android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
-            app:layout_constraintTop_toBottomOf="@+id/CerrarSesion" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
+            android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textoCerrarSesion" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/okButtonred"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/rojo"
+                android:fadingEdge="horizontal|vertical"
+                android:fontFamily="@font/rubik"
+                android:onClick="signOutConfirmed"
+                android:text="@string/CerrarSesion"
+                android:textColor="@color/blanco"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/red"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/rojo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/stop"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/red"
+                app:layout_constraintEnd_toEndOf="@+id/red"
+                app:layout_constraintStart_toStartOf="@+id/red"
+                app:layout_constraintTop_toTopOf="@+id/red"
+                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/messageError"
+                android:layout_width="0dp"
+                android:layout_height="89dp"
+                android:gravity="center"
+                android:text="@string/ConfirmacionCerrarSesion"
+                android:textColor="@color/negro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/red" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/closeCross2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:onClick="closeSignOutConfirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        <ImageView
+            android:id="@+id/closeCircle2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:onClick="closeSignOutConfirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

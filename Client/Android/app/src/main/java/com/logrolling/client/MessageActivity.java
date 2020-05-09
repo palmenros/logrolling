@@ -1,13 +1,12 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,8 @@ public class MessageActivity extends AppCompatActivity {
     private ArrayList<Persona> chats = new ArrayList<Persona>();
     private TextView numGrollies;
     private AdapterPersonas adapter;
-
+    private TextView popUpMessage;
+    private ConstraintLayout popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,10 @@ public class MessageActivity extends AppCompatActivity {
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//TODO: Pedir el número de grollies a quien sea
+
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError6);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
 
         listChat =(RecyclerView)findViewById(R.id.ListaMensajes);
         listChat.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -106,6 +110,15 @@ public class MessageActivity extends AppCompatActivity {
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
+    }
+
+    //popUpError
+    public void showErrorPopUp(View view){
+        // popUpMessage.setText();
+        popUpError.setVisibility(View.VISIBLE);
+    }
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
     }
 
 

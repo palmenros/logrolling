@@ -113,12 +113,13 @@
 
     <TextView
         android:id="@+id/parteArriba"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/azul"
         android:textColor="@color/blanco"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -126,10 +127,6 @@
         android:id="@+id/MensajesTit"
         android:layout_width="122dp"
         android:layout_height="41dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
-        android:layout_marginBottom="15dp"
         android:background="@color/azul"
         android:text="@string/Regalos"
         android:textColor="@color/blanco"
@@ -138,15 +135,15 @@
         app:fontFamily="@font/rubik"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
         app:layout_constraintEnd_toEndOf="@+id/parteArriba"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/CuadroGrollies"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/CuadroGrollies"
         android:layout_width="134dp"
         android:layout_height="47dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@color/blanco"
         android:onClick="buyGrollies"
         app:layout_constraintBottom_toBottomOf="@+id/parteArriba"
