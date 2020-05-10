@@ -6,9 +6,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class ConfigurationActivity extends AppCompatActivity {
     private ConstraintLayout popUpSignOut;
+    private TextView numGrollies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,15 +18,17 @@ public class ConfigurationActivity extends AppCompatActivity {
         popUpSignOut=(ConstraintLayout)findViewById(R.id.PopUpSignOut);
         popUpSignOut.setVisibility(View.INVISIBLE);
 
+        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
     }
 
 
     //Panel Inferior
-    public void favors(View view) {
-        Intent i = new Intent(this, FavorsActivity.class);
+    public void search(View view) {
+        Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
-    public void myFavors(View view) {
+    public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }

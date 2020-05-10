@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,8 @@ public class ChatPersonActivity extends AppCompatActivity {
     private List<Pair> dataList;
     private DataAdapter adapter;
 
+    private ConstraintLayout popUpError;
+    private TextView popUpMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,10 @@ public class ChatPersonActivity extends AppCompatActivity {
         writeMessage =(EditText) findViewById(R.id.EscribirMensaje);
 
         recycler.scrollToPosition(dataList.size() - 1);
+
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError11);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
     }
 
     public void write(View view){
@@ -54,11 +61,11 @@ public class ChatPersonActivity extends AppCompatActivity {
 
 
     //Panel Inferior
-    public void favors(View view) {
-        Intent i = new Intent(this, FavorsActivity.class);
+    public void search(View view) {
+        Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
-    public void myFavors(View view) {
+    public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
@@ -79,5 +86,12 @@ public class ChatPersonActivity extends AppCompatActivity {
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
+    }
+
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
+    }
+    public void showErrorPopUp(View view){
+        popUpError.setVisibility(View.VISIBLE);
     }
 }

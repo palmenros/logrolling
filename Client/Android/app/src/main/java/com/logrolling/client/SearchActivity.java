@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class FavorsActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     private RecyclerView listFavors;
     private ArrayList<Favor> favorsArray = new ArrayList<Favor>(); // ={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
     private boolean filters;
@@ -23,13 +23,17 @@ public class FavorsActivity extends AppCompatActivity {
     public int minGrollies=10;
     public double distance =0.5;
     private ConstraintLayout popUpError;
+    private TextView numGrollies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favores);
+        setContentView(R.layout.activity_explorar);
+
+        numGrollies = (TextView) findViewById(R.id.grollies);
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
 
         filters =false;
-        constrainFilters =(ConstraintLayout)findViewById(R.id.filtros);
+        constrainFilters =(ConstraintLayout)findViewById(R.id.Filtros);
         constrainFilters.setVisibility(View.INVISIBLE);
 
         popUpError=(ConstraintLayout)findViewById(R.id.PopUpError4);
@@ -72,7 +76,7 @@ public class FavorsActivity extends AppCompatActivity {
         Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
     }
-    public void myFavors(View view) {
+    public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }

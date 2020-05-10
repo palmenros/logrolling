@@ -10,11 +10,12 @@
     <string name="Logo">Logrolling</string>
     <string name="TerminosCondiciones">Acepto los Términos y condiciones y la política de privacidad</string>
     <string name="CuentaYa">¿Ya tienes una cuenta?</string>
+    <string name="Explorar">Explorar</string>
     <string name="Favores">Favores</string>
-    <string name="MisFavores">Mis Favores</string>
+    <string name="MisFavoresbis">Favores</string>
     <string name="Perfil">Mi Perfil</string>
     <string name="Regalos">Regalos</string>
-    <string name="Configuracion">Configuración</string>
+    <string name="Configuracion">Ajustes</string>
     <string name="Mensajes">Mensajes</string>
     <string name="GuardarCambios">Guardar Cambios</string>
     <string name="Nombre">Nombre del favor</string>
@@ -75,8 +76,10 @@
     <string name="ConfirmacionCerrarSesion">¿Estás seguro de que quieres cerrar sesión?</string>
     <string name="Cerrar">Cerrar</string>
     <string name="Perfilmodificado">Tu perfil ha sido modificado correctamente</string>
-    <string name="ConfirmarDireccion">Antes de confirmar el regalo, escribe tu direccion:</string>
-    <string name="ConfirmarPedirFavor">¿Quieres confirmar el nuevo favor?:</string>
+    <string name="ConfirmarDireccion">Necesitamos la dirección a la que enviarte el regalo.</string>
+    <string name="ConfirmarEnvio">Confirmar envío</string>
+    <string name="Dirección">Dirección</string>
+    <string name="ConfirmarPedirFavor">¿Quieres publicar este nuevo favor? Cuando alguien se lo haya adjudicado ya no podrás editarlo.</string>
+    <string name="ConfirmarRealizarFavor">¿Quieres realizar este favor? Cuando te adjudicas un favor te comprometes a hacerlo y no te puedes arrepentir.</string>
     <string name="RegistadoConExito">Usuario registrado con exito</string>
-    <string name="FalloAlRegistrarse">Falloal registrar el usuario</string>
 </resources>

@@ -17,6 +17,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
+
         user =(EditText)findViewById(R.id.NombreUsuario);
         password =(EditText)findViewById(R.id.Contrasenna);
 
@@ -25,12 +26,12 @@ public class SignInActivity extends AppCompatActivity {
         popUpMessage=(TextView)findViewById(R.id.messageError);
     }
     public void registration(View view){
-        Intent i=new Intent(this, RegistrationAvtivity.class);
+        Intent i=new Intent(this, RegistrationActivity.class);
         startActivity(i);
     }
     public void signIn(View view){
         if(true ){//Habrá que comprobar que el user esta registrado
-            Intent i=new Intent(this, FavorsActivity.class);
+            Intent i=new Intent(this, SearchActivity.class);
             startActivity(i);
         }
     }

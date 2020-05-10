@@ -14,14 +14,14 @@
         <activity android:name=".AskedFavorActivity" />
         <activity android:name=".DoFavorActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".FavorsActivity" />
+        <activity android:name=".SearchActivity" />
         <activity android:name=".ShopActivity" />
         <activity android:name=".MyProfileActivity" />
         <activity android:name=".ConfigurationActivity" />
         <activity android:name=".GiftsActivity" />
         <activity android:name=".AskFavorActivity" />
         <activity android:name=".MyFavorsActivity" />
-        <activity android:name=".RegistrationAvtivity" />
+        <activity android:name=".RegistrationActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

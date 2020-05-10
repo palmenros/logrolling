@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,10 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,10 +25,13 @@ public class MyFavorsActivity extends AppCompatActivity {
             "Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar"};*/
     private ArrayList<Favor> favorsAskedArray = new ArrayList<Favor>();/*={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
             "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos", "Pedido2"};*/
+
+    private TextView popUpMessage;
+    private ConstraintLayout popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mis_favores);
+        setContentView(R.layout.activity_favores);
 
         favorsDo =(Button)findViewById(R.id.favoresARealizar2);
         favorsAsked =(Button)findViewById(R.id.favoresPedidos);
@@ -38,7 +39,7 @@ public class MyFavorsActivity extends AppCompatActivity {
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        listDoneFavors =(RecyclerView)findViewById(R.id.listaFavoresPedidos);
+        listDoneFavors =(RecyclerView)findViewById(R.id.ListaFavoresPedidos);
         listDoneFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
 
         llenarLista();
@@ -55,7 +56,7 @@ public class MyFavorsActivity extends AppCompatActivity {
             }
         });*/
 
-        listFavorsToBeDone =(RecyclerView)findViewById(R.id.listaFavoresARealizar);
+        listFavorsToBeDone =(RecyclerView)findViewById(R.id.ListaFavoresARealizar);
         listFavorsToBeDone.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
 
         AdapterFavores adapterARealizar=new AdapterFavores(favorsDoneArray);
@@ -70,6 +71,10 @@ public class MyFavorsActivity extends AppCompatActivity {
             }
         });*/
         showAskedFavors();
+
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError12);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
     }
     private void llenarLista(){
         for(int i=0;i<10;i++) {
@@ -78,8 +83,8 @@ public class MyFavorsActivity extends AppCompatActivity {
         }
     }
 
-    public void favors(View view) {
-        Intent i = new Intent(this, FavorsActivity.class);
+    public void search(View view) {
+        Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
 
     }
@@ -133,4 +138,14 @@ public class MyFavorsActivity extends AppCompatActivity {
         listFavorsToBeDone.setVisibility(View.VISIBLE);
         listDoneFavors.setVisibility(View.INVISIBLE);
     }
+
+    //popUpError
+    public void showErrorPopUp(View view){
+        // popUpMessage.setText();
+        popUpError.setVisibility(View.VISIBLE);
+    }
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
+    }
+
 }

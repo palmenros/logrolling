@@ -8,9 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,16 +22,16 @@ public class GiftsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regalos);
-        listFavors =(RecyclerView)findViewById(R.id.listaRegalos);
+        listFavors =(RecyclerView)findViewById(R.id.ListaRegalos);
         listFavors.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError7);
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError8);
         popUpError.setVisibility(View.INVISIBLE);
         popUpMessage=(TextView)findViewById(R.id.messageError);
-        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm1);
+        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm2);
         popUpConfirmation.setVisibility(View.INVISIBLE);
 
         llenarLista();
@@ -55,11 +52,11 @@ public class GiftsActivity extends AppCompatActivity {
     }
 
     //Panel Inferior
-    public void favors(View view) {
-        Intent i = new Intent(this, FavorsActivity.class);
+    public void search(View view) {
+        Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
-    public void myFavors(View view) {
+    public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
@@ -86,6 +83,8 @@ public class GiftsActivity extends AppCompatActivity {
     public void showConfirmationPopUp(View view){
         popUpConfirmation.setVisibility(View.VISIBLE);
     }
-    public void closeConfirmationPopUp(View view){
-        popUpConfirmation.setVisibility(View.INVISIBLE);}
+    public void closeConfirmationPopUp(View view){  popUpConfirmation.setVisibility(View.INVISIBLE);}
+    public void showErrorPopUp(View view){
+        popUpConfirmation.setVisibility(View.VISIBLE);
+    }
 }

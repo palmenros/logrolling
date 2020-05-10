@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class RegistrationAvtivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
     private EditText user, password, repPassword;
     private Switch conditions;
     private TextView popUpMessage;
@@ -25,10 +25,10 @@ public class RegistrationAvtivity extends AppCompatActivity {
         repPassword =(EditText)findViewById(R.id.RepContrasenna);
         conditions =(Switch)findViewById(R.id.Condiciones);
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError7);
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError10);
         popUpError.setVisibility(View.INVISIBLE);
         popUpMessage=(TextView)findViewById(R.id.messageError);
-        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm1);
+        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm5);
         popUpConfirmation.setVisibility(View.INVISIBLE);
 
     }
@@ -40,9 +40,8 @@ public class RegistrationAvtivity extends AppCompatActivity {
     }
     public void register(View view){
         //Registro
-        Intent i=new Intent(this, SignInActivity.class);
-        startActivity(i);
 
+        //showConfirmationPopUp(view) o showErrorPopUp(view) con el error
     }
     public void showPrivacyPolicy(View view){
         //Mostrar la política de privacidad

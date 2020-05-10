@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azul"
-    tools:context=".RegistrationAvtivity">
+    tools:context=".RegistrationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/PopUpError10"
@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/okButtonred"
+                android:id="@+id/closeButtonRed"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="10dp"
@@ -89,7 +89,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/closeCross2"
+            android:id="@+id/closeCross"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="45dp"
@@ -100,7 +100,7 @@
             app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
 
         <ImageView
-            android:id="@+id/closeCircle2"
+            android:id="@+id/closeCircle"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
@@ -119,10 +119,10 @@
         android:layout_height="411dp"
         android:background="#00C5BFBF"
         android:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/parteAbajo5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ParteArriba">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="280dp"
@@ -179,7 +179,7 @@
                 android:layout_width="0dp"
                 android:layout_height="89dp"
                 android:gravity="center"
-                android:text="@string/Perfilmodificado"
+                android:text="@string/RegistadoConExito"
                 android:textColor="@color/negro"
                 android:textSize="18sp"
                 android:textStyle="bold"

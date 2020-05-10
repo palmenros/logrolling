@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ public class DoFavorActivity extends AppCompatActivity {
     private TextView name, description, deliveryLocation, deliveryDate, reward;
     private ImageView photo;
     private TextView numGrollies;
+    private TextView popUpMessage;
+    private ConstraintLayout popUpConfirmation, popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +37,20 @@ public class DoFavorActivity extends AppCompatActivity {
         deliveryDate.setText("Dentro de 3 horas");
         reward.setText("500 grollies");
 
+
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError9);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm6);
+        popUpConfirmation.setVisibility(View.INVISIBLE);
     }
 
     //Panel Inferior
-    public void favors(View view) {
-        Intent i = new Intent(this, FavorsActivity.class);
+    public void search(View view) {
+        Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
-    public void myFavors(View view) {
+    public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
@@ -61,16 +70,30 @@ public class DoFavorActivity extends AppCompatActivity {
 
 
     public void doFavor(View view) {
+        showConfirmationPopUp(view);
+    }
+    public void doFavorConfirmed(View view) {
         //realizar Favor
-        Intent i = new Intent(this, FavorsActivity.class);
+        Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
-
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
     }
 
-
-
+    //popUps
+    public void showErrorPopUp(View view){
+        // popUpMessage.setText();
+        popUpError.setVisibility(View.VISIBLE);
+    }
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
+    }
+    public void showConfirmationPopUp(View view){
+        popUpConfirmation.setVisibility(View.VISIBLE);
+    }
+    public void closeConfirmationPopUp(View view){
+        popUpConfirmation.setVisibility(View.INVISIBLE);
+    }
 }
