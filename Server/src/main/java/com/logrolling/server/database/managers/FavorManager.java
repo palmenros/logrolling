@@ -44,7 +44,7 @@ public class FavorManager {
             UserManager.updateUserbyName(username, user);
         }
         else
-            throw new NotEnoughGrolliesException("Not enough grollies");
+            throw new NotEnoughGrolliesException();
 
     }
 
