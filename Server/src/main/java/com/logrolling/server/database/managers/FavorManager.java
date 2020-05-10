@@ -2,6 +2,7 @@ package com.logrolling.server.database.managers;
 
 
 import com.logrolling.server.exceptions.DataNotFoundException;
+import com.logrolling.server.exceptions.NotEnoughGrolliesException;
 import com.logrolling.server.model.Favor;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
@@ -19,21 +20,31 @@ public class FavorManager {
 
     public static void createFavor(Favor favor){
 
-        Database db = DatabaseFactory.createInstance();
-        db.executeUpdate(
-                "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude, worker) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-                new String[]{
-                        favor.getCreator(),
-                        favor.getTitle(),
-                        favor.getDescription(),
-                        favor.getDueTime().toString(),
-                        favor.getReward().toString(),
-                        favor.getLatCoord().toString(),
-                        favor.getLongCoord().toString(),
-                        favor.getWorker()
-                });
 
-        db.close();
+        String username = favor.getCreator();
+        User user = UserManager.getUserByName(username);
+
+        if(user.getGrollies() > favor.getReward()) {
+            Database db = DatabaseFactory.createInstance();
+            db.executeUpdate(
+                    "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude, worker) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+                    new String[]{
+                            favor.getCreator(),
+                            favor.getTitle(),
+                            favor.getDescription(),
+                            favor.getDueTime().toString(),
+                            favor.getReward().toString(),
+                            favor.getLatCoord().toString(),
+                            favor.getLongCoord().toString(),
+                            favor.getWorker()
+                    });
+
+            db.close();
+            user.setGrollies(user.getGrollies() - favor.getReward());
+            UserManager.updateUserbyName(username, user);
+        }
+        else
+            throw new NotEnoughGrolliesException("Not enough grollies");
 
     }
 
@@ -61,7 +72,24 @@ public class FavorManager {
     }
     
     public static void updateFavor(int id, Favor newFavor){
-        //TODO: Implement this
+        Database db = DatabaseFactory.createInstance();
+        Favor favor = getFavorById(id);
+        db.executeUpdate("replace into favors values(?, ?, ?, ?, ?, ?, ?, ?, ?);",
+                new String[]{
+
+                        Integer.toString(id),
+                        newFavor.getCreator(),
+                        newFavor.getTitle(),
+                        newFavor.getDescription(),
+                        newFavor.getDueTime().toString(),
+                        newFavor.getReward().toString(),
+                        newFavor.getLatCoord().toString(),
+                        newFavor.getLongCoord().toString(),
+                        newFavor.getWorker()
+
+                });
+
+        db.close();
 
     }
 
@@ -137,9 +165,10 @@ public class FavorManager {
 
         Database db = DatabaseFactory.createInstance();
         if(filter.getMaxDistance() == -1) {
-            ResultSet rs = db.executeQuery("select * from favors where worker is null and reward >= ?",
+            ResultSet rs = db.executeQuery("select * from favors where worker is null and reward >= ? and creator <> ?",
                     new String[]{
-                            filter.getMinGrollies().toString()//Ver como buscar por coordenadas
+                            filter.getMinGrollies().toString(),
+                            username
                     });
 
             try {
@@ -184,7 +213,10 @@ public class FavorManager {
         List<Favor> favors = new ArrayList<Favor>();
 
         Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from favors where worker is not null");
+        ResultSet rs = db.executeQuery("select * from favors where worker = ?",
+                new String[]{
+                        username
+                });
 
         try {
             while (rs.next()) {
@@ -269,10 +301,18 @@ public class FavorManager {
 
     public static void doFavor(int id, String username){
 
+        Favor favor = null;
+        favor = getFavorById(id);
+        favor.setWorker(username);
+        updateFavor(id,favor);
     }
 
     public static void completeFavor(int id) {
 
+        Favor favor = null;
+        favor = getFavorById(id);
+        favor.setCompleted(true);
+        updateFavor(id,favor);
     }
 
 }
