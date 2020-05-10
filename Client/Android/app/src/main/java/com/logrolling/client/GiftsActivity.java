@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +19,8 @@ public class GiftsActivity extends AppCompatActivity {
     private RecyclerView listFavors;
     private TextView numGrollies;
     private ArrayList<Gift> gifts = new ArrayList<Gift>();
+    private TextView popUpMessage;
+    private ConstraintLayout popUpConfirmation,popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +31,20 @@ public class GiftsActivity extends AppCompatActivity {
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError7);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm1);
+        popUpConfirmation.setVisibility(View.INVISIBLE);
+
         llenarLista();
 
         AdapterRegalos adapter=new AdapterRegalos(gifts);
         listFavors.setAdapter(adapter);
-     /*   listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        /*listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Lo que sea
+                showConfirmationPopUp(view);
             }
         });*/
     }
@@ -72,5 +80,12 @@ public class GiftsActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
+    }
+    public void showConfirmationPopUp(View view){
+        popUpConfirmation.setVisibility(View.VISIBLE);
+    }
+    public void closeConfirmationPopUp(View view){
+        popUpConfirmation.setVisibility(View.INVISIBLE);}
 }

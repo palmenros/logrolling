@@ -1,6 +1,7 @@
 package com.logrolling.client;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,14 +10,21 @@ import android.widget.TextView;
 
 public class AskFavorActivity extends AppCompatActivity {
     private TextView numGrollies;
+    private TextView popUpMessage;
+    private ConstraintLayout popUpConfirmation, popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedir_favor);
 
         numGrollies=(TextView)findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
 
+        numGrollies.setText("");//Pedir el número de grollies a quien sea
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError7);
+        popUpError.setVisibility(View.INVISIBLE);
+        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm1);
+        popUpConfirmation.setVisibility(View.INVISIBLE);
 
     }
 
@@ -60,6 +68,14 @@ public class AskFavorActivity extends AppCompatActivity {
     public void editPhoto(View view) {
         //Añadir foto
     }
-
+    public void closeErrorPopUp(View view){
+        popUpError.setVisibility(View.INVISIBLE);
+    }
+    public void showConfirmationPopUp(View view){
+        popUpConfirmation.setVisibility(View.VISIBLE);
+    }
+    public void closeConfirmationPopUp(View view){
+        popUpConfirmation.setVisibility(View.INVISIBLE);
+    }
 
 }
