@@ -5,6 +5,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.logrolling.server.database.managers.FavorManager;
 import com.logrolling.server.database.migrations.FavorMigration;
+import com.logrolling.server.exceptions.NotEnoughGrolliesException;
 import com.logrolling.server.exceptions.UnauthorizedException;
 import com.logrolling.server.model.Favor;
 import com.logrolling.server.model.Filter;
@@ -91,7 +92,12 @@ public class FavorController extends AuthenticableController {
         String username = authenticateWithToken(token);
         if(f.getCreator().equals(username)) {
             //Favor was created by current user
-            FavorManager.createFavor(new Favor(f));
+            try {
+                FavorManager.createFavor(new Favor(f));
+            }
+            catch(NotEnoughGrolliesException e){
+                throw new NotEnoughGrolliesException();
+            }
         } else {
             throw new UnauthorizedException();
         }

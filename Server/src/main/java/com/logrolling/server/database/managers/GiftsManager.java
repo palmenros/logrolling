@@ -197,4 +197,12 @@ public class GiftsManager {
         }
         else return true;
     }
+
+    public static void purchaseGift(String username, PurchasedGift id) {
+        // acuerdate de restar grollies y lanzar excepcion
+    }
+
+    public static List<PurchasedGift> getPurchasedGifts() {
+        return null;
+    }
 }

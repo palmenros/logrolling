@@ -3,8 +3,12 @@ package com.logrolling.server.controllers;
 import com.logrolling.server.database.managers.GiftsManager;
 import com.logrolling.server.exceptions.AlreadyAddedException;
 import com.logrolling.server.exceptions.DataNotFoundException;
+import com.logrolling.server.exceptions.NotEnoughGrolliesException;
+import com.logrolling.server.exceptions.UnauthorizedException;
 import com.logrolling.server.model.Gift;
+import com.logrolling.server.model.PurchasedGift;
 import com.logrolling.server.transfer.TransferGift;
+import com.logrolling.server.transfer.TransferPurchasedGift;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,7 +19,7 @@ import java.util.List;
 @Path("/gifts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class GiftsController {
+public class GiftsController extends AuthenticableController {
 
     @GET
     public List<TransferGift> getAllGifts() {
@@ -28,58 +32,41 @@ public class GiftsController {
     }
 
     @GET
-    @Path("/{title}")
-    public TransferGift getGiftByTitle(@PathParam("title") String title) {
-        return new TransferGift(GiftsManager.getGiftByTitle(title));
+    public TransferGift getGiftByTitle(@HeaderParam("title") String title) {
+        try {
+            return new TransferGift(GiftsManager.getGiftByTitle(title));
+        }
+        catch(DataNotFoundException e){
+            throw new DataNotFoundException(e.getMessage());
+        }
     }
 
     @GET
-    @Path("/price/{price}")
-    public List<TransferGift> getGiftsByPrice(@PathParam("price") int price){
-        List<Gift> gifts = GiftsManager.getGiftsByPrice(price);
-        List<TransferGift> transfers = new ArrayList<TransferGift>();
-        for (Gift g : gifts) {
-            transfers.add(new TransferGift(g));
-        }
+    @Path("/purchased")
+    public List<TransferPurchasedGift> getPurchasedGifts(){
+        List<PurchasedGift> purchased = GiftsManager.getPurchasedGifts();
+        List<TransferPurchasedGift> transfers = new ArrayList<TransferPurchasedGift>();
+        for(PurchasedGift p : purchased)
+            transfers.add(new TransferPurchasedGift(p));
         return transfers;
     }
-
-    @GET
-    @Path("/content/{content}")
-    public List<TransferGift> getGiftsByContent(@PathParam("content") String content){
-        List<Gift> gifts = GiftsManager.getGiftsByContent(content);
-        List<TransferGift> transfers = new ArrayList<TransferGift>();
-        for (Gift g : gifts) {
-            transfers.add(new TransferGift(g));
-        }
-        return transfers;
-    }
-
+    
     @POST
-    public Response addGift(TransferGift g) {
-        if(!GiftsManager.alreadyAddedGift(g.getTitle())) {
-            GiftsManager.createGift(new Gift(g));
-            return Response.status(Response.Status.CREATED).entity("Succesfully created").build();
+    @Path("@purchase")
+    public void purchasedGift(@HeaderParam("token") String token, TransferPurchasedGift gift){
+        String username = authenticateWithToken(token);
+        if(gift.getUsername().equals(username)) {
+            // Gift was purchased by current user
+            try {
+                GiftsManager.purchaseGift(username, new PurchasedGift(gift));
+            }
+            catch(NotEnoughGrolliesException e){
+                throw new NotEnoughGrolliesException();
+            }
         }
-        else throw new AlreadyAddedException("The gift is already in the database");
+        else {
+            throw new UnauthorizedException();
+        }
     }
 
-    @PUT
-    public Response updateGiftByName(TransferGift newGift) {
-        if(GiftsManager.alreadyAddedGift(newGift.getTitle())) {
-            Gift gift = new Gift(newGift.getId(), newGift.getTitle(), newGift.getContent(), newGift.getPrice());
-            GiftsManager.updateGift(gift);
-            return Response.status(Response.Status.OK).entity("Succesfully updated").build();
-        }
-        else throw new DataNotFoundException("The gift does not exist in the database");
-    }
-
-    @DELETE
-    public Response deleteGift(@HeaderParam("title") String title) {
-        if(GiftsManager.alreadyAddedGift(title)) {
-            GiftsManager.deleteGift(GiftsManager.getGiftByTitle(title));
-            return Response.status(Response.Status.OK).entity("Deleted").build();
-        }
-        else throw new DataNotFoundException("The gift does not exist in the database");
-    }
 }

@@ -1,33 +1,32 @@
-package com.logrolling.server.model;
+package com.logrolling.server.transfer;
 
-import com.logrolling.server.transfer.TransferPurchasedGift;
+import com.logrolling.server.model.PurchasedGift;
 
-public class PurchasedGift {
+public class TransferPurchasedGift {
 
     private int id;
     private int giftId;
     private String address;
     private String username;
 
-    public PurchasedGift(int id, int giftId, String address, String username){
+    public TransferPurchasedGift(int id, int giftId, String address, String username){
         this.id = id;
         this.giftId = giftId;
         this.address = address;
         this.username = username;
     }
 
-    public PurchasedGift(int giftId, String address, String username){
-
+    public TransferPurchasedGift(int giftId, String address, String username){
         this.giftId = giftId;
         this.address = address;
         this.username = username;
     }
 
-    public PurchasedGift(TransferPurchasedGift gift) {
-        this.id = gift.getId();
-        this.giftId = gift.getGiftId();
-        this.username = gift.getUsername();
-        this.address = gift.getAddress();
+    public TransferPurchasedGift (PurchasedGift g){
+        this.id = g.getId();
+        this.giftId = g.getGiftId();
+        this.address = g.getAddress();
+        this.username = g.getUsername();
     }
 
     public Integer getId(){ return id; }
