@@ -4,6 +4,7 @@ import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.exceptions.DataNotFoundException;
+import com.logrolling.server.exceptions.NotEnoughGrolliesException;
 import com.logrolling.server.model.*;
 
 import java.sql.ResultSet;
@@ -22,17 +23,6 @@ public class GiftsManager {
                         gift.getTitle(),
                         gift.getContent(),
                         gift.getPrice().toString()
-                });
-
-        db.close();
-    }
-
-    public static void deleteGiftFromTitleAndContent(String title, String content){
-        Database db = DatabaseFactory.createInstance();
-        db.executeUpdate("delete from gifts where title = ? and content = ?",
-                new String[]{
-                        title,
-                        content
                 });
 
         db.close();
@@ -102,6 +92,30 @@ public class GiftsManager {
         ResultSet rs = db.executeQuery("select * from gifts where title = ?",
                 new String[]{
                         title
+                });
+
+        try {
+            if (rs.next()) {
+                gift = getGiftFromResultSet(rs);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        if(gift == null) {
+            throw new DataNotFoundException("Gift not found");
+        }
+        return gift;
+    }
+
+    public static Gift getGiftById(Integer id) {
+        Gift gift = null;
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from gifts where id = ?",
+                new String[]{
+                        id.toString()
                 });
 
         try {
@@ -197,12 +211,69 @@ public class GiftsManager {
         }
         else return true;
     }
+    public static void deleteGiftFromTitleAndContent(String title, String content){
+        Database db = DatabaseFactory.createInstance();
+        db.executeUpdate("delete from gifts where title = ? and content = ?",
+                new String[]{
+                        title,
+                        content
+                });
 
-    public static void purchaseGift(String username, PurchasedGift id) {
-        // acuerdate de restar grollies y lanzar excepcion
+        db.close();
     }
 
+
+    public static void purchaseGift(PurchasedGift gift, String username) {
+
+
+        User user = UserManager.getUserByName(username);
+        Gift gift2 = getGiftById(gift.getId());
+        if(user.getGrollies() > gift2.getPrice()) {
+            Database db = DatabaseFactory.createInstance();
+            db.executeUpdate(
+                    "INSERT INTO purchasedGifts VALUES (?, ?, ?);",
+                    new String[]{
+                            gift.getGiftId().toString(),
+                            gift.getAddress(),
+                            gift.getUsername(),
+
+                    });
+
+            db.close();
+            user.setGrollies(user.getGrollies() - gift2.getPrice());
+            UserManager.updateUserbyName(username, user);
+        }
+        else
+            throw new NotEnoughGrolliesException();
+    }
+
+
+
     public static List<PurchasedGift> getPurchasedGifts() {
-        return null;
+        List<PurchasedGift> gifts = new ArrayList<PurchasedGift>();
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from purchasedGifts");
+
+        try {
+            while (rs.next()) {
+                PurchasedGift gift = getPurchasedGiftFromResultSet(rs);
+                gifts.add(gift);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        return gifts;
+    }
+
+    private static PurchasedGift getPurchasedGiftFromResultSet(ResultSet rs) throws SQLException{
+        return new PurchasedGift(
+                rs.getInt("id"),
+                rs.getInt("giftId"),
+                rs.getString("address"),
+                rs.getString("username")
+        );
     }
 }
