@@ -542,7 +542,7 @@
         app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/PopUpConfirm3"
+        android:id="@+id/PopUpConfirm2"
         android:layout_width="0dp"
         android:layout_height="411dp"
         android:background="#00C5BFBF"

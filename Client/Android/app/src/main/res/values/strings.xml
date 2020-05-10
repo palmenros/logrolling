@@ -75,8 +75,4 @@
     <string name="ConfirmacionCerrarSesion">¿Estás seguro de que quieres cerrar sesión?</string>
     <string name="Cerrar">Cerrar</string>
     <string name="Perfilmodificado">Tu perfil ha sido modificado correctamente</string>
-    <string name="ConfirmarDireccion">Antes de confirmar el regalo, escribe tu direccion:</string>
-    <string name="ConfirmarPedirFavor">¿Quieres confirmar el nuevo favor?:</string>
-    <string name="RegistadoConExito">Usuario registrado con exito</string>
-    <string name="FalloAlRegistrarse">Falloal registrar el usuario</string>
 </resources>
