@@ -27,7 +27,7 @@ public class UserController extends AuthenticableController {
     }
 
     @POST
-    public void createUser(String username, String password){
+    public void createUser(@HeaderParam("username") String username, @HeaderParam("password") String password){
         UserManager.createUser(new User(username, password, INITIAL_GROLLIES));
     }
 
