@@ -98,11 +98,13 @@
 
                 <TextView
                     android:id="@+id/Recompensa"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/Recompensa"
                     android:inputType="numberDecimal"
@@ -116,8 +118,12 @@
 
                 <TextView
                     android:id="@+id/recompensa"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/Recompensa"
                     android:inputType="numberDecimal"
@@ -129,11 +135,13 @@
 
                 <TextView
                     android:id="@+id/DescripcionFavor"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/Descripcion"
@@ -148,8 +156,12 @@
 
                 <TextView
                     android:id="@+id/descripcionFavor"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="200dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="@string/Descripcion"
@@ -162,9 +174,13 @@
 
                 <ImageView
                     android:id="@+id/Foto"
-                    android:layout_width="250dp"
+                    android:layout_width="0dp"
                     android:layout_height="180dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginLeft="100dp"
                     android:layout_marginTop="25dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginRight="100dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/descripcionFavor"
@@ -173,9 +189,13 @@
 
                 <TextView
                     android:id="@+id/nombre"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="25dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/Nombre"
                     android:textColor="@color/azul"
@@ -187,11 +207,13 @@
 
                 <TextView
                     android:id="@+id/FechaLimite"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/FechaLimite"
                     android:inputType="date"
@@ -205,8 +227,12 @@
 
                 <TextView
                     android:id="@+id/fechaLimite"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/FechaLimite"
                     android:inputType="date"
@@ -218,9 +244,13 @@
 
                 <Button
                     android:id="@+id/pedirFavor"
-                    android:layout_width="283dp"
+                    android:layout_width="0dp"
                     android:layout_height="42dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginLeft="70dp"
                     android:layout_marginTop="40dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginRight="70dp"
                     android:background="@color/blanco"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -234,11 +264,13 @@
 
                 <TextView
                     android:id="@+id/LugarEntrega"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
                     android:inputType="textPersonName"
@@ -252,8 +284,12 @@
 
                 <TextView
                     android:id="@+id/lugarEntrega"
-                    android:layout_width="330dp"
+                    android:layout_width="0dp"
                     android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
                     android:inputType="textPersonName"
@@ -481,7 +517,7 @@
     <LinearLayout
         android:id="@+id/MenuInferior"
         android:layout_width="0dp"
-        android:layout_height="71dp"
+        android:layout_height="60dp"
         android:background="@color/azul"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"

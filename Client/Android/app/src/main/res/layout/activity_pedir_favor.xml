@@ -98,9 +98,13 @@
 
                 <EditText
                     android:id="@+id/Nombre"
-                    android:layout_width="350dp"
+                    android:layout_width="0dp"
                     android:layout_height="45dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/Nombre"
                     android:inputType="textPersonName"
@@ -111,9 +115,13 @@
 
                 <EditText
                     android:id="@+id/DescripcionFavor"
-                    android:layout_width="350dp"
+                    android:layout_width="0dp"
                     android:layout_height="45dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/Descripcion"
                     android:inputType="textPersonName"
@@ -124,9 +132,13 @@
 
                 <EditText
                     android:id="@+id/FechaLimite"
-                    android:layout_width="350dp"
+                    android:layout_width="0dp"
                     android:layout_height="45dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="18dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:drawableStart="@drawable/ic_today_black_24dp"
                     android:ems="10"
                     android:hint="@string/FechaLimite"
@@ -139,9 +151,13 @@
 
                 <EditText
                     android:id="@+id/Recompensa"
-                    android:layout_width="350dp"
+                    android:layout_width="0dp"
                     android:layout_height="45dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="18dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:drawableEnd="@drawable/grollies_mini2"
                     android:ems="10"
                     android:hint="@string/Recompensa"
@@ -153,9 +169,13 @@
 
                 <EditText
                     android:id="@+id/LugarEntrega"
-                    android:layout_width="350dp"
+                    android:layout_width="0dp"
                     android:layout_height="45dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:drawableStart="@drawable/ic_pin_drop_black_24dp"
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
@@ -168,9 +188,13 @@
 
                 <ImageView
                     android:id="@+id/Foto"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="119dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginLeft="100dp"
                     android:layout_marginTop="18dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginRight="100dp"
                     android:onClick="addPhoto"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -191,9 +215,13 @@
 
                 <Button
                     android:id="@+id/pedirFavor"
-                    android:layout_width="283dp"
+                    android:layout_width="0dp"
                     android:layout_height="42dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginLeft="70dp"
                     android:layout_marginTop="50dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginRight="70dp"
                     android:background="@color/blanco"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -423,7 +451,7 @@
     <LinearLayout
         android:id="@+id/MenuInferior"
         android:layout_width="0dp"
-        android:layout_height="71dp"
+        android:layout_height="60dp"
         android:background="@color/azul"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"

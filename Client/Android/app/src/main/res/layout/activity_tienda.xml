@@ -108,11 +108,9 @@
 
                 <Button
                     android:id="@+id/registrarse2"
-                    android:layout_width="91dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@color/azul"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -123,15 +121,14 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/restantes"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/registrarse4"
-                    android:layout_width="91dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:layout_marginTop="60dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@color/azul"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -141,16 +138,15 @@
                     android:textColor="@color/blanco"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/registrarse"
+                    app:layout_constraintStart_toStartOf="@+id/registrarse"
                     app:layout_constraintTop_toBottomOf="@+id/registrarse" />
 
                 <Button
                     android:id="@+id/registrarse5"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:layout_marginTop="62dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@color/azul"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -160,16 +156,15 @@
                     android:textColor="@color/blanco"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/registrarse3"
+                    app:layout_constraintStart_toStartOf="@+id/registrarse3"
                     app:layout_constraintTop_toBottomOf="@+id/registrarse3" />
 
                 <Button
                     android:id="@+id/registrarse3"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:layout_marginTop="60dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@color/azul"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -179,16 +174,15 @@
                     android:textColor="@color/blanco"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/registrarse4"
+                    app:layout_constraintStart_toStartOf="@+id/registrarse4"
                     app:layout_constraintTop_toBottomOf="@+id/registrarse4" />
 
                 <Button
                     android:id="@+id/registrarse"
-                    android:layout_width="91dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:layout_marginTop="58dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@color/azul"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -198,16 +192,15 @@
                     android:textColor="@color/blanco"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/registrarse2"
+                    app:layout_constraintStart_toStartOf="@+id/registrarse2"
                     app:layout_constraintTop_toBottomOf="@+id/registrarse2" />
 
                 <Button
                     android:id="@+id/registrarse6"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:layout_marginTop="58dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@color/azul"
                     android:fadingEdge="horizontal|vertical"
                     android:fontFamily="@font/rubik"
@@ -217,7 +210,8 @@
                     android:textColor="@color/blanco"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/registrarse5"
+                    app:layout_constraintStart_toStartOf="@+id/registrarse5"
                     app:layout_constraintTop_toBottomOf="@+id/registrarse5" />
 
                 <ImageView
@@ -374,8 +368,8 @@
                     android:id="@+id/restantes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="92dp"
-                    android:layout_marginLeft="92dp"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginLeft="90dp"
                     android:layout_marginTop="37dp"
                     android:text="@string/restantes"
                     android:textColor="@color/negro"
@@ -387,211 +381,10 @@
         </LinearLayout>
     </ScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/PopUpError1"
-        android:layout_width="0dp"
-        android:layout_height="411dp"
-        android:background="#00C5BFBF"
-        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/InfoTienda"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="280dp"
-            android:layout_height="368dp"
-            android:layout_marginTop="20dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/closeButtonRed"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/rojo"
-                android:fadingEdge="horizontal|vertical"
-                android:fontFamily="@font/rubik"
-                android:text="Close"
-                android:textColor="@color/blanco"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/red"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:background="@color/rojo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/stop"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="@+id/red"
-                app:layout_constraintEnd_toEndOf="@+id/red"
-                app:layout_constraintStart_toStartOf="@+id/red"
-                app:layout_constraintTop_toTopOf="@+id/red"
-                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
-
-            <TextView
-                android:id="@+id/messageError"
-                android:layout_width="0dp"
-                android:layout_height="89dp"
-                android:text="Texto de ejemplo"
-                android:textColor="@color/negro"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/red" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/closeCross"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
-
-        <ImageView
-            android:id="@+id/closeCircle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_clear_black_24dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/PopUpConfirm3"
-        android:layout_width="0dp"
-        android:layout_height="411dp"
-        android:background="#00C5BFBF"
-        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="280dp"
-            android:layout_height="368dp"
-            android:layout_marginTop="20dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/okButton"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/verde"
-                android:fadingEdge="horizontal|vertical"
-                android:fontFamily="@font/rubik"
-                android:onClick="confirmedShop"
-                android:text="@string/Confirmar"
-                android:textColor="@color/blanco"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/green"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:background="@color/verde"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/tick"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="@+id/green"
-                app:layout_constraintEnd_toEndOf="@+id/green"
-                app:layout_constraintStart_toStartOf="@+id/green"
-                app:layout_constraintTop_toTopOf="@+id/green"
-                app:srcCompat="@drawable/ic_check_circle_black_24dp" />
-
-            <TextView
-                android:id="@+id/menssageOk"
-                android:layout_width="0dp"
-                android:layout_height="89dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:gravity="center"
-                android:text="@string/ConfirmacionCompra"
-                android:textColor="@color/negro"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/green" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/closeCross"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
-            android:onClick="closeConfirmationPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
-
-        <ImageView
-            android:id="@+id/closeCircle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:onClick="closeConfirmationPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_clear_black_24dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <LinearLayout
         android:id="@+id/MenuInferior"
         android:layout_width="0dp"
-        android:layout_height="71dp"
+        android:layout_height="60dp"
         android:background="@color/azul"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -775,5 +568,206 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopUpConfirm3"
+        android:layout_width="0dp"
+        android:layout_height="411dp"
+        android:background="#00C5BFBF"
+        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="280dp"
+            android:layout_height="368dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/okButton"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/verde"
+                android:fadingEdge="horizontal|vertical"
+                android:fontFamily="@font/rubik"
+                android:onClick="confirmedShop"
+                android:text="@string/Confirmar"
+                android:textColor="@color/blanco"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/green"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/verde"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/tick"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/green"
+                app:layout_constraintEnd_toEndOf="@+id/green"
+                app:layout_constraintStart_toStartOf="@+id/green"
+                app:layout_constraintTop_toTopOf="@+id/green"
+                app:srcCompat="@drawable/ic_check_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/menssageOk"
+                android:layout_width="0dp"
+                android:layout_height="89dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="@string/ConfirmacionCompra"
+                android:textColor="@color/negro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/green" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/closeCross"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:onClick="closeConfirmationPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        <ImageView
+            android:id="@+id/closeCircle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:onClick="closeConfirmationPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopUpError1"
+        android:layout_width="0dp"
+        android:layout_height="411dp"
+        android:background="#00C5BFBF"
+        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/InfoTienda"
+        app:layout_constraintTop_toBottomOf="@+id/Header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="280dp"
+            android:layout_height="368dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/closeButtonRed"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/rojo"
+                android:fadingEdge="horizontal|vertical"
+                android:fontFamily="@font/rubik"
+                android:text="Close"
+                android:textColor="@color/blanco"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/red"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/rojo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/stop"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/red"
+                app:layout_constraintEnd_toEndOf="@+id/red"
+                app:layout_constraintStart_toStartOf="@+id/red"
+                app:layout_constraintTop_toTopOf="@+id/red"
+                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/messageError"
+                android:layout_width="0dp"
+                android:layout_height="89dp"
+                android:text="Texto de ejemplo"
+                android:textColor="@color/negro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/red" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/closeCross"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        <ImageView
+            android:id="@+id/closeCircle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

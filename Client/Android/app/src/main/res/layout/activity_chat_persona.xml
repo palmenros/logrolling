@@ -191,7 +191,7 @@
     <LinearLayout
         android:id="@+id/MenuInferior"
         android:layout_width="0dp"
-        android:layout_height="71dp"
+        android:layout_height="60dp"
         android:background="@color/azul"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"

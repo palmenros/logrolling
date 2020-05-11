@@ -6,266 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Header"
-        android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:background="@color/azul"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/cuadroGrollies"
-            android:layout_width="134dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:background="@color/blanco"
-            android:onClick="buyGrollies"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/grollies"
-            android:layout_width="62dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
-            app:layout_constraintStart_toStartOf="@+id/cuadroGrollies"
-            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
-            tools:text="grollies" />
-
-        <ImageView
-            android:id="@+id/masGrollies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/blanco"
-            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
-            app:layout_constraintEnd_toEndOf="@+id/cuadroGrollies"
-            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
-            app:srcCompat="@android:drawable/ic_input_add" />
-
-        <ImageView
-            android:id="@+id/logoGrollies"
-            android:layout_width="30dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
-            app:layout_constraintStart_toEndOf="@+id/grollies"
-            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
-            app:srcCompat="@drawable/grollies" />
-
-        <TextView
-            android:id="@+id/TituloPantalla"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/azul"
-            android:gravity="center"
-            android:text="@string/FavorARealizar"
-            android:textColor="@color/blanco"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cuadroGrollies"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
-        android:id="@+id/InformacionFavorRealizar"
-        android:layout_width="0dp"
-        android:layout_height="480dp"
-        android:layout_marginTop="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="900dp">
-
-                <TextView
-                    android:id="@+id/Recompensa"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:ems="10"
-                    android:hint="@string/Recompensa"
-                    android:inputType="numberDecimal"
-                    android:text="@string/Recompensa"
-                    android:textColor="@color/azul"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fechaLimite" />
-
-                <TextView
-                    android:id="@+id/recompensa"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:ems="10"
-                    android:hint="@string/Recompensa"
-                    android:inputType="numberDecimal"
-                    android:textColor="#42A5F5"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
-
-                <TextView
-                    android:id="@+id/DescripcionFavor"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/Descripcion"
-                    android:inputType="textMultiLine"
-                    android:text="@string/Descripcion"
-                    android:textColor="@color/azul"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nombre" />
-
-                <Button
-                    android:id="@+id/chat"
-                    android:layout_width="283dp"
-                    android:layout_height="42dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@color/blanco"
-                    android:fadingEdge="horizontal|vertical"
-                    android:fontFamily="@font/rubik"
-                    android:onClick="chat"
-                    android:text="@string/Chatear"
-                    android:textColor="@color/azul"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recompensa" />
-
-                <TextView
-                    android:id="@+id/descripcionFavor"
-                    android:layout_width="330dp"
-                    android:layout_height="200dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/Descripcion"
-                    android:inputType="textMultiLine"
-                    android:textColor="@color/azul"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor" />
-
-                <ImageView
-                    android:id="@+id/Foto"
-                    android:layout_width="250dp"
-                    android:layout_height="180dp"
-                    android:layout_marginTop="25dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/descripcionFavor"
-                    app:srcCompat="@drawable/ic_insert_photo_black_24dp"
-                    tools:srcCompat="@drawable/ic_insert_photo_black_24dp" />
-
-                <TextView
-                    android:id="@+id/nombre"
-                    android:layout_width="330dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="25dp"
-                    android:ems="10"
-                    android:hint="@string/Nombre"
-                    android:textColor="@color/azul"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/FechaLimite"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:ems="10"
-                    android:hint="@string/FechaLimite"
-                    android:inputType="date"
-                    android:text="@string/FechaLimite"
-                    android:textColor="@color/azul"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lugarEntrega" />
-
-                <TextView
-                    android:id="@+id/fechaLimite"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:ems="10"
-                    android:hint="@string/FechaLimite"
-                    android:inputType="date"
-                    android:textColor="#42A5F5"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
-
-                <TextView
-                    android:id="@+id/LugarEntrega"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:ems="10"
-                    android:hint="@string/LugarEntrega"
-                    android:inputType="textPersonName"
-                    android:text="@string/LugarEntrega"
-                    android:textColor="@color/azul"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Foto" />
-
-                <TextView
-                    android:id="@+id/lugarEntrega"
-                    android:layout_width="330dp"
-                    android:layout_height="25dp"
-                    android:ems="10"
-                    android:hint="@string/LugarEntrega"
-                    android:inputType="textPersonName"
-                    android:textColor="#42A5F5"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/PopUpError3"
         android:layout_width="0dp"
         android:layout_height="411dp"
@@ -370,10 +110,306 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Header"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/cuadroGrollies"
+            android:layout_width="134dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/blanco"
+            android:onClick="buyGrollies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/grollies"
+            android:layout_width="62dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toStartOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            tools:text="grollies" />
+
+        <ImageView
+            android:id="@+id/masGrollies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blanco"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintEnd_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/logoGrollies"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toEndOf="@+id/grollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@drawable/grollies" />
+
+        <TextView
+            android:id="@+id/TituloPantalla"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/azul"
+            android:gravity="center"
+            android:text="@string/FavorARealizar"
+            android:textColor="@color/blanco"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/InformacionFavorRealizar"
+        android:layout_width="0dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="900dp">
+
+                <TextView
+                    android:id="@+id/Recompensa"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:hint="@string/Recompensa"
+                    android:inputType="numberDecimal"
+                    android:text="@string/Recompensa"
+                    android:textColor="@color/azul"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fechaLimite" />
+
+                <TextView
+                    android:id="@+id/recompensa"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:hint="@string/Recompensa"
+                    android:inputType="numberDecimal"
+                    android:textColor="#42A5F5"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Recompensa" />
+
+                <TextView
+                    android:id="@+id/DescripcionFavor"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/Descripcion"
+                    android:inputType="textMultiLine"
+                    android:text="@string/Descripcion"
+                    android:textColor="@color/azul"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nombre" />
+
+                <Button
+                    android:id="@+id/chat"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginRight="60dp"
+                    android:background="@color/blanco"
+                    android:fadingEdge="horizontal|vertical"
+                    android:fontFamily="@font/rubik"
+                    android:onClick="chat"
+                    android:text="@string/Chatear"
+                    android:textColor="@color/azul"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recompensa" />
+
+                <TextView
+                    android:id="@+id/descripcionFavor"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/Descripcion"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/azul"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor" />
+
+                <ImageView
+                    android:id="@+id/Foto"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginRight="100dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descripcionFavor"
+                    app:srcCompat="@drawable/ic_insert_photo_black_24dp"
+                    tools:srcCompat="@drawable/ic_insert_photo_black_24dp" />
+
+                <TextView
+                    android:id="@+id/nombre"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:hint="@string/Nombre"
+                    android:textColor="@color/azul"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/FechaLimite"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:hint="@string/FechaLimite"
+                    android:inputType="date"
+                    android:text="@string/FechaLimite"
+                    android:textColor="@color/azul"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lugarEntrega" />
+
+                <TextView
+                    android:id="@+id/fechaLimite"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:hint="@string/FechaLimite"
+                    android:inputType="date"
+                    android:textColor="#42A5F5"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
+
+                <TextView
+                    android:id="@+id/LugarEntrega"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:hint="@string/LugarEntrega"
+                    android:inputType="textPersonName"
+                    android:text="@string/LugarEntrega"
+                    android:textColor="@color/azul"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Foto" />
+
+                <TextView
+                    android:id="@+id/lugarEntrega"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ems="10"
+                    android:hint="@string/LugarEntrega"
+                    android:inputType="textPersonName"
+                    android:textColor="#42A5F5"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/LugarEntrega" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
         android:id="@+id/MenuInferior"
         android:layout_width="0dp"
-        android:layout_height="71dp"
+        android:layout_height="60dp"
         android:background="@color/azul"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
