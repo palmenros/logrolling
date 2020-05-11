@@ -223,7 +223,7 @@ public class GiftsManager {
     }
 
 
-    public static void purchaseGift(PurchasedGift gift, String username) {
+    public static void purchaseGift(String username, PurchasedGift gift) {
 
 
         User user = UserManager.getUserByName(username);
