@@ -32,8 +32,8 @@ public class TransferChat {
         return messages;
     }
 
-    public TransferMessage getLastMessage(){
-       return messages.get(0);
+    public String getLastMessage(){
+       return messages.get(0).getContent();
     }
 
     public void setMessages(List<TransferMessage> messages) {
