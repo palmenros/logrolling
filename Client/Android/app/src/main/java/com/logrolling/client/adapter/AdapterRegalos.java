@@ -1,4 +1,4 @@
-package com.logrolling.client;
+package com.logrolling.client.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.logrolling.client.R;
+import com.logrolling.client.transfer.Gift;
 
 import java.util.ArrayList;
 

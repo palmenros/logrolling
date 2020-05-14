@@ -1,40 +1,59 @@
-package com.logrolling.client;
+package com.logrolling.client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class AskFavorActivity extends AppCompatActivity {
-    private TextView numGrollies;
-    private TextView popUpMessage;
+import com.logrolling.client.R;
 
-    private EditText name, description, deliveryLocation, deliveryDate, reward;
-    private ConstraintLayout popUpConfirmation, popUpError;
+import java.util.ArrayList;
+
+import com.logrolling.client.adapter.AdapterRegalos;
+import com.logrolling.client.transfer.Gift;
+
+public class GiftsActivity extends AppCompatActivity {
+    private RecyclerView listFavors;
+    private TextView numGrollies;
+    private ArrayList<Gift> gifts = new ArrayList<Gift>();
+    private TextView popUpMessage;
+    private ConstraintLayout popUpConfirmation,popUpError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedir_favor);
+        setContentView(R.layout.activity_regalos);
+        listFavors =(RecyclerView)findViewById(R.id.ListaRegalos);
+        listFavors.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
         numGrollies=(TextView)findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError9);
+        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError8);
         popUpError.setVisibility(View.INVISIBLE);
         popUpMessage=(TextView)findViewById(R.id.messageError);
-        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm4);
+        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm2);
         popUpConfirmation.setVisibility(View.INVISIBLE);
 
+        llenarLista();
 
-        name=(EditText)findViewById(R.id.Nombre);
-        description=(EditText)findViewById(R.id.DescripcionFavor);
-        deliveryLocation=(EditText)findViewById(R.id.LugarEntrega);
-        deliveryDate=(EditText)findViewById(R.id.FechaLimite);
-        reward=(EditText)findViewById(R.id.Recompensa);
+        AdapterRegalos adapter=new AdapterRegalos(gifts);
+        listFavors.setAdapter(adapter);
+        /*listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                showConfirmationPopUp(view);
+            }
+        });*/
+    }
+    private void llenarLista(){
+        for(int i=0;i<10;i++) {
+            gifts.add(new Gift("Regalo "+i,i*1000,R.drawable.ic_card_giftcard_black_24dp));
+        }
     }
 
     //Panel Inferior
@@ -55,41 +74,22 @@ public class AskFavorActivity extends AppCompatActivity {
         Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
-    public void gifts(View view) {
-        Intent i = new Intent(this, GiftsActivity.class);
-        startActivity(i);
-    }
 
 
-    public void askFavor(View view) {
-        //Comprobar que la informacion del favor es correcta
-        //(name, description, deliveryLocation, deliveryDate, reward)
-        showConfirmationPopUp(view);
-    }
-    public void askFavorConfirmed(View view) {
-        //pedirFavor
-        closeConfirmationPopUp(view);
-        Intent i = new Intent(this, MyFavorsActivity.class);
-        startActivity(i);
-    }
+
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
     }
-    public void addPhoto(View view) {
-        //Añadir foto
-    }
-    public void editPhoto(View view) {
-        //Añadir foto
-    }
+
     public void closeErrorPopUp(View view){
         popUpError.setVisibility(View.INVISIBLE);
     }
     public void showConfirmationPopUp(View view){
         popUpConfirmation.setVisibility(View.VISIBLE);
     }
-    public void closeConfirmationPopUp(View view){ popUpConfirmation.setVisibility(View.INVISIBLE);}
+    public void closeConfirmationPopUp(View view){  popUpConfirmation.setVisibility(View.INVISIBLE);}
     public void showErrorPopUp(View view){
-        popUpError.setVisibility(View.VISIBLE);
+        popUpConfirmation.setVisibility(View.VISIBLE);
     }
 }

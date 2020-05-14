@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blancoSucio"
-    tools:context=".MyFavorsActivity">
+    tools:context=".view.MyFavorsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Header"

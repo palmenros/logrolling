@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azul"
-    tools:context=".SignInActivity">
+    tools:context=".view.SignInActivity">
 
     <ImageView
         android:id="@+id/logo_logrolling"

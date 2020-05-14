@@ -1,4 +1,4 @@
-package com.logrolling.client;
+package com.logrolling.client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,7 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.logrolling.client.R;
+
 import java.util.ArrayList;
+
+import com.logrolling.client.adapter.AdapterFavores;
+import com.logrolling.client.transfer.Favor;
 
 public class MyFavorsActivity extends AppCompatActivity {
     public int blue = Color.parseColor("#2699FB");

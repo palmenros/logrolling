@@ -1,4 +1,4 @@
-package com.logrolling.client;
+package com.logrolling.client.transfer;
 
 public class Favor {
     private String name, description, adress, favor, maxTime, distance;

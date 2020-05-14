@@ -1,13 +1,16 @@
-package com.logrolling.client;
+package com.logrolling.client.transfer;
 
-public class Persona {
+public class Gift {
     private String name;
-    private String last_message;
+    private int price;
     private int photo;
 
-    public Persona(String name, String last_message, int photo) {
+    public Gift() {
+    }
+
+    public Gift(String name, int price, int photo) {
         this.name = name;
-        this.last_message = last_message;
+        this.price = price;
         this.photo = photo;
     }
 
@@ -19,12 +22,12 @@ public class Persona {
         this.name = name;
     }
 
-    public String getLast_message() {
-        return last_message;
+    public int getPrice() {
+        return price;
     }
 
-    public void setLast_message(String last_message) {
-        this.last_message = last_message;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getPhoto() {

@@ -1,4 +1,4 @@
-package com.logrolling.client;
+package com.logrolling.client.adapter;
 
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.logrolling.client.R;
+import com.logrolling.client.transfer.Favor;
 
 import java.util.ArrayList;
 

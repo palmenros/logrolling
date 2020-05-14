@@ -1,4 +1,4 @@
-package com.logrolling.client;
+package com.logrolling.client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,8 +12,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.logrolling.client.R;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import com.logrolling.client.adapter.DataAdapter;
 
 public class ChatPersonActivity extends AppCompatActivity {
     private EditText writeMessage;

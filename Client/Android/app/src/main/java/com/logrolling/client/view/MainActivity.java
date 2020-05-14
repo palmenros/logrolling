@@ -1,4 +1,4 @@
-package com.logrolling.client;
+package com.logrolling.client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.logrolling.client.R;
 
 public class MainActivity extends AppCompatActivity {
     private TextView popUpMessage;

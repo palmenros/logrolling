@@ -7,7 +7,7 @@
     android:background="@color/azul"
     android:clickable="true"
     android:onClick="advance"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <ImageView
         android:id="@+id/logo_logrolling"

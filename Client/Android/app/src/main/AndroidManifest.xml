@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.logrolling.client">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FavorToBeDoneActivity"></activity>
-        <activity android:name=".ChatPersonActivity" />
-        <activity android:name=".AskedFavorActivity" />
-        <activity android:name=".DoFavorActivity" />
-        <activity android:name=".MessageActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".ShopActivity" />
-        <activity android:name=".MyProfileActivity" />
-        <activity android:name=".ConfigurationActivity" />
-        <activity android:name=".GiftsActivity" />
-        <activity android:name=".AskFavorActivity" />
-        <activity android:name=".MyFavorsActivity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.FavorToBeDoneActivity" />
+        <activity android:name=".view.ChatPersonActivity" />
+        <activity android:name=".view.AskedFavorActivity" />
+        <activity android:name=".view.DoFavorActivity" />
+        <activity android:name=".view.MessageActivity" />
+        <activity android:name=".view.SearchActivity" />
+        <activity android:name=".view.ShopActivity" />
+        <activity android:name=".view.MyProfileActivity" />
+        <activity android:name=".view.ConfigurationActivity" />
+        <activity android:name=".view.GiftsActivity" />
+        <activity android:name=".view.AskFavorActivity" />
+        <activity android:name=".view.MyFavorsActivity" />
+        <activity android:name=".view.RegistrationActivity" />
+        <activity android:name=".view.SignInActivity" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.logrolling.client;
+package com.logrolling.client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.logrolling.client.R;
 
 public class AskedFavorActivity extends AppCompatActivity {
 

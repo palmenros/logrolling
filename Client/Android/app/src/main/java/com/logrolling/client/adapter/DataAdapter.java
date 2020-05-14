@@ -1,7 +1,6 @@
-package com.logrolling.client;
+package com.logrolling.client.adapter;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,8 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.logrolling.client.R;
 
 import java.util.ArrayList;
 
