@@ -5,6 +5,7 @@ import com.logrolling.server.services.users.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ChatAssembler {
 
@@ -27,13 +28,27 @@ public class ChatAssembler {
     }
 
     public static List<TransferMessagePreview> getInteractions(String username){
-        List<TransferChat> chats = getChats(username);
         List<TransferMessagePreview> interactions =  new ArrayList<TransferMessagePreview>();
-        for(TransferChat c : chats){
-            String u = c.getUser2();
-            String m = getChat(username, c.getUser2()).getLastMessage();
-            interactions.add(new TransferMessagePreview(u,m));
+        List<Message> chatMessages = new ArrayList<Message>();
+        List<Message> lastMessages = new ArrayList<Message>();
+
+        for(User u : UserManager.getAllUsers()){
+            chatMessages = MessageManager.getMessagesFromConversation(username, u.getUsername());
+
+            if(chatMessages!= null) {
+                chatMessages.sort((m1, m2) -> {return (m2.getId() - m2.getId());});
+                lastMessages.add(chatMessages.get(0));
+            }
         }
+        lastMessages.sort((m1, m2) -> {return (m2.getId() - m2.getId());});
+
+        for(Message m : chatMessages){
+            if (m.getFrom() != username)
+                interactions.add(new TransferMessagePreview(m.getFrom(), m.getContent()));
+            else
+                interactions.add(new TransferMessagePreview(m.getTo(), m.getContent()));
+        }
+
         return interactions;
     }
 

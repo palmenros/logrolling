@@ -52,8 +52,22 @@ public class MessageManager {
         db.close();
 
         return messages;
+    }
 
+    public static Message getMessageByContent(String content) {
+        Message message;
 
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from messages where content = ?",
+                new String[]{
+                        content
+                });
+        try {
+                message = getMessageFromResultSet(rs);
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        return message;
     }
 
     private static Message getMessageFromResultSet(ResultSet rs) throws SQLException{
