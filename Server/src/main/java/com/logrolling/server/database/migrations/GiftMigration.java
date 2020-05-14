@@ -2,8 +2,8 @@ package com.logrolling.server.database.migrations;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
-import com.logrolling.server.database.managers.GiftsManager;
-import com.logrolling.server.model.Gift;
+import com.logrolling.server.gifts.GiftsManager;
+import com.logrolling.server.gifts.Gift;
 
 public class GiftMigration implements Migration {
 
