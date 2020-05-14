@@ -47,7 +47,7 @@ public class FavorMigration implements Migration{
         };
 
         for(Favor favor : favorList) {
-            FavorManager.createFavor(favor);
+            FavorManager.createFavorUnchecked(favor);
         }
     }
 }

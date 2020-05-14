@@ -17,7 +17,8 @@ public class GiftsController extends AuthenticableController {
     }
 
     @GET
-    public TransferGift getGiftByTitle(@HeaderParam("title") String title) {
+    @Path("/{title}")
+    public TransferGift getGiftByTitle(@PathParam("title") String title) {
         return Gift.getGiftByTitle(title);
     }
 
@@ -28,11 +29,10 @@ public class GiftsController extends AuthenticableController {
     }
     
     @POST
-    @Path("@purchase")
-    public void purchaseGift(@HeaderParam("token") String token, @HeaderParam("title") String title,
-                              @HeaderParam("address") String address) {
+    @Path("@purchase/")
+    public void purchaseGift(@HeaderParam("token") String token, TransferPurchase transferPurchase) {
         String username = authenticateWithToken(token);
-        Gift.purchaseGift(username, title, address);
+        Gift.purchaseGift(username, transferPurchase.getTitle(), transferPurchase.getAddress());
     }
 
 }

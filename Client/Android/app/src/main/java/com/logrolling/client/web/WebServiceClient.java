@@ -23,7 +23,7 @@ public class WebServiceClient {
         void onError(RequestException ex);
     }
 
-    public <InputObject, OutputObject> OutputObject getRequest(
+    public <InputObject, OutputObject> void getRequest(
             String url,
             InputObject input,
             final ResponseListener<OutputObject> responseListener,
@@ -45,7 +45,6 @@ public class WebServiceClient {
         }
 
         //TODO: Append URL with some based URL declared in settings
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -66,8 +65,7 @@ public class WebServiceClient {
                     }
                 });
 
-        //TODO: Change
-        return null;
+        WebRequestQueue.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
 

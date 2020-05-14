@@ -16,7 +16,7 @@ public class MessageManager {
 
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate(
-                "INSERT INTO messages (from, to, content) VALUES (?, ?, ?);",
+                "INSERT INTO messages (origin, destination, content) VALUES (?, ?, ?);",
                 new String[]{
                         message.getFrom(),
                         message.getTo(),
@@ -33,7 +33,7 @@ public class MessageManager {
         List<Message> messages = new ArrayList<Message>();
 
         Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from messages where from = ? and to = ? or from = ? and to = ?",
+        ResultSet rs = db.executeQuery("select * from messages where origin = ? destination to = ? or origin = ? and destination = ?",
                 new String[]{
                         userA,
                         userB,
@@ -59,8 +59,8 @@ public class MessageManager {
     private static Message getMessageFromResultSet(ResultSet rs) throws SQLException{
         return new Message(
                 rs.getInt("id"),
-                rs.getString("from"),
-                rs.getString("to"),
+                rs.getString("origin"),
+                rs.getString("destination"),
                 rs.getString("content")
 
         );

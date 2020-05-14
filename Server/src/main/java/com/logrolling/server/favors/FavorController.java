@@ -33,15 +33,15 @@ public class FavorController extends AuthenticableController {
     }
 
     @PUT
-    @Path("@do")
-    public void doFavor(@HeaderParam("id") int id, @HeaderParam("token") String token){
+    @Path("/{id}/@do")
+    public void doFavor(@HeaderParam("token") String token, @PathParam("id") int id){
         String username = authenticateWithToken(token);
         Favor.doFavor(id, username);
     }
 
     @PUT
-    @Path("@complete")
-    public void completeFavor(@HeaderParam("id") int id, @HeaderParam("token") String token){
+    @Path("/{id}/@complete")
+    public void completeFavor(@HeaderParam("token") String token, @PathParam("id") int id){
         String username = authenticateWithToken(token);
         Favor.completeFavor(id, username);
     }
@@ -54,19 +54,21 @@ public class FavorController extends AuthenticableController {
     }
 
     @POST
-    public void addFavor(TransferFavor f, @HeaderParam("token") String token) {
+    public void addFavor(@HeaderParam("token") String token, TransferFavor f) {
         String username = authenticateWithToken(token);
         Favor.addFavor(f, username);
     }
 
     @PUT
-    public void updateFavor(TransferFavor f, @HeaderParam("id") int id, @HeaderParam("token") String token) {
+    @Path("/{id}")
+    public void updateFavor(@HeaderParam("token") String token, @PathParam("id") int id, TransferFavor f) {
         String username = authenticateWithToken(token);
         Favor.updateFavor(f, id, username);
     }
     
     @DELETE
-    public void deleteFavor(@HeaderParam("id") int id, @HeaderParam("token") String token) {
+    @Path("/{id}")
+    public void deleteFavor(@HeaderParam("token") String token, @PathParam("id") int id) {
         String username = authenticateWithToken(token);
         Favor.deleteFavor(id, username);
     }

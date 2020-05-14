@@ -15,8 +15,7 @@ public class MigrationManager {
         new FavorMigration(),
         new TokenMigration(),
         new GiftMigration(),
-        new MessageMigration(),
-        new GiftMigration()
+        new MessageMigration()
     };
 
     /**

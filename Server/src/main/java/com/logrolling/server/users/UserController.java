@@ -17,15 +17,14 @@ public class UserController extends AuthenticableController {
     }
 
     @POST
-    public void createUser(@HeaderParam("username") String username, @HeaderParam("password") String password){
-        User.createUser(username, password);
+    public void createUser(TransferCredentials transferCredentials){
+        User.createUser(transferCredentials.getUsername(), transferCredentials.getPassword());
     }
 
     @PUT
-    public void updateUserByName(@HeaderParam("token") String token, @HeaderParam("newUsername") String newU,
-                                 @HeaderParam("newPassword") String password) {
+    public void updateUserByName(@HeaderParam("token") String token, TransferCredentials transferCredentials) {
         String old = authenticateWithToken(token);
-        User.updateUserByName(old, newU, password);
+        User.updateUserByName(old, transferCredentials.getUsername(), transferCredentials.getPassword());
     }
 
     @DELETE
@@ -35,8 +34,8 @@ public class UserController extends AuthenticableController {
     }
 
     @GET
-    @Path("/user")
-    public TransferUser getUserByName(@HeaderParam("username") String username){
+    @Path("/user/{username}")
+    public TransferUser getUserByName(@PathParam("username") String username){
         return User.getUserByName(username);
     }
 

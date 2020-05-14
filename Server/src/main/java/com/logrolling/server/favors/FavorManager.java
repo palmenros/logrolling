@@ -17,6 +17,24 @@ import java.util.List;
 
 public class FavorManager {
 
+    public static void createFavorUnchecked(Favor favor) {
+        Database db = DatabaseFactory.createInstance();
+            db.executeUpdate(
+                    "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude, worker) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+                    new String[]{
+                            favor.getCreator(),
+                            favor.getTitle(),
+                            favor.getDescription(),
+                            favor.getDueTime().toString(),
+                            favor.getReward().toString(),
+                            favor.getLatCoord().toString(),
+                            favor.getLongCoord().toString(),
+                            favor.getWorker()
+                    });
+
+            db.close();
+    }
+
     public static void createFavor(Favor favor){
 
 

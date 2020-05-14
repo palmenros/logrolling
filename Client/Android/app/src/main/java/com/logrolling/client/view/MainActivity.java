@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.logrolling.client.R;
+import com.logrolling.client.web.WebRequestQueue;
 
 public class MainActivity extends AppCompatActivity {
     private TextView popUpMessage;
@@ -20,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //TODO: Load Request Queue here
+        WebRequestQueue.createInstance(this);
 
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        
         //TODO: Use NetworkImageView
 
         popUpError=(ConstraintLayout)findViewById(R.id.PopUpError14);

@@ -14,22 +14,22 @@ public class ChatController extends AuthenticableController {
 
     // Does not take into account order of chats
     @GET
-    public List<TransferChat> getChats(@HeaderParam("token") String token){
+    public List<TransferChat> getChats(@HeaderParam("token") String token) {
         String username = authenticateWithToken(token);
         return ChatAssembler.getChats(username);
     }
 
     @GET
-    public TransferChat getChat(@HeaderParam("token") String token, @HeaderParam("otherUser") String username2){
+    @Path("/{otherUser}")
+    public TransferChat getChat(@HeaderParam("token") String token, @PathParam("otherUser") String username2) {
         String username1 = authenticateWithToken(token);
         return ChatAssembler.getChat(username1, username2);
     }
 
     @POST
-    public void addMessage(@HeaderParam("token") String token, @HeaderParam("otherUser") String username2,
-                           @HeaderParam("content") String content){
+    public void addMessage(@HeaderParam("token") String token, TransferMessage transferMessage) {
         String username1 = authenticateWithToken(token);
-        ChatAssembler.addMessage(username1, username2, content);
+        ChatAssembler.addMessage(username1, transferMessage.getTo(), transferMessage.getContent());
     }
 
 }

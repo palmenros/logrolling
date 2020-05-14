@@ -12,8 +12,8 @@ public class MessageMigration implements Migration{
         String sqlQuery =
                 "create table messages (" +
                         "id int auto_increment," +
-                        "from varchar(50) not null," +
-                        "to varchar(50) not null," +
+                        "origin varchar(50) not null," +
+                        "destination varchar(50) not null," +
                         "content varchar(150)," +
                         "constraint messages_pk primary key (id)" +
                         ");";
