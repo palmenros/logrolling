@@ -2,8 +2,8 @@ package com.logrolling.server.database.migrations;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
-import com.logrolling.server.chats.MessageManager;
-import com.logrolling.server.chats.Message;
+import com.logrolling.server.services.chats.MessageManager;
+import com.logrolling.server.services.chats.Message;
 
 
 public class MessageMigration implements Migration{

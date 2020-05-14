@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         WebServiceClient client = new WebServiceClient();
 
-        client.getRequest("http://192.168.0.100:8080/Server_war_exploded/users", null, new WebServiceClient.ResponseListener<String>() {
+        client.getRequest("http://192.168.0.100:8080/Server_war_exploded/favors", null, new WebServiceClient.ResponseListener<String>() {
             @Override
             public void onResponse(String str) {
                 Toast.makeText(MainActivity.this, str, Toast.LENGTH_LONG).show();

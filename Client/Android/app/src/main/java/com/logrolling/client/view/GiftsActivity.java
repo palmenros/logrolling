@@ -61,21 +61,22 @@ public class GiftsActivity extends AppCompatActivity {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
+
     public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void messages(View view) {
         Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
 
     }
+
     public void configuration(View view) {
         Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
-
-
 
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);

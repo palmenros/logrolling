@@ -2,8 +2,8 @@ package com.logrolling.server.database.migrations;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
-import com.logrolling.server.authentication.TokenManager;
-import com.logrolling.server.authentication.Token;
+import com.logrolling.server.services.authentication.TokenManager;
+import com.logrolling.server.services.authentication.Token;
 
 public class TokenMigration implements Migration {
 

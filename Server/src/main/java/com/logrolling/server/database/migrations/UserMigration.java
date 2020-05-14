@@ -2,8 +2,8 @@ package com.logrolling.server.database.migrations;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
-import com.logrolling.server.users.UserManager;
-import com.logrolling.server.users.User;
+import com.logrolling.server.services.users.UserManager;
+import com.logrolling.server.services.users.User;
 
 public class UserMigration implements Migration {
 
