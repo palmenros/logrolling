@@ -2,8 +2,8 @@ package com.logrolling.server.database.migrations;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
-import com.logrolling.server.database.managers.FavorManager;
-import com.logrolling.server.model.Favor;
+import com.logrolling.server.favors.FavorManager;
+import com.logrolling.server.favors.Favor;
 
 public class FavorMigration implements Migration{
 

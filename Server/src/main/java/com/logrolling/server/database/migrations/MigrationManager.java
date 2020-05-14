@@ -3,9 +3,6 @@ package com.logrolling.server.database.migrations;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MigrationManager {
 
     /**
