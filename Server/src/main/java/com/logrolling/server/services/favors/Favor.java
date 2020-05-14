@@ -174,7 +174,10 @@ public class Favor {
         String username = AuthenticationService.authenticateWithToken(token);
         if(FavorManager.getFavorById(id).getCreator().equals(username)) {
             //Favor was created by current user
-            FavorManager.completeFavor(id);
+            Favor favor = null;
+            favor = FavorManager.getFavorById(id);
+            favor.setCompleted(true);
+            FavorManager.updateFavor(id,favor);
         } else {
             throw new UnauthorizedException();
         }
