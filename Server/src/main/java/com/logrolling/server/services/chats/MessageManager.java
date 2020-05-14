@@ -33,7 +33,7 @@ public class MessageManager {
         List<Message> messages = new ArrayList<Message>();
 
         Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from messages where origin = ? destination to = ? or origin = ? and destination = ?",
+        ResultSet rs = db.executeQuery("select * from messages where origin = ? destination to = ? or origin = ? and destination = ? order by id asc",
                 new String[]{
                         userA,
                         userB,

@@ -4,6 +4,7 @@ import com.logrolling.server.services.users.UserManager;
 import com.logrolling.server.services.users.User;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -35,15 +36,20 @@ public class ChatAssembler {
         for(User u : UserManager.getAllUsers()){
             chatMessages = MessageManager.getMessagesFromConversation(username, u.getUsername());
 
-            if(chatMessages!= null) {
-                chatMessages.sort((m1, m2) -> {return (m2.getId() - m1.getId());});
-                lastMessages.add(chatMessages.get(0));
+            if(!chatMessages.isEmpty()) {
+                lastMessages.add(chatMessages.get(chatMessages.size() - 1));
             }
         }
-        lastMessages.sort((m1, m2) -> {return (m2.getId() - m1.getId());});
+
+        lastMessages.sort(new Comparator<Message>() {
+            @Override
+            public int compare(Message m1, Message m2) {
+                return m2.getId() - m1.getId();
+            }
+        });
 
         for(Message m : chatMessages){
-            if (m.getFrom() != username)
+            if (m.getFrom().equals(username))
                 interactions.add(new TransferMessagePreview(m.getFrom(), m.getContent()));
             else
                 interactions.add(new TransferMessagePreview(m.getTo(), m.getContent()));
