@@ -1,6 +1,6 @@
 package com.logrolling.server.services.gifts;
 
-import com.logrolling.server.services.authentication.AuthenticableController;
+import com.logrolling.server.services.authentication.AuthenticationService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -9,7 +9,7 @@ import java.util.List;
 @Path("/gifts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class GiftsController extends AuthenticableController {
+public class GiftsController  {
 
     @GET
     public List<TransferGift> getAllGifts() {
@@ -31,8 +31,7 @@ public class GiftsController extends AuthenticableController {
     @POST
     @Path("@purchase/")
     public void purchaseGift(@HeaderParam("token") String token, TransferPurchase transferPurchase) {
-        String username = authenticateWithToken(token);
-        Gift.purchaseGift(username, transferPurchase.getTitle(), transferPurchase.getAddress());
+        Gift.purchaseGift(token, transferPurchase.getTitle(), transferPurchase.getAddress());
     }
 
 }

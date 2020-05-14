@@ -2,6 +2,7 @@ package com.logrolling.server.services.gifts;
 
 import com.logrolling.server.exceptions.DataNotFoundException;
 import com.logrolling.server.exceptions.NotEnoughGrolliesException;
+import com.logrolling.server.services.authentication.AuthenticationService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +76,8 @@ public class Gift {
         return transfers;
     }
 
-    public static void purchaseGift(String username, String title, String address) {
+    public static void purchaseGift(String token, String title, String address) {
+        String username = AuthenticationService.authenticateWithToken(token);
         Gift gift = GiftsManager.getGiftByTitle(title);
         try {
             GiftsManager.purchaseGift(username, new PurchasedGift(gift.getId(), address, username));

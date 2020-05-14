@@ -4,8 +4,8 @@ public class TransferToken {
 
     private String content;
 
-    public TransferToken(String content){
-        this.content = content;
+    public TransferToken(String username, String password){
+        this.content = AuthenticationService.authenticateWithPassword(username, password);
     }
 
     public String getContent() {

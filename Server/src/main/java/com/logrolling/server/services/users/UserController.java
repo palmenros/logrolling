@@ -1,6 +1,6 @@
 package com.logrolling.server.services.users;
 
-import com.logrolling.server.services.authentication.AuthenticableController;
+import com.logrolling.server.services.authentication.AuthenticationService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -9,7 +9,7 @@ import java.util.List;
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UserController extends AuthenticableController {
+public class UserController {
 
     @GET
     public List<TransferUser> getUsers()  {
@@ -23,14 +23,12 @@ public class UserController extends AuthenticableController {
 
     @PUT
     public void updateUserByName(@HeaderParam("token") String token, TransferCredentials transferCredentials) {
-        String old = authenticateWithToken(token);
-        User.updateUserByName(old, transferCredentials.getUsername(), transferCredentials.getPassword());
+        User.updateUserByName(token, transferCredentials.getUsername(), transferCredentials.getPassword());
     }
 
     @DELETE
     public void deleteUser(@HeaderParam("token") String token){
-        String username = authenticateWithToken(token);
-        User.deleteUser(username);
+        User.deleteUser(token);
     }
 
     @GET

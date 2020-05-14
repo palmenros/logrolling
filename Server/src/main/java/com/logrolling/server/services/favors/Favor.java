@@ -1,6 +1,7 @@
 package com.logrolling.server.services.favors;
 
 import com.logrolling.server.exceptions.UnauthorizedException;
+import com.logrolling.server.services.authentication.AuthenticationService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +128,8 @@ public class Favor {
 
     public void setCompleted(boolean b){ this.completed = b; }
 
-    public static List<TransferFavor> getAvailableFavors(String username) {
+    public static List<TransferFavor> getAvailableFavors(String token) {
+        String username = AuthenticationService.authenticateWithToken(token);
         List<Favor> favors = FavorManager.getAvailableFavors(username);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
@@ -136,7 +138,8 @@ public class Favor {
         return transfers;
     }
 
-    public static List<TransferFavor> getFavorsFromFilter(String username, Filter filter){
+    public static List<TransferFavor> getFavorsFromFilter(String token, Filter filter){
+        String username = AuthenticationService.authenticateWithToken(token);
         List<Favor> favors = FavorManager.getFavorsByFilter(username, filter);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
@@ -145,7 +148,8 @@ public class Favor {
         return transfers;
     }
 
-    public static List<TransferFavor> getFavorsFromUser(String username){
+    public static List<TransferFavor> getFavorsFromUser(String token){
+        String username = AuthenticationService.authenticateWithToken(token);
         List<Favor> favors = FavorManager.getFavorsFromUsername(username);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
@@ -154,7 +158,8 @@ public class Favor {
         return transfers;
     }
 
-    public static List<TransferFavor> getAwardedFavors(String username){
+    public static List<TransferFavor> getAwardedFavors(String token){
+        String username = AuthenticationService.authenticateWithToken(token);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         List<Favor> favors = FavorManager.getAwardedFavors(username);
         for (Favor f : favors) {
@@ -163,7 +168,8 @@ public class Favor {
         return transfers;
     }
 
-    public static void completeFavor(int id, String username){
+    public static void completeFavor(int id, String token){
+        String username = AuthenticationService.authenticateWithToken(token);
         if(FavorManager.getFavorById(id).getCreator().equals(username)) {
             //Favor was created by current user
             FavorManager.completeFavor(id);
@@ -172,7 +178,8 @@ public class Favor {
         }
     }
 
-    public static void addFavor(TransferFavor f, String username){
+    public static void addFavor(TransferFavor f, String token){
+        String username = AuthenticationService.authenticateWithToken(token);
         if(f.getCreator().equals(username)) {
             //Favor was created by current user
             FavorManager.createFavor(new Favor(f));
@@ -181,7 +188,8 @@ public class Favor {
         }
     }
 
-    public static void updateFavor(TransferFavor f, int id, String username){
+    public static void updateFavor(TransferFavor f, int id, String token){
+        String username = AuthenticationService.authenticateWithToken(token);
         if(FavorManager.getFavorById(id).getCreator().equals(username)) {
             //Favor was created by current user
             FavorManager.updateFavor(id, new Favor(f));
@@ -190,7 +198,8 @@ public class Favor {
         }
     }
 
-    public static void deleteFavor(int id, String username){
+    public static void deleteFavor(int id, String token){
+        String username = AuthenticationService.authenticateWithToken(token);
         if(FavorManager.getFavorById(id).getCreator().equals(username)) {
             //Favor was created by current user
             FavorManager.deleteFavorFromId(id);
@@ -199,7 +208,8 @@ public class Favor {
         }
     }
 
-    public static void doFavor(int id, String username){
+    public static void doFavor(int id, String token){
+        String username = AuthenticationService.authenticateWithToken(token);
         FavorManager.doFavor(id, username);
     }
 

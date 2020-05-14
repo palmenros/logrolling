@@ -9,10 +9,10 @@ import javax.ws.rs.core.MediaType;
 @Path("/tokens")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class TokenController extends AuthenticableController {
+public class TokenController {
 
     @PUT
     public TransferToken login(LoginTransfer loginTransfer) {
-        return new TransferToken(authenticateWithPassword(loginTransfer.getUsername(), loginTransfer.getPassword()));
+        return new TransferToken(loginTransfer.getUsername(), loginTransfer.getPassword());
     }
 }

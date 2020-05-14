@@ -3,74 +3,65 @@ package com.logrolling.server.services.favors;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import com.logrolling.server.services.authentication.AuthenticableController;
+import com.logrolling.server.services.authentication.AuthenticationService;
 
 import java.util.List;
 
 @Path("/favors")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class FavorController extends AuthenticableController {
+public class FavorController {
 
     @GET
     public List<TransferFavor> getAvailableFavors(@HeaderParam("token") String token){
-        String username = authenticateWithToken(token);
-        return Favor.getAvailableFavors(username);
+        return Favor.getAvailableFavors(token);
     }
 
     @GET
     @Path("/filter")
     public List<TransferFavor> getFavorsFromFilter(@HeaderParam("token") String token, Filter filter) {
-        String username = authenticateWithToken(token);
-        return Favor.getFavorsFromFilter(username, filter);
+        return Favor.getFavorsFromFilter(token, filter);
     }
 
     @GET
     @Path("/user")
     public List<TransferFavor> getFavorsFromUser(@HeaderParam("token") String token){
-        String username = authenticateWithToken(token);
-        return Favor.getFavorsFromUser(username);
+        return Favor.getFavorsFromUser(token);
     }
 
     @PUT
     @Path("/{id}/@do")
     public void doFavor(@HeaderParam("token") String token, @PathParam("id") int id){
-        String username = authenticateWithToken(token);
-        Favor.doFavor(id, username);
+        Favor.doFavor(id, token);
     }
 
     @PUT
     @Path("/{id}/@complete")
     public void completeFavor(@HeaderParam("token") String token, @PathParam("id") int id){
-        String username = authenticateWithToken(token);
-        Favor.completeFavor(id, username);
+        Favor.completeFavor(id, token);
     }
 
     @GET
     @Path("/awarded")
     public List<TransferFavor> getAwardedFavors(@HeaderParam("token") String token) {
-        String username = authenticateWithToken(token);
-        return Favor.getAwardedFavors(username);
+        return Favor.getAwardedFavors(token);
     }
 
     @POST
     public void addFavor(@HeaderParam("token") String token, TransferFavor f) {
-        String username = authenticateWithToken(token);
-        Favor.addFavor(f, username);
+        Favor.addFavor(f, token);
     }
 
     @PUT
     @Path("/{id}")
     public void updateFavor(@HeaderParam("token") String token, @PathParam("id") int id, TransferFavor f) {
-        String username = authenticateWithToken(token);
-        Favor.updateFavor(f, id, username);
+        Favor.updateFavor(f, id, token);
     }
     
     @DELETE
     @Path("/{id}")
     public void deleteFavor(@HeaderParam("token") String token, @PathParam("id") int id) {
-        String username = authenticateWithToken(token);
-        Favor.deleteFavor(id, username);
+        Favor.deleteFavor(id, token);
     }
 
 }

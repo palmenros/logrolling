@@ -5,13 +5,13 @@ import com.logrolling.server.services.users.UserManager;
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.services.users.User;
 
-public class AuthenticableController {
+public class AuthenticationService {
 
     //TODO: Add proper documentation and exceptions
 
     //If authentication is not successful, throw an exception
     //If authentication is successful, return username of authenticated user
-    protected String authenticateWithToken(String tokenString) throws AuthenticationException {
+    public static String authenticateWithToken(String tokenString) throws AuthenticationException {
         try {
             String[] tokenParts = tokenString.split(":", 2);
             int tokenId = Integer.parseInt(tokenParts[0]);
@@ -45,7 +45,7 @@ public class AuthenticableController {
      * @return Newly generated token to identify this user
      * @throws AuthenticationException If authentication is not successful
      */
-    protected String authenticateWithPassword(String username, String password) throws AuthenticationException {
+    public static String authenticateWithPassword(String username, String password) throws AuthenticationException {
         try {
             User user = UserManager.getUserByName(username);
 
