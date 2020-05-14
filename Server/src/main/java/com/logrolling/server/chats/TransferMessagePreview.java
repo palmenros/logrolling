@@ -4,19 +4,19 @@ import com.logrolling.server.users.TransferUser;
 import com.logrolling.server.users.User;
 
 public class TransferMessagePreview {
-    private TransferUser user;
-    private TransferMessage message;
+    private String user;
+    private String message;
 
-    public TransferMessagePreview(TransferUser u, TransferMessage m){
+    public TransferMessagePreview(String u, String m){
         user = u;
         message = m;
     }
 
-    public TransferUser getUser(){
+    public String getUser(){
         return user;
     }
 
-    public TransferMessage getMessage(){
+    public String getMessage(){
         return message;
     }
 

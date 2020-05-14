@@ -31,8 +31,8 @@ public class ChatAssembler {
         List<TransferChat> chats = getChats(username);
         List<TransferMessagePreview> interactions =  new ArrayList<TransferMessagePreview>();
         for(TransferChat c : chats){
-            TransferUser u = User.getUserByName(c.getUser2());
-            TransferMessage m = getChat(username, c.getUser2()).getLastMessage();
+            String u = c.getUser2();
+            String m = getChat(username, c.getUser2()).getLastMessage();
             interactions.add(new TransferMessagePreview(u,m));
         }
         return interactions;
