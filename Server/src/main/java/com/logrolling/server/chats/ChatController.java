@@ -1,6 +1,8 @@
 package com.logrolling.server.chats;
 
 import com.logrolling.server.authentication.AuthenticableController;
+import com.logrolling.server.gifts.TransferGift;
+import com.logrolling.server.users.TransferUser;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -25,6 +27,14 @@ public class ChatController extends AuthenticableController {
         String username1 = authenticateWithToken(token);
         return ChatAssembler.getChat(username1, username2);
     }
+
+    @GET
+    @Path("/interactions")
+    public List<TransferMessagePreview> getInteractions(@HeaderParam("token") String token){
+        String username = authenticateWithToken(token);
+        return ChatAssembler.getInteractions(username);
+    }
+
 
     @POST
     public void addMessage(@HeaderParam("token") String token, TransferMessage transferMessage) {

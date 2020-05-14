@@ -32,6 +32,10 @@ public class TransferChat {
         return messages;
     }
 
+    public TransferMessage getLastMessage(){
+       return messages.get(0);
+    }
+
     public void setMessages(List<TransferMessage> messages) {
         this.messages = messages;
     }

@@ -1,5 +1,6 @@
 package com.logrolling.server.chats;
 
+import com.logrolling.server.users.TransferUser;
 import com.logrolling.server.users.UserManager;
 import com.logrolling.server.users.User;
 
@@ -24,6 +25,17 @@ public class ChatAssembler {
                 chats.add(chat);
         }
         return chats;
+    }
+
+    public static List<TransferMessagePreview> getInteractions(String username){
+        List<TransferChat> chats = getChats(username);
+        List<TransferMessagePreview> interactions =  new ArrayList<TransferMessagePreview>();
+        for(TransferChat c : chats){
+            TransferUser u = User.getUserByName(c.getUser2());
+            TransferMessage m = getChat(username, c.getUser2()).getLastMessage();
+            interactions.add(new TransferMessagePreview(u,m));
+        }
+        return interactions;
     }
 
     public static void addMessage(String username1, String username2, String content){
