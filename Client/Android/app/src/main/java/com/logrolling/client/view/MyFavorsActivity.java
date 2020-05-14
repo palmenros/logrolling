@@ -17,7 +17,8 @@ import com.logrolling.client.R;
 import java.util.ArrayList;
 
 import com.logrolling.client.adapter.AdapterFavores;
-import com.logrolling.client.transfer.Favor;
+import com.logrolling.client.transfer.Coordinates;
+import com.logrolling.client.transfer.TransferFavor;
 
 public class MyFavorsActivity extends AppCompatActivity {
     public int blue = Color.parseColor("#2699FB");
@@ -25,10 +26,10 @@ public class MyFavorsActivity extends AppCompatActivity {
     private RecyclerView listFavorsToBeDone, listDoneFavors;
     private TextView numGrollies;
     private Button favorsDo, favorsAsked;
-    private ArrayList<Favor> favorsDoneArray = new ArrayList<Favor>(); /*={"Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio",
+    private ArrayList<TransferFavor> favorsDoneArray = new ArrayList<TransferFavor>(); /*={"Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio",
             "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar",
             "Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar"};*/
-    private ArrayList<Favor> favorsAskedArray = new ArrayList<Favor>();/*={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
+    private ArrayList<TransferFavor> favorsAskedArray = new ArrayList<TransferFavor>();/*={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
             "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos", "Pedido2"};*/
 
     private TextView popUpMessage;
@@ -83,8 +84,8 @@ public class MyFavorsActivity extends AppCompatActivity {
     }
     private void llenarLista(){
         for(int i=0;i<10;i++) {
-            favorsDoneArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000, "Hasta mañana a las 12:00", "A 150m de ti"));
-            favorsAskedArray.add(new Favor("Nombre "+i,"Descripcion "+i,"Direccion "+i,"Favor "+i,R.drawable.ic_person_black_24dp,i*1000, "Hasta mañana a las 12:00", "A 150m de ti"));
+            favorsDoneArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606 , i*1000, new Coordinates(0, 0), null, false));
+            favorsAskedArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606 , i*1000, new Coordinates(0, 0), null, false));
         }
     }
 

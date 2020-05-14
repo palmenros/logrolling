@@ -12,16 +12,16 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.logrolling.client.R;
-import com.logrolling.client.transfer.Persona;
+import com.logrolling.client.transfer.TransferMessagePreview;
 
 import java.util.ArrayList;
 
 public class AdapterPersonas extends RecyclerView.Adapter<AdapterPersonas.ViewHolderPersonas> {
 
-    ArrayList<Persona> listaPersonas;
+    ArrayList<TransferMessagePreview> listaTransferMessagePreviews;
 
-    public AdapterPersonas(ArrayList<Persona> listaPersonas) {
-        this.listaPersonas = listaPersonas;
+    public AdapterPersonas(ArrayList<TransferMessagePreview> listaTransferMessagePreviews) {
+        this.listaTransferMessagePreviews = listaTransferMessagePreviews;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -32,13 +32,13 @@ public class AdapterPersonas extends RecyclerView.Adapter<AdapterPersonas.ViewHo
 
     @Override
     public int getItemCount() {
-        return listaPersonas.size();
+        return listaTransferMessagePreviews.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderPersonas holder, int position) {
-        holder.name.setText(listaPersonas.get(position).getName());
-        holder.last_message.setText(listaPersonas.get(position).getLast_message());
+        holder.name.setText(listaTransferMessagePreviews.get(position).getUser());
+        holder.last_message.setText(listaTransferMessagePreviews.get(position).getMessage());
        // holder.photo.setImageResource(listaPersonas.get(position).getPhoto());
     }
 

@@ -17,11 +17,11 @@ import com.logrolling.client.R;
 import java.util.ArrayList;
 
 import com.logrolling.client.adapter.AdapterPersonas;
-import com.logrolling.client.transfer.Persona;
+import com.logrolling.client.transfer.TransferMessagePreview;
 
 public class MessageActivity extends AppCompatActivity {
     private RecyclerView listChat;
-    private ArrayList<Persona> chats = new ArrayList<Persona>();
+    private ArrayList<TransferMessagePreview> chats = new ArrayList<TransferMessagePreview>();
     private TextView numGrollies;
     private AdapterPersonas adapter;
     private TextView popUpMessage;
@@ -87,7 +87,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private void llenarLista(){
         for(int i=0;i<5;i++) {
-            chats.add(new Persona("Persona "+i,"ultimo mensaje",R.drawable.ic_person_black_24dp));
+            chats.add(new TransferMessagePreview("Persona "+i,"ultimo mensaje"));
         }
     }
 

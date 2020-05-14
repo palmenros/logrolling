@@ -16,11 +16,12 @@ import com.logrolling.client.R;
 import java.util.ArrayList;
 
 import com.logrolling.client.adapter.AdapterFavores;
-import com.logrolling.client.transfer.Favor;
+import com.logrolling.client.transfer.Coordinates;
+import com.logrolling.client.transfer.TransferFavor;
 
 public class SearchActivity extends AppCompatActivity {
     private RecyclerView listFavors;
-    private ArrayList<Favor> favorsArray = new ArrayList<Favor>(); // ={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
+    private ArrayList<TransferFavor> favorsArray = new ArrayList<TransferFavor>(); // ={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
     private boolean filters;
     private ConstraintLayout constrainFilters;
     private TextView minGrolliesText, maxDistanceText, popUpMessage;
@@ -73,7 +74,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void llenarLista(){
         for(int i=0;i<10;i++) {
-            favorsArray.add(new Favor("Nombre "+i, "Descripcion "+i, "Direccion "+i, "Favor "+i, R.drawable.ic_person_black_24dp, i*1000, "Hasta mañana a las 12:00", "A 150m de ti"));
+            favorsArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606 , i*1000, new Coordinates(0, 0), null, false));
         }
     }
     //Panel Inferior

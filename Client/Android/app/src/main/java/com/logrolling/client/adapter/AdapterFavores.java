@@ -12,14 +12,14 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.logrolling.client.R;
-import com.logrolling.client.transfer.Favor;
+import com.logrolling.client.transfer.TransferFavor;
 
 import java.util.ArrayList;
 
 public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHolderFavor> {
-    ArrayList<Favor> listaFavores;
+    ArrayList<TransferFavor> listaFavores;
 
-    public AdapterFavores(ArrayList<Favor> listaFavores) {
+    public AdapterFavores(ArrayList<TransferFavor> listaFavores) {
         this.listaFavores = listaFavores;
     }
 
@@ -31,13 +31,13 @@ public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderFavor holder, int position) {
-        holder.name.setText("Por: " + listaFavores.get(position).getName());
+        holder.name.setText("Por: " + listaFavores.get(position).getCreator());
         holder.distance.setText(listaFavores.get(position).getDistance());
-        holder.maxTime.setText(listaFavores.get(position).getMaxTime());
+        holder.maxTime.setText(listaFavores.get(position).getFormattedDueTime());
         //holder.photo.setImageResource(listaFavores.get(position).getPhoto());
-        holder.adress.setText(listaFavores.get(position).getAdress());
-        holder.favor.setText(listaFavores.get(position).getFavor());
-        holder.price.setText(Integer.toString(listaFavores.get(position).getPrice()));
+        holder.adress.setText(listaFavores.get(position).getAddress());
+        holder.favor.setText(listaFavores.get(position).getTitle());
+        holder.price.setText(Integer.toString(listaFavores.get(position).getReward()));
     }
 
     @Override

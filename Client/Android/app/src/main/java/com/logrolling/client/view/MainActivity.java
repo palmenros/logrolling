@@ -10,7 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.logrolling.client.R;
+import com.logrolling.client.exceptions.RequestException;
 import com.logrolling.client.web.WebRequestQueue;
+import com.logrolling.client.web.WebServiceClient;
 
 public class MainActivity extends AppCompatActivity {
     private TextView popUpMessage;
@@ -24,8 +26,21 @@ public class MainActivity extends AppCompatActivity {
         //TODO: Load Request Queue here
         WebRequestQueue.createInstance(this);
 
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        
+        WebServiceClient client = new WebServiceClient();
+
+        client.getRequest("http://192.168.0.100:8080/Server_war_exploded/users", null, new WebServiceClient.ResponseListener<String>() {
+            @Override
+            public void onResponse(String str) {
+                Toast.makeText(MainActivity.this, str, Toast.LENGTH_LONG).show();
+            }
+        }, null, new WebServiceClient.ErrorListener() {
+            @Override
+            public void onError(RequestException ex) {
+                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
         //TODO: Use NetworkImageView
 
         popUpError=(ConstraintLayout)findViewById(R.id.PopUpError14);

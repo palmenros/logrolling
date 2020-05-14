@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.logrolling.client.R;
-import com.logrolling.client.transfer.Gift;
+import com.logrolling.client.transfer.TransferGift;
 
 import java.util.ArrayList;
 
 
 public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHolderRegalos> {
 
-    ArrayList<Gift> listaRegalos;
+    ArrayList<TransferGift> listaRegalos;
 
-    public AdapterRegalos(ArrayList<Gift> listaRegalos) {
+    public AdapterRegalos(ArrayList<TransferGift> listaRegalos) {
         this.listaRegalos = listaRegalos;
     }
 
@@ -33,7 +33,7 @@ public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull AdapterRegalos.ViewHolderRegalos holder, int position) {
-        holder.name.setText(listaRegalos.get(position).getName());
+        holder.name.setText(listaRegalos.get(position).getTitle());
         holder.price.setText(Integer.toString(listaRegalos.get(position).getPrice()));
         //holder.photo.setImageResource(listaRegalos.get(position).getPhoto());
     }

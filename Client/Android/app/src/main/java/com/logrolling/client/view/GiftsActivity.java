@@ -15,12 +15,12 @@ import com.logrolling.client.R;
 import java.util.ArrayList;
 
 import com.logrolling.client.adapter.AdapterRegalos;
-import com.logrolling.client.transfer.Gift;
+import com.logrolling.client.transfer.TransferGift;
 
 public class GiftsActivity extends AppCompatActivity {
     private RecyclerView listFavors;
     private TextView numGrollies;
-    private ArrayList<Gift> gifts = new ArrayList<Gift>();
+    private ArrayList<TransferGift> transferGifts = new ArrayList<TransferGift>();
     private TextView popUpMessage;
     private ConstraintLayout popUpConfirmation,popUpError;
     @Override
@@ -41,7 +41,7 @@ public class GiftsActivity extends AppCompatActivity {
 
         llenarLista();
 
-        AdapterRegalos adapter=new AdapterRegalos(gifts);
+        AdapterRegalos adapter=new AdapterRegalos(transferGifts);
         listFavors.setAdapter(adapter);
         /*listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -52,7 +52,7 @@ public class GiftsActivity extends AppCompatActivity {
     }
     private void llenarLista(){
         for(int i=0;i<10;i++) {
-            gifts.add(new Gift("Regalo "+i,i*1000,R.drawable.ic_card_giftcard_black_24dp));
+            transferGifts.add(new TransferGift("Regalo "+i, i*1000));
         }
     }
 
