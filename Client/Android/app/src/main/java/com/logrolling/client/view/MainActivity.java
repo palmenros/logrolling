@@ -13,10 +13,15 @@ import com.logrolling.client.R;
 public class MainActivity extends AppCompatActivity {
     private TextView popUpMessage;
     private ConstraintLayout popUpError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //TODO: Load Request Queue here
+
+        //TODO: Use NetworkImageView
 
         popUpError=(ConstraintLayout)findViewById(R.id.PopUpError14);
         popUpError.setVisibility(View.INVISIBLE);
@@ -30,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //popUpError
-    public void showErrorPopUp(View view){
+    public void showErrorPopUp(View view) {
         // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
 }
