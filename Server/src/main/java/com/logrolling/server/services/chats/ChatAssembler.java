@@ -36,11 +36,11 @@ public class ChatAssembler {
             chatMessages = MessageManager.getMessagesFromConversation(username, u.getUsername());
 
             if(chatMessages!= null) {
-                chatMessages.sort((m1, m2) -> {return (m2.getId() - m2.getId());});
+                chatMessages.sort((m1, m2) -> {return (m2.getId() - m1.getId());});
                 lastMessages.add(chatMessages.get(0));
             }
         }
-        lastMessages.sort((m1, m2) -> {return (m2.getId() - m2.getId());});
+        lastMessages.sort((m1, m2) -> {return (m2.getId() - m1.getId());});
 
         for(Message m : chatMessages){
             if (m.getFrom() != username)
