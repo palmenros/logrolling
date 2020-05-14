@@ -4,6 +4,7 @@ import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.authentication.Authenticator;
+import com.logrolling.server.exceptions.AlreadyAddedException;
 
 import javax.validation.constraints.NotNull;
 import java.sql.ResultSet;
@@ -17,18 +18,21 @@ public class UserManager {
 
     public static void createUser(User user) {
 
-        //TODO: Add all user attributes
 
-        Database db = DatabaseFactory.createInstance();
-        db.executeUpdate(
-           "INSERT INTO users (username, password, grollies) VALUES (?, ?, ?);",
-        new String[]{
-            user.getUsername(),
-            Authenticator.hashToken(user.getPassword()),
-            user.getGrollies().toString()
-        });
+        if(getUserByName(user.getUsername()) == null) {
+            Database db = DatabaseFactory.createInstance();
+            db.executeUpdate(
+                    "INSERT INTO users (username, password, grollies) VALUES (?, ?, ?);",
+                    new String[]{
+                            user.getUsername(),
+                            Authenticator.hashToken(user.getPassword()),
+                            user.getGrollies().toString()
+                    });
 
-        db.close();
+            db.close();
+        }
+        else
+            throw new AlreadyAddedException("El nombre de usuario ya está cogido");
     }
 
     public static User getUserByName(String username) {
@@ -57,21 +61,26 @@ public class UserManager {
     }
 
     public static void updateUserbyName(String username, User newUser) {
-        Database db = DatabaseFactory.createInstance();
-        User user = getUserByName(username);
 
-        int id = user.getId();
+        if(getUserByName(newUser.getUsername()) == null) {
+            Database db = DatabaseFactory.createInstance();
+            User user = getUserByName(username);
 
-        db.executeUpdate("replace into users values(?, ?, ?, ?);",
-                new String[]{
+            int id = user.getId();
 
-                        Integer.toString(id),
-                        newUser.getUsername(),
-                        Authenticator.hashToken(newUser.getPassword()),
-                        newUser.getGrollies().toString()
-                });
+            db.executeUpdate("replace into users values(?, ?, ?, ?);",
+                    new String[]{
 
-        db.close();
+                            Integer.toString(id),
+                            newUser.getUsername(),
+                            Authenticator.hashToken(newUser.getPassword()),
+                            newUser.getGrollies().toString()
+                    });
+
+            db.close();
+        }
+        else
+            throw new AlreadyAddedException("El nombre de usuario ya está cogido");
     }
 
     public static void deleteUserByName(String username) {
