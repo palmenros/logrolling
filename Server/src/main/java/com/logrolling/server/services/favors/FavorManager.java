@@ -315,21 +315,4 @@ public class FavorManager {
         }
         return favor;
     }
-
-    public static void doFavor(int id, String username){
-
-        Favor favor = null;
-        favor = getFavorById(id);
-        favor.setWorker(username);
-        updateFavor(id,favor);
-    }
-
-    public static void completeFavor(int id) {
-
-        Favor favor = null;
-        favor = getFavorById(id);
-        favor.setCompleted(true);
-        updateFavor(id,favor);
-    }
-
 }

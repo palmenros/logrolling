@@ -32,13 +32,19 @@ public class FavorController {
     @PUT
     @Path("/{id}/@do")
     public void doFavor(@HeaderParam("token") String token, @PathParam("id") int id){
-        Favor.doFavor(id, token);
+        Favor favor = null;
+        favor = FavorManager.getFavorById(id);
+        favor.setWorker(token);
+        FavorManager.updateFavor(id,favor);
     }
 
     @PUT
     @Path("/{id}/@complete")
     public void completeFavor(@HeaderParam("token") String token, @PathParam("id") int id){
-        Favor.completeFavor(id, token);
+        Favor favor = null;
+        favor = FavorManager.getFavorById(id);
+        favor.setCompleted(true);
+        FavorManager.updateFavor(id,favor);
     }
 
     @GET

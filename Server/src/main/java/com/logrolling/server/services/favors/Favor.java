@@ -122,7 +122,9 @@ public class Favor {
 
     public String getWorker(){ return worker; }
 
-    public void setWorker(String worker){ this.worker = worker; }
+    public void setWorker(String token){
+        worker =  AuthenticationService.authenticateWithToken(token);
+        this.worker = worker; }
 
     public boolean getCompleted(){ return completed; }
 
@@ -210,7 +212,10 @@ public class Favor {
 
     public static void doFavor(int id, String token){
         String username = AuthenticationService.authenticateWithToken(token);
-        FavorManager.doFavor(id, username);
+        Favor favor = null;
+        favor = FavorManager.getFavorById(id);
+        favor.setWorker(token);
+        FavorManager.updateFavor(id,favor);
     }
 
 }
