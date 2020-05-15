@@ -8,7 +8,7 @@ public class LocationService {
 
     //TODO: Implement
 
-    static LocationService instance;
+    private static LocationService instance;
 
     private LocationService() {
     }

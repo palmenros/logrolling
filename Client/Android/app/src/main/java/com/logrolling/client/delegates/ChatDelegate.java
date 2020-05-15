@@ -10,6 +10,7 @@ import com.logrolling.client.transfer.TransferMessage;
 import com.logrolling.client.transfer.TransferMessagePreview;
 import com.logrolling.client.web.ErrorListener;
 import com.logrolling.client.web.ResponseListener;
+import com.logrolling.client.web.SuccessListener;
 import com.logrolling.client.web.WebServiceClient;
 
 import java.util.List;
@@ -42,8 +43,8 @@ public class ChatDelegate {
          );
     }
 
-    public void sendMessage(TransferMessage transferMessage, ErrorListener errorListener) {
-        client.postRequest("chats/", transferMessage, null, AuthenticationService.getInstance().getAuthToken(), errorListener);
+    public void sendMessage(TransferMessage transferMessage, SuccessListener successListener, ErrorListener errorListener) {
+        client.postRequest("chats/", transferMessage, WebServiceClient.getSuccessResponseListener(successListener), AuthenticationService.getInstance().getAuthToken(), errorListener);
     }
 
 }

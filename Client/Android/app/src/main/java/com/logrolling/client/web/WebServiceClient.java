@@ -33,7 +33,7 @@ public class WebServiceClient {
             int method,
             String relativeURL,
             InputObject input,
-            final ResponseListener responseListener,
+            final ResponseListener<String> responseListener,
             final String authenticationToken,
             final ErrorListener errorListener
     ) {
@@ -105,7 +105,7 @@ public class WebServiceClient {
      public <InputObject> void getRequest(
             String relativeURL,
             InputObject input,
-            final ResponseListener responseListener,
+            final ResponseListener<String> responseListener,
             final String authenticationToken,
             final ErrorListener errorListener
     ) {
@@ -115,7 +115,7 @@ public class WebServiceClient {
      public <InputObject> void postRequest(
             String relativeURL,
             InputObject input,
-            final ResponseListener responseListener,
+            final ResponseListener<String> responseListener,
             final String authenticationToken,
             final ErrorListener errorListener
     ) {
@@ -125,7 +125,7 @@ public class WebServiceClient {
      public <InputObject> void deleteRequest(
             String relativeURL,
             InputObject input,
-            final ResponseListener responseListener,
+            final ResponseListener<String> responseListener,
             final String authenticationToken,
             final ErrorListener errorListener
     ) {
@@ -135,11 +135,21 @@ public class WebServiceClient {
      public <InputObject> void putRequest(
             String relativeURL,
             InputObject input,
-            final ResponseListener responseListener,
+            final ResponseListener<String> responseListener,
             final String authenticationToken,
             final ErrorListener errorListener
     ) {
         request(Request.Method.PUT, relativeURL, input, responseListener, authenticationToken, errorListener);
      }
+
+     public static ResponseListener<String> getSuccessResponseListener(SuccessListener listener) {
+        if(listener == null) {
+            return null;
+        }
+
+        return (str) -> {
+            listener.onSuccess();
+        };
+    }
 
 }

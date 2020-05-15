@@ -14,7 +14,7 @@ public class TokenDelegate {
         client = new WebServiceClient();
     }
 
-    public void login(TransferCredentials credentials, final ResponseListener<TransferToken> responseListener, final ErrorListener errorListener) {
+    public void login(TransferCredentials credentials, ResponseListener<TransferToken> responseListener, ErrorListener errorListener) {
         client.putRequest(
                 "tokens",
                 credentials,

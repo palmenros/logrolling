@@ -6,6 +6,7 @@ import com.logrolling.client.transfer.Filter;
 import com.logrolling.client.transfer.TransferFavor;
 import com.logrolling.client.web.ErrorListener;
 import com.logrolling.client.web.ResponseListener;
+import com.logrolling.client.web.SuccessListener;
 import com.logrolling.client.web.WebServiceClient;
 
 public class FavorDelegate {
@@ -36,21 +37,21 @@ public class FavorDelegate {
         );
     }
 
-    public void doFavor(int favorId, ErrorListener errorListener) {
+    public void doFavor(int favorId, SuccessListener successListener, ErrorListener errorListener) {
         client.putRequest(
                 "favors/" + favorId + "/@do",
-                 null,
                 null,
+                 WebServiceClient.getSuccessResponseListener(successListener),
                  AuthenticationService.getInstance().getAuthToken(),
                  errorListener
         );
     }
 
-    public void completeFavor(int favorId, ErrorListener errorListener) {
+    public void completeFavor(int favorId, SuccessListener successListener, ErrorListener errorListener) {
         client.putRequest(
                 "favors/" + favorId + "/@complete",
                  null,
-                null,
+                 WebServiceClient.getSuccessResponseListener(successListener),
                  AuthenticationService.getInstance().getAuthToken(),
                  errorListener
         );
@@ -66,26 +67,26 @@ public class FavorDelegate {
         );
     }
 
-    public void createFavor(TransferFavor favor, ErrorListener errorListener) {
+    public void createFavor(TransferFavor favor, SuccessListener successListener, ErrorListener errorListener) {
         client.postRequest("favors",
                 favor,
-                null,
+                WebServiceClient.getSuccessResponseListener(successListener),
                 AuthenticationService.getInstance().getAuthToken(),
                 errorListener);
     }
 
-    public void updateFavor(TransferFavor newFavor, int favorId, ErrorListener errorListener) {
+    public void updateFavor(TransferFavor newFavor, int favorId, SuccessListener successListener, ErrorListener errorListener) {
         client.putRequest("favors/" + favorId,
                 newFavor,
-                null,
+                WebServiceClient.getSuccessResponseListener(successListener),
                 AuthenticationService.getInstance().getAuthToken(),
                 errorListener);
     }
 
-    public void deleteFavor(int favorId, ErrorListener errorListener) {
+    public void deleteFavor(int favorId, SuccessListener successListener, ErrorListener errorListener) {
         client.deleteRequest("favors/" + favorId,
                 null,
-                null,
+                WebServiceClient.getSuccessResponseListener(successListener),
                 AuthenticationService.getInstance().getAuthToken(),
                 errorListener);
     }

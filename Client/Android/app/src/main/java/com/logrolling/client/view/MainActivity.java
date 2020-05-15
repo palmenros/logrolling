@@ -13,10 +13,15 @@ import android.widget.Toast;
 import com.logrolling.client.R;
 import com.logrolling.client.delegates.ChatDelegate;
 import com.logrolling.client.delegates.FavorDelegate;
+import com.logrolling.client.delegates.GiftDelegate;
+import com.logrolling.client.delegates.UserDelegate;
 import com.logrolling.client.services.LocationService;
+import com.logrolling.client.services.PermanentStorageService;
 import com.logrolling.client.transfer.Filter;
+import com.logrolling.client.transfer.TransferCredentials;
 import com.logrolling.client.transfer.TransferFavor;
 import com.logrolling.client.transfer.TransferMessage;
+import com.logrolling.client.transfer.TransferPurchase;
 import com.logrolling.client.web.WebRequestQueue;
 
 import java.util.Arrays;
@@ -31,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO: Load Request Queue here
+        //TODO: Initialize services
         WebRequestQueue.createInstance(this);
-
+        PermanentStorageService.createInstance(this);
 
 //        TokenDelegate del = new TokenDelegate();
 //
@@ -130,6 +135,51 @@ public class MainActivity extends AppCompatActivity {
 //                (error) -> {
 //                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
 //                });
+
+//        GiftDelegate del = new GiftDelegate();
+//        del.getAllGifts((list) -> {
+//            Toast.makeText(MainActivity.this, Arrays.toString(list), Toast.LENGTH_SHORT).show();
+//        }, (error) -> {
+//            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//        });
+
+//                GiftDelegate del = new GiftDelegate();
+//        del.purchaseGift( new TransferPurchase("Ordenador", "Android"),
+//                () -> {
+//                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+//                }, (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//        );
+
+//        UserDelegate del = new UserDelegate();
+//        del.getUserByUsername("pedro", (user) -> {
+//                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+//        }, (error) -> {
+//            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//        });
+
+
+//        UserDelegate del = new UserDelegate();
+//        del.registerUser(new TransferCredentials("raulito", "gafotas"), () -> {
+//                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+//        }, (error) -> {
+//            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//        });
+
+//          UserDelegate del = new UserDelegate();
+//          del.updateUser(new TransferCredentials("pedro", "password"), () -> {
+//                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+//        }, (error) -> {
+//            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//        });
+
+        UserDelegate del = new UserDelegate();
+          del.deleteUser(() -> {
+                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+        }, (error) -> {
+            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+        });
 
         //TODO: Use NetworkImageView
 
