@@ -52,9 +52,10 @@ public class WebRequestQueue {
 
     //Creates a new instance
     public static synchronized void createInstance(Context context) {
-        if(instance != null) {
-            throw new IllegalStateException("WebRequestQueue instance is already created");
-        }
+        //TODO: Maybe uncomment this to prevent recreation. However, it is useful for quick Main Activity reload
+        //if(instance != null) {
+        //    throw new IllegalStateException("WebRequestQueue instance is already created");
+        //}
 
         instance = new WebRequestQueue(context);
     }

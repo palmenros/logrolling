@@ -9,6 +9,9 @@ public class TransferMessagePreview {
         message = m;
     }
 
+    public TransferMessagePreview() {
+    }
+
     public String getUser(){
         return user;
     }

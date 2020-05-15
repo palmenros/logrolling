@@ -11,6 +11,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.logrolling.client.data.Settings;
 import com.logrolling.client.exceptions.RequestException;
 
 import org.json.JSONException;
@@ -22,18 +23,17 @@ import java.util.Map;
 
 public class WebServiceClient {
 
-    public interface ResponseListener<InputObject> {
-        void onResponse(InputObject obj);
+
+
+    public String formCompleteURL(String relativeURL) {
+        return Settings.getBaseURL() + relativeURL;
     }
 
-    public interface ErrorListener<InputObject> {
-        void onError(RequestException ex);
-    }
-
-    public <InputObject> void getRequest(
-            String url,
+    public <InputObject> void request(
+            int method,
+            String relativeURL,
             InputObject input,
-            final ResponseListener<String> responseListener,
+            final ResponseListener responseListener,
             final String authenticationToken,
             final ErrorListener errorListener
     ) {
@@ -49,14 +49,15 @@ public class WebServiceClient {
 
         final String responseBody = jsonString;
 
-        //TODO: Append URL with some based URL declared in settings
         StringRequest request = new StringRequest(
-                Request.Method.GET,
-                url,
+                method,
+                formCompleteURL(relativeURL),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
-                        responseListener.onResponse(str);
+                        if(responseListener != null) {
+                            responseListener.onResponse(str);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -101,5 +102,53 @@ public class WebServiceClient {
         WebRequestQueue.getInstance().addToRequestQueue(request);
     }
 
+     public <InputObject> void getRequest(
+            String relativeURL,
+            InputObject input,
+            final ResponseListener responseListener,
+            final String authenticationToken,
+            final ErrorListener errorListener
+    ) {
+        request(Request.Method.GET, relativeURL, input, responseListener, authenticationToken, errorListener);
+     }
+
+     public <InputObject> void getRequest(
+            String relativeURL,
+            final ResponseListener responseListener,
+            final String authenticationToken,
+            final ErrorListener errorListener
+    ) {
+        request(Request.Method.GET, relativeURL, null, responseListener, authenticationToken, errorListener);
+     }
+
+     public <InputObject> void postRequest(
+            String relativeURL,
+            InputObject input,
+            final ResponseListener responseListener,
+            final String authenticationToken,
+            final ErrorListener errorListener
+    ) {
+        request(Request.Method.POST, relativeURL, input, responseListener, authenticationToken, errorListener);
+     }
+
+     public <InputObject> void deleteRequest(
+            String relativeURL,
+            InputObject input,
+            final ResponseListener responseListener,
+            final String authenticationToken,
+            final ErrorListener errorListener
+    ) {
+        request(Request.Method.DELETE, relativeURL, input, responseListener, authenticationToken, errorListener);
+     }
+
+     public <InputObject> void putRequest(
+            String relativeURL,
+            InputObject input,
+            final ResponseListener responseListener,
+            final String authenticationToken,
+            final ErrorListener errorListener
+    ) {
+        request(Request.Method.PUT, relativeURL, input, responseListener, authenticationToken, errorListener);
+     }
 
 }

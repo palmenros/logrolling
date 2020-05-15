@@ -10,9 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.logrolling.client.R;
-import com.logrolling.client.exceptions.RequestException;
+import com.logrolling.client.delegates.ChatDelegate;
+import com.logrolling.client.transfer.TransferMessage;
 import com.logrolling.client.web.WebRequestQueue;
-import com.logrolling.client.web.WebServiceClient;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private TextView popUpMessage;
@@ -26,20 +28,44 @@ public class MainActivity extends AppCompatActivity {
         //TODO: Load Request Queue here
         WebRequestQueue.createInstance(this);
 
-        WebServiceClient client = new WebServiceClient();
 
-        client.getRequest("http://192.168.0.100:8080/Server_war_exploded/favors", null, new WebServiceClient.ResponseListener<String>() {
-            @Override
-            public void onResponse(String str) {
-                Toast.makeText(MainActivity.this, str, Toast.LENGTH_LONG).show();
-            }
-        }, null, new WebServiceClient.ErrorListener() {
-            @Override
-            public void onError(RequestException ex) {
-                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
-            }
-        });
+//        TokenDelegate del = new TokenDelegate();
+//
+//        del.login(new TransferCredentials("pedro", "false"),
+//            (credentials) -> {
+//                Toast.makeText(MainActivity.this, credentials.getContent(), Toast.LENGTH_LONG).show();
+//            }, (error) -> {
+//                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//            }
+//        );
 
+
+//        ChatDelegate del = new ChatDelegate();
+//        del.getChatWithUser("pablo",
+//                (chat) -> {
+//                    Toast.makeText(MainActivity.this, chat.toString(), Toast.LENGTH_LONG).show();
+//                },
+//                (error) ->{
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//                });
+
+
+//        ChatDelegate del = new ChatDelegate();
+//        del.getChatPreviews(
+//                (list) -> {
+//                    Toast.makeText(MainActivity.this, Arrays.toString(list), Toast.LENGTH_LONG).show();
+//                },
+//                (error) ->{
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//                });
+
+
+//                ChatDelegate del = new ChatDelegate();
+//        del.sendMessage(
+//                new TransferMessage("pedro", "juancarlos", "Desde Android"),
+//                (error) ->{
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+//                });
 
         //TODO: Use NetworkImageView
 

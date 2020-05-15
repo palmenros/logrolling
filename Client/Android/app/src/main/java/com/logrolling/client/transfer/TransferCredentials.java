@@ -1,16 +1,16 @@
-package com.logrolling.server.services.authentication;
+package com.logrolling.client.transfer;
 
-public class LoginTransfer {
+public class TransferCredentials {
 
     private String username;
     private String password;
 
-    public LoginTransfer(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public TransferCredentials(){
     }
 
-    public LoginTransfer() {
+    public TransferCredentials(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {
