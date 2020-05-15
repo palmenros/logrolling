@@ -3,20 +3,38 @@ package com.logrolling.client.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.logrolling.client.R;
+
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AskFavorActivity extends AppCompatActivity {
     private TextView numGrollies;
     private TextView popUpMessage;
 
-    private EditText name, description, deliveryLocation, deliveryDate, reward;
+    private Button dueTimeButton;
+
+    private EditText name, description, deliveryLocation, reward;
     private ConstraintLayout popUpConfirmation, popUpError;
+
+    private Date dueDate = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +49,39 @@ public class AskFavorActivity extends AppCompatActivity {
         popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm4);
         popUpConfirmation.setVisibility(View.INVISIBLE);
 
+        dueTimeButton = (Button) findViewById(R.id.FechaLimite);
 
         name=(EditText)findViewById(R.id.Nombre);
         description=(EditText)findViewById(R.id.DescripcionFavor);
         deliveryLocation=(EditText)findViewById(R.id.LugarEntrega);
-        deliveryDate=(EditText)findViewById(R.id.FechaLimite);
         reward=(EditText)findViewById(R.id.Recompensa);
+    }
+
+    public void chooseDueDate(View view) {
+        Calendar calendarDate;
+        final Calendar currentDate = Calendar.getInstance();
+           calendarDate = Calendar.getInstance();
+           new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+               @Override
+               public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    calendarDate.set(year, monthOfYear, dayOfMonth);
+                    new TimePickerDialog(AskFavorActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            calendarDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                            calendarDate.set(Calendar.MINUTE, minute);
+
+                            dueDate = calendarDate.getTime();
+
+                            DateFormat format2 = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                            String dateString = format2.format(dueDate);
+
+                            dueTimeButton.setText(dateString);
+                        }
+                    }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+               }
+           }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
+
     }
 
     //Panel Inferior

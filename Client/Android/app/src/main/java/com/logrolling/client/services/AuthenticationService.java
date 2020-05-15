@@ -15,7 +15,12 @@ public class AuthenticationService {
     }
 
     public String getAuthToken() {
+        //TODO: Implement
         return "1:hola";
     }
 
+    public String getAuthenticatedUsername() {
+        //TODO: Implement
+        return "pedro";
+    }
 }

@@ -33,6 +33,17 @@ public class TransferFavor {
         this.completed = completed;
     }
 
+    public TransferFavor(String creator, String title, String description, Integer dueTime, int reward, Coordinates coordinates, String worker, boolean completed) {
+        this.creator = creator;
+        this.title = title;
+        this.description = description;
+        this.dueTime = dueTime;
+        this.reward = reward;
+        this.coordinates = coordinates;
+        this.worker = worker;
+        this.completed = completed;
+    }
+
     public TransferFavor() {
     }
 

@@ -35,6 +35,10 @@ public class LocationService {
         return "Calle Profesor Santamanes";
     }
 
+    public Coordinates getCoordinatesFromAddress(String address) {
+        //TODO: Implement
+        return getLocation();
+    }
 
     //Expects distance in meters
     public String formatDistance(double distance) {
@@ -50,4 +54,5 @@ public class LocationService {
 
         return "A " + numberRepresentation + " " + unit + " de ti";
     }
+
 }
