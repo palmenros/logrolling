@@ -61,6 +61,16 @@ public class TokenManager {
         db.close();
     }
 
+    public static void deleteAllTokensFromUser(String username) {
+        Database db = DatabaseFactory.createInstance();
+        db.executeUpdate("delete from tokens where user = ?",
+                new String[]{
+                        username
+                });
+
+        db.close();
+    }
+
     public static Token getToken(int id){
 
         Token token = null;

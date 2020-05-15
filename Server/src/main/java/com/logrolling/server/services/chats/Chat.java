@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-public class ChatAssembler {
+public class Chat {
 
     public static TransferChat getChat(String token, String user2){
         String user1 = AuthenticationService.authenticateWithToken(token);
@@ -21,10 +21,11 @@ public class ChatAssembler {
     }
 
     public static List<TransferChat> getChats(String token){
-        String username = AuthenticationService.authenticateWithToken(token);
+        //Be sure that user cannot see that there are no messages if they are not logged in
+        AuthenticationService.authenticateWithToken(token);
         List<TransferChat> chats = new ArrayList<TransferChat>();
         for(User u : UserManager.getAllUsers()){
-            TransferChat chat = getChat(username, u.getUsername());
+            TransferChat chat = getChat(token, u.getUsername());
             if(!chat.getMessages().isEmpty())
                 chats.add(chat);
         }
@@ -38,6 +39,12 @@ public class ChatAssembler {
         List<Message> lastMessages = new ArrayList<Message>();
 
         for(User u : UserManager.getAllUsers()){
+
+            //Skip self user
+            if(u.getUsername().equals(username)) {
+                continue;
+            }
+
             chatMessages = MessageManager.getMessagesFromConversation(username, u.getUsername());
 
             if(!chatMessages.isEmpty()) {
@@ -52,11 +59,11 @@ public class ChatAssembler {
             }
         });
 
-        for(Message m : chatMessages){
+        for(Message m : lastMessages){
             if (m.getFrom().equals(username))
-                interactions.add(new TransferMessagePreview(m.getFrom(), m.getContent()));
-            else
                 interactions.add(new TransferMessagePreview(m.getTo(), m.getContent()));
+            else
+                interactions.add(new TransferMessagePreview(m.getFrom(), m.getContent()));
         }
 
         return interactions;

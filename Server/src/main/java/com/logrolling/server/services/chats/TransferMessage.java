@@ -6,6 +6,9 @@ public class TransferMessage {
     private String to;
     private String content;
 
+    public TransferMessage() {
+    }
+
     public TransferMessage(String from, String to, String content) {
         this.from = from;
         this.to = to;

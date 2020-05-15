@@ -1,8 +1,10 @@
 package com.logrolling.server.services.favors;
 
+import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.exceptions.UnauthorizedException;
 import com.logrolling.server.services.authentication.AuthenticationService;
 
+import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class Favor {
         this.completed = false;
     }
 
-    public Favor(String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude) {
+    public Favor(String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, boolean completed) {
         this.creator = creator;
         this.title = title;
         this.description = description;
@@ -38,10 +40,10 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = null;
-        this.completed = false;
+        this.completed = completed;
     }
 
-    public Favor(int id, String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker) {
+    public Favor(int id, String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker, boolean completed) {
         this.id = id;
         this.creator = creator;
         this.title = title;
@@ -50,10 +52,10 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = worker;
-        this.completed = false;
+        this.completed = completed;
     }
 
-    public Favor(String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker) {
+    public Favor(String creator, String title, String description, Integer dueTime, int reward, double latitude, double longitude, String worker, boolean completed) {
         this.creator = creator;
         this.title = title;
         this.description = description;
@@ -61,7 +63,7 @@ public class Favor {
         this.reward = reward;
         this.coordinates = new Coordinates(latitude, longitude);
         this.worker = worker;
-        this.completed = false;
+        this.completed = completed;
     }
 
     public Favor(TransferFavor f){
@@ -120,11 +122,11 @@ public class Favor {
         coordinates.setLongitude(longitude);
     }
 
-    public String getWorker(){ return worker; }
+    public String getWorker() { return worker; }
 
-    public void setWorker(String token){
-        worker =  AuthenticationService.authenticateWithToken(token);
-        this.worker = worker; }
+    public void setWorker(String worker) {
+        this.worker = worker;
+    }
 
     public boolean getCompleted(){ return completed; }
 
@@ -172,10 +174,10 @@ public class Favor {
 
     public static void completeFavor(int id, String token){
         String username = AuthenticationService.authenticateWithToken(token);
-        if(FavorManager.getFavorById(id).getCreator().equals(username)) {
+        Favor favor = FavorManager.getFavorById(id);
+
+        if(favor.getCreator().equals(username)) {
             //Favor was created by current user
-            Favor favor = null;
-            favor = FavorManager.getFavorById(id);
             favor.setCompleted(true);
             FavorManager.updateFavor(id,favor);
         } else {
@@ -214,10 +216,15 @@ public class Favor {
     }
 
     public static void doFavor(int id, String token){
+
+        Favor favor = FavorManager.getFavorById(id);
         String username = AuthenticationService.authenticateWithToken(token);
-        Favor favor = null;
-        favor = FavorManager.getFavorById(id);
-        favor.setWorker(token);
+
+        if(favor.getWorker() != null || username.equals(favor.getCreator())) {
+            throw new AuthenticationException();
+        }
+
+        favor.setWorker(username);
         FavorManager.updateFavor(id,favor);
     }
 

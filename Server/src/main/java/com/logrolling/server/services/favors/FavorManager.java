@@ -18,51 +18,41 @@ import java.util.List;
 public class FavorManager {
 
     public static void createFavorUnchecked(Favor favor) {
-        Database db = DatabaseFactory.createInstance();
-            db.executeUpdate(
-                    "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude, worker) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-                    new String[]{
-                            favor.getCreator(),
-                            favor.getTitle(),
-                            favor.getDescription(),
-                            favor.getDueTime().toString(),
-                            favor.getReward().toString(),
-                            favor.getLatCoord().toString(),
-                            favor.getLongCoord().toString(),
-                            favor.getWorker()
-                    });
-
-            db.close();
+        insertFavorToDatabase(favor);
     }
 
     public static void createFavor(Favor favor){
 
-
         String username = favor.getCreator();
         User user = UserManager.getUserByName(username);
 
-        if(user.getGrollies() > favor.getReward()) {
-            Database db = DatabaseFactory.createInstance();
-            db.executeUpdate(
-                    "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude, worker) VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-                    new String[]{
-                            favor.getCreator(),
-                            favor.getTitle(),
-                            favor.getDescription(),
-                            favor.getDueTime().toString(),
-                            favor.getReward().toString(),
-                            favor.getLatCoord().toString(),
-                            favor.getLongCoord().toString(),
-                            favor.getWorker()
-                    });
-
-            db.close();
+        if(user.getGrollies() >= favor.getReward()) {
+            insertFavorToDatabase(favor);
             user.setGrollies(user.getGrollies() - favor.getReward());
             UserManager.updateUserbyName(username, user);
         }
         else
             throw new NotEnoughGrolliesException();
 
+    }
+
+    private static void insertFavorToDatabase(Favor favor) {
+        Database db = DatabaseFactory.createInstance();
+        db.executeUpdate(
+                "INSERT INTO favors (creator, title, description, dueTime, reward, latitude, longitude, worker, completed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+                new String[]{
+                        favor.getCreator(),
+                        favor.getTitle(),
+                        favor.getDescription(),
+                        favor.getDueTime().toString(),
+                        favor.getReward().toString(),
+                        favor.getLatCoord().toString(),
+                        favor.getLongCoord().toString(),
+                        favor.getWorker(),
+                        Integer.valueOf(favor.getCompleted() ? 1 : 0 ).toString()
+                });
+
+        db.close();
     }
 
     public static void deleteFavorFromId(Integer id){
@@ -91,7 +81,7 @@ public class FavorManager {
     public static void updateFavor(int id, Favor newFavor){
         Database db = DatabaseFactory.createInstance();
         Favor favor = getFavorById(id);
-        db.executeUpdate("replace into favors values(?, ?, ?, ?, ?, ?, ?, ?, ?);",
+        db.executeUpdate("replace into favors values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
                 new String[]{
 
                         Integer.toString(id),
@@ -102,8 +92,8 @@ public class FavorManager {
                         newFavor.getReward().toString(),
                         newFavor.getLatCoord().toString(),
                         newFavor.getLongCoord().toString(),
-                        newFavor.getWorker()
-
+                        newFavor.getWorker(),
+                        Integer.valueOf(newFavor.getCompleted() ? 1 : 0 ).toString()
                 });
 
         db.close();
@@ -121,12 +111,13 @@ public class FavorManager {
         db.close();
     }
 
+    //Get uncompleted favors created by username
     public static List<Favor> getFavorsFromUsername(String username){
 
         List<Favor> favors = new ArrayList<Favor>();
 
         Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from favors where creator = ?",
+        ResultSet rs = db.executeQuery("select * from favors where completed = 0 and creator = ? ",
                 new String[]{
                         username
                 });
@@ -173,7 +164,8 @@ public class FavorManager {
                 rs.getInt("reward"),
                 rs.getDouble("latitude"),
                 rs.getDouble("longitude"),
-                rs.getString("worker")
+                rs.getString("worker"),
+                rs.getInt("completed") == 1
         );
     }
 
@@ -199,8 +191,9 @@ public class FavorManager {
             }
         }
         else{
-            ResultSet rs = db.executeQuery("select * from favors where worker is null and dueTime >= ? and reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
+            ResultSet rs = db.executeQuery("select * from favors where creator <> ? and worker is null and dueTime >= ? and reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
                     new String[]{
+                            username,
                             filter.getMinDate().toString(),
                             filter.getMinGrollies().toString(),
                             filter.getCoordinates().getLatitude().toString(),
@@ -230,7 +223,7 @@ public class FavorManager {
         List<Favor> favors = new ArrayList<Favor>();
 
         Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from favors where worker = ?",
+        ResultSet rs = db.executeQuery("select * from favors where worker = ? and completed = 0",
                 new String[]{
                         username
                 });

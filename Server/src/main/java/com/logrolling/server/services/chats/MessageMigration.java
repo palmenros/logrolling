@@ -27,9 +27,10 @@ public class MessageMigration implements Migration {
     public void fillDummy() {
 
         Message[] messageList = new Message[] {
-                new Message("Pablo", "Pedro" , "Primer mensaje"),
-                new Message("Pedro", "Pablo", "Recibido"),
-
+                new Message("pablo", "pedro" , "Primer mensaje"),
+                new Message("pedro", "pablo", "Recibido"),
+                new Message("pablo", "pedro", "ok"),
+                new Message("juancarlos", "pedro", "Soy Juan Carlos")
         };
 
         for(Message message : messageList) {

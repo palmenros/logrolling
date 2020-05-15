@@ -32,7 +32,7 @@ public class UserWebServiceBroker {
     }
 
     @GET
-    @Path("/user/{username}")
+    @Path("/{username}")
     public TransferUser getUserByName(@PathParam("username") String username){
         return User.getUserByName(username);
     }

@@ -3,6 +3,7 @@ package com.logrolling.server.services.favors;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.services.authentication.AuthenticationService;
 
 import java.util.List;
@@ -32,19 +33,13 @@ public class FavorWebServiceBroker {
     @PUT
     @Path("/{id}/@do")
     public void doFavor(@HeaderParam("token") String token, @PathParam("id") int id){
-        Favor favor = null;
-        favor = FavorManager.getFavorById(id);
-        favor.setWorker(token);
-        FavorManager.updateFavor(id,favor);
+        Favor.doFavor(id, token);
     }
 
     @PUT
     @Path("/{id}/@complete")
     public void completeFavor(@HeaderParam("token") String token, @PathParam("id") int id){
-        Favor favor = null;
-        favor = FavorManager.getFavorById(id);
-        favor.setCompleted(true);
-        FavorManager.updateFavor(id,favor);
+        Favor.completeFavor(id, token);
     }
 
     @GET

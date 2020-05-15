@@ -1,6 +1,7 @@
 package com.logrolling.server.services.users;
 
 import com.logrolling.server.services.authentication.AuthenticationService;
+import com.logrolling.server.services.authentication.TokenManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +79,7 @@ public class User {
         String old = AuthenticationService.authenticateWithToken(token);
         User user = UserManager.getUserByName(old);
         user.setPassword(password);
-        user.setUsername(newU);
+        user.setUsername(old);
         UserManager.updateUserbyName(old, user);
     }
 
@@ -89,6 +90,9 @@ public class User {
     public static void deleteUser(String token){
         String username = AuthenticationService.authenticateWithToken(token);
         UserManager.deleteUserByName(username);
+
+        //Delete all auth tokens corresponding to deleted user 
+        TokenManager.deleteAllTokensFromUser(username);
     }
 
 }

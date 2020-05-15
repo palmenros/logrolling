@@ -62,7 +62,7 @@ public class UserManager {
 
     public static void updateUserbyName(String username, User newUser) {
 
-        if(getUserByName(newUser.getUsername()) == null) {
+        if(username.equals(newUser.getUsername()) || getUserByName(newUser.getUsername()) == null) {
             Database db = DatabaseFactory.createInstance();
             User user = getUserByName(username);
 
@@ -74,7 +74,7 @@ public class UserManager {
                             Integer.toString(id),
                             newUser.getUsername(),
                             Authenticator.hashToken(newUser.getPassword()),
-                            newUser.getGrollies().toString()
+                            user.getGrollies().toString()
                     });
 
             db.close();
