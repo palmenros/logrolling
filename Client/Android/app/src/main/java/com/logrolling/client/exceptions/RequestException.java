@@ -10,4 +10,7 @@ public class RequestException extends Exception {
         super(string);
     }
 
+    public RequestException(Throwable cause) {
+        super(cause);
+    }
 }

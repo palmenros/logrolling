@@ -18,7 +18,7 @@ public class FavorWebServiceBroker {
         return Favor.getAvailableFavors(token);
     }
 
-    @GET
+    @POST
     @Path("/filter")
     public List<TransferFavor> getFavorsFromFilter(@HeaderParam("token") String token, Filter filter) {
         return Favor.getFavorsFromFilter(token, filter);

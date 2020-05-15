@@ -64,7 +64,7 @@ public class WebServiceClient {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (errorListener != null) {
-                            errorListener.onError(new RequestException(error.getMessage()));
+                            errorListener.onError(new RequestException(error));
                         }
                     }
                 }){

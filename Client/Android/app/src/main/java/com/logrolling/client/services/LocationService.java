@@ -20,11 +20,18 @@ public class LocationService {
         return instance;
     }
 
+    public Coordinates getLocation() {
+        //TODO: Implement
+        return new Coordinates(	40.384282, -3.938019);
+    }
+
     public double getDistanceFromCoordinates(Coordinates coordinates) {
+        //TODO: Implement
         return 1500.0f;
     }
 
     public String getAddressFromCoordinates(Coordinates coordinates) {
+        //TODO: Implement
         return "Calle Profesor Santamanes";
     }
 

@@ -32,7 +32,7 @@ public class SerializationService {
          try {
             return gson.fromJson(json, cls);
          } catch(Exception e) {
-            errorListener.onError(new RequestException(e.getMessage()));
+            errorListener.onError(new RequestException(e));
             return null;
          }
     }
