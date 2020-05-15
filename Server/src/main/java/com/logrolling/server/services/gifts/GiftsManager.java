@@ -227,21 +227,22 @@ public class GiftsManager {
     public static void purchaseGift(String username, PurchasedGift gift) {
 
         User user = UserManager.getUserByName(username);
-        Gift gift2 = getGiftById(gift.getId());
-        if(user.getGrollies() > gift2.getPrice()) {
+        Gift gift2 = getGiftById(gift.getGiftId());
+
+        if(user.getGrollies() >= gift2.getPrice()) {
             Database db = DatabaseFactory.createInstance();
             db.executeUpdate(
-                    "INSERT INTO purchasedGifts VALUES (?, ?, ?);",
+                    "INSERT INTO purchasedGifts(idGift, address, user, sent) VALUES (?, ?, ?, ?);",
                     new String[]{
                             gift.getGiftId().toString(),
                             gift.getAddress(),
                             gift.getUsername(),
-
+                            "0"
                     });
 
             db.close();
             user.setGrollies(user.getGrollies() - gift2.getPrice());
-            UserManager.updateUserbyName(username, user);
+            UserManager.updateUserGrollies(username, user);
         }
         else
             throw new NotEnoughGrolliesException();

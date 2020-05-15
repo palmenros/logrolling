@@ -30,7 +30,7 @@ public class GiftMigration implements Migration {
                         "idGift int," +
                         "address varchar(50) not null," +
                         "user varchar(50) not null," +
-                        "sent boolean," +
+                        "sent integer," +
                         "constraint purchasedGifts_pk primary key (id)" +
                         ");";
 

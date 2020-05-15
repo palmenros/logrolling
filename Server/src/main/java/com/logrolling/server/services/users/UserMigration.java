@@ -37,7 +37,7 @@ public class UserMigration implements Migration {
     public void fillDummy() {
 
         User[] userList = new User[] {
-            new User("pedro", "password", 50),
+            new User("pedro", "password", 50000),
             new User("pablo", "1234", 30),
             new User ("juancarlos", "defrutos", 0)
         };

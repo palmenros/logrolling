@@ -112,15 +112,6 @@ public class WebServiceClient {
         request(Request.Method.GET, relativeURL, input, responseListener, authenticationToken, errorListener);
      }
 
-     public <InputObject> void getRequest(
-            String relativeURL,
-            final ResponseListener responseListener,
-            final String authenticationToken,
-            final ErrorListener errorListener
-    ) {
-        request(Request.Method.GET, relativeURL, null, responseListener, authenticationToken, errorListener);
-     }
-
      public <InputObject> void postRequest(
             String relativeURL,
             InputObject input,

@@ -60,6 +60,24 @@ public class UserManager {
 
     }
 
+    public static void updateUserGrollies(String username, User newUser) {
+            Database db = DatabaseFactory.createInstance();
+            User user = getUserByName(username);
+
+            int id = user.getId();
+
+            db.executeUpdate("replace into users values(?, ?, ?, ?);",
+                    new String[]{
+
+                            Integer.toString(id),
+                            newUser.getUsername(),
+                            Authenticator.hashToken(newUser.getPassword()),
+                            newUser.getGrollies().toString()
+                    });
+
+            db.close();
+    }
+
     public static void updateUserbyName(String username, User newUser) {
 
         if(username.equals(newUser.getUsername()) || getUserByName(newUser.getUsername()) == null) {
@@ -92,8 +110,6 @@ public class UserManager {
                 });
 
         db.close();
-
-
 
     }
 

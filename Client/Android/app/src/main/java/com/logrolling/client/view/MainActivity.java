@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -14,10 +15,12 @@ import com.logrolling.client.delegates.ChatDelegate;
 import com.logrolling.client.delegates.FavorDelegate;
 import com.logrolling.client.services.LocationService;
 import com.logrolling.client.transfer.Filter;
+import com.logrolling.client.transfer.TransferFavor;
 import com.logrolling.client.transfer.TransferMessage;
 import com.logrolling.client.web.WebRequestQueue;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private TextView popUpMessage;
@@ -70,14 +73,63 @@ public class MainActivity extends AppCompatActivity {
 //                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
 //                });
 
-        FavorDelegate del = new FavorDelegate();
-        del.getAvailableFavorsFiltered(new Filter(10, LocationService.getInstance().getLocation(), 1, 0),
-                (list) -> {
-                    Toast.makeText(MainActivity.this, Arrays.toString(list), Toast.LENGTH_SHORT).show();
-                }, (error) -> {
-                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                }
-        );
+//        FavorDelegate del = new FavorDelegate();
+//        del.getAvailableFavorsFiltered(new Filter(10, LocationService.getInstance().getLocation(), 1, 0),
+//                (list) -> {
+//                    Toast.makeText(MainActivity.this, Arrays.toString(list), Toast.LENGTH_SHORT).show();
+//                }, (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//        );
+
+//        FavorDelegate del = new FavorDelegate();
+//        del.getCreatedFavors(
+//                (list) -> {
+//                    Toast.makeText(MainActivity.this, Arrays.toString(list), Toast.LENGTH_SHORT).show();
+//                }, (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//        );
+
+//        FavorDelegate del = new FavorDelegate();
+//        del.doFavor(2, (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                });
+
+//      FavorDelegate del = new FavorDelegate();
+//        del.completeFavor(1, (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                });
+
+//        FavorDelegate del = new FavorDelegate();
+//        del.getFavorsToBeDone(
+//                (list) -> {
+//                    Toast.makeText(MainActivity.this, Arrays.toString(list), Toast.LENGTH_SHORT).show();
+//                }, (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//        );
+
+//        FavorDelegate del = new FavorDelegate();
+//        del.createFavor(
+//                new TransferFavor(1, "pedro", "Desde Android", "Puedo crear favores desde android", (int)(new Date().getTime() / 1000), 10, LocationService.getInstance().getLocation(), null, false),
+//                (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                });
+
+//        FavorDelegate del = new FavorDelegate();
+//        del.updateFavor(
+//                new TransferFavor(4, "pedro", "Android Actualizado", "Puedo crear favores desde android", (int)(new Date().getTime() / 1000), 10, LocationService.getInstance().getLocation(), null, false),
+//                4,
+//                (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                });
+
+//        FavorDelegate del = new FavorDelegate();
+//        del.deleteFavor(4,
+//                (error) -> {
+//                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                });
 
         //TODO: Use NetworkImageView
 

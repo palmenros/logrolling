@@ -26,4 +26,67 @@ public class FavorDelegate {
          );
     }
 
+    public void getCreatedFavors(ResponseListener<TransferFavor[]> responseListener, ErrorListener errorListener) {
+        client.getRequest(
+                "favors/user",
+                 null,
+                 SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
+                 AuthenticationService.getInstance().getAuthToken(),
+                 errorListener
+        );
+    }
+
+    public void doFavor(int favorId, ErrorListener errorListener) {
+        client.putRequest(
+                "favors/" + favorId + "/@do",
+                 null,
+                null,
+                 AuthenticationService.getInstance().getAuthToken(),
+                 errorListener
+        );
+    }
+
+    public void completeFavor(int favorId, ErrorListener errorListener) {
+        client.putRequest(
+                "favors/" + favorId + "/@complete",
+                 null,
+                null,
+                 AuthenticationService.getInstance().getAuthToken(),
+                 errorListener
+        );
+    }
+
+    public void getFavorsToBeDone(ResponseListener<TransferFavor[]> responseListener, ErrorListener errorListener) {
+        client.getRequest(
+                "favors/awarded",
+                 null,
+                 SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
+                 AuthenticationService.getInstance().getAuthToken(),
+                 errorListener
+        );
+    }
+
+    public void createFavor(TransferFavor favor, ErrorListener errorListener) {
+        client.postRequest("favors",
+                favor,
+                null,
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener);
+    }
+
+    public void updateFavor(TransferFavor newFavor, int favorId, ErrorListener errorListener) {
+        client.putRequest("favors/" + favorId,
+                newFavor,
+                null,
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener);
+    }
+
+    public void deleteFavor(int favorId, ErrorListener errorListener) {
+        client.deleteRequest("favors/" + favorId,
+                null,
+                null,
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener);
+    }
 }
