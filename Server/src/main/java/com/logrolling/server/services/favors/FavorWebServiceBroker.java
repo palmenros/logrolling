@@ -10,7 +10,7 @@ import java.util.List;
 @Path("/favors")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class FavorController {
+public class FavorWebServiceBroker {
 
     @GET
     public List<TransferFavor> getAvailableFavors(@HeaderParam("token") String token){

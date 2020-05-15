@@ -6,7 +6,7 @@ public class Filter {
 
     private int minGrollies;
     private Coordinates coordinates;
-    private double maxDistance;//EN KM
+    private double maxDistance; //Kilometers
 
     private boolean awarded;//Implement
     private Date minDate;//Implement

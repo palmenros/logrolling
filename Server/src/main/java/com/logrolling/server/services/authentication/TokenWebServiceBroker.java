@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/tokens")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class TokenController {
+public class TokenWebServiceBroker {
 
     @PUT
     public TransferToken login(LoginTransfer loginTransfer) {

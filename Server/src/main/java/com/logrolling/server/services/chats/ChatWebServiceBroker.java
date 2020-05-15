@@ -10,7 +10,7 @@ import java.util.List;
 @Path("/chats")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ChatController {
+public class ChatWebServiceBroker {
 
     // Does not take into account order of chats
     @GET

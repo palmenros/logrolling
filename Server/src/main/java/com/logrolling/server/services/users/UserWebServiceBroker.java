@@ -9,7 +9,7 @@ import java.util.List;
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UserController {
+public class UserWebServiceBroker {
 
     @GET
     public List<TransferUser> getUsers()  {

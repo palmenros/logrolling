@@ -9,7 +9,7 @@ import java.util.List;
 @Path("/gifts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class GiftsController  {
+public class GiftsWebServiceBroker {
 
     @GET
     public List<TransferGift> getAllGifts() {
