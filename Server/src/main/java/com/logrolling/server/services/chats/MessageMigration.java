@@ -1,12 +1,13 @@
-package com.logrolling.server.database.migrations;
+package com.logrolling.server.services.chats;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.database.migrations.Migration;
 import com.logrolling.server.services.chats.MessageManager;
 import com.logrolling.server.services.chats.Message;
 
 
-public class MessageMigration implements Migration{
+public class MessageMigration implements Migration {
     @Override
     public void migrate() {
         String sqlQuery =

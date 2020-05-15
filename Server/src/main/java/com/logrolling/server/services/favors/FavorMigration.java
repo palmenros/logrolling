@@ -1,11 +1,12 @@
-package com.logrolling.server.database.migrations;
+package com.logrolling.server.services.favors;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.database.migrations.Migration;
 import com.logrolling.server.services.favors.FavorManager;
 import com.logrolling.server.services.favors.Favor;
 
-public class FavorMigration implements Migration{
+public class FavorMigration implements Migration {
 
     /**
      * Creates tables necessary for model manager of given class

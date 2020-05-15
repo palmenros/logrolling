@@ -2,6 +2,11 @@ package com.logrolling.server.database.migrations;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.services.authentication.TokenMigration;
+import com.logrolling.server.services.chats.MessageMigration;
+import com.logrolling.server.services.favors.FavorMigration;
+import com.logrolling.server.services.gifts.GiftMigration;
+import com.logrolling.server.services.users.UserMigration;
 
 public class MigrationManager {
 

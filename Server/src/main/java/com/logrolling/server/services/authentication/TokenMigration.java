@@ -1,7 +1,8 @@
-package com.logrolling.server.database.migrations;
+package com.logrolling.server.services.authentication;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.database.migrations.Migration;
 import com.logrolling.server.services.authentication.TokenManager;
 import com.logrolling.server.services.authentication.Token;
 

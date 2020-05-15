@@ -2,8 +2,6 @@ package com.logrolling.server.services.users;
 
 public class TransferUser {
 
-    //TODO: Complete transfer class with all attributes
-
     private int id;
     private String username;
     private int grollies;

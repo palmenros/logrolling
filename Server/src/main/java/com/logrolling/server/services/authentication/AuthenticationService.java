@@ -7,8 +7,6 @@ import com.logrolling.server.services.users.User;
 
 public class AuthenticationService {
 
-    //TODO: Add proper documentation and exceptions
-
     //If authentication is not successful, throw an exception
     //If authentication is successful, return username of authenticated user
     public static String authenticateWithToken(String tokenString) throws AuthenticationException {

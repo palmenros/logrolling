@@ -1,7 +1,8 @@
-package com.logrolling.server.database.migrations;
+package com.logrolling.server.services.users;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.database.migrations.Migration;
 import com.logrolling.server.services.users.UserManager;
 import com.logrolling.server.services.users.User;
 
