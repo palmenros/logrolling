@@ -20,7 +20,7 @@ public class FavorMigration implements Migration{
                         "creator varchar(50) not null," +
                         "title varchar(50) not null," +
                         "description varchar(150) not null," +
-                        "dueTime integer," +
+                        "dueTime integer," +                    //Seconds from 1970
                         "reward int," +
                         "latitude double," +
                         "longitude double," +

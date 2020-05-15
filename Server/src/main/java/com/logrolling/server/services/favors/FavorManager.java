@@ -182,8 +182,9 @@ public class FavorManager {
 
         Database db = DatabaseFactory.createInstance();
         if(filter.getMaxDistance() == -1) {
-            ResultSet rs = db.executeQuery("select * from favors where worker is null and reward >= ? and creator <> ?",
+            ResultSet rs = db.executeQuery("select * from favors where worker is null and dueTime >= ? and reward >= ? and creator <> ?",
                     new String[]{
+                            filter.getMinDate().toString(),
                             filter.getMinGrollies().toString(),
                             username
                     });
@@ -198,15 +199,14 @@ public class FavorManager {
             }
         }
         else{
-            ResultSet rs = db.executeQuery("select * from favors where worker is null and reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
+            ResultSet rs = db.executeQuery("select * from favors where worker is null and dueTime >= ? and reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
                     new String[]{
-
+                            filter.getMinDate().toString(),
                             filter.getMinGrollies().toString(),
                             filter.getCoordinates().getLatitude().toString(),
                             filter.getCoordinates().getLongitude().toString(),
                             filter.getCoordinates().getLatitude().toString(),
                             filter.getMaxDistance().toString()
-
                     });
 
             try {

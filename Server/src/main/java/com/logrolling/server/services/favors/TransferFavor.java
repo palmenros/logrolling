@@ -5,12 +5,11 @@ public class TransferFavor {
     private String creator;
     private String title;
     private String description;
-    private Integer dueTime;
+    private Integer dueTime;    //Seconds from 1970
     private int reward;
     private Coordinates coordinates;
     private String worker;
     private boolean completed;
-    //Rest of attributes from favor
 
     public TransferFavor(int id, String creator,  String title, String description, Integer dueTime, int reward, Coordinates coordinates, String worker, boolean completed) {
         this.id = id;

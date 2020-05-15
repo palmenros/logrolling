@@ -5,6 +5,8 @@ import com.logrolling.server.database.factories.DatabaseFactory;
 
 public class MigrationManager {
 
+    //TODO: Maybe move each migration into each service?
+
     /**
      * List of migrations to execute.
      * Executed in declaration order

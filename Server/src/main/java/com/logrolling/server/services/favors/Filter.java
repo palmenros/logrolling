@@ -7,20 +7,16 @@ public class Filter {
     private int minGrollies;
     private Coordinates coordinates;
     private double maxDistance; //Kilometers
-
-    private boolean awarded;//Implement
-    private Date minDate;//Implement
+    private int minDate; //Has to always be provided, seconds from 1970
 
 
     public Filter(){
-
         minGrollies = 0;
         coordinates = null;
         maxDistance = -1;
-        awarded = false;
-        minDate = null;
-
+        minDate = 0;
     }
+
     public Filter(int minGrollies, double latitude, double longitude, double maxDistance){
         this.minGrollies = minGrollies;
         this.coordinates = new Coordinates(latitude, longitude);
@@ -44,13 +40,9 @@ public class Filter {
 
     public Coordinates getCoordinates(){ return coordinates; }
 
-    public void setAwarded(boolean awarded){ this.awarded = awarded; }
+    public Integer getMinDate(){ return minDate; }
 
-    public boolean getAwarded(){ return awarded; }
-
-    public Date getMinDate(){ return minDate; }
-
-    public void setMinDate(Date minDate){ this.minDate = minDate; }
+    public void setMinDate(int minDate){ this.minDate = minDate; }
 
 
 
