@@ -26,7 +26,7 @@ public class AdapterPersonas extends RecyclerView.Adapter<AdapterPersonas.ViewHo
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public ViewHolderPersonas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_personas,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_personas, parent, false);
         return new AdapterPersonas.ViewHolderPersonas(view);
     }
 
@@ -39,18 +39,19 @@ public class AdapterPersonas extends RecyclerView.Adapter<AdapterPersonas.ViewHo
     public void onBindViewHolder(@NonNull ViewHolderPersonas holder, int position) {
         holder.name.setText(listaTransferMessagePreviews.get(position).getUser());
         holder.last_message.setText(listaTransferMessagePreviews.get(position).getMessage());
-       // holder.photo.setImageResource(listaPersonas.get(position).getPhoto());
+        // holder.photo.setImageResource(listaPersonas.get(position).getPhoto());
     }
 
     public class ViewHolderPersonas extends RecyclerView.ViewHolder {
-        TextView name,last_message;
+        TextView name, last_message;
         ImageView photo;
+
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public ViewHolderPersonas(View itemView) {
             super(itemView);
-            name=(TextView)itemView.findViewById(R.id.Name);
-            last_message=(TextView)itemView.findViewById(R.id.last_message);
-            photo=(ImageView)itemView.findViewById(R.id.Photo);
+            name = (TextView) itemView.findViewById(R.id.Name);
+            last_message = (TextView) itemView.findViewById(R.id.last_message);
+            photo = (ImageView) itemView.findViewById(R.id.Photo);
             photo.setClipToOutline(true);
         }
     }

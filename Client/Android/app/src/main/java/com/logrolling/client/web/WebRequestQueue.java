@@ -34,19 +34,19 @@ public class WebRequestQueue {
 
         //Initialize imageLoader
         imageLoader = new ImageLoader(requestQueue,
-                    new ImageLoader.ImageCache() {
-                private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(20);
+                new ImageLoader.ImageCache() {
+                    private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(20);
 
-                @Override
-                public Bitmap getBitmap(String url) {
-                    return cache.get(url);
-                }
+                    @Override
+                    public Bitmap getBitmap(String url) {
+                        return cache.get(url);
+                    }
 
-                @Override
-                public void putBitmap(String url, Bitmap bitmap) {
-                    cache.put(url, bitmap);
-                }
-            });
+                    @Override
+                    public void putBitmap(String url, Bitmap bitmap) {
+                        cache.put(url, bitmap);
+                    }
+                });
 
     }
 
@@ -61,7 +61,7 @@ public class WebRequestQueue {
     }
 
     public static synchronized WebRequestQueue getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             throw new IllegalStateException("WebRequestQueue getInstance was called before instance creation");
         }
         return instance;

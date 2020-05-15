@@ -14,7 +14,7 @@ public class LocationService {
     }
 
     public static LocationService getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new LocationService();
         }
         return instance;
@@ -22,7 +22,7 @@ public class LocationService {
 
     public Coordinates getLocation() {
         //TODO: Implement
-        return new Coordinates(	40.384282, -3.938019);
+        return new Coordinates(40.384282, -3.938019);
     }
 
     public double getDistanceFromCoordinates(Coordinates coordinates) {
@@ -44,9 +44,9 @@ public class LocationService {
     public String formatDistance(double distance) {
 
         String unit = "m";
-        String numberRepresentation = Integer.valueOf((int)distance).toString();
+        String numberRepresentation = Integer.valueOf((int) distance).toString();
 
-        if(distance >= 1000) {
+        if (distance >= 1000) {
             distance /= 1000;
             unit = "km";
             numberRepresentation = String.format("%.1f", distance);

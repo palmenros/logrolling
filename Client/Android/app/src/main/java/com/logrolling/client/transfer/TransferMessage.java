@@ -15,15 +15,27 @@ public class TransferMessage {
         this.content = content;
     }
 
-    public String getContent(){ return content; }
+    public String getContent() {
+        return content;
+    }
 
-    public void setContent(String content){ this.content = content; }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-    public String getFrom(){ return from; }
+    public String getFrom() {
+        return from;
+    }
 
-    public void setFrom(String title){ this.from = from; }
+    public void setFrom(String title) {
+        this.from = from;
+    }
 
-    public String getTo(){ return to; }
+    public String getTo() {
+        return to;
+    }
 
-    public void setTo(String to){ this.to = to; }
+    public void setTo(String to) {
+        this.to = to;
+    }
 }

@@ -25,7 +25,7 @@ public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHold
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public ViewHolderFavor onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_favores,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_favores, parent, false);
         return new AdapterFavores.ViewHolderFavor(view);
     }
 
@@ -46,18 +46,19 @@ public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHold
     }
 
     public class ViewHolderFavor extends RecyclerView.ViewHolder {
-        TextView name,maxTime, distance,adress,favor,price;
+        TextView name, maxTime, distance, adress, favor, price;
         ImageView photo;
+
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public ViewHolderFavor(@NonNull View itemView) {
             super(itemView);
-            name=(TextView)itemView.findViewById(R.id.Name);
-            maxTime=(TextView)itemView.findViewById(R.id.Tiempo);
+            name = (TextView) itemView.findViewById(R.id.Name);
+            maxTime = (TextView) itemView.findViewById(R.id.Tiempo);
             distance = (TextView) itemView.findViewById(R.id.Distancia);
-            photo=(ImageView)itemView.findViewById(R.id.Photo);
-            adress=(TextView)itemView.findViewById(R.id.Adress);
-            favor=(TextView)itemView.findViewById(R.id.Favor);
-            price=(TextView)itemView.findViewById(R.id.Price);
+            photo = (ImageView) itemView.findViewById(R.id.Photo);
+            adress = (TextView) itemView.findViewById(R.id.Adress);
+            favor = (TextView) itemView.findViewById(R.id.Favor);
+            price = (TextView) itemView.findViewById(R.id.Price);
 
             photo.setClipToOutline(true);
         }

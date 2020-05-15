@@ -26,20 +26,21 @@ public class MessageActivity extends AppCompatActivity {
     private AdapterPersonas adapter;
     private TextView popUpMessage;
     private ConstraintLayout popUpError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensajes);
 
-        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//TODO: Pedir el número de grollies a quien sea
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError6);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError6);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
 
-        listChat =(RecyclerView)findViewById(R.id.ListaMensajes);
-        listChat.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        listChat = (RecyclerView) findViewById(R.id.ListaMensajes);
+        listChat.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
         RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
@@ -85,9 +86,9 @@ public class MessageActivity extends AppCompatActivity {
         });*/
     }
 
-    private void llenarLista(){
-        for(int i=0;i<5;i++) {
-            chats.add(new TransferMessagePreview("Persona "+i,"ultimo mensaje"));
+    private void llenarLista() {
+        for (int i = 0; i < 5; i++) {
+            chats.add(new TransferMessagePreview("Persona " + i, "ultimo mensaje"));
         }
     }
 
@@ -96,20 +97,22 @@ public class MessageActivity extends AppCompatActivity {
         Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
     }
+
     public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void search(View view) {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
 
     }
+
     public void configuration(View view) {
         Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
-
 
 
     public void buyGrollies(View view) {
@@ -118,11 +121,12 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     //popUpError
-    public void showErrorPopUp(View view){
+    public void showErrorPopUp(View view) {
         // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
 

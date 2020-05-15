@@ -17,6 +17,7 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
     private TextView name, description, deliveryLocation, deliveryDate, reward, popUpMessage;
     private ImageView photo;
     private ConstraintLayout popUpError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +33,9 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         reward = (TextView) findViewById(R.id.recompensa);
         photo = (ImageView) findViewById(R.id.Foto);
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError3);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError3);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
 
         //Ejemplo
         name.setText("Acercarse a la farmacia");
@@ -44,28 +45,34 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         reward.setText("6000 grollies");
 
     }
+
     public void chat(View view) {
         Intent i = new Intent(this, ChatPersonActivity.class);
         startActivity(i);
     }
+
     //Panel Inferior
     public void search(View view) {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
+
     public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void messages(View view) {
         Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
 
     }
+
     public void configuration(View view) {
         Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
+
     public void gifts(View view) {
         Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
@@ -77,11 +84,12 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
     }
 
     //popUpError
-    public void showErrorPopUp(View view){
+    public void showErrorPopUp(View view) {
         // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
 }

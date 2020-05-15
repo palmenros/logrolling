@@ -22,26 +22,27 @@ public class GiftsActivity extends AppCompatActivity {
     private TextView numGrollies;
     private ArrayList<TransferGift> transferGifts = new ArrayList<TransferGift>();
     private TextView popUpMessage;
-    private ConstraintLayout popUpConfirmation,popUpError;
+    private ConstraintLayout popUpConfirmation, popUpError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regalos);
-        listFavors =(RecyclerView)findViewById(R.id.ListaRegalos);
-        listFavors.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        listFavors = (RecyclerView) findViewById(R.id.ListaRegalos);
+        listFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError8);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError8);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
-        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm2);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
+        popUpConfirmation = (ConstraintLayout) findViewById(R.id.PopUpConfirm2);
         popUpConfirmation.setVisibility(View.INVISIBLE);
 
         llenarLista();
 
-        AdapterRegalos adapter=new AdapterRegalos(transferGifts);
+        AdapterRegalos adapter = new AdapterRegalos(transferGifts);
         listFavors.setAdapter(adapter);
         /*listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -50,9 +51,10 @@ public class GiftsActivity extends AppCompatActivity {
             }
         });*/
     }
-    private void llenarLista(){
-        for(int i=0;i<10;i++) {
-            transferGifts.add(new TransferGift("Regalo "+i, i*1000));
+
+    private void llenarLista() {
+        for (int i = 0; i < 10; i++) {
+            transferGifts.add(new TransferGift("Regalo " + i, i * 1000));
         }
     }
 
@@ -83,14 +85,19 @@ public class GiftsActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void closeErrorPopUp(View view){
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
-    public void showConfirmationPopUp(View view){
+
+    public void showConfirmationPopUp(View view) {
         popUpConfirmation.setVisibility(View.VISIBLE);
     }
-    public void closeConfirmationPopUp(View view){  popUpConfirmation.setVisibility(View.INVISIBLE);}
-    public void showErrorPopUp(View view){
+
+    public void closeConfirmationPopUp(View view) {
+        popUpConfirmation.setVisibility(View.INVISIBLE);
+    }
+
+    public void showErrorPopUp(View view) {
         popUpConfirmation.setVisibility(View.VISIBLE);
     }
 }

@@ -13,14 +13,15 @@ import com.logrolling.client.R;
 public class ConfigurationActivity extends AppCompatActivity {
     private ConstraintLayout popUpSignOut;
     private TextView numGrollies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
-        popUpSignOut=(ConstraintLayout)findViewById(R.id.PopUpSignOut);
+        popUpSignOut = (ConstraintLayout) findViewById(R.id.PopUpSignOut);
         popUpSignOut.setVisibility(View.INVISIBLE);
 
-        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
     }
 
@@ -30,10 +31,12 @@ public class ConfigurationActivity extends AppCompatActivity {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
+
     public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void messages(View view) {
         Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
@@ -44,7 +47,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
     }
-
 
 
     public void buyGrollies(View view) {
@@ -61,12 +63,15 @@ public class ConfigurationActivity extends AppCompatActivity {
     public void signOut(View view) {
         showSignOutConfirm(view);
     }
-    public void showSignOutConfirm(View view){
+
+    public void showSignOutConfirm(View view) {
         popUpSignOut.setVisibility(View.VISIBLE);
     }
-    public void closeSignOutConfirm(View view){
+
+    public void closeSignOutConfirm(View view) {
         popUpSignOut.setVisibility(View.INVISIBLE);
     }
+
     public void signOutConfirmed(View view) {
         closeSignOutConfirm(view);
     }

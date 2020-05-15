@@ -22,10 +22,10 @@ public class GiftDelegate {
         client.getRequest(
                 "gifts",
                 null,
-                 SerializationService.getInstance().getResponseListener(TransferGift[].class, responseListener, errorListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
-                );
+                SerializationService.getInstance().getResponseListener(TransferGift[].class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
+        );
     }
 
     public void purchaseGift(TransferPurchase transferPurchase, SuccessListener successListener, ErrorListener errorListener) {

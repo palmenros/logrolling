@@ -17,19 +17,20 @@ public class DoFavorActivity extends AppCompatActivity {
     private TextView numGrollies;
     private TextView popUpMessage;
     private ConstraintLayout popUpConfirmation, popUpError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realizar_favor);
-        name =(TextView)findViewById(R.id.nombre);
-        description =(TextView)findViewById(R.id.descripcionFavor);
-        deliveryLocation =(TextView)findViewById(R.id.lugarEntrega);
-        deliveryDate =(TextView)findViewById(R.id.fechaLimite);
-        reward =(TextView)findViewById(R.id.recompensa);
-        photo =(ImageView)findViewById(R.id.Foto);
+        name = (TextView) findViewById(R.id.nombre);
+        description = (TextView) findViewById(R.id.descripcionFavor);
+        deliveryLocation = (TextView) findViewById(R.id.lugarEntrega);
+        deliveryDate = (TextView) findViewById(R.id.fechaLimite);
+        reward = (TextView) findViewById(R.id.recompensa);
+        photo = (ImageView) findViewById(R.id.Foto);
 
 
-        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
         //Sets
         //Ejemplo
@@ -40,10 +41,10 @@ public class DoFavorActivity extends AppCompatActivity {
         reward.setText("500 grollies");
 
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError9);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError9);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
-        popUpConfirmation=(ConstraintLayout)findViewById(R.id.PopUpConfirm6);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
+        popUpConfirmation = (ConstraintLayout) findViewById(R.id.PopUpConfirm6);
         popUpConfirmation.setVisibility(View.INVISIBLE);
     }
 
@@ -52,19 +53,23 @@ public class DoFavorActivity extends AppCompatActivity {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
+
     public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void messages(View view) {
         Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
 
     }
+
     public void configuration(View view) {
         Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
+
     public void gifts(View view) {
         Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
@@ -74,28 +79,33 @@ public class DoFavorActivity extends AppCompatActivity {
     public void doFavor(View view) {
         showConfirmationPopUp(view);
     }
+
     public void doFavorConfirmed(View view) {
         //realizar Favor
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
+
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
     }
 
     //popUps
-    public void showErrorPopUp(View view){
+    public void showErrorPopUp(View view) {
         // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
-    public void showConfirmationPopUp(View view){
+
+    public void showConfirmationPopUp(View view) {
         popUpConfirmation.setVisibility(View.VISIBLE);
     }
-    public void closeConfirmationPopUp(View view){
+
+    public void closeConfirmationPopUp(View view) {
         popUpConfirmation.setVisibility(View.INVISIBLE);
     }
 }

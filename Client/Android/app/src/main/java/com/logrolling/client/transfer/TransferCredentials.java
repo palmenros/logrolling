@@ -5,7 +5,7 @@ public class TransferCredentials {
     private String username;
     private String password;
 
-    public TransferCredentials(){
+    public TransferCredentials() {
     }
 
     public TransferCredentials(String username, String password) {

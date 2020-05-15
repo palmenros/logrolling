@@ -15,35 +15,39 @@ public class SignInActivity extends AppCompatActivity {
     private EditText user, password;
     private TextView popUpMessage;
     private ConstraintLayout popUpError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
 
-        user =(EditText)findViewById(R.id.NombreUsuario);
-        password =(EditText)findViewById(R.id.Contrasenna);
+        user = (EditText) findViewById(R.id.NombreUsuario);
+        password = (EditText) findViewById(R.id.Contrasenna);
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError5);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError5);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
     }
-    public void registration(View view){
-        Intent i=new Intent(this, RegistrationActivity.class);
+
+    public void registration(View view) {
+        Intent i = new Intent(this, RegistrationActivity.class);
         startActivity(i);
     }
-    public void signIn(View view){
-        if(true ){//Habrá que comprobar que el user esta registrado
-            Intent i=new Intent(this, SearchActivity.class);
+
+    public void signIn(View view) {
+        if (true) {//Habrá que comprobar que el user esta registrado
+            Intent i = new Intent(this, SearchActivity.class);
             startActivity(i);
         }
     }
 
     //popUpError
-    public void showErrorPopUp(View view){
+    public void showErrorPopUp(View view) {
         // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
 

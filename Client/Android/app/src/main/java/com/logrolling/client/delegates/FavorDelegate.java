@@ -21,19 +21,19 @@ public class FavorDelegate {
         client.postRequest(
                 "favors/filter",
                 filter,
-                 SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
-         );
+                SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
+        );
     }
 
     public void getCreatedFavors(ResponseListener<TransferFavor[]> responseListener, ErrorListener errorListener) {
         client.getRequest(
                 "favors/user",
-                 null,
-                 SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
+                null,
+                SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
         );
     }
 
@@ -41,29 +41,29 @@ public class FavorDelegate {
         client.putRequest(
                 "favors/" + favorId + "/@do",
                 null,
-                 WebServiceClient.getSuccessResponseListener(successListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
+                WebServiceClient.getSuccessResponseListener(successListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
         );
     }
 
     public void completeFavor(int favorId, SuccessListener successListener, ErrorListener errorListener) {
         client.putRequest(
                 "favors/" + favorId + "/@complete",
-                 null,
-                 WebServiceClient.getSuccessResponseListener(successListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
+                null,
+                WebServiceClient.getSuccessResponseListener(successListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
         );
     }
 
     public void getFavorsToBeDone(ResponseListener<TransferFavor[]> responseListener, ErrorListener errorListener) {
         client.getRequest(
                 "favors/awarded",
-                 null,
-                 SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
+                null,
+                SerializationService.getInstance().getResponseListener(TransferFavor[].class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
         );
     }
 

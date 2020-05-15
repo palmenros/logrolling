@@ -55,7 +55,9 @@ public class TransferFavor {
         this.id = id;
     }
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -69,29 +71,53 @@ public class TransferFavor {
         this.creator = creator;
     }
 
-    public String getDescription(){ return description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String description){ this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public Integer getDueTime(){ return dueTime; }
+    public Integer getDueTime() {
+        return dueTime;
+    }
 
-    public void setDueTime(Integer dueTime){ this.dueTime = dueTime; }
+    public void setDueTime(Integer dueTime) {
+        this.dueTime = dueTime;
+    }
 
-    public Integer getReward(){ return reward; }
+    public Integer getReward() {
+        return reward;
+    }
 
-    public void setReward(int reward){ this.reward = reward; }
+    public void setReward(int reward) {
+        this.reward = reward;
+    }
 
-    public Coordinates getCoordinates(){ return coordinates; }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 
-    public void setCoordinates(Coordinates coordinates){ this.coordinates = coordinates; }
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
 
-    public String getWorker(){ return worker; }
+    public String getWorker() {
+        return worker;
+    }
 
-    public void setWorker(String worker){ this.worker = worker; }
+    public void setWorker(String worker) {
+        this.worker = worker;
+    }
 
-    public boolean getCompleted(){ return completed; }
+    public boolean getCompleted() {
+        return completed;
+    }
 
-    public void setCompleted(boolean b){ this.completed = b; }
+    public void setCompleted(boolean b) {
+        this.completed = b;
+    }
 
     public String getDistance() {
         LocationService locationService = LocationService.getInstance();

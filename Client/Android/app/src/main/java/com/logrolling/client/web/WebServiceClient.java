@@ -24,7 +24,6 @@ import java.util.Map;
 public class WebServiceClient {
 
 
-
     public String formCompleteURL(String relativeURL) {
         return Settings.getBaseURL() + relativeURL;
     }
@@ -39,7 +38,7 @@ public class WebServiceClient {
     ) {
 
         String jsonString = null;
-        if(input != null) {
+        if (input != null) {
             GsonBuilder builder = new GsonBuilder();
             builder.serializeNulls();
             Gson gson = builder.create();
@@ -55,7 +54,7 @@ public class WebServiceClient {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String str) {
-                        if(responseListener != null) {
+                        if (responseListener != null) {
                             responseListener.onResponse(str);
                         }
                     }
@@ -67,42 +66,42 @@ public class WebServiceClient {
                             errorListener.onError(new RequestException(error));
                         }
                     }
-                }){
+                }) {
 
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
 
-                    //Set header params
-                    Map<String, String>  params = new HashMap<String, String>();
-                    params.put("User-Agent", "Logrolling");
-                    params.put("Content-Type", "application/json");
+                //Set header params
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("User-Agent", "Logrolling");
+                params.put("Content-Type", "application/json");
 
-                    if(authenticationToken != null) {
-                        params.put("token", authenticationToken);
-                    }
-
-                    return params;
+                if (authenticationToken != null) {
+                    params.put("token", authenticationToken);
                 }
 
-                @Override
-                public byte[] getBody() throws AuthFailureError {
-                    try {
-                        if(responseBody == null) {
-                            return new byte[]{};
-                        } else {
-                            return responseBody.getBytes("utf-8");
-                        }
-                    } catch (UnsupportedEncodingException e) {
-                        VolleyLog.wtf("Unsopported encoding exception when sending request");
-                        return null;
+                return params;
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    if (responseBody == null) {
+                        return new byte[]{};
+                    } else {
+                        return responseBody.getBytes("utf-8");
                     }
+                } catch (UnsupportedEncodingException e) {
+                    VolleyLog.wtf("Unsopported encoding exception when sending request");
+                    return null;
                 }
+            }
 
         };
         WebRequestQueue.getInstance().addToRequestQueue(request);
     }
 
-     public <InputObject> void getRequest(
+    public <InputObject> void getRequest(
             String relativeURL,
             InputObject input,
             final ResponseListener<String> responseListener,
@@ -110,9 +109,9 @@ public class WebServiceClient {
             final ErrorListener errorListener
     ) {
         request(Request.Method.GET, relativeURL, input, responseListener, authenticationToken, errorListener);
-     }
+    }
 
-     public <InputObject> void postRequest(
+    public <InputObject> void postRequest(
             String relativeURL,
             InputObject input,
             final ResponseListener<String> responseListener,
@@ -120,9 +119,9 @@ public class WebServiceClient {
             final ErrorListener errorListener
     ) {
         request(Request.Method.POST, relativeURL, input, responseListener, authenticationToken, errorListener);
-     }
+    }
 
-     public <InputObject> void deleteRequest(
+    public <InputObject> void deleteRequest(
             String relativeURL,
             InputObject input,
             final ResponseListener<String> responseListener,
@@ -130,9 +129,9 @@ public class WebServiceClient {
             final ErrorListener errorListener
     ) {
         request(Request.Method.DELETE, relativeURL, input, responseListener, authenticationToken, errorListener);
-     }
+    }
 
-     public <InputObject> void putRequest(
+    public <InputObject> void putRequest(
             String relativeURL,
             InputObject input,
             final ResponseListener<String> responseListener,
@@ -140,10 +139,10 @@ public class WebServiceClient {
             final ErrorListener errorListener
     ) {
         request(Request.Method.PUT, relativeURL, input, responseListener, authenticationToken, errorListener);
-     }
+    }
 
-     public static ResponseListener<String> getSuccessResponseListener(SuccessListener listener) {
-        if(listener == null) {
+    public static ResponseListener<String> getSuccessResponseListener(SuccessListener listener) {
+        if (listener == null) {
             return null;
         }
 

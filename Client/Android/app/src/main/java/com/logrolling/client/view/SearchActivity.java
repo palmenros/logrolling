@@ -26,10 +26,11 @@ public class SearchActivity extends AppCompatActivity {
     private ConstraintLayout constrainFilters;
     private TextView minGrolliesText, maxDistanceText, popUpMessage;
     private SeekBar minGrolliesBar, maxDistanceBar;
-    public int minGrollies=10;
-    public double distance =0.5;
+    public int minGrollies = 10;
+    public double distance = 0.5;
     private ConstraintLayout popUpError;
     private TextView numGrollies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +39,20 @@ public class SearchActivity extends AppCompatActivity {
         numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        filters =false;
-        constrainFilters =(ConstraintLayout)findViewById(R.id.Filtros);
+        filters = false;
+        constrainFilters = (ConstraintLayout) findViewById(R.id.Filtros);
         constrainFilters.setVisibility(View.INVISIBLE);
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError4);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError4);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
 
         llenarLista();
 
-        listFavors =(RecyclerView)findViewById(R.id.ListFavors);
-        listFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        listFavors = (RecyclerView) findViewById(R.id.ListFavors);
+        listFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        AdapterFavores adapterLista=new AdapterFavores(favorsArray);
+        AdapterFavores adapterLista = new AdapterFavores(favorsArray);
         listFavors.setAdapter(adapterLista);
 
        /* listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -64,38 +65,41 @@ public class SearchActivity extends AppCompatActivity {
             }
         });*/
 
-        minGrolliesBar=(SeekBar)findViewById(R.id.minGrolliesBar);
-        maxDistanceBar =(SeekBar)findViewById(R.id.maxDistanciaBar);
+        minGrolliesBar = (SeekBar) findViewById(R.id.minGrolliesBar);
+        maxDistanceBar = (SeekBar) findViewById(R.id.maxDistanciaBar);
 
         listeners_bars();
-        minGrolliesText=(TextView)findViewById(R.id.MinGrollies);
-        maxDistanceText =(TextView)findViewById(R.id.MaxDistancia);
+        minGrolliesText = (TextView) findViewById(R.id.MinGrollies);
+        maxDistanceText = (TextView) findViewById(R.id.MaxDistancia);
     }
 
-    private void llenarLista(){
-        for(int i=0;i<10;i++) {
-            favorsArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606 , i*1000, new Coordinates(0, 0), null, false));
+    private void llenarLista() {
+        for (int i = 0; i < 10; i++) {
+            favorsArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606, i * 1000, new Coordinates(0, 0), null, false));
         }
     }
+
     //Panel Inferior
     public void gifts(View view) {
         Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
     }
+
     public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void messages(View view) {
         Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
 
     }
+
     public void configuration(View view) {
         Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
-
 
 
     public void buyGrollies(View view) {
@@ -104,37 +108,39 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void filters(View view) {
-        if(!filters){
-           constrainFilters.setVisibility(View.VISIBLE);
+        if (!filters) {
+            constrainFilters.setVisibility(View.VISIBLE);
 
-        }else{
+        } else {
             constrainFilters.setVisibility(View.INVISIBLE);
         }
-        filters =!filters;
+        filters = !filters;
     }
-    public void findFilter(View view){
+
+    public void findFilter(View view) {
         filters(view);
         //Llamar a base de datos y cambiar el scrollView
     }
-    public void listeners_bars(){
+
+    public void listeners_bars() {
 
         minGrolliesBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minGrollies=((int)(2*Math.pow(progress, 2.5)))+10;
+                minGrollies = ((int) (2 * Math.pow(progress, 2.5))) + 10;
 
-                if(progress==100){
-                    minGrollies=200000;
+                if (progress == 100) {
+                    minGrollies = 200000;
                 }
-                if(minGrollies>100){
-                    minGrollies= truncate(minGrollies);
+                if (minGrollies > 100) {
+                    minGrollies = truncate(minGrollies);
                 }
 
-                String text="";
-                if(minGrollies>=1000){
-                    text+=minGrollies/1000+"."+(minGrollies%1000==0?"000":minGrollies%1000)+" G";
-                }else{
-                    text+=minGrollies+" G";
+                String text = "";
+                if (minGrollies >= 1000) {
+                    text += minGrollies / 1000 + "." + (minGrollies % 1000 == 0 ? "000" : minGrollies % 1000) + " G";
+                } else {
+                    text += minGrollies + " G";
                 }
                 minGrolliesText.setText(text);
             }
@@ -154,43 +160,43 @@ public class SearchActivity extends AppCompatActivity {
         maxDistanceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                String dist="";
-                switch(progress){
+                String dist = "";
+                switch (progress) {
                     case 0:
-                        dist="500 m";
-                        distance =0.5;
+                        dist = "500 m";
+                        distance = 0.5;
                         break;
                     case 1:
-                        dist="1 km";
-                        distance =1;
+                        dist = "1 km";
+                        distance = 1;
                         break;
                     case 2:
-                        dist="2 km";
-                        distance =2;
+                        dist = "2 km";
+                        distance = 2;
                         break;
                     case 3:
-                        dist="3 km";
-                        distance =3;
+                        dist = "3 km";
+                        distance = 3;
                         break;
                     case 4:
-                        dist="5 km";
-                        distance =5;
+                        dist = "5 km";
+                        distance = 5;
                         break;
                     case 5:
-                        dist="7 km";
-                        distance =7;
+                        dist = "7 km";
+                        distance = 7;
                         break;
                     case 6:
-                        dist="10 km";
-                        distance =10;
+                        dist = "10 km";
+                        distance = 10;
                         break;
                     case 7:
-                        dist="20 km";
-                        distance =20;
+                        dist = "20 km";
+                        distance = 20;
                         break;
 
                 }
-                maxDistanceText.setText("En un radio de "+dist);
+                maxDistanceText.setText("En un radio de " + dist);
             }
 
             @Override
@@ -206,37 +212,39 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     //popUpError
-    public void showErrorPopUp(View view){
+    public void showErrorPopUp(View view) {
         // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
 
-    String toHours(double horas){
-        String dev="";
-        int dias,horass;
-        dias=(int)horas/24;
-        horass=(int)horas%24;
-        if(dias>=1){
-            dev+=dias+" d  ";
+    String toHours(double horas) {
+        String dev = "";
+        int dias, horass;
+        dias = (int) horas / 24;
+        horass = (int) horas % 24;
+        if (dias >= 1) {
+            dev += dias + " d  ";
         }
-        if(horass>=1){
-            dev+=horass+" h ";
+        if (horass >= 1) {
+            dev += horass + " h ";
         }
         return dev;
     }
-    int truncate(int n){
-        int dev=n;
-        if(n>100 && n<=1000){
-            dev=(n/10)*10;
-        }else if(n<=10000){
-            dev=(n/100)*100;
-        }else if(n<=100000){
-            dev=(n/1000)*1000;
-        }else if(n>100000){
-            dev=(n/10000)*10000;
+
+    int truncate(int n) {
+        int dev = n;
+        if (n > 100 && n <= 1000) {
+            dev = (n / 10) * 10;
+        } else if (n <= 10000) {
+            dev = (n / 100) * 100;
+        } else if (n <= 100000) {
+            dev = (n / 1000) * 1000;
+        } else if (n > 100000) {
+            dev = (n / 10000) * 10000;
         }
         return dev;
     }

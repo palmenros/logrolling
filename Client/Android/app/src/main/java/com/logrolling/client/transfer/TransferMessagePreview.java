@@ -4,7 +4,7 @@ public class TransferMessagePreview {
     private String user;
     private String message;
 
-    public TransferMessagePreview(String u, String m){
+    public TransferMessagePreview(String u, String m) {
         user = u;
         message = m;
     }
@@ -12,11 +12,11 @@ public class TransferMessagePreview {
     public TransferMessagePreview() {
     }
 
-    public String getUser(){
+    public String getUser() {
         return user;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message;
     }
 

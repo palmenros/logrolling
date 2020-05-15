@@ -29,26 +29,26 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolderDato
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
-            dato=(TextView)itemView.findViewById(R.id.IdDato);
+            dato = (TextView) itemView.findViewById(R.id.IdDato);
         }
 
         public void dataAssignment(Pair pair) {
             dato.setText((CharSequence) pair.first);
 
             int negro = Color.parseColor("#222222");
-            int blanco= Color.parseColor("#FFFFFF");
+            int blanco = Color.parseColor("#FFFFFF");
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
             params.weight = 1.0f;
             params.gravity = Gravity.TOP;
 
 
-            if((Boolean) pair.second){
+            if ((Boolean) pair.second) {
                 dato.setBackgroundResource(R.drawable.this_user_message);
                 dato.setTextColor(blanco);
 
                 params.gravity = Gravity.RIGHT;
-            }else{
+            } else {
                 dato.setBackgroundResource(R.drawable.other_user_message);
                 dato.setTextColor(negro);
                 params.gravity = Gravity.LEFT;
@@ -57,8 +57,9 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolderDato
             dato.setLayoutParams(params);
         }
     }
+
     public DataAdapter.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list,null,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, null, false);
         return new ViewHolderDatos(view);
     }
 

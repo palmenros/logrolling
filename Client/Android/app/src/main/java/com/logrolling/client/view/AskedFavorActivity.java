@@ -26,28 +26,28 @@ public class AskedFavorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favor_pedido);
 
-        edit =(Button)findViewById(R.id.editar);
-        delete =(Button)findViewById(R.id.borrar);
+        edit = (Button) findViewById(R.id.editar);
+        delete = (Button) findViewById(R.id.borrar);
 
-        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        name =(TextView)findViewById(R.id.nombre);
-        description =(TextView)findViewById(R.id.descrFavor);
-        deliveryLocation =(TextView)findViewById(R.id.lugarEntrega);
-        deliveryDate =(TextView)findViewById(R.id.fechaLimite);
-        reward =(TextView)findViewById(R.id.recompensa);
-        photo =(ImageView)findViewById(R.id.foto);
+        name = (TextView) findViewById(R.id.nombre);
+        description = (TextView) findViewById(R.id.descrFavor);
+        deliveryLocation = (TextView) findViewById(R.id.lugarEntrega);
+        deliveryDate = (TextView) findViewById(R.id.fechaLimite);
+        reward = (TextView) findViewById(R.id.recompensa);
+        photo = (ImageView) findViewById(R.id.foto);
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError2);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError2);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
 
 
-        confirmed =(TextView)findViewById(R.id.confirmado);
+        confirmed = (TextView) findViewById(R.id.confirmado);
 
         //Ejemplo
-        assigned =true;
+        assigned = true;
         name.setText("Fotocopiar apuntes");
         description.setText("Fotocopiar los apuntes que puedes encontrar en la carpeta de Drive www.drive_ejemplo.es");
         deliveryLocation.setText("Paseo de la Castellana Nº7");
@@ -55,21 +55,23 @@ public class AskedFavorActivity extends AppCompatActivity {
         reward.setText("7500 grollies");
 
 
-        if(assigned){
+        if (assigned) {
             edit.setVisibility(View.INVISIBLE);
             delete.setVisibility(View.INVISIBLE);
             confirmed.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             edit.setVisibility(View.VISIBLE);
             delete.setVisibility(View.VISIBLE);
             confirmed.setVisibility(View.INVISIBLE);
         }
     }
+
     //Botones //Dependiendo de si el favor está assigned hacer una cosa u otra
     public void delete(View view) { //TENDRÁ QUE BORRAR
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void edit(View view) { //TENDRÁ QUE HABILITAR LA OPCION DE EDITAR
 
     }
@@ -85,19 +87,23 @@ public class AskedFavorActivity extends AppCompatActivity {
         Intent i = new Intent(this, SearchActivity.class);
         startActivity(i);
     }
+
     public void favors(View view) {
         Intent i = new Intent(this, MyFavorsActivity.class);
         startActivity(i);
     }
+
     public void messages(View view) {
         Intent i = new Intent(this, MessageActivity.class);
         startActivity(i);
 
     }
+
     public void configuration(View view) {
         Intent i = new Intent(this, ConfigurationActivity.class);
         startActivity(i);
     }
+
     public void gifts(View view) {
         Intent i = new Intent(this, GiftsActivity.class);
         startActivity(i);
@@ -109,11 +115,12 @@ public class AskedFavorActivity extends AppCompatActivity {
     }
 
     //popUpError
-    public void showErrorPopUp(View view){
-       // popUpMessage.setText();
+    public void showErrorPopUp(View view) {
+        // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
 }

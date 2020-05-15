@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: Use NetworkImageView
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError14);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError14);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
     }
 
-    public void advance(View view){
+    public void advance(View view) {
         //Cuando cargue
-        Intent i=new Intent(this, SignInActivity.class);
+        Intent i = new Intent(this, SignInActivity.class);
         startActivity(i);
     }
 

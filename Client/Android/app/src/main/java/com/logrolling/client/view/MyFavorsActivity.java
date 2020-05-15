@@ -34,23 +34,24 @@ public class MyFavorsActivity extends AppCompatActivity {
 
     private TextView popUpMessage;
     private ConstraintLayout popUpError;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favores);
 
-        favorsDo =(Button)findViewById(R.id.favoresARealizar2);
-        favorsAsked =(Button)findViewById(R.id.favoresPedidos);
+        favorsDo = (Button) findViewById(R.id.favoresARealizar2);
+        favorsAsked = (Button) findViewById(R.id.favoresPedidos);
 
-        numGrollies=(TextView)findViewById(R.id.grollies);
+        numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        listDoneFavors =(RecyclerView)findViewById(R.id.ListaFavoresPedidos);
-        listDoneFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        listDoneFavors = (RecyclerView) findViewById(R.id.ListaFavoresPedidos);
+        listDoneFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         llenarLista();
 
-        AdapterFavores adapterPedidos=new AdapterFavores(favorsAskedArray);
+        AdapterFavores adapterPedidos = new AdapterFavores(favorsAskedArray);
         listDoneFavors.setAdapter(adapterPedidos);
        /* listDoneFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -62,10 +63,10 @@ public class MyFavorsActivity extends AppCompatActivity {
             }
         });*/
 
-        listFavorsToBeDone =(RecyclerView)findViewById(R.id.ListaFavoresARealizar);
-        listFavorsToBeDone.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        listFavorsToBeDone = (RecyclerView) findViewById(R.id.ListaFavoresARealizar);
+        listFavorsToBeDone.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        AdapterFavores adapterARealizar=new AdapterFavores(favorsDoneArray);
+        AdapterFavores adapterARealizar = new AdapterFavores(favorsDoneArray);
         listFavorsToBeDone.setAdapter(adapterARealizar);
         /*listFavorsToBeDone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -78,14 +79,15 @@ public class MyFavorsActivity extends AppCompatActivity {
         });*/
         showAskedFavors();
 
-        popUpError=(ConstraintLayout)findViewById(R.id.PopUpError12);
+        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError12);
         popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage=(TextView)findViewById(R.id.messageError);
+        popUpMessage = (TextView) findViewById(R.id.messageError);
     }
-    private void llenarLista(){
-        for(int i=0;i<10;i++) {
-            favorsDoneArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606 , i*1000, new Coordinates(0, 0), null, false));
-            favorsAskedArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606 , i*1000, new Coordinates(0, 0), null, false));
+
+    private void llenarLista() {
+        for (int i = 0; i < 10; i++) {
+            favorsDoneArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606, i * 1000, new Coordinates(0, 0), null, false));
+            favorsAskedArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606, i * 1000, new Coordinates(0, 0), null, false));
         }
     }
 
@@ -124,7 +126,7 @@ public class MyFavorsActivity extends AppCompatActivity {
     }
 
 
-    private void showAskedFavors(){
+    private void showAskedFavors() {
         favorsAsked.setBackgroundColor(blue);
         favorsAsked.setTextColor(white);
         favorsDo.setBackgroundColor(white);
@@ -132,10 +134,12 @@ public class MyFavorsActivity extends AppCompatActivity {
         listFavorsToBeDone.setVisibility(View.INVISIBLE);
         listDoneFavors.setVisibility(View.VISIBLE);
     }
-    public void showAskedFavors(View view){
+
+    public void showAskedFavors(View view) {
         showAskedFavors();
     }
-    public void showFavorsToBeDone(View view){
+
+    public void showFavorsToBeDone(View view) {
 
         favorsAsked.setBackgroundColor(white);
         favorsAsked.setTextColor(blue);
@@ -146,11 +150,12 @@ public class MyFavorsActivity extends AppCompatActivity {
     }
 
     //popUpError
-    public void showErrorPopUp(View view){
+    public void showErrorPopUp(View view) {
         // popUpMessage.setText();
         popUpError.setVisibility(View.VISIBLE);
     }
-    public void closeErrorPopUp(View view){
+
+    public void closeErrorPopUp(View view) {
         popUpError.setVisibility(View.INVISIBLE);
     }
 

@@ -24,23 +24,23 @@ public class ChatDelegate {
     }
 
     public void getChatWithUser(String username, ResponseListener<TransferChat> responseListener, ErrorListener errorListener) {
-         client.getRequest(
-                 "chats/" + username,
-                 null,
-                 SerializationService.getInstance().getResponseListener(TransferChat.class, responseListener, errorListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
-         );
+        client.getRequest(
+                "chats/" + username,
+                null,
+                SerializationService.getInstance().getResponseListener(TransferChat.class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
+        );
     }
 
     public void getChatPreviews(ResponseListener<TransferMessagePreview[]> responseListener, ErrorListener errorListener) {
-         client.getRequest(
-                 "chats/interactions",
-                 null,
-                 SerializationService.getInstance().getResponseListener(TransferMessagePreview[].class, responseListener, errorListener),
-                 AuthenticationService.getInstance().getAuthToken(),
-                 errorListener
-         );
+        client.getRequest(
+                "chats/interactions",
+                null,
+                SerializationService.getInstance().getResponseListener(TransferMessagePreview[].class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
+        );
     }
 
     public void sendMessage(TransferMessage transferMessage, SuccessListener successListener, ErrorListener errorListener) {

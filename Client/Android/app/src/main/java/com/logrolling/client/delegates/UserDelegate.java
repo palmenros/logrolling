@@ -23,7 +23,7 @@ public class UserDelegate {
                 SerializationService.getInstance().getResponseListener(TransferUser.class, responseListener, errorListener),
                 null,
                 errorListener
-                );
+        );
     }
 
     public void registerUser(TransferCredentials transferCredentials, SuccessListener successListener, ErrorListener errorListener) {
@@ -32,7 +32,7 @@ public class UserDelegate {
                 WebServiceClient.getSuccessResponseListener(successListener),
                 null,
                 errorListener
-                );
+        );
     }
 
     public void updateUser(TransferCredentials transferCredentials, SuccessListener successListener, ErrorListener errorListener) {
@@ -41,13 +41,13 @@ public class UserDelegate {
                 WebServiceClient.getSuccessResponseListener(successListener),
                 AuthenticationService.getInstance().getAuthToken(),
                 errorListener
-                );
+        );
     }
 
     public void deleteUser(SuccessListener successListener, ErrorListener errorListener) {
         client.deleteRequest("users/", null,
                 WebServiceClient.getSuccessResponseListener(successListener),
                 AuthenticationService.getInstance().getAuthToken(),
-                errorListener );
+                errorListener);
     }
 }

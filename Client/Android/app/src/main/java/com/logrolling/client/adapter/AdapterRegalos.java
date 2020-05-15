@@ -27,7 +27,7 @@ public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHold
     @NonNull
     @Override
     public AdapterRegalos.ViewHolderRegalos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_regalos,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_regalos, parent, false);
         return new AdapterRegalos.ViewHolderRegalos(view);
     }
 
@@ -44,14 +44,14 @@ public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHold
     }
 
     public class ViewHolderRegalos extends RecyclerView.ViewHolder {
-        public TextView name,price;
+        public TextView name, price;
         public ImageView photo;
 
         public ViewHolderRegalos(@NonNull View itemView) {
             super(itemView);
-            name=(TextView)itemView.findViewById(R.id.Name);
-            price=(TextView)itemView.findViewById(R.id.price);
-            photo=(ImageView)itemView.findViewById(R.id.Photo);
+            name = (TextView) itemView.findViewById(R.id.Name);
+            price = (TextView) itemView.findViewById(R.id.price);
+            photo = (ImageView) itemView.findViewById(R.id.Photo);
 
             photo.setClipToOutline(true);
         }

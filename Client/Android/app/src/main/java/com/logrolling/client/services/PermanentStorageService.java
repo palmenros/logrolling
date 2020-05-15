@@ -17,7 +17,7 @@ public class PermanentStorageService {
     }
 
     public static PermanentStorageService getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             throw new IllegalStateException("Permanent Storage Service not initialized yet");
         }
         return instance;

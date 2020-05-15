@@ -10,12 +10,11 @@ public class SerializationService {
 
     private static SerializationService instance;
 
-    private SerializationService()
-    {
+    private SerializationService() {
     }
 
     public static SerializationService getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new SerializationService();
         }
         return instance;
@@ -28,13 +27,13 @@ public class SerializationService {
     }
 
     public <Data> Data deserializeData(String json, Class<Data> cls, ErrorListener errorListener) {
-         Gson gson = getGson();
-         try {
+        Gson gson = getGson();
+        try {
             return gson.fromJson(json, cls);
-         } catch(Exception e) {
+        } catch (Exception e) {
             errorListener.onError(new RequestException(e));
             return null;
-         }
+        }
     }
 
     public <T> ResponseListener<String> getResponseListener(Class<T> cls, ResponseListener<T> responseListener, ErrorListener errorListener) {
@@ -42,7 +41,7 @@ public class SerializationService {
             @Override
             public void onResponse(String str) {
                 T data = SerializationService.getInstance().deserializeData(str, cls, errorListener);
-                if(data != null) {
+                if (data != null) {
                     responseListener.onResponse(data);
                 }
             }
