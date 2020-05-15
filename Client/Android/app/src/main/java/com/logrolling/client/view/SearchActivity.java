@@ -15,7 +15,7 @@ import com.logrolling.client.R;
 
 import java.util.ArrayList;
 
-import com.logrolling.client.adapter.AdapterFavores;
+import com.logrolling.client.adapter.FavorAdapter;
 import com.logrolling.client.transfer.Coordinates;
 import com.logrolling.client.transfer.TransferFavor;
 
@@ -52,7 +52,7 @@ public class SearchActivity extends AppCompatActivity {
         listFavors = (RecyclerView) findViewById(R.id.ListFavors);
         listFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        AdapterFavores adapterLista = new AdapterFavores(favorsArray);
+        FavorAdapter adapterLista = new FavorAdapter(favorsArray);
         listFavors.setAdapter(adapterLista);
 
        /* listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {

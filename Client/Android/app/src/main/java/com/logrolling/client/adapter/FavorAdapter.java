@@ -16,41 +16,41 @@ import com.logrolling.client.transfer.TransferFavor;
 
 import java.util.ArrayList;
 
-public class AdapterFavores extends RecyclerView.Adapter<AdapterFavores.ViewHolderFavor> {
-    ArrayList<TransferFavor> listaFavores;
+public class FavorAdapter extends RecyclerView.Adapter<FavorAdapter.FavorViewHolder> {
+    ArrayList<TransferFavor> favorList;
 
-    public AdapterFavores(ArrayList<TransferFavor> listaFavores) {
-        this.listaFavores = listaFavores;
+    public FavorAdapter(ArrayList<TransferFavor> favorList) {
+        this.favorList = favorList;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public ViewHolderFavor onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_favores, parent, false);
-        return new AdapterFavores.ViewHolderFavor(view);
+        return new FavorViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderFavor holder, int position) {
-        holder.name.setText("Por: " + listaFavores.get(position).getCreator());
-        holder.distance.setText(listaFavores.get(position).getDistance());
-        holder.maxTime.setText(listaFavores.get(position).getFormattedDueTime());
+    public void onBindViewHolder(@NonNull FavorViewHolder holder, int position) {
+        holder.name.setText("Por: " + favorList.get(position).getCreator());
+        holder.distance.setText(favorList.get(position).getDistance());
+        holder.maxTime.setText(favorList.get(position).getFormattedDueTime());
         //holder.photo.setImageResource(listaFavores.get(position).getPhoto());
-        holder.adress.setText(listaFavores.get(position).getAddress());
-        holder.favor.setText(listaFavores.get(position).getTitle());
-        holder.price.setText(Integer.toString(listaFavores.get(position).getReward()));
+        holder.adress.setText(favorList.get(position).getAddress());
+        holder.favor.setText(favorList.get(position).getTitle());
+        holder.price.setText(Integer.toString(favorList.get(position).getReward()));
     }
 
     @Override
     public int getItemCount() {
-        return listaFavores.size();
+        return favorList.size();
     }
 
-    public class ViewHolderFavor extends RecyclerView.ViewHolder {
+    public class FavorViewHolder extends RecyclerView.ViewHolder {
         TextView name, maxTime, distance, adress, favor, price;
         ImageView photo;
 
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-        public ViewHolderFavor(@NonNull View itemView) {
+        public FavorViewHolder(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.Name);
             maxTime = (TextView) itemView.findViewById(R.id.Tiempo);

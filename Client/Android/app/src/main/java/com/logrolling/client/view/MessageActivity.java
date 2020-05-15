@@ -16,14 +16,14 @@ import com.logrolling.client.R;
 
 import java.util.ArrayList;
 
-import com.logrolling.client.adapter.AdapterPersonas;
+import com.logrolling.client.adapter.MessagePreviewAdapter;
 import com.logrolling.client.transfer.TransferMessagePreview;
 
 public class MessageActivity extends AppCompatActivity {
     private RecyclerView listChat;
     private ArrayList<TransferMessagePreview> chats = new ArrayList<TransferMessagePreview>();
     private TextView numGrollies;
-    private AdapterPersonas adapter;
+    private MessagePreviewAdapter adapter;
     private TextView popUpMessage;
     private ConstraintLayout popUpError;
 
@@ -72,7 +72,7 @@ public class MessageActivity extends AppCompatActivity {
 
         llenarLista();
 
-        adapter = new AdapterPersonas(chats);
+        adapter = new MessagePreviewAdapter(chats);
         listChat.setAdapter(adapter);
 
         /*listChat.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -17,14 +17,14 @@ import com.logrolling.client.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.logrolling.client.adapter.DataAdapter;
+import com.logrolling.client.adapter.ChatMessageAdapter;
 
 public class ChatPersonActivity extends AppCompatActivity {
     private EditText writeMessage;
     private RecyclerView recycler;
     private TextView name;
     private List<Pair> dataList;
-    private DataAdapter adapter;
+    private ChatMessageAdapter adapter;
 
     private ConstraintLayout popUpError;
     private TextView popUpMessage;
@@ -40,7 +40,7 @@ public class ChatPersonActivity extends AppCompatActivity {
         for (int i = 0; i < 2; i++) {
             dataList.add(i, Pair.create("Mensaje " + i, i % 2 == 0 ? true : false));
         }
-        adapter = new DataAdapter((ArrayList<Pair>) dataList);
+        adapter = new ChatMessageAdapter((ArrayList<Pair>) dataList);
         recycler.setAdapter(adapter);
 
         name = (TextView) findViewById(R.id.NombreChatTitulo);

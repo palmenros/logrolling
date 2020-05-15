@@ -16,27 +16,27 @@ import com.logrolling.client.R;
 
 import java.util.ArrayList;
 
-public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolderDatos> {
+public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.ChatMessageViewHolder> {
 
     ArrayList<Pair> dataList;
 
-    public DataAdapter(ArrayList<Pair> listaDatos) {
+    public ChatMessageAdapter(ArrayList<Pair> listaDatos) {
         this.dataList = listaDatos;
     }
 
-    public class ViewHolderDatos extends RecyclerView.ViewHolder {
-        TextView dato;
+    public class ChatMessageViewHolder extends RecyclerView.ViewHolder {
+        TextView view;
 
-        public ViewHolderDatos(@NonNull View itemView) {
+        public ChatMessageViewHolder(@NonNull View itemView) {
             super(itemView);
-            dato = (TextView) itemView.findViewById(R.id.IdDato);
+            view = (TextView) itemView.findViewById(R.id.IdDato);
         }
 
         public void dataAssignment(Pair pair) {
-            dato.setText((CharSequence) pair.first);
+            view.setText((CharSequence) pair.first);
 
-            int negro = Color.parseColor("#222222");
-            int blanco = Color.parseColor("#FFFFFF");
+            int black = Color.parseColor("#222222");
+            int white = Color.parseColor("#FFFFFF");
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
             params.weight = 1.0f;
@@ -44,27 +44,27 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolderDato
 
 
             if ((Boolean) pair.second) {
-                dato.setBackgroundResource(R.drawable.this_user_message);
-                dato.setTextColor(blanco);
+                view.setBackgroundResource(R.drawable.this_user_message);
+                view.setTextColor(white);
 
                 params.gravity = Gravity.RIGHT;
             } else {
-                dato.setBackgroundResource(R.drawable.other_user_message);
-                dato.setTextColor(negro);
+                view.setBackgroundResource(R.drawable.other_user_message);
+                view.setTextColor(black);
                 params.gravity = Gravity.LEFT;
             }
 
-            dato.setLayoutParams(params);
+            view.setLayoutParams(params);
         }
     }
 
-    public DataAdapter.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ChatMessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, null, false);
-        return new ViewHolderDatos(view);
+        return new ChatMessageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DataAdapter.ViewHolderDatos holder, int i) {
+    public void onBindViewHolder(@NonNull ChatMessageViewHolder holder, int i) {
         holder.dataAssignment(dataList.get(i));
     }
 

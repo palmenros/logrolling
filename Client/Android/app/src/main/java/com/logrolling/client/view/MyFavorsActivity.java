@@ -16,7 +16,7 @@ import com.logrolling.client.R;
 
 import java.util.ArrayList;
 
-import com.logrolling.client.adapter.AdapterFavores;
+import com.logrolling.client.adapter.FavorAdapter;
 import com.logrolling.client.transfer.Coordinates;
 import com.logrolling.client.transfer.TransferFavor;
 
@@ -51,7 +51,7 @@ public class MyFavorsActivity extends AppCompatActivity {
 
         llenarLista();
 
-        AdapterFavores adapterPedidos = new AdapterFavores(favorsAskedArray);
+        FavorAdapter adapterPedidos = new FavorAdapter(favorsAskedArray);
         listDoneFavors.setAdapter(adapterPedidos);
        /* listDoneFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -66,7 +66,7 @@ public class MyFavorsActivity extends AppCompatActivity {
         listFavorsToBeDone = (RecyclerView) findViewById(R.id.ListaFavoresARealizar);
         listFavorsToBeDone.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        AdapterFavores adapterARealizar = new AdapterFavores(favorsDoneArray);
+        FavorAdapter adapterARealizar = new FavorAdapter(favorsDoneArray);
         listFavorsToBeDone.setAdapter(adapterARealizar);
         /*listFavorsToBeDone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

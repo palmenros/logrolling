@@ -16,38 +16,38 @@ import com.logrolling.client.transfer.TransferMessagePreview;
 
 import java.util.ArrayList;
 
-public class AdapterPersonas extends RecyclerView.Adapter<AdapterPersonas.ViewHolderPersonas> {
+public class MessagePreviewAdapter extends RecyclerView.Adapter<MessagePreviewAdapter.MessagePreviewViewHolder> {
 
-    ArrayList<TransferMessagePreview> listaTransferMessagePreviews;
+    ArrayList<TransferMessagePreview> transferMessagePreviewsList;
 
-    public AdapterPersonas(ArrayList<TransferMessagePreview> listaTransferMessagePreviews) {
-        this.listaTransferMessagePreviews = listaTransferMessagePreviews;
+    public MessagePreviewAdapter(ArrayList<TransferMessagePreview> transferMessagePreviewsList) {
+        this.transferMessagePreviewsList = transferMessagePreviewsList;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public ViewHolderPersonas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MessagePreviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_personas, parent, false);
-        return new AdapterPersonas.ViewHolderPersonas(view);
+        return new MessagePreviewViewHolder(view);
     }
 
     @Override
     public int getItemCount() {
-        return listaTransferMessagePreviews.size();
+        return transferMessagePreviewsList.size();
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderPersonas holder, int position) {
-        holder.name.setText(listaTransferMessagePreviews.get(position).getUser());
-        holder.last_message.setText(listaTransferMessagePreviews.get(position).getMessage());
+    public void onBindViewHolder(@NonNull MessagePreviewViewHolder holder, int position) {
+        holder.name.setText(transferMessagePreviewsList.get(position).getUser());
+        holder.last_message.setText(transferMessagePreviewsList.get(position).getMessage());
         // holder.photo.setImageResource(listaPersonas.get(position).getPhoto());
     }
 
-    public class ViewHolderPersonas extends RecyclerView.ViewHolder {
+    public class MessagePreviewViewHolder extends RecyclerView.ViewHolder {
         TextView name, last_message;
         ImageView photo;
 
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-        public ViewHolderPersonas(View itemView) {
+        public MessagePreviewViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.Name);
             last_message = (TextView) itemView.findViewById(R.id.last_message);

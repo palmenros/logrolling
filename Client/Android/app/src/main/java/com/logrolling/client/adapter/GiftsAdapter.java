@@ -15,39 +15,39 @@ import com.logrolling.client.transfer.TransferGift;
 import java.util.ArrayList;
 
 
-public class AdapterRegalos extends RecyclerView.Adapter<AdapterRegalos.ViewHolderRegalos> {
+public class GiftsAdapter extends RecyclerView.Adapter<GiftsAdapter.GiftViewHolder> {
 
-    ArrayList<TransferGift> listaRegalos;
+    ArrayList<TransferGift> giftList;
 
-    public AdapterRegalos(ArrayList<TransferGift> listaRegalos) {
-        this.listaRegalos = listaRegalos;
+    public GiftsAdapter(ArrayList<TransferGift> giftList) {
+        this.giftList = giftList;
     }
 
 
     @NonNull
     @Override
-    public AdapterRegalos.ViewHolderRegalos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GiftViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_regalos, parent, false);
-        return new AdapterRegalos.ViewHolderRegalos(view);
+        return new GiftViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterRegalos.ViewHolderRegalos holder, int position) {
-        holder.name.setText(listaRegalos.get(position).getTitle());
-        holder.price.setText(Integer.toString(listaRegalos.get(position).getPrice()));
+    public void onBindViewHolder(@NonNull GiftViewHolder holder, int position) {
+        holder.name.setText(giftList.get(position).getTitle());
+        holder.price.setText(Integer.toString(giftList.get(position).getPrice()));
         //holder.photo.setImageResource(listaRegalos.get(position).getPhoto());
     }
 
     @Override
     public int getItemCount() {
-        return listaRegalos.size();
+        return giftList.size();
     }
 
-    public class ViewHolderRegalos extends RecyclerView.ViewHolder {
+    public class GiftViewHolder extends RecyclerView.ViewHolder {
         public TextView name, price;
         public ImageView photo;
 
-        public ViewHolderRegalos(@NonNull View itemView) {
+        public GiftViewHolder(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.Name);
             price = (TextView) itemView.findViewById(R.id.price);

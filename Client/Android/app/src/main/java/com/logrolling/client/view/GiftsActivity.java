@@ -14,7 +14,7 @@ import com.logrolling.client.R;
 
 import java.util.ArrayList;
 
-import com.logrolling.client.adapter.AdapterRegalos;
+import com.logrolling.client.adapter.GiftsAdapter;
 import com.logrolling.client.transfer.TransferGift;
 
 public class GiftsActivity extends AppCompatActivity {
@@ -42,7 +42,7 @@ public class GiftsActivity extends AppCompatActivity {
 
         llenarLista();
 
-        AdapterRegalos adapter = new AdapterRegalos(transferGifts);
+        GiftsAdapter adapter = new GiftsAdapter(transferGifts);
         listFavors.setAdapter(adapter);
         /*listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
