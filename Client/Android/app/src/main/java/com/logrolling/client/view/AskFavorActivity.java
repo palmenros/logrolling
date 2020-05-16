@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,13 +27,9 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.logrolling.client.R;
 import com.logrolling.client.services.LocationService;
 import com.logrolling.client.transfer.Coordinates;
-
-import org.ocpsoft.prettytime.PrettyTime;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -56,7 +51,7 @@ public class AskFavorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedir_favor);
+        setContentView(R.layout.activity_ask_favor);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea

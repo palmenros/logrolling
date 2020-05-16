@@ -34,7 +34,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_explorar);
+        setContentView(R.layout.activity_search);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//Pedir el número de grollies a quien sea

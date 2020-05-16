@@ -23,7 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_registration);
 
         userEditText = (EditText) findViewById(R.id.NombreUsuario);
         passwordEditText = (EditText) findViewById(R.id.Contrasenna);
@@ -38,6 +38,11 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
+
+        if(registering) {
+            return;
+        }
+
         //Registro
         String username = userEditText.getText().toString();
         String password = passwordEditText.getText().toString();

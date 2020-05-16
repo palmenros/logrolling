@@ -1,7 +1,7 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,31 +10,38 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.logrolling.client.R;
+import com.logrolling.client.controllers.Controller;
 
 public class MyProfileActivity extends AppCompatActivity {
-    private EditText user, password, repPassword;
+    private EditText userEditText, passwordEditText, repPasswordEditText;
     private TextView numGrollies;
-    private TextView popUpMessage;
-    private ConstraintLayout popUpConfirmation, popUpError;
+
+    private boolean updating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
-        user = (EditText) findViewById(R.id.NombreUsuario);
-        password = (EditText) findViewById(R.id.Contrasenna);
-        repPassword = (EditText) findViewById(R.id.RepContrasenna);
-
+        userEditText = (EditText) findViewById(R.id.nombreUsuario);
+        passwordEditText = (EditText) findViewById(R.id.contrasenna);
+        repPasswordEditText = (EditText) findViewById(R.id.repContrasenna);
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
 
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError7);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
-        popUpConfirmation = (ConstraintLayout) findViewById(R.id.PopUpConfirm1);
-        popUpConfirmation.setVisibility(View.INVISIBLE);
+        Controller.getInstance().getCurrentUser((user) -> {
+            numGrollies.setText( Integer.valueOf(user.getGrollies()).toString() );
+            userEditText.setText(user.getUsername());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                           .setTitle("Error de red")
+                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                           .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                               android.os.Process.killProcess(android.os.Process.myPid());
+                               System.exit(1);
+                           }).show();
+        });
+
     }
-
 
     //Panel Inferior
     public void search(View view) {
@@ -72,32 +79,55 @@ public class MyProfileActivity extends AppCompatActivity {
 
 
     public void guardarCambios(View view) {
-       /* if(password.getText().toString().equals(repPassword.getText().toString())){//Condiciones en las que modificas el perfil
-            //Enviar datos o lo que sea
-        }*/
-        Intent i = new Intent(this, ConfigurationActivity.class);
-        startActivity(i);
+
+        String password = passwordEditText.getText().toString();
+        String confirmation = repPasswordEditText.getText().toString();
+
+        if(updating) {
+            return;
+        }
+
+        if(password.isEmpty() || confirmation.isEmpty()) {
+            new AlertDialog.Builder(this)
+                           .setTitle("Error")
+                           .setMessage("Debes rellenar todos los campos.")
+                           .setNeutralButton("Ok", (dialog, which) -> {}).show();
+            return;
+        }
+
+        if(!password.equals(confirmation)) {
+            new AlertDialog.Builder(this)
+                           .setTitle("Error")
+                           .setMessage("Las contraseñas no coinciden.")
+                           .setNeutralButton("Ok", (dialog, which) -> {}).show();
+            return;
+        }
+
+        updating = true;
+
+        Controller.getInstance().updatePassword(password, () -> {
+            updating = false;
+            new AlertDialog.Builder(this)
+                    .setTitle("Éxito")
+                    .setMessage("Tu perfil ha sido actualizado")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        Intent i = new Intent(this, ConfigurationActivity.class);
+                        startActivity(i);
+                    }).show();
+
+        }, (error) -> {
+            updating = false;
+            new AlertDialog.Builder(this)
+                           .setTitle("Error")
+                           .setMessage("Error al actualizar la contraseña")
+                           .setNeutralButton("Ok", (dialog, which) -> {
+                           }).show();
+        });
+
     }
 
     public void cambiarFoto(View view) {
 
     }
 
-    //popUpError
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
-    }
-
-    public void showConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.VISIBLE);
-    }
-
-    public void closeConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.INVISIBLE);
-    }
 }

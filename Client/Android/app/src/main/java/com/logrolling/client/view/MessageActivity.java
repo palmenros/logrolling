@@ -30,7 +30,7 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mensajes);
+        setContentView(R.layout.activity_messages);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
         numGrollies.setText("");//TODO: Pedir el número de grollies a quien sea

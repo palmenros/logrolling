@@ -1,7 +1,7 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.logrolling.client.R;
+import com.logrolling.client.controllers.Controller;
 
 public class ShopActivity extends AppCompatActivity {
     private TextView numGrollies;
     public TextView remaining;
     public double selectedPrice;
-    private ConstraintLayout popUpConfirmation, popUpError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +24,22 @@ public class ShopActivity extends AppCompatActivity {
 
 
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
+
+        Controller.getInstance().getCurrentUserGrollies((grollies) -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                           .setTitle("Error de red")
+                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                           .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                               android.os.Process.killProcess(android.os.Process.myPid());
+                               System.exit(1);
+                           }).show();
+        });
+
+
         selectedPrice = 0;
-        popUpConfirmation = (ConstraintLayout) findViewById(R.id.PopUpConfirm3);
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError1);
-        popUpConfirmation.setVisibility(View.INVISIBLE);
-        popUpError.setVisibility(View.INVISIBLE);
     }
 
 
@@ -78,50 +88,43 @@ public class ShopActivity extends AppCompatActivity {
     public void TwoThousandGrollies(View view) {
         //Pagos por 0.99
         selectedPrice = 0.99;
-        showConfirmationPopUp(view);
+        buyGrolliesForSelectedPrice(view);
     }
 
     public void TwelveThousandGrollies(View view) {
         //Pagos por 4.99
         selectedPrice = 4.99;
-        showConfirmationPopUp(view);
+        buyGrolliesForSelectedPrice(view);
     }
 
     public void FortyThousandGrollies(View view) {
         //Pagos por 14.99
         selectedPrice = 14.99;
-        showConfirmationPopUp(view);
+        buyGrolliesForSelectedPrice(view);
     }
 
     public void NinetyThousandGrollies(View view) {
         //Pagos por 29.99
         selectedPrice = 29.99;
-        showConfirmationPopUp(view);
+        buyGrolliesForSelectedPrice(view);
     }
 
     public void TwoHundredThousandGrollies(View view) {
         //Pagos por 59.99
         selectedPrice = 59.99;
-        showConfirmationPopUp(view);
+        buyGrolliesForSelectedPrice(view);
     }
 
-    public void showConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.VISIBLE);
+    public void buyGrolliesForSelectedPrice(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmación")
+                .setMessage("¿Seguro que quieres comprar " + Double.valueOf(selectedPrice).toString() + " grollies?")
+                .setNegativeButton("No", (dialog, which)-> {
+                    //No hacer nada
+                })
+                .setPositiveButton("Sí", (dialog, which) -> {
+                    //TODO: Implementar compras
+                }).show();
     }
 
-    public void closeConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.INVISIBLE);
-    }
-
-    public void showErrorPopUp(View view) {
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
-    }
-
-    public void confirmedShop(View view) {
-        closeConfirmationPopUp(view);
-    }
 }

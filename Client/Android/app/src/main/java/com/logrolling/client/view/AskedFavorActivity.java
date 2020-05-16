@@ -24,7 +24,7 @@ public class AskedFavorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favor_pedido);
+        setContentView(R.layout.activity_asked_favor);
 
         edit = (Button) findViewById(R.id.editar);
         delete = (Button) findViewById(R.id.borrar);

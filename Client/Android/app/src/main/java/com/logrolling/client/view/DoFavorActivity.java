@@ -21,7 +21,7 @@ public class DoFavorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_realizar_favor);
+        setContentView(R.layout.activity_do_favor);
         name = (TextView) findViewById(R.id.nombre);
         description = (TextView) findViewById(R.id.descripcionFavor);
         deliveryLocation = (TextView) findViewById(R.id.lugarEntrega);

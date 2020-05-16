@@ -32,7 +32,7 @@ public class ChatPersonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_persona);
+        setContentView(R.layout.activity_user_chat);
 
         recycler = (RecyclerView) findViewById(R.id.ListaMensajes);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

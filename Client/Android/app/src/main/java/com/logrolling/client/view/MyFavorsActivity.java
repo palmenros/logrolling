@@ -38,7 +38,7 @@ public class MyFavorsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favores);
+        setContentView(R.layout.activity_favors);
 
         favorsDo = (Button) findViewById(R.id.favoresARealizar2);
         favorsAsked = (Button) findViewById(R.id.favoresPedidos);

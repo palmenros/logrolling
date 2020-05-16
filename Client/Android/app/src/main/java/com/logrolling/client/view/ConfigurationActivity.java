@@ -20,9 +20,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuracion);
-        popUpSignOut = (ConstraintLayout) findViewById(R.id.PopUpSignOut);
-        popUpSignOut.setVisibility(View.INVISIBLE);
+        setContentView(R.layout.activity_configuration);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
 
@@ -76,21 +74,17 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     //SignOut
     public void signOut(View view) {
-        showSignOutConfirm(view);
+         new AlertDialog.Builder(this)
+                           .setTitle("Confirmación")
+                           .setMessage("¿Seguro que quieres cerrar sesión?")
+                           .setNegativeButton("No", (dialog, which) -> {})
+                            .setPositiveButton("Si", (dialog, which) -> {
+                                AuthenticationService.getInstance().signOut();
+                                Intent i = new Intent(this, MainActivity.class);
+                                startActivity(i);
+                           }).show();
+
     }
 
-    public void showSignOutConfirm(View view) {
-        popUpSignOut.setVisibility(View.VISIBLE);
-    }
 
-    public void closeSignOutConfirm(View view) {
-        popUpSignOut.setVisibility(View.INVISIBLE);
-    }
-
-    public void signOutConfirmed(View view) {
-        closeSignOutConfirm(view);
-        AuthenticationService.getInstance().signOut();
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
 }
