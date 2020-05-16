@@ -7,6 +7,111 @@
     tools:context=".view.SearchActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopUpError4"
+        android:layout_width="0dp"
+        android:layout_height="411dp"
+        android:background="#00C5BFBF"
+        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="368dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/closeButtonRed"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/rojo"
+                android:fadingEdge="horizontal|vertical"
+                android:fontFamily="@font/rubik"
+                android:onClick="closeErrorPopUp"
+                android:text="@string/Cerrar"
+                android:textColor="@color/blanco"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/red"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@color/rojo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/stop"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/red"
+                app:layout_constraintEnd_toEndOf="@+id/red"
+                app:layout_constraintStart_toStartOf="@+id/red"
+                app:layout_constraintTop_toTopOf="@+id/red"
+                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
+
+            <TextView
+                android:id="@+id/messageError"
+                android:layout_width="0dp"
+                android:layout_height="89dp"
+                android:gravity="center"
+                android:text="Texto error"
+                android:textColor="@color/negro"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/red" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/closeCross"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"
+            android:onClick="closeErrorPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        <ImageView
+            android:id="@+id/closeCircle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:onClick="closeErrorPopUp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Header"
         android:layout_width="0dp"
         android:layout_height="71dp"
@@ -105,7 +210,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Filtros"
         android:layout_width="0dp"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:background="#F0F8FD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,27 +218,40 @@
 
         <TextView
             android:id="@+id/MinGrollies"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:textColor="@color/azul"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/RecompensaTxt"
-            app:layout_constraintTop_toBottomOf="@+id/buscarFavor" />
-
-        <TextView
-            android:id="@+id/MaxDistancia"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:textColor="@color/azul"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/RecompensaTxt"
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
+
+        <TextView
+            android:id="@+id/MinTiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/TiempoTxt"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/MaxDistancia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/DistanciaTxt"
             app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
 
@@ -183,41 +301,33 @@
             app:layout_constraintStart_toStartOf="@+id/maxDistanciaBar"
             app:layout_constraintTop_toBottomOf="@+id/maxDistanciaBar" />
 
-        <EditText
-            android:id="@+id/buscarFavor"
-            android:layout_width="0dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@color/blancoSucio"
-            android:drawableEnd="@drawable/ic_search_negro_24dp"
-            android:ems="10"
-            android:hint="@string/BuscarF"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColor="@color/azul"
-            android:textColorHint="#79BFF8"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/RecompensaTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:text="@string/RecompensaG"
             android:textColor="@color/azul"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buscarFavor" />
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
+
+        <TextView
+            android:id="@+id/TiempoTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/TiempoRealizacion"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/BuscarBoton"
@@ -255,6 +365,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/RecompensaTxt" />
 
+        <SeekBar
+            android:id="@+id/minTiempoBar"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:background="#FFFFFF"
+            android:progressDrawable="@drawable/barra"
+            android:thumb="@drawable/grollies_mini2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TiempoTxt" />
+
         <TextView
             android:id="@+id/Diez"
             android:layout_width="wrap_content"
@@ -266,6 +392,26 @@
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/minGrolliesBar"
             app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
+
+        <TextView
+            android:id="@+id/UnaHora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/UnaHora"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/minTiempoBar"
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
+
+        <TextView
+            android:id="@+id/DiezDias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DiezDias"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/minTiempoBar"
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
 
         <TextView
             android:id="@+id/G1"
@@ -491,110 +637,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/PopUpError4"
-        android:layout_width="0dp"
-        android:layout_height="411dp"
-        android:background="#00C5BFBF"
-        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="368dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/closeButtonRed"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/rojo"
-                android:fadingEdge="horizontal|vertical"
-                android:fontFamily="@font/rubik"
-                android:onClick="closeErrorPopUp"
-                android:text="@string/Cerrar"
-                android:textColor="@color/blanco"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/red"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:background="@color/rojo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/stop"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="@+id/red"
-                app:layout_constraintEnd_toEndOf="@+id/red"
-                app:layout_constraintStart_toStartOf="@+id/red"
-                app:layout_constraintTop_toTopOf="@+id/red"
-                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
-
-            <TextView
-                android:id="@+id/messageError"
-                android:layout_width="0dp"
-                android:layout_height="89dp"
-                android:gravity="center"
-                android:text="Texto error"
-                android:textColor="@color/negro"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/red" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/closeCross"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
-            android:onClick="closeErrorPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
-
-        <ImageView
-            android:id="@+id/closeCircle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:onClick="closeErrorPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_clear_black_24dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

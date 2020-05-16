@@ -24,9 +24,9 @@ public class SearchActivity extends AppCompatActivity {
     private ArrayList<TransferFavor> favorsArray = new ArrayList<TransferFavor>(); // ={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
     private boolean filters;
     private ConstraintLayout constrainFilters;
-    private TextView minGrolliesText, maxDistanceText, popUpMessage;
-    private SeekBar minGrolliesBar, maxDistanceBar;
-    public int minGrollies = 10;
+    private TextView minGrolliesText, maxDistanceText, minTimeText, popUpMessage;
+    private SeekBar minGrolliesBar, maxDistanceBar,minTimeBar;
+    public int minGrollies = 10, minTime=1;
     public double distance = 0.5;
     private ConstraintLayout popUpError;
     private TextView numGrollies;
@@ -67,10 +67,12 @@ public class SearchActivity extends AppCompatActivity {
 
         minGrolliesBar = (SeekBar) findViewById(R.id.minGrolliesBar);
         maxDistanceBar = (SeekBar) findViewById(R.id.maxDistanciaBar);
+        minTimeBar = (SeekBar) findViewById(R.id.minTiempoBar);
 
         listeners_bars();
         minGrolliesText = (TextView) findViewById(R.id.MinGrollies);
         maxDistanceText = (TextView) findViewById(R.id.MaxDistancia);
+        minTimeText = (TextView) findViewById(R.id.MinTiempo);
     }
 
     private void llenarLista() {
@@ -209,6 +211,29 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
+
+        minTimeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                minTime = (int) (1+2.39*progress);
+                if(progress==100)
+                    minTime=240;
+                minTimeText.setText("Dentro de "+toHours(minTime));
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
     }
 
     //popUpError
