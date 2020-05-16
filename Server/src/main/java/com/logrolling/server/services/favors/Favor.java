@@ -3,6 +3,8 @@ package com.logrolling.server.services.favors;
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.exceptions.UnauthorizedException;
 import com.logrolling.server.services.authentication.AuthenticationService;
+import com.logrolling.server.services.users.User;
+import com.logrolling.server.services.users.UserManager;
 
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
@@ -183,6 +185,12 @@ public class Favor {
         if(favor.getCreator().equals(username)) {
             //Favor was created by current user
             favor.setCompleted(true);
+
+            //Give grollies to worker
+            User worker = UserManager.getUserByName(favor.getWorker());
+            worker.setGrollies(worker.getGrollies() + favor.getReward());
+            UserManager.updateUserGrollies(favor.getWorker(), worker);
+
             FavorManager.updateFavor(id,favor);
         } else {
             throw new UnauthorizedException();
