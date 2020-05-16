@@ -90,4 +90,12 @@ public class FavorDelegate {
                 AuthenticationService.getInstance().getAuthToken(),
                 errorListener);
     }
+
+    public void getFavorById(int favorId, ResponseListener<TransferFavor> responseListener, ErrorListener errorListener) {
+        client.getRequest("favors/" + favorId,
+                null,
+                SerializationService.getInstance().getResponseListener(TransferFavor.class, responseListener, errorListener),
+                null,
+                errorListener);
+    }
 }

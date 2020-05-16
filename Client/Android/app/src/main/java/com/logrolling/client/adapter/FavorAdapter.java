@@ -13,19 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.logrolling.client.R;
 import com.logrolling.client.transfer.TransferFavor;
+import com.logrolling.client.view.ClickListener;
 
 import java.util.ArrayList;
 
 public class FavorAdapter extends RecyclerView.Adapter<FavorAdapter.FavorViewHolder> {
     ArrayList<TransferFavor> favorList;
+    private ClickListener clickListener;
 
-    public FavorAdapter(ArrayList<TransferFavor> favorList) {
+    public FavorAdapter(ArrayList<TransferFavor> favorList, ClickListener clickListener) {
         this.favorList = favorList;
+        this.clickListener = clickListener;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public FavorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_favores, parent, false);
+        view.setOnClickListener((clickView) -> {
+            clickListener.onClick(clickView);
+        });
         return new FavorViewHolder(view);
     }
 

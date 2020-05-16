@@ -1,5 +1,6 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,22 +15,28 @@ import android.widget.TextView;
 import com.logrolling.client.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 import com.logrolling.client.adapter.FavorAdapter;
-import com.logrolling.client.transfer.Coordinates;
+import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.transfer.TransferFavor;
 
 public class SearchActivity extends AppCompatActivity {
-    private RecyclerView listFavors;
-    private ArrayList<TransferFavor> favorsArray = new ArrayList<TransferFavor>(); // ={"Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra","Apuntes","Perro","Compra"};
+    private RecyclerView recyclerViewFavors;
+    private ArrayList<TransferFavor> favorsArray = new ArrayList<TransferFavor>();
     private boolean filters;
     private ConstraintLayout constrainFilters;
-    private TextView minGrolliesText, maxDistanceText, minTimeText, popUpMessage;
+    private TextView minGrolliesText, maxDistanceText, minTimeText, noResults;
     private SeekBar minGrolliesBar, maxDistanceBar,minTimeBar;
-    public int minGrollies = 10, minTime=1;
-    public double distance = 0.5;
-    private ConstraintLayout popUpError;
+
+    //minTime representa numero de horas desde ahora
+    public int minGrollies = 10, minTimeHoursFromNow = 1;
+    public double maxDistance = 20;
     private TextView numGrollies;
+
+    FavorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,33 +44,39 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
+        noResults = (TextView) findViewById(R.id.sinFavores);
+
+        Controller.getInstance().getCurrentUserGrollies(grollies -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, error -> {
+            new AlertDialog.Builder(this)
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (d, w) -> {
+                            //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
+        });
 
         filters = false;
         constrainFilters = (ConstraintLayout) findViewById(R.id.Filtros);
         constrainFilters.setVisibility(View.INVISIBLE);
 
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError4);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
+        recyclerViewFavors = (RecyclerView) findViewById(R.id.ListFavors);
+        recyclerViewFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        llenarLista();
+        adapter = new FavorAdapter(favorsArray, view -> {
+            int position = recyclerViewFavors.getChildLayoutPosition(view);
+            TransferFavor favor = favorsArray.get(position);
 
-        listFavors = (RecyclerView) findViewById(R.id.ListFavors);
-        listFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            Intent i = new Intent(this, DoFavorActivity.class);
+            i.putExtra("favorId",favor.getId());
+            startActivity(i);
+        });
+        recyclerViewFavors.setAdapter(adapter);
 
-        FavorAdapter adapterLista = new FavorAdapter(favorsArray);
-        listFavors.setAdapter(adapterLista);
-
-       /* listFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Lo que sea
-                Intent i = new Intent(FavorsActivity.this, DoFavorActivity.class);
-                startActivity(i);
-            }
-        });*/
+        refreshFavors();
 
         minGrolliesBar = (SeekBar) findViewById(R.id.minGrolliesBar);
         maxDistanceBar = (SeekBar) findViewById(R.id.maxDistanciaBar);
@@ -75,10 +88,34 @@ public class SearchActivity extends AppCompatActivity {
         minTimeText = (TextView) findViewById(R.id.MinTiempo);
     }
 
-    private void llenarLista() {
-        for (int i = 0; i < 10; i++) {
-            favorsArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606, i * 1000, new Coordinates(0, 0), null, false));
-        }
+    void refreshFavors() {
+
+        int minDate = (int)(new Date().getTime() / 1000L) + 3600 * minTimeHoursFromNow;
+
+        Controller.getInstance().getAvailableFavorsFiltered(minGrollies, maxDistance, minDate, favorList -> {
+            favorsArray.clear();
+            Collections.addAll(favorsArray, favorList);
+            adapter.notifyDataSetChanged();
+
+            if(favorList.length == 0) {
+                //Show
+                noResults.setVisibility(View.VISIBLE);
+            } else {
+                //Hide
+                noResults.setVisibility(View.GONE);
+            }
+
+        }, error -> {
+            new AlertDialog.Builder(this)
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (d, w) -> {
+                            //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
+        });
+
     }
 
     //Panel Inferior
@@ -121,7 +158,7 @@ public class SearchActivity extends AppCompatActivity {
 
     public void findFilter(View view) {
         filters(view);
-        //Llamar a base de datos y cambiar el scrollView
+        refreshFavors();
     }
 
     public void listeners_bars() {
@@ -166,35 +203,35 @@ public class SearchActivity extends AppCompatActivity {
                 switch (progress) {
                     case 0:
                         dist = "500 m";
-                        distance = 0.5;
+                        maxDistance = 0.5;
                         break;
                     case 1:
                         dist = "1 km";
-                        distance = 1;
+                        maxDistance = 1;
                         break;
                     case 2:
                         dist = "2 km";
-                        distance = 2;
+                        maxDistance = 2;
                         break;
                     case 3:
                         dist = "3 km";
-                        distance = 3;
+                        maxDistance = 3;
                         break;
                     case 4:
                         dist = "5 km";
-                        distance = 5;
+                        maxDistance = 5;
                         break;
                     case 5:
                         dist = "7 km";
-                        distance = 7;
+                        maxDistance = 7;
                         break;
                     case 6:
                         dist = "10 km";
-                        distance = 10;
+                        maxDistance = 10;
                         break;
                     case 7:
                         dist = "20 km";
-                        distance = 20;
+                        maxDistance = 20;
                         break;
 
                 }
@@ -215,10 +252,10 @@ public class SearchActivity extends AppCompatActivity {
         minTimeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minTime = (int) (1+2.39*progress);
+                minTimeHoursFromNow = (int) (1+2.39*progress);
                 if(progress==100)
-                    minTime=240;
-                minTimeText.setText("Dentro de "+toHours(minTime));
+                    minTimeHoursFromNow =240;
+                minTimeText.setText("Dentro de "+toHours(minTimeHoursFromNow));
 
             }
 
@@ -234,16 +271,6 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-    }
-
-    //popUpError
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
     }
 
     String toHours(double horas) {

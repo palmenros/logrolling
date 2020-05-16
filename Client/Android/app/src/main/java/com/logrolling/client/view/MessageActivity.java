@@ -40,6 +40,8 @@ public class MessageActivity extends AppCompatActivity {
         messagesPreviewRecyclerView = (RecyclerView) findViewById(R.id.ListaMensajes);
         messagesPreviewRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        messagesPreviewRecyclerView.setVisibility(View.VISIBLE);
+
         //Divider between messages
         RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
             private Drawable mDivider = getResources().getDrawable(R.drawable.message_separator_line);
@@ -112,6 +114,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private void showEmptyMessages() {
         emptyMessagesTextView.setVisibility(View.VISIBLE);
+        messagesPreviewRecyclerView.setVisibility(View.GONE);
     }
 
     private void loadGrolliesAmount() {

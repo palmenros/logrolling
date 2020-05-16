@@ -133,6 +133,11 @@ public class Controller {
         favorDelegate.deleteFavor(favorId, successListener, errorListener);
     }
 
+
+    public void getFavorById(int favorId, ResponseListener<TransferFavor> responseListener, ErrorListener errorListener) {
+        favorDelegate.getFavorById(favorId, responseListener, errorListener);
+    }
+
     ///////////////////////////////////////
     //          GIFT DELEGATE            //
     ///////////////////////////////////////

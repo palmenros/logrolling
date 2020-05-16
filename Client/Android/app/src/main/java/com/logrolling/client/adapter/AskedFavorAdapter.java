@@ -37,7 +37,13 @@ public class AskedFavorAdapter extends RecyclerView.Adapter<AskedFavorAdapter.Fa
 
     @Override
     public void onBindViewHolder(@NonNull FavorViewHolder holder, int position) {
-        holder.name.setText("Por: " + favorList.get(position).getCreator());
+        String worker = favorList.get(position).getWorker();
+        if(worker != null) {
+            holder.name.setText("Asignado a: " + worker);
+        } else {
+            holder.name.setText("No asignado");
+        }
+
         holder.distance.setText(favorList.get(position).getDistance());
         holder.maxTime.setText(favorList.get(position).getFormattedDueTime());
         //holder.photo.setImageResource(listaFavores.get(position).getPhoto());

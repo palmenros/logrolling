@@ -80,8 +80,9 @@
     <ScrollView
         android:id="@+id/InformacionNuevoFavor"
         android:layout_width="0dp"
-        android:layout_height="571dp"
+        android:layout_height="0dp"
         android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header">
@@ -116,7 +117,7 @@
                 <EditText
                     android:id="@+id/DescripcionFavor"
                     android:layout_width="0dp"
-                    android:layout_height="45dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="12dp"
@@ -124,7 +125,8 @@
                     android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/Descripcion"
-                    android:inputType="textPersonName"
+                    android:scrollHorizontally="false"
+                    android:inputType="textMultiLine"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -141,9 +143,9 @@
                     android:layout_marginRight="50dp"
                     android:drawableStart="@drawable/ic_today_black_24dp"
                     android:ems="10"
-                    android:textAlignment="textStart"
                     android:hint="@string/FechaLimite"
                     android:onClick="chooseDueDate"
+                    android:textAlignment="textStart"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.506"
@@ -159,11 +161,11 @@
                     android:layout_marginTop="18dp"
                     android:layout_marginEnd="50dp"
                     android:layout_marginRight="50dp"
+                    android:digits="0123456789"
                     android:drawableEnd="@drawable/grollies_mini2"
                     android:ems="10"
                     android:hint="@string/Recompensa"
                     android:inputType="number"
-                    android:digits="0123456789"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -178,16 +180,16 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="50dp"
                     android:layout_marginRight="50dp"
-                    android:scrollHorizontally="true"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:textAlignment="textStart"
                     android:drawableStart="@drawable/ic_pin_drop_black_24dp"
+                    android:ellipsize="end"
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
                     android:inputType="textPersonName"
+                    android:maxLines="1"
                     android:onClick="chooseDeliveryLocation"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textAlignment="textStart"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.518"
@@ -244,220 +246,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        tools:visibility="invisible"
-        android:id="@+id/PopUpError9"
-        android:layout_width="0dp"
-        android:layout_height="411dp"
-        android:background="#00C5BFBF"
-        android:elevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-
-            android:layout_width="0dp"
-            android:layout_height="368dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/closeButtonRed"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/rojo"
-                android:fadingEdge="horizontal|vertical"
-                android:fontFamily="@font/rubik"
-                android:onClick="closeErrorPopUp"
-                android:text="@string/Cerrar"
-                android:textColor="@color/blanco"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/red"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:background="@color/rojo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/stop"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="@+id/red"
-                app:layout_constraintEnd_toEndOf="@+id/red"
-                app:layout_constraintStart_toStartOf="@+id/red"
-                app:layout_constraintTop_toTopOf="@+id/red"
-                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
-
-            <TextView
-                android:id="@+id/messageError"
-                android:layout_width="0dp"
-                android:layout_height="89dp"
-                android:gravity="center"
-                android:text="Texto error"
-                android:textColor="@color/negro"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/red" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/closeCross"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
-            android:onClick="closeErrorPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
-
-        <ImageView
-            android:id="@+id/closeCircle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:onClick="closeErrorPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_clear_black_24dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        tools:visibility="invisible"
-        android:id="@+id/PopUpConfirm4"
-        android:layout_width="0dp"
-        android:layout_height="411dp"
-        android:background="#00C5BFBF"
-        android:elevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="280dp"
-            android:layout_height="350dp"
-            android:layout_marginTop="20dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/okButton"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/verde"
-                android:fadingEdge="horizontal|vertical"
-                android:fontFamily="@font/rubik"
-                android:onClick="askFavorConfirmed"
-                android:text="@string/Confirmar"
-                android:textColor="@color/blanco"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/green"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:background="@color/verde"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/tick"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="@+id/green"
-                app:layout_constraintEnd_toEndOf="@+id/green"
-                app:layout_constraintStart_toStartOf="@+id/green"
-                app:layout_constraintTop_toTopOf="@+id/green"
-                app:srcCompat="@drawable/ic_check_circle_black_24dp" />
-
-            <TextView
-                android:id="@+id/menssageOk"
-                android:layout_width="0dp"
-                android:layout_height="115dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="@string/ConfirmarPedirFavor"
-                android:textColor="@color/negro"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/green" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/closeCross"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
-            android:onClick="closeConfirmationPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
-
-        <ImageView
-            android:id="@+id/closeCircle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:onClick="closeConfirmationPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_clear_black_24dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/MenuInferior"

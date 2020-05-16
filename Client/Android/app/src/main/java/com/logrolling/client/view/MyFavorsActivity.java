@@ -1,10 +1,12 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.MediaRouteButton;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,25 +17,23 @@ import android.widget.TextView;
 import com.logrolling.client.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
+import com.logrolling.client.adapter.AskedFavorAdapter;
 import com.logrolling.client.adapter.FavorAdapter;
-import com.logrolling.client.transfer.Coordinates;
+import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.transfer.TransferFavor;
 
 public class MyFavorsActivity extends AppCompatActivity {
     public int blue = Color.parseColor("#2699FB");
     public int white = Color.parseColor("#FFFFFF");
-    private RecyclerView listFavorsToBeDone, listDoneFavors;
+    private RecyclerView favorsToBeDoneRecyclerView, askedFavorsRecyclerView;
     private TextView numGrollies;
     private Button favorsDo, favorsAsked;
-    private ArrayList<TransferFavor> favorsDoneArray = new ArrayList<TransferFavor>(); /*={"Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio",
-            "Gestiones administrativas", "Planchar","Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar",
-            "Comprar pan", "Pasar apuntes a limpio", "Gestiones administrativas", "Planchar"};*/
-    private ArrayList<TransferFavor> favorsAskedArray = new ArrayList<TransferFavor>();/*={"Pedidos", "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos",
-            "Pedido2", "Pedidos","Pedido","Pedidos", "Pedido", "Pedidos", "Pedido2", "Pedidos", "Pedido2"};*/
+    private ArrayList<TransferFavor> favorsDoneArray = new ArrayList<TransferFavor>();
+    private ArrayList<TransferFavor> favorsAskedArray = new ArrayList<TransferFavor>();
+    private TextView emptyTextView;
 
-    private TextView popUpMessage;
-    private ConstraintLayout popUpError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,53 +42,92 @@ public class MyFavorsActivity extends AppCompatActivity {
 
         favorsDo = (Button) findViewById(R.id.favoresARealizar2);
         favorsAsked = (Button) findViewById(R.id.favoresPedidos);
-
+        emptyTextView = (TextView) findViewById(R.id.textView3);
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
+        loadGrolliesAmount();
 
-        listDoneFavors = (RecyclerView) findViewById(R.id.ListaFavoresPedidos);
-        listDoneFavors.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        askedFavorsRecyclerView = (RecyclerView) findViewById(R.id.ListaFavoresPedidos);
+        askedFavorsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        llenarLista();
+        fillList();
 
-        FavorAdapter adapterPedidos = new FavorAdapter(favorsAskedArray);
-        listDoneFavors.setAdapter(adapterPedidos);
-       /* listDoneFavors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Lo que sea
-                Intent i = new Intent(MyFavorsActivity.this, AskedFavorActivity.class);
-                startActivity(i);
-            }
-        });*/
-
-        listFavorsToBeDone = (RecyclerView) findViewById(R.id.ListaFavoresARealizar);
-        listFavorsToBeDone.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-        FavorAdapter adapterARealizar = new FavorAdapter(favorsDoneArray);
-        listFavorsToBeDone.setAdapter(adapterARealizar);
-        /*listFavorsToBeDone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Lo que sea
-                Intent i = new Intent(MyFavorsActivity.this, FavorToBeDoneActivity.class);
-                startActivity(i);
-            }
-        });*/
-        showAskedFavors();
-
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError12);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
+        favorsToBeDoneRecyclerView = (RecyclerView) findViewById(R.id.ListaFavoresARealizar);
+        favorsToBeDoneRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 
-    private void llenarLista() {
-        for (int i = 0; i < 10; i++) {
-            favorsDoneArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606, i * 1000, new Coordinates(0, 0), null, false));
-            favorsAskedArray.add(new TransferFavor(1, "Nombre " + i, "Favor " + i, "Descripcion " + i, 1589485606, i * 1000, new Coordinates(0, 0), null, false));
-        }
+    private void loadGrolliesAmount() {
+        Controller.getInstance().getCurrentUserGrollies((grollies) -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
+    }
+
+    private void fillList() {
+
+        Controller controller = Controller.getInstance();
+
+        controller.getFavorsToBeDone(favorsToBeDone -> {
+            controller.getCreatedFavors(favorsAsked -> {
+                Collections.addAll(favorsDoneArray, favorsToBeDone);
+                Collections.addAll(favorsAskedArray, favorsAsked);
+
+                AskedFavorAdapter askedAdapter = new AskedFavorAdapter(favorsAskedArray, (view) -> {
+                    //On click asked
+                    int position = askedFavorsRecyclerView.getChildLayoutPosition(view);
+                    TransferFavor favor = favorsAskedArray.get(position);
+
+                    //Go to AskedFavorActivity
+                    int id = favor.getId();
+                    Intent i = new Intent(this, AskedFavorActivity.class);
+                    i.putExtra("favorId",favor.getId());
+                    startActivity(i);
+                });
+                askedFavorsRecyclerView.setAdapter(askedAdapter);
+
+                FavorAdapter toBeDoneAdapter = new FavorAdapter(favorsDoneArray, (view) -> {
+                    //On click done
+                    int position = favorsToBeDoneRecyclerView.getChildLayoutPosition(view);
+                    TransferFavor favor = favorsDoneArray.get(position);
+
+                    //Go to FavorToBeDoneActivity
+                    int id = favor.getId();
+                    Intent i = new Intent(this, FavorToBeDoneActivity.class);
+                    i.putExtra("favorId",favor.getId());
+                    startActivity(i);
+
+                });
+                favorsToBeDoneRecyclerView.setAdapter(toBeDoneAdapter);
+                showAskedFavors();
+            }, error -> {
+                 new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+            });
+
+        }, error -> {
+             new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
+
     }
 
     public void search(View view) {
@@ -131,9 +170,16 @@ public class MyFavorsActivity extends AppCompatActivity {
         favorsAsked.setTextColor(white);
         favorsDo.setBackgroundColor(white);
         favorsDo.setTextColor(blue);
-        listFavorsToBeDone.setVisibility(View.INVISIBLE);
-        listDoneFavors.setVisibility(View.VISIBLE);
-    }
+        favorsToBeDoneRecyclerView.setVisibility(View.INVISIBLE);
+        askedFavorsRecyclerView.setVisibility(View.VISIBLE);
+
+        if(favorsAskedArray.isEmpty()) {
+            emptyTextView.setVisibility(View.VISIBLE);
+            emptyTextView.setText("No has pedido ningún favor");
+        } else {
+            emptyTextView.setVisibility(View.GONE);
+        }
+     }
 
     public void showAskedFavors(View view) {
         showAskedFavors();
@@ -145,18 +191,15 @@ public class MyFavorsActivity extends AppCompatActivity {
         favorsAsked.setTextColor(blue);
         favorsDo.setBackgroundColor(blue);
         favorsDo.setTextColor(white);
-        listFavorsToBeDone.setVisibility(View.VISIBLE);
-        listDoneFavors.setVisibility(View.INVISIBLE);
-    }
+        favorsToBeDoneRecyclerView.setVisibility(View.VISIBLE);
+        askedFavorsRecyclerView.setVisibility(View.INVISIBLE);
 
-    //popUpError
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
+        if(favorsDoneArray.isEmpty()) {
+            emptyTextView.setVisibility(View.VISIBLE);
+            emptyTextView.setText("No tienes ningún favor");
+        } else {
+            emptyTextView.setVisibility(View.GONE);
+        }
     }
 
 }

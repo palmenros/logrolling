@@ -1,7 +1,7 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
@@ -28,6 +28,7 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.logrolling.client.R;
+import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.services.LocationService;
 import com.logrolling.client.transfer.Coordinates;
 
@@ -35,6 +36,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 public class AskFavorActivity extends AppCompatActivity {
     private TextView numGrollies;
@@ -42,11 +44,11 @@ public class AskFavorActivity extends AppCompatActivity {
 
     private Button dueTimeButton, deliveryLocationButton;
 
-    private EditText name, description, reward;
-    private ConstraintLayout popUpConfirmation, popUpError;
+    private EditText nameEditText, descriptionEditText, rewardEditText;
 
     private Date dueDate = null;
     private Coordinates deliveryLocation = null;
+    private boolean askingFavor = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,20 +56,14 @@ public class AskFavorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ask_favor);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
-
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError9);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
-        popUpConfirmation = (ConstraintLayout) findViewById(R.id.PopUpConfirm4);
-        popUpConfirmation.setVisibility(View.INVISIBLE);
+        loadGrolliesAmount();
 
         dueTimeButton = (Button) findViewById(R.id.FechaLimite);
 
-        name = (EditText) findViewById(R.id.Nombre);
-        description = (EditText) findViewById(R.id.DescripcionFavor);
+        nameEditText = (EditText) findViewById(R.id.Nombre);
+        descriptionEditText = (EditText) findViewById(R.id.DescripcionFavor);
         deliveryLocationButton = (Button) findViewById(R.id.LugarEntrega);
-        reward = (EditText) findViewById(R.id.Recompensa);
+        rewardEditText = (EditText) findViewById(R.id.Recompensa);
     }
 
     public void chooseDeliveryLocation(View view) {
@@ -125,6 +121,22 @@ public class AskFavorActivity extends AppCompatActivity {
         dialog.show();
 
     }
+
+    private void loadGrolliesAmount() {
+        Controller.getInstance().getCurrentUserGrollies((grollies) -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
+    }
+
 
     public void chooseDueDate(View view) {
         Calendar calendarDate;
@@ -184,14 +196,89 @@ public class AskFavorActivity extends AppCompatActivity {
     public void askFavor(View view) {
         //Comprobar que la informacion del favor es correcta
         //(name, description, deliveryLocation, deliveryDate, reward)
-        showConfirmationPopUp(view);
-    }
 
-    public void askFavorConfirmed(View view) {
-        //pedirFavor
-        closeConfirmationPopUp(view);
-        Intent i = new Intent(this, MyFavorsActivity.class);
-        startActivity(i);
+        if(askingFavor) {
+            return;
+        }
+
+        String name = nameEditText.getText().toString();
+        String description = nameEditText.getText().toString();
+        String rewardString = rewardEditText.getText().toString();
+
+        if(name.isEmpty() || description.isEmpty() || rewardString.isEmpty() || dueDate == null || deliveryLocation == null) {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error")
+                        .setMessage("Todos los campos tienen que ser rellenados")
+                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
+            return;
+        }
+
+        //Check deliverDate
+        if(new Date().getTime() + 3600L * 1000L > dueDate.getTime()) {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error")
+                        .setMessage("La fecha debe ser de al menos una hora en el futuro")
+                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
+            return;
+        }
+
+        //Check reward
+        int reward = Integer.parseInt(rewardString);
+
+        if(reward <= 10) {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error")
+                        .setMessage("La recompensa debe ser al menos de 10 grollies.")
+                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
+            return;
+        }
+
+        Controller controller = Controller.getInstance();
+        controller.getCurrentUserGrollies(grollies -> {
+
+            if(grollies < reward) {
+                 new AlertDialog.Builder(this)
+                        .setTitle("Error")
+                        .setMessage("No tienes suficientes grollies.")
+                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                 return;
+            }
+
+             new AlertDialog.Builder(this)
+                        .setTitle("Confirmación")
+                        .setMessage("¿Seguro que quieres crear un favor? Una vez sea asignado a alguien no podrás modificarlo ni borrarlo.")
+                        .setNegativeButton("No", (dialog, which) -> { })
+                        .setPositiveButton("Sí", (dialog, which) -> {
+                            askingFavor = true;
+
+                            controller.createFavor(name, description, dueDate, reward, deliveryLocation, () -> {
+                                askingFavor = false;
+                                Intent i = new Intent(this, MyFavorsActivity.class);
+                                startActivity(i);
+                            }, error -> {
+                                askingFavor = false;
+                                new AlertDialog.Builder(this)
+                                        .setTitle("Error de red")
+                                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                                        .setNeutralButton("Ok", (d, w) -> {
+                                               //Exit now
+                                            android.os.Process.killProcess(android.os.Process.myPid());
+                                            System.exit(1);
+                                }).show();
+                            });
+                        }).show();
+
+        }, error -> {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
+
     }
 
     public void buyGrollies(View view) {
@@ -207,19 +294,4 @@ public class AskFavorActivity extends AppCompatActivity {
         //Añadir foto
     }
 
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
-    }
-
-    public void showConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.VISIBLE);
-    }
-
-    public void closeConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.INVISIBLE);
-    }
-
-    public void showErrorPopUp(View view) {
-        popUpError.setVisibility(View.VISIBLE);
-    }
 }

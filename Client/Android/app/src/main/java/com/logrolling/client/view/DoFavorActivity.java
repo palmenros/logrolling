@@ -1,5 +1,6 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -10,13 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.logrolling.client.R;
+import com.logrolling.client.controllers.Controller;
+import com.logrolling.client.services.LocationService;
+
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.util.Date;
 
 public class DoFavorActivity extends AppCompatActivity {
     private TextView name, description, deliveryLocation, deliveryDate, reward;
     private ImageView photo;
     private TextView numGrollies;
-    private TextView popUpMessage;
-    private ConstraintLayout popUpConfirmation, popUpError;
+    private int favorId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +37,48 @@ public class DoFavorActivity extends AppCompatActivity {
 
 
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
-        //Sets
-        //Ejemplo
-        name.setText("Ir a la compra");
-        description.setText("Comprar los siguientes artículos por un precio total máximo de 10 €: \n\n  o 3kg de Naranjas \n  o Bolsa de patas \n  o Barra de pan \n  o Botella CocaCola 2l");
-        deliveryLocation.setText("Paseo de los Melancólicos Nº 15");
-        deliveryDate.setText("Dentro de 3 horas");
-        reward.setText("500 grollies");
+        loadGrolliesAmount();
 
+        //Load favor
 
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError9);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
-        popUpConfirmation = (ConstraintLayout) findViewById(R.id.PopUpConfirm6);
-        popUpConfirmation.setVisibility(View.INVISIBLE);
+        Bundle b = getIntent().getExtras();
+        favorId = b.getInt("favorId");
+
+        Controller.getInstance().getFavorById(favorId,
+                transferFavor -> {
+                    name.setText(transferFavor.getTitle());
+                    description.setText(transferFavor.getDescription());
+                    deliveryLocation.setText(LocationService.getInstance().getAddressFromCoordinates(transferFavor.getCoordinates()));
+
+                    PrettyTime prettyTime = new PrettyTime();
+                    deliveryDate.setText(prettyTime.format( new Date(  transferFavor.getDueTime() * 1000L ) ));
+                    reward.setText(transferFavor.getReward() + " grollies");
+                },
+                error -> {
+                    new AlertDialog.Builder(this)
+                                .setTitle("Error de red")
+                                .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                                .setNeutralButton("Ok", (dialog, which) -> {
+                                       //Exit now
+                                    android.os.Process.killProcess(android.os.Process.myPid());
+                                    System.exit(1);
+                        }).show();
+                });
+    }
+
+    private void loadGrolliesAmount() {
+        Controller.getInstance().getCurrentUserGrollies((grollies) -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
     }
 
     //Panel Inferior
@@ -77,7 +110,28 @@ public class DoFavorActivity extends AppCompatActivity {
 
 
     public void doFavor(View view) {
-        showConfirmationPopUp(view);
+
+        new AlertDialog.Builder(this)
+                        .setTitle("Confirmación")
+                        .setMessage("¿Seguro que te comprometes a realizar este favor?")
+                        .setNegativeButton("No", (dialog, which) -> {
+                        })
+                        .setPositiveButton("Sí", (dialog, which) -> {
+                            Controller.getInstance().doFavor(favorId, () -> {
+                                Intent i = new Intent(this, SearchActivity.class);
+                                startActivity(i);
+                            }, error -> {
+                                new AlertDialog.Builder(this)
+                                    .setTitle("Error de red")
+                                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                                    .setNeutralButton("Ok", (d, w) -> {
+                                           //Exit now
+                                        android.os.Process.killProcess(android.os.Process.myPid());
+                                        System.exit(1);
+                                 }).show();
+                            });
+                        }).show();
+
     }
 
     public void doFavorConfirmed(View view) {
@@ -91,21 +145,4 @@ public class DoFavorActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    //popUps
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
-    }
-
-    public void showConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.VISIBLE);
-    }
-
-    public void closeConfirmationPopUp(View view) {
-        popUpConfirmation.setVisibility(View.INVISIBLE);
-    }
 }

@@ -17,9 +17,8 @@ public class AskedFavorActivity extends AppCompatActivity {
     private boolean assigned;
     private Button edit, delete;
     private TextView numGrollies;
-    private TextView name, description, deliveryLocation, deliveryDate, reward, confirmed, popUpMessage;
+    private TextView name, description, deliveryLocation, deliveryDate, reward, confirmed;
     private ImageView photo;
-    private ConstraintLayout popUpError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +37,6 @@ public class AskedFavorActivity extends AppCompatActivity {
         deliveryDate = (TextView) findViewById(R.id.fechaLimite);
         reward = (TextView) findViewById(R.id.recompensa);
         photo = (ImageView) findViewById(R.id.foto);
-
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError2);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
-
 
         confirmed = (TextView) findViewById(R.id.confirmado);
 
@@ -114,13 +108,4 @@ public class AskedFavorActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    //popUpError
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
-    }
 }

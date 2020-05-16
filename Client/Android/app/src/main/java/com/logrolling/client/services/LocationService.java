@@ -147,21 +147,16 @@ public class LocationService {
     public double getDistanceFromCoordinates(Coordinates coordinates) {
         Coordinates currentLocation = getLocation();
 
-        double lat1 = coordinates.getLatitude(), lon1 = coordinates.getLongitude();
-        double lat2 = currentLocation.getLatitude(), lon2 = coordinates.getLongitude();
+        double latA = currentLocation.getLatitude();
+        double longA = currentLocation.getLongitude();
+        double latB = coordinates.getLatitude();
+        double longB = coordinates.getLongitude();
 
-        double angle = lon1 - lon2;
-
-        //Calculate distance using spherical coordinates
-        double distance = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(angle));
-        distance = Math.acos(distance);
-        distance = Math.toDegrees(distance);
-
-        //Convert distance to kilometers
-        distance = distance * 60 * 1.1515 * 1.609344;
-
-        //Convert distance to meters
-        return distance * 1000;
+        return 111.111 * 1000 * Math.toDegrees( Math.acos(Math.min(1.0, Math.cos(Math.toRadians(latA))
+         * Math.cos(Math.toRadians(latB))
+         * Math.cos(Math.toRadians(longA - longB))
+         + Math.sin(Math.toRadians(latA))
+         * Math.sin(Math.toRadians(latB)))));
     }
 
     public String getAddressFromCoordinates(Coordinates coordinates) {
