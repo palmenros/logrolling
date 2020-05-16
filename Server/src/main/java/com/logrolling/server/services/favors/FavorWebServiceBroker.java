@@ -5,6 +5,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.services.authentication.AuthenticationService;
+import com.logrolling.server.services.users.TransferCredentials;
 
 import java.util.List;
 
@@ -29,6 +30,13 @@ public class FavorWebServiceBroker {
     public List<TransferFavor> getFavorsFromUser(@HeaderParam("token") String token){
         return Favor.getFavorsFromUser(token);
     }
+
+    @GET
+    @Path("/{id}")
+    public TransferFavor getFavorByID(@PathParam("id") int id) {
+        return Favor.getFavorById(id);
+    }
+
 
     @PUT
     @Path("/{id}/@do")

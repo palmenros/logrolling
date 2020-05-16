@@ -77,6 +77,10 @@ public class Favor {
         this.completed = f.getCompleted();
     }
 
+    public static TransferFavor getFavorById(int id) {
+        return new TransferFavor(FavorManager.getFavorById(id));
+    }
+
     public int getId() {
         return id;
     }
