@@ -12,8 +12,8 @@ import java.util.List;
 public class UserWebServiceBroker {
 
     @GET
-    public List<TransferUser> getUsers()  {
-        return User.getUsers();
+    public TransferUser getLoggedUser(@HeaderParam("token") String token)  {
+        return User.getLoggedUser(token);
     }
 
     @POST

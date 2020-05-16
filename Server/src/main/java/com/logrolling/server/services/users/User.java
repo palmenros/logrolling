@@ -34,6 +34,11 @@ public class User {
         this.grollies = INITIAL_GROLLIES;
     }
 
+    public static TransferUser getLoggedUser(String token) {
+        String username = AuthenticationService.authenticateWithToken(token);
+        return getUserByName(username);
+    }
+
     public int getId() {
         return id;
     }
