@@ -29,6 +29,12 @@ public class PermanentStorageService {
         editor.apply();
     }
 
+    public void remove(String key) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(key);
+        editor.apply();
+    }
+
     public boolean has(String key) {
         return sharedPreferences.getString(key, null) != null;
     }

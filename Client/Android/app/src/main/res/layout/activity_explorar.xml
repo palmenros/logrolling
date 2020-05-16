@@ -267,7 +267,7 @@
             android:layout_marginRight="60dp"
             android:background="@color/blanco"
             android:max="7"
-            android:progress="0"
+            android:progress="7"
             android:progressDrawable="@drawable/barra"
             android:thumb="@drawable/grollies_mini2"
             app:layout_constraintEnd_toEndOf="parent"

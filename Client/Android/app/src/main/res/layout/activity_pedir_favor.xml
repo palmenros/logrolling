@@ -161,13 +161,14 @@
                     android:drawableEnd="@drawable/grollies_mini2"
                     android:ems="10"
                     android:hint="@string/Recompensa"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
+                    android:digits="0123456789"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/FechaLimite" />
 
-                <EditText
+                <Button
                     android:id="@+id/LugarEntrega"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
@@ -180,6 +181,7 @@
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
                     android:inputType="textPersonName"
+                    android:onClick="chooseDeliveryLocation"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.518"

@@ -3,6 +3,7 @@
     package="com.logrolling.client">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyApWSJ9hXbvrgES2SJZOXHf_Pe4s8F0T90"/>
         <activity android:name=".view.FavorToBeDoneActivity" />
         <activity android:name=".view.ChatPersonActivity" />
         <activity android:name=".view.AskedFavorActivity" />
