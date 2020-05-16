@@ -7,33 +7,18 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Process;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.logrolling.client.R;
-import com.logrolling.client.delegates.ChatDelegate;
-import com.logrolling.client.delegates.FavorDelegate;
-import com.logrolling.client.delegates.GiftDelegate;
-import com.logrolling.client.delegates.UserDelegate;
+import com.logrolling.client.services.AuthenticationService;
 import com.logrolling.client.services.LocationService;
-import com.logrolling.client.services.PermanentStorageService;
-import com.logrolling.client.transfer.Coordinates;
-import com.logrolling.client.transfer.Filter;
-import com.logrolling.client.transfer.TransferCredentials;
-import com.logrolling.client.transfer.TransferFavor;
-import com.logrolling.client.transfer.TransferMessage;
-import com.logrolling.client.transfer.TransferPurchase;
+import com.logrolling.client.services.PersistentStorageService;
 import com.logrolling.client.web.WebRequestQueue;
-
-import java.util.Arrays;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_FINE_LOCATION = 13;
@@ -47,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: Initialize services except location
         WebRequestQueue.createInstance(this);
-        PermanentStorageService.createInstance(this);
+        PersistentStorageService.createInstance(this);
 
         //Assure we have Fine Location permissions
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -99,11 +84,28 @@ public class MainActivity extends AppCompatActivity {
     public void onLocationPermissionGranted() {
         LocationService.createInstance(this, () -> {
 
-
-            Coordinates coords = LocationService.getInstance().getLocation();
-            String text = String.format("(%f, %f)", coords.getLatitude(), coords.getLongitude());
             //Entry point
-            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+            AuthenticationService.getInstance().tryStoredTokenAuth((authenticated) -> {
+                if(authenticated) {
+                    //Go to Explore Activity
+                    Intent i = new Intent(this, SearchActivity.class);
+                    startActivity(i);
+                } else {
+                    //Go to Log In Activity
+                    Intent i = new Intent(this, SignInActivity.class);
+                    startActivity(i);
+                }
+            }, (error) -> {
+                //Network error, exit
+                new AlertDialog.Builder(this)
+                           .setTitle("Error de red")
+                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                           .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                               Process.killProcess(Process.myPid());
+                               System.exit(1);
+                           }).show();
+            });
 
         }, (error) -> {
             new AlertDialog.Builder(this)
@@ -111,17 +113,11 @@ public class MainActivity extends AppCompatActivity {
                            .setMessage("No se pudo obtener la localización del teléfono. Por favor, compruebe que está conectado.")
                            .setNeutralButton("Ok", (dialog, which) -> {
                                //Exit now
-                               android.os.Process.killProcess(android.os.Process.myPid());
+                               Process.killProcess(Process.myPid());
                                System.exit(1);
                            }).show();
         });
 
-    }
-
-    public void advance(View view) {
-        //Cuando cargue
-        Intent i = new Intent(this, SignInActivity.class);
-        startActivity(i);
     }
 
     //popUpError

@@ -17,6 +17,15 @@ public class UserDelegate {
         client = new WebServiceClient();
     }
 
+    public void getLoggedUser(ResponseListener<TransferUser> responseListener, ErrorListener errorListener) {
+        client.getRequest("users",
+                null,
+                SerializationService.getInstance().getResponseListener(TransferUser.class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
+        );
+    }
+
     public void getUserByUsername(String username, ResponseListener<TransferUser> responseListener, ErrorListener errorListener) {
         client.getRequest("users/" + username,
                 null,

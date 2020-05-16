@@ -1,5 +1,6 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.logrolling.client.R;
+import com.logrolling.client.controllers.Controller;
+import com.logrolling.client.services.AuthenticationService;
 
 public class ConfigurationActivity extends AppCompatActivity {
     private ConstraintLayout popUpSignOut;
@@ -22,7 +25,19 @@ public class ConfigurationActivity extends AppCompatActivity {
         popUpSignOut.setVisibility(View.INVISIBLE);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
+
+        Controller.getInstance().getCurrentUserGrollies((grollies) -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                           .setTitle("Error de red")
+                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                           .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                               android.os.Process.killProcess(android.os.Process.myPid());
+                               System.exit(1);
+                           }).show();
+        });
     }
 
 
@@ -74,5 +89,8 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     public void signOutConfirmed(View view) {
         closeSignOutConfirm(view);
+        AuthenticationService.getInstance().signOut();
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }

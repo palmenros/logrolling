@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/azul"
     android:clickable="true"
-    android:onClick="advance"
     tools:context=".view.MainActivity">
 
     <ImageView
@@ -15,7 +14,6 @@
         android:layout_height="172dp"
         android:layout_marginTop="105dp"
         android:contentDescription="@string/Logo"
-        android:onClick="advance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

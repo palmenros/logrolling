@@ -1,5 +1,6 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -10,23 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.logrolling.client.R;
+import com.logrolling.client.services.AuthenticationService;
 
 public class SignInActivity extends AppCompatActivity {
-    private EditText user, password;
-    private TextView popUpMessage;
-    private ConstraintLayout popUpError;
+    private EditText userEditText, passwordEditText;
+
+    private boolean signingIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
 
-        user = (EditText) findViewById(R.id.NombreUsuario);
-        password = (EditText) findViewById(R.id.Contrasenna);
-
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError5);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
+        userEditText = (EditText) findViewById(R.id.NombreUsuario);
+        passwordEditText = (EditText) findViewById(R.id.Contrasenna);
     }
 
     public void registration(View view) {
@@ -35,20 +33,31 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-        if (true) {//Habrá que comprobar que el user esta registrado
-            Intent i = new Intent(this, SearchActivity.class);
-            startActivity(i);
+
+        if(signingIn) {
+            return;
         }
-    }
 
-    //popUpError
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
+        signingIn = true;
 
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
+        String userName = userEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        AuthenticationService.getInstance().tryLogWithCredentials(userName, password,
+                () -> {
+                    signingIn = false;
+                    Intent i = new Intent(this, SearchActivity.class);
+                    startActivity(i);
+                },
+                (error) -> {
+                    signingIn = false;
+                    new AlertDialog.Builder(this)
+                           .setTitle("Error")
+                           .setMessage("Error al iniciar sesión.")
+                           .setNeutralButton("Ok", (dialog, which) -> {
+
+                           }).show();
+                });
     }
 
 

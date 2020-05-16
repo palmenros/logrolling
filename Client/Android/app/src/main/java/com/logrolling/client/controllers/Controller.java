@@ -43,7 +43,7 @@ public class Controller {
         userDelegate = new UserDelegate();
     }
 
-    public Controller getInstance() {
+    static public Controller getInstance() {
         if (instance == null) {
             instance = new Controller();
         }
@@ -137,11 +137,11 @@ public class Controller {
     //          GIFT DELEGATE            //
     ///////////////////////////////////////
 
-    void getAllGifts(ResponseListener<TransferGift[]> responseListener, ErrorListener errorListener) {
+    public void getAllGifts(ResponseListener<TransferGift[]> responseListener, ErrorListener errorListener) {
         giftDelegate.getAllGifts(responseListener, errorListener);
     }
 
-    void purchaseGift(String giftName, SuccessListener successListener, ErrorListener errorListener) {
+    public void purchaseGift(String giftName, SuccessListener successListener, ErrorListener errorListener) {
         LocationService locationService = LocationService.getInstance();
         giftDelegate.purchaseGift(new TransferPurchase(
                 giftName,
@@ -153,32 +153,31 @@ public class Controller {
     //          USER DELEGATE            //
     ///////////////////////////////////////
 
-    void getCurrentUser(ResponseListener<TransferUser> responseListener, ErrorListener errorListener) {
-        userDelegate.getUserByUsername(
-                AuthenticationService.getInstance().getAuthenticatedUsername(),
+    public void getCurrentUser(ResponseListener<TransferUser> responseListener, ErrorListener errorListener) {
+        userDelegate.getLoggedUser(
                 responseListener,
                 errorListener
         );
     }
 
-    void getCurrentUserGrollies(ResponseListener<Integer> responseListener, ErrorListener errorListener) {
+    public void getCurrentUserGrollies(ResponseListener<Integer> responseListener, ErrorListener errorListener) {
         getCurrentUser((transferUser) -> {
             responseListener.onResponse(transferUser.getGrollies());
         }, errorListener);
     }
 
-    void registerUser(String username, String password, SuccessListener successListener, ErrorListener errorListener) {
+    public void registerUser(String username, String password, SuccessListener successListener, ErrorListener errorListener) {
         userDelegate.registerUser(new TransferCredentials(username, password), successListener, errorListener);
     }
 
-    void updatePassword(String newPassword, SuccessListener successListener, ErrorListener errorListener) {
+    public void updatePassword(String newPassword, SuccessListener successListener, ErrorListener errorListener) {
         userDelegate.updateUser(new TransferCredentials(
                 AuthenticationService.getInstance().getAuthenticatedUsername(),
                 newPassword
         ), successListener, errorListener);
     }
 
-    void deleteUser(SuccessListener successListener, ErrorListener errorListener) {
+    public void deleteUser(SuccessListener successListener, ErrorListener errorListener) {
         userDelegate.deleteUser(successListener, errorListener);
     }
 

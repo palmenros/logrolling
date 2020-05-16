@@ -3,20 +3,20 @@ package com.logrolling.client.services;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class PermanentStorageService {
-    private static PermanentStorageService instance;
+public class PersistentStorageService {
+    private static PersistentStorageService instance;
     private static final String preferenceFileKey = "LogrollingPersistentData";
     private SharedPreferences sharedPreferences;
 
-    private PermanentStorageService(Context context) {
+    private PersistentStorageService(Context context) {
         sharedPreferences = context.getApplicationContext().getSharedPreferences(preferenceFileKey, Context.MODE_PRIVATE);
     }
 
     public static void createInstance(Context context) {
-        instance = new PermanentStorageService(context);
+        instance = new PersistentStorageService(context);
     }
 
-    public static PermanentStorageService getInstance() {
+    public static PersistentStorageService getInstance() {
         if (instance == null) {
             throw new IllegalStateException("Permanent Storage Service not initialized yet");
         }
