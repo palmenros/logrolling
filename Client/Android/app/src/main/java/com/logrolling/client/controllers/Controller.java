@@ -7,6 +7,7 @@ import com.logrolling.client.delegates.TokenDelegate;
 import com.logrolling.client.delegates.UserDelegate;
 import com.logrolling.client.services.AuthenticationService;
 import com.logrolling.client.services.LocationService;
+import com.logrolling.client.transfer.Coordinates;
 import com.logrolling.client.transfer.Filter;
 import com.logrolling.client.transfer.TransferChat;
 import com.logrolling.client.transfer.TransferCredentials;
@@ -102,27 +103,27 @@ public class Controller {
         favorDelegate.getFavorsToBeDone(responseListener, errorListener);
     }
 
-    public void createFavor(String title, String description, Date dueTime, int reward, String address, SuccessListener successListener, ErrorListener errorListener) {
+    public void createFavor(String title, String description, Date dueTime, int reward, Coordinates coordinates, SuccessListener successListener, ErrorListener errorListener) {
         favorDelegate.createFavor(new TransferFavor(
                 AuthenticationService.getInstance().getAuthenticatedUsername(),
                 title,
                 description,
                 (int) (dueTime.getTime() / 1000),
                 reward,
-                LocationService.getInstance().getCoordinatesFromAddress(address),
+                coordinates,
                 null,
                 false
         ), successListener, errorListener);
     }
 
-    public void updateFavor(int favorId, String title, String description, Date dueTime, int reward, String address, SuccessListener successListener, ErrorListener errorListener) {
+    public void updateFavor(int favorId, String title, String description, Date dueTime, int reward, Coordinates coordinates, SuccessListener successListener, ErrorListener errorListener) {
         favorDelegate.updateFavor(new TransferFavor(
                 favorId, AuthenticationService.getInstance().getAuthenticatedUsername(),
                 title,
                 description,
                 (int) (dueTime.getTime() / 1000),
                 reward,
-                LocationService.getInstance().getCoordinatesFromAddress(address),
+                coordinates,
                 null,                   //Favors can only be updated when not yet assigned
                 false
         ), favorId, successListener, errorListener);

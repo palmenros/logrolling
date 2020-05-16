@@ -2,12 +2,16 @@ package com.logrolling.client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -91,10 +95,21 @@ public class AskFavorActivity extends AppCompatActivity {
                 Coordinates coordinates = LocationService.getInstance().getLocation();
                 LatLng position = new LatLng(coordinates.getLatitude(), coordinates.getLongitude());
                 googleMap.getUiSettings().setZoomControlsEnabled(true);
-                googleMap.setMyLocationEnabled(true);
 
-                googleMap.moveCamera(CameraUpdateFactory.newLatLng(position));
-                googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                if(ContextCompat.checkSelfPermission(AskFavorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    googleMap.setMyLocationEnabled(true);
+                }
+
+                //Move camera with some delay to avoid bugs
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                     @Override
+                     public void run() {
+                         googleMap.moveCamera(CameraUpdateFactory.newLatLng(position));
+                         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                     }
+                }, 500);
+
             }
         });
 

@@ -7,9 +7,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import com.logrolling.client.delegates.GiftDelegate;
 import com.logrolling.client.delegates.UserDelegate;
 import com.logrolling.client.services.LocationService;
 import com.logrolling.client.services.PermanentStorageService;
+import com.logrolling.client.transfer.Coordinates;
 import com.logrolling.client.transfer.Filter;
 import com.logrolling.client.transfer.TransferCredentials;
 import com.logrolling.client.transfer.TransferFavor;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO: Initialize services
+        //TODO: Initialize services except location
         WebRequestQueue.createInstance(this);
         PermanentStorageService.createInstance(this);
 
@@ -94,8 +97,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLocationPermissionGranted() {
-        //TODO: ENTRY POINT HERE
-        Toast.makeText(this, "Location granted", Toast.LENGTH_SHORT).show();
+        LocationService.createInstance(this, () -> {
+
+
+            Coordinates coords = LocationService.getInstance().getLocation();
+            String text = String.format("(%f, %f)", coords.getLatitude(), coords.getLongitude());
+            //Entry point
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                           .setTitle("Localización")
+                           .setMessage("No se pudo obtener la localización del teléfono. Por favor, compruebe que está conectado.")
+                           .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                               android.os.Process.killProcess(android.os.Process.myPid());
+                               System.exit(1);
+                           }).show();
+        });
+
     }
 
     public void advance(View view) {
