@@ -6,6 +6,8 @@ import com.logrolling.server.database.migrations.Migration;
 import com.logrolling.server.services.favors.FavorManager;
 import com.logrolling.server.services.favors.Favor;
 
+import java.util.Date;
+
 public class FavorMigration implements Migration {
 
     /**
@@ -43,8 +45,8 @@ public class FavorMigration implements Migration {
     public void fillDummy() {
 
         Favor[] favorList = new Favor[] {
-                new Favor("pedro", "Ir a la compra", "Necesito tomates y lechuga", 30, 100, 40.384408, 10, false),
-                new Favor("pablo", "Pasear al perro", "Darle un paseo por el campo", 30, 13,40.388425, -3.941058, false),
+                new Favor("pedro", "Ir a la compra", "Necesito tomates y lechuga", (int)(new Date().getTime() / 1000L) + 3600 * 24, 100, 40.3861212,-3.9312154, false),
+                new Favor("pablo", "Pasear al perro", "Darle un paseo por el campo", (int)(new Date().getTime() / 1000L) + 3600 * 48, 13,40.388425, -3.941058, false),
 
         };
 
