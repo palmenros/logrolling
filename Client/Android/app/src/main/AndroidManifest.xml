@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true">
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyApWSJ9hXbvrgES2SJZOXHf_Pe4s8F0T90"/>
         <activity android:name=".view.FavorToBeDoneActivity"  android:theme="@style/AppTheme"/>
-        <activity android:name=".view.ChatPersonActivity" android:theme="@style/AppTheme" />
+        <activity android:name=".view.UserChatActivity" android:theme="@style/AppTheme" />
         <activity android:name=".view.AskedFavorActivity" android:theme="@style/AppTheme" />
         <activity android:name=".view.DoFavorActivity"  android:theme="@style/AppTheme"/>
         <activity android:name=".view.MessageActivity" android:theme="@style/AppTheme"/>

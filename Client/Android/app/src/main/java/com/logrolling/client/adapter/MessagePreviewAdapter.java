@@ -13,20 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.logrolling.client.R;
 import com.logrolling.client.transfer.TransferMessagePreview;
+import com.logrolling.client.view.ClickListener;
 
 import java.util.ArrayList;
 
 public class MessagePreviewAdapter extends RecyclerView.Adapter<MessagePreviewAdapter.MessagePreviewViewHolder> {
 
     ArrayList<TransferMessagePreview> transferMessagePreviewsList;
+    private ClickListener clickListener;
 
-    public MessagePreviewAdapter(ArrayList<TransferMessagePreview> transferMessagePreviewsList) {
+
+    public MessagePreviewAdapter(ArrayList<TransferMessagePreview> transferMessagePreviewsList, ClickListener clickListener) {
         this.transferMessagePreviewsList = transferMessagePreviewsList;
+        this.clickListener = clickListener;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public MessagePreviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_personas, parent, false);
+        view.setOnClickListener((clickView) -> {
+            clickListener.onClick(clickView);
+        });
         return new MessagePreviewViewHolder(view);
     }
 

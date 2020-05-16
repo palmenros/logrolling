@@ -1,7 +1,7 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,17 +15,18 @@ import android.widget.TextView;
 import com.logrolling.client.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.logrolling.client.adapter.MessagePreviewAdapter;
+import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.transfer.TransferMessagePreview;
 
 public class MessageActivity extends AppCompatActivity {
-    private RecyclerView listChat;
+    private RecyclerView messagesPreviewRecyclerView;
     private ArrayList<TransferMessagePreview> chats = new ArrayList<TransferMessagePreview>();
     private TextView numGrollies;
     private MessagePreviewAdapter adapter;
-    private TextView popUpMessage;
-    private ConstraintLayout popUpError;
+    private TextView emptyMessagesTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +34,13 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_messages);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//TODO: Pedir el número de grollies a quien sea
+        emptyMessagesTextView = (TextView) findViewById(R.id.textView2);
+        loadGrolliesAmount();
 
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError6);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
+        messagesPreviewRecyclerView = (RecyclerView) findViewById(R.id.ListaMensajes);
+        messagesPreviewRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        listChat = (RecyclerView) findViewById(R.id.ListaMensajes);
-        listChat.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-
+        //Divider between messages
         RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
             private Drawable mDivider = getResources().getDrawable(R.drawable.message_separator_line);
 
@@ -67,13 +65,9 @@ public class MessageActivity extends AppCompatActivity {
         };
 
 
-        listChat.addItemDecoration(decoration);
+        messagesPreviewRecyclerView.addItemDecoration(decoration);
 
-
-        llenarLista();
-
-        adapter = new MessagePreviewAdapter(chats);
-        listChat.setAdapter(adapter);
+        fillMessagePreviews();
 
         /*listChat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -86,10 +80,53 @@ public class MessageActivity extends AppCompatActivity {
         });*/
     }
 
-    private void llenarLista() {
-        for (int i = 0; i < 5; i++) {
-            chats.add(new TransferMessagePreview("Persona " + i, "ultimo mensaje"));
-        }
+    private void fillMessagePreviews() {
+
+        Controller.getInstance().getChatPreviews((messagePreviews) -> {
+
+            Collections.addAll(chats, messagePreviews);
+            adapter = new MessagePreviewAdapter(chats, (view) -> {
+                int position = messagesPreviewRecyclerView.getChildLayoutPosition(view);
+                TransferMessagePreview messagePreview = chats.get(position);
+                Intent i = new Intent(this, UserChatActivity.class);
+                i.putExtra("otherUser", messagePreview.getUser());
+                startActivity(i);
+            });
+            messagesPreviewRecyclerView.setAdapter(adapter);
+
+            if(messagePreviews.length == 0) {
+                showEmptyMessages();
+            }
+
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
+    }
+
+    private void showEmptyMessages() {
+        emptyMessagesTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void loadGrolliesAmount() {
+        Controller.getInstance().getCurrentUserGrollies((grollies) -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
     }
 
     //Panel Inferior
@@ -118,16 +155,6 @@ public class MessageActivity extends AppCompatActivity {
     public void buyGrollies(View view) {
         Intent i = new Intent(this, ShopActivity.class);
         startActivity(i);
-    }
-
-    //popUpError
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
     }
 
 

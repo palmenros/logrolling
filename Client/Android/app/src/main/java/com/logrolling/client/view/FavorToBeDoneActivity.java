@@ -47,7 +47,7 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
     }
 
     public void chat(View view) {
-        Intent i = new Intent(this, ChatPersonActivity.class);
+        Intent i = new Intent(this, UserChatActivity.class);
         startActivity(i);
     }
 

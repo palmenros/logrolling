@@ -79,7 +79,13 @@ public class GiftsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String address = input.getText().toString();
 
-                        controller.purchaseGift(gift.getTitle(), address, () -> {
+                        if(address.isEmpty()) {
+                                new AlertDialog.Builder(GiftsActivity.this)
+                                    .setTitle("Error")
+                                    .setMessage("La dirección no puede ser vacía.")
+                                    .setNeutralButton("Ok", (d, w) -> {}).show();
+                        } else {
+                            controller.purchaseGift(gift.getTitle(), address, () -> {
                             //Refresh remaining grollies
                             loadGrolliesAmount();
                         }, (error) -> {
@@ -92,6 +98,7 @@ public class GiftsActivity extends AppCompatActivity {
                                         System.exit(1);
                             }).show();
                         });
+                        }
 
                     }
                 });
