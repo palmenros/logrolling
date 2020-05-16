@@ -22,7 +22,7 @@ public class FavorMigration implements Migration {
                         "id int auto_increment," +
                         "creator varchar(50) not null," +
                         "title varchar(50) not null," +
-                        "description varchar(150) not null," +
+                        "description varchar(500) not null," +
                         "dueTime integer," +                    //Seconds from 1970
                         "reward int," +
                         "latitude double," +

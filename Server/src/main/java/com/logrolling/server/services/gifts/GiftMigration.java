@@ -28,7 +28,7 @@ public class GiftMigration implements Migration {
                 "create table purchasedGifts (" +
                         "id int auto_increment," +
                         "idGift int," +
-                        "address varchar(50) not null," +
+                        "address varchar(150) not null," +
                         "user varchar(50) not null," +
                         "sent integer," +
                         "constraint purchasedGifts_pk primary key (id)" +
