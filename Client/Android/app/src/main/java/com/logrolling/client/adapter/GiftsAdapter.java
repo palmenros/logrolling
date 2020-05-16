@@ -11,16 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.logrolling.client.R;
 import com.logrolling.client.transfer.TransferGift;
+import com.logrolling.client.view.ClickListener;
 
 import java.util.ArrayList;
 
 
 public class GiftsAdapter extends RecyclerView.Adapter<GiftsAdapter.GiftViewHolder> {
 
-    ArrayList<TransferGift> giftList;
+    private ArrayList<TransferGift> giftList;
+    private ClickListener clickListener;
 
-    public GiftsAdapter(ArrayList<TransferGift> giftList) {
+    public GiftsAdapter(ArrayList<TransferGift> giftList, ClickListener clickListener ) {
         this.giftList = giftList;
+        this.clickListener = clickListener;
     }
 
 
@@ -28,6 +31,9 @@ public class GiftsAdapter extends RecyclerView.Adapter<GiftsAdapter.GiftViewHold
     @Override
     public GiftViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_regalos, parent, false);
+        view.setOnClickListener((clickView) -> {
+            clickListener.onClick(clickView);
+        });
         return new GiftViewHolder(view);
     }
 

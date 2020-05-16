@@ -141,11 +141,11 @@ public class Controller {
         giftDelegate.getAllGifts(responseListener, errorListener);
     }
 
-    public void purchaseGift(String giftName, SuccessListener successListener, ErrorListener errorListener) {
+    public void purchaseGift(String giftName, String address, SuccessListener successListener, ErrorListener errorListener) {
         LocationService locationService = LocationService.getInstance();
         giftDelegate.purchaseGift(new TransferPurchase(
                 giftName,
-                locationService.getAddressFromCoordinates(locationService.getLocation())
+                address
         ), successListener, errorListener);
     }
 
