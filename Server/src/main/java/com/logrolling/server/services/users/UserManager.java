@@ -60,45 +60,29 @@ public class UserManager {
 
     }
 
-    public static void updateUserGrollies(String username, User newUser) {
+    public static void updateUserGrollies(String username, int newGrollies) {
             Database db = DatabaseFactory.createInstance();
-            User user = getUserByName(username);
-
-            int id = user.getId();
-
-            db.executeUpdate("replace into users values(?, ?, ?, ?);",
+            db.executeUpdate("update users set grollies=? where username = ?;",
                     new String[]{
-
-                            Integer.toString(id),
-                            newUser.getUsername(),
-                            Authenticator.hashToken(newUser.getPassword()),
-                            newUser.getGrollies().toString()
+                        Integer.valueOf(newGrollies).toString(),
+                        username
                     });
 
             db.close();
     }
 
-    public static void updateUserbyName(String username, User newUser) {
+    public static void updateUserPassword(String username, String newPassword) {
 
-        if(username.equals(newUser.getUsername()) || getUserByName(newUser.getUsername()) == null) {
             Database db = DatabaseFactory.createInstance();
-            User user = getUserByName(username);
 
-            int id = user.getId();
-
-            db.executeUpdate("replace into users values(?, ?, ?, ?);",
+            db.executeUpdate("update users set password=? where username = ?;",
                     new String[]{
-
-                            Integer.toString(id),
-                            newUser.getUsername(),
-                            Authenticator.hashToken(newUser.getPassword()),
-                            user.getGrollies().toString()
+                            Authenticator.hashToken(newPassword),
+                            username
                     });
 
             db.close();
-        }
-        else
-            throw new AlreadyAddedException("El nombre de usuario ya está cogido");
+
     }
 
     public static void deleteUserByName(String username) {

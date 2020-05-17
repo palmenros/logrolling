@@ -28,8 +28,7 @@ public class FavorManager {
 
         if(user.getGrollies() >= favor.getReward()) {
             insertFavorToDatabase(favor);
-            user.setGrollies(user.getGrollies() - favor.getReward());
-            UserManager.updateUserGrollies(username, user);
+            UserManager.updateUserGrollies(username, user.getGrollies() - favor.getReward());
         }
         else
             throw new NotEnoughGrolliesException();

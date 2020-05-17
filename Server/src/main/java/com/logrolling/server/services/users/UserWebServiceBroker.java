@@ -23,7 +23,7 @@ public class UserWebServiceBroker {
 
     @PUT
     public void updateUserByName(@HeaderParam("token") String token, TransferCredentials transferCredentials) {
-        User.updateUserByName(token, transferCredentials.getUsername(), transferCredentials.getPassword());
+        User.updateUserByName(token, transferCredentials.getPassword());
     }
 
     @DELETE

@@ -188,8 +188,7 @@ public class Favor {
 
             //Give grollies to worker
             User worker = UserManager.getUserByName(favor.getWorker());
-            worker.setGrollies(worker.getGrollies() + favor.getReward());
-            UserManager.updateUserGrollies(favor.getWorker(), worker);
+            UserManager.updateUserGrollies(favor.getWorker(), worker.getGrollies() + favor.getReward());
 
             FavorManager.updateFavor(id,favor);
         } else {

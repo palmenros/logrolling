@@ -80,12 +80,9 @@ public class User {
         UserManager.createUser(new User(username, password));
     }
 
-    public static void updateUserByName(String token, String newU, String password){
+    public static void updateUserByName(String token, String password){
         String old = AuthenticationService.authenticateWithToken(token);
-        User user = UserManager.getUserByName(old);
-        user.setPassword(password);
-        user.setUsername(old);
-        UserManager.updateUserbyName(old, user);
+        UserManager.updateUserPassword(old, password);
     }
 
     public static TransferUser getUserByName(String username){

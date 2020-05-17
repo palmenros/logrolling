@@ -241,8 +241,7 @@ public class GiftsManager {
                     });
 
             db.close();
-            user.setGrollies(user.getGrollies() - gift2.getPrice());
-            UserManager.updateUserGrollies(username, user);
+            UserManager.updateUserGrollies(username, user.getGrollies() - gift2.getPrice());
         }
         else
             throw new NotEnoughGrolliesException();
