@@ -80,8 +80,9 @@
     <ScrollView
         android:id="@+id/InfoTienda"
         android:layout_width="0dp"
-        android:layout_height="577dp"
+        android:layout_height="0dp"
         android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header">
@@ -93,7 +94,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="673dp">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/imageView2"

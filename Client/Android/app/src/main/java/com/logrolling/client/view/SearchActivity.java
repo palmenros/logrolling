@@ -120,23 +120,23 @@ public class SearchActivity extends AppCompatActivity {
 
     //Panel Inferior
     public void gifts(View view) {
-        Intent i = new Intent(this, GiftsActivity.class);
+        Intent i = new Intent(this, GiftsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void favors(View view) {
-        Intent i = new Intent(this, MyFavorsActivity.class);
+        Intent i = new Intent(this, MyFavorsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void messages(View view) {
-        Intent i = new Intent(this, MessageActivity.class);
+        Intent i = new Intent(this, MessageActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
 
     }
 
     public void configuration(View view) {
-        Intent i = new Intent(this, ConfigurationActivity.class);
+        Intent i = new Intent(this, ConfigurationActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 

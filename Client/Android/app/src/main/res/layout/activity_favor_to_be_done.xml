@@ -6,111 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/PopUpError3"
-        android:layout_width="0dp"
-        android:layout_height="411dp"
-        android:background="#00C5BFBF"
-        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="368dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginRight="70dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/closeButtonRed"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/rojo"
-                android:fadingEdge="horizontal|vertical"
-                android:fontFamily="@font/rubik"
-                android:onClick="closeErrorPopUp"
-                android:text="@string/Cerrar"
-                android:textColor="@color/blanco"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/red"
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:background="@color/rojo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/stop"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="@+id/red"
-                app:layout_constraintEnd_toEndOf="@+id/red"
-                app:layout_constraintStart_toStartOf="@+id/red"
-                app:layout_constraintTop_toTopOf="@+id/red"
-                app:srcCompat="@drawable/ic_remove_circle_black_24dp" />
-
-            <TextView
-                android:id="@+id/messageError"
-                android:layout_width="0dp"
-                android:layout_height="89dp"
-                android:gravity="center"
-                android:text="Texto error"
-                android:textColor="@color/negro"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/red" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/closeCross"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
-            android:onClick="closeErrorPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
-
-        <ImageView
-            android:id="@+id/closeCircle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:onClick="closeErrorPopUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_clear_black_24dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Header"
         android:layout_width="0dp"
         android:layout_height="71dp"
@@ -184,20 +79,19 @@
     <ScrollView
         android:id="@+id/InformacionFavorRealizar"
         android:layout_width="0dp"
-        android:layout_height="480dp"
+        android:layout_height="0dp"
         android:layout_marginTop="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Header">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="900dp">
+                android:layout_height="wrap_content"
+                android:background="@color/blanco"
+                android:elevation="10dp"
+                >
 
                 <TextView
                     android:id="@+id/Recompensa"
@@ -230,7 +124,7 @@
                     android:ems="10"
                     android:hint="@string/Recompensa"
                     android:inputType="numberDecimal"
-                    android:textColor="#42A5F5"
+                    android:textColor="@color/negro"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -280,7 +174,7 @@
                 <TextView
                     android:id="@+id/descripcionFavor"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginEnd="50dp"
@@ -289,26 +183,25 @@
                     android:gravity="start|top"
                     android:hint="@string/Descripcion"
                     android:inputType="textMultiLine"
-                    android:textColor="@color/azul"
+                    android:scrollHorizontally="false"
+                    android:textColor="@color/negro"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor" />
 
-                <ImageView
-                    android:id="@+id/Foto"
-                    android:layout_width="0dp"
-                    android:layout_height="180dp"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="100dp"
-                    android:layout_marginRight="100dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/descripcionFavor"
-                    app:srcCompat="@drawable/ic_insert_photo_black_24dp"
-                    tools:srcCompat="@drawable/ic_insert_photo_black_24dp" />
+            <ImageView
+                android:id="@+id/Foto"
+                android:layout_width="214dp"
+                android:layout_height="177dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descripcionFavor"
+                app:srcCompat="@drawable/ic_insert_photo_black_24dp"
+                tools:srcCompat="@drawable/ic_insert_photo_black_24dp" />
 
                 <TextView
                     android:id="@+id/nombre"
@@ -359,7 +252,7 @@
                     android:ems="10"
                     android:hint="@string/FechaLimite"
                     android:inputType="date"
-                    android:textColor="#42A5F5"
+                    android:textColor="@color/negro"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -388,22 +281,33 @@
                 <TextView
                     android:id="@+id/lugarEntrega"
                     android:layout_width="0dp"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginEnd="50dp"
                     android:layout_marginRight="50dp"
                     android:ems="10"
                     android:hint="@string/LugarEntrega"
-                    android:inputType="textPersonName"
-                    android:textColor="#42A5F5"
+                    android:inputType="textMultiLine"
+                    android:scrollHorizontally="false"
+                    android:textColor="@color/negro"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/LugarEntrega" />
 
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="TextView"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@+id/recompensa"
+                    app:layout_constraintTop_toBottomOf="@+id/chat" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
+
     </ScrollView>
 
     <LinearLayout

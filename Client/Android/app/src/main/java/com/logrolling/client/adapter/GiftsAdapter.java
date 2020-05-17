@@ -30,7 +30,7 @@ public class GiftsAdapter extends RecyclerView.Adapter<GiftsAdapter.GiftViewHold
     @NonNull
     @Override
     public GiftViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_regalos, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_gift, parent, false);
         view.setOnClickListener((clickView) -> {
             clickListener.onClick(clickView);
         });

@@ -28,7 +28,7 @@ public class FavorAdapter extends RecyclerView.Adapter<FavorAdapter.FavorViewHol
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public FavorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_favores, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_favor, parent, false);
         view.setOnClickListener((clickView) -> {
             clickListener.onClick(clickView);
         });

@@ -118,10 +118,12 @@
         android:id="@+id/Filtros"
         android:layout_width="0dp"
         android:layout_height="400dp"
-        android:background="#F0F8FD"
+        android:background="@color/blanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header">
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        android:elevation="10dp"
+        >
 
         <TextView
             android:id="@+id/MinGrollies"

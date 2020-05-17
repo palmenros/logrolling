@@ -1,5 +1,6 @@
 package com.logrolling.client.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -10,13 +11,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.logrolling.client.R;
+import com.logrolling.client.controllers.Controller;
+import com.logrolling.client.services.LocationService;
+import com.logrolling.client.transfer.TransferFavor;
+
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.util.ResourceBundle;
 
 public class FavorToBeDoneActivity extends AppCompatActivity {
 
     private TextView numGrollies;
-    private TextView name, description, deliveryLocation, deliveryDate, reward, popUpMessage;
+    private TextView name, description, deliveryLocation, deliveryDate, reward;
     private ImageView photo;
-    private ConstraintLayout popUpError;
+
+    TransferFavor transferFavor = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +33,7 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favor_to_be_done);
 
         numGrollies = (TextView) findViewById(R.id.grollies);
-        numGrollies.setText("");//Pedir el número de grollies a quien sea
+        loadGrolliesAmount();
 
         name = (TextView) findViewById(R.id.nombre);
         description = (TextView) findViewById(R.id.descripcionFavor);
@@ -33,48 +42,78 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         reward = (TextView) findViewById(R.id.recompensa);
         photo = (ImageView) findViewById(R.id.Foto);
 
-        popUpError = (ConstraintLayout) findViewById(R.id.PopUpError3);
-        popUpError.setVisibility(View.INVISIBLE);
-        popUpMessage = (TextView) findViewById(R.id.messageError);
+        Bundle b = getIntent().getExtras();
+        int favorId = b.getInt("favorId");
 
-        //Ejemplo
-        name.setText("Acercarse a la farmacia");
-        description.setText("Necesito estos medicamentos: \n   o Paracetamol \n   o Gelocatil \n   o Dormidina \n   o Reflex");
-        deliveryLocation.setText("Plaza de la Cebada Nº9");
-        deliveryDate.setText("Dentro de 5 día y 14 horas");
-        reward.setText("6000 grollies");
+        Controller.getInstance().getFavorById(favorId, favor -> {
+            transferFavor = favor;
+            name.setText(favor.getTitle());
+            description.setText(favor.getDescription());
+            deliveryLocation.setText(LocationService.getInstance().getAddressFromCoordinates(transferFavor.getCoordinates()));
+            deliveryDate.setText(favor.getFormattedDueTime());
+            reward.setText(favor.getReward() + " grollies");
+        }, error -> {
+             new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
 
     }
 
+    private void loadGrolliesAmount() {
+        Controller.getInstance().getCurrentUserGrollies((grollies) -> {
+            numGrollies.setText(Integer.valueOf(grollies).toString());
+        }, (error) -> {
+            new AlertDialog.Builder(this)
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                               //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                }).show();
+        });
+    }
+
     public void chat(View view) {
+        if(transferFavor == null) {
+            return;
+        }
+
         Intent i = new Intent(this, UserChatActivity.class);
+        i.putExtra("otherUser", transferFavor.getCreator());
         startActivity(i);
     }
 
     //Panel Inferior
     public void search(View view) {
-        Intent i = new Intent(this, SearchActivity.class);
+        Intent i = new Intent(this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void favors(View view) {
-        Intent i = new Intent(this, MyFavorsActivity.class);
+        Intent i = new Intent(this, MyFavorsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void messages(View view) {
-        Intent i = new Intent(this, MessageActivity.class);
+        Intent i = new Intent(this, MessageActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
 
     }
 
     public void configuration(View view) {
-        Intent i = new Intent(this, ConfigurationActivity.class);
+        Intent i = new Intent(this, ConfigurationActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void gifts(View view) {
-        Intent i = new Intent(this, GiftsActivity.class);
+        Intent i = new Intent(this, GiftsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
@@ -83,13 +122,4 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    //popUpError
-    public void showErrorPopUp(View view) {
-        // popUpMessage.setText();
-        popUpError.setVisibility(View.VISIBLE);
-    }
-
-    public void closeErrorPopUp(View view) {
-        popUpError.setVisibility(View.INVISIBLE);
-    }
 }

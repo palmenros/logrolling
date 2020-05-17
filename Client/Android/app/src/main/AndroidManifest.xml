@@ -14,21 +14,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyApWSJ9hXbvrgES2SJZOXHf_Pe4s8F0T90"/>
-        <activity android:name=".view.FavorToBeDoneActivity"  android:theme="@style/AppTheme"/>
-        <activity android:name=".view.UserChatActivity" android:theme="@style/AppTheme" />
-        <activity android:name=".view.AskedFavorActivity" android:theme="@style/AppTheme" />
-        <activity android:name=".view.DoFavorActivity"  android:theme="@style/AppTheme"/>
-        <activity android:name=".view.MessageActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.SearchActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.ShopActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.MyProfileActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.ConfigurationActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.GiftsActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.AskFavorActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.MyFavorsActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.RegistrationActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.SignInActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".view.MainActivity" android:theme="@style/AppTheme">
+        <activity android:name=".view.FavorToBeDoneActivity"/>
+        <activity android:name=".view.UserChatActivity" />
+        <activity android:name=".view.AskedFavorActivity" />
+        <activity android:name=".view.DoFavorActivity"/>
+        <activity android:name=".view.MessageActivity"/>
+        <activity android:name=".view.SearchActivity"/>
+        <activity android:name=".view.ShopActivity"/>
+        <activity android:name=".view.MyProfileActivity"/>
+        <activity android:name=".view.ConfigurationActivity"/>
+        <activity android:name=".view.GiftsActivity"/>
+        <activity android:name=".view.AskFavorActivity"/>
+        <activity android:name=".view.MyFavorsActivity"/>
+        <activity android:name=".view.RegistrationActivity"/>
+        <activity android:name=".view.SignInActivity"/>
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

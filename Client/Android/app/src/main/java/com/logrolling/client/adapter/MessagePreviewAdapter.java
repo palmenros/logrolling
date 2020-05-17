@@ -30,7 +30,7 @@ public class MessagePreviewAdapter extends RecyclerView.Adapter<MessagePreviewAd
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public MessagePreviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_personas, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_preview, parent, false);
         view.setOnClickListener((clickView) -> {
             clickListener.onClick(clickView);
         });

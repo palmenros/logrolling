@@ -19,11 +19,11 @@
     <string name="Mensajes">Mensajes</string>
     <string name="GuardarCambios">Guardar Cambios</string>
     <string name="Nombre">Nombre del favor</string>
-    <string name="Descripcion">\ Descripción del favor</string>
-    <string name="LugarRealiz">\ Lugar de realización</string>
-    <string name="LugarEntrega">\ Lugar de entrega</string>
-    <string name="FechaLimite">\ Fecha límite</string>
-    <string name="Recompensa">\ Recompensa ofrecida</string>
+    <string name="Descripcion">Descripción del favor</string>
+    <string name="LugarRealiz">Lugar de realización</string>
+    <string name="LugarEntrega">Lugar de entrega</string>
+    <string name="FechaLimite">Fecha límite</string>
+    <string name="Recompensa">Recompensa ofrecida</string>
     <string name="PedirFavor">Pedir nuevo favor</string>
     <string name="TextoPerfil">Cambia tu foto, nombre o contraseña</string>
     <string name="TextoNotificaciones">Cambia la luz, la configuración de notificaciones...</string>

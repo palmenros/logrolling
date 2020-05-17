@@ -167,28 +167,28 @@ public class AskFavorActivity extends AppCompatActivity {
 
     //Panel Inferior
     public void search(View view) {
-        Intent i = new Intent(this, SearchActivity.class);
+        Intent i = new Intent(this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void favors(View view) {
-        Intent i = new Intent(this, MyFavorsActivity.class);
+        Intent i = new Intent(this, MyFavorsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void messages(View view) {
-        Intent i = new Intent(this, MessageActivity.class);
+        Intent i = new Intent(this, MessageActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
 
     }
 
     public void configuration(View view) {
-        Intent i = new Intent(this, ConfigurationActivity.class);
+        Intent i = new Intent(this, ConfigurationActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void gifts(View view) {
-        Intent i = new Intent(this, GiftsActivity.class);
+        Intent i = new Intent(this, GiftsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
@@ -202,7 +202,7 @@ public class AskFavorActivity extends AppCompatActivity {
         }
 
         String name = nameEditText.getText().toString();
-        String description = nameEditText.getText().toString();
+        String description = descriptionEditText.getText().toString();
         String rewardString = rewardEditText.getText().toString();
 
         if(name.isEmpty() || description.isEmpty() || rewardString.isEmpty() || dueDate == null || deliveryLocation == null) {
@@ -225,7 +225,7 @@ public class AskFavorActivity extends AppCompatActivity {
         //Check reward
         int reward = Integer.parseInt(rewardString);
 
-        if(reward <= 10) {
+        if(reward < 10) {
             new AlertDialog.Builder(this)
                         .setTitle("Error")
                         .setMessage("La recompensa debe ser al menos de 10 grollies.")

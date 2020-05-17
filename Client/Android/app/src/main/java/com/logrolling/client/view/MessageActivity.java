@@ -42,44 +42,8 @@ public class MessageActivity extends AppCompatActivity {
 
         messagesPreviewRecyclerView.setVisibility(View.VISIBLE);
 
-        //Divider between messages
-        RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
-            private Drawable mDivider = getResources().getDrawable(R.drawable.message_separator_line);
-
-            @Override
-            public void onDraw(Canvas canvas, RecyclerView parent, RecyclerView.State state) {
-                int dividerLeft = parent.getPaddingLeft();
-                int dividerRight = parent.getWidth() - parent.getPaddingRight();
-
-                int childCount = parent.getChildCount();
-                for (int i = 0; i <= childCount - 2; i++) {
-                    View child = parent.getChildAt(i);
-
-                    RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-
-                    int dividerTop = child.getBottom() + params.bottomMargin;
-                    int dividerBottom = dividerTop + mDivider.getIntrinsicHeight();
-
-                    mDivider.setBounds(dividerLeft, dividerTop, dividerRight, dividerBottom);
-                    mDivider.draw(canvas);
-                }
-            }
-        };
-
-
-        messagesPreviewRecyclerView.addItemDecoration(decoration);
-
         fillMessagePreviews();
 
-        /*listChat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Lo que sea
-                Intent i = new Intent(MessageActivity.this, MessageActivity.class);
-                startActivity(i);
-            }
-        });*/
     }
 
     private void fillMessagePreviews() {
@@ -134,23 +98,23 @@ public class MessageActivity extends AppCompatActivity {
 
     //Panel Inferior
     public void gifts(View view) {
-        Intent i = new Intent(this, GiftsActivity.class);
+        Intent i = new Intent(this, GiftsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void favors(View view) {
-        Intent i = new Intent(this, MyFavorsActivity.class);
+        Intent i = new Intent(this, MyFavorsActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     public void search(View view) {
-        Intent i = new Intent(this, SearchActivity.class);
+        Intent i = new Intent(this, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
 
     }
 
     public void configuration(View view) {
-        Intent i = new Intent(this, ConfigurationActivity.class);
+        Intent i = new Intent(this, ConfigurationActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
