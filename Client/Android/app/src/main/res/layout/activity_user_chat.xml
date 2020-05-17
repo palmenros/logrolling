@@ -54,15 +54,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
+        android:background="@drawable/image_background"
         android:id="@+id/FotoPerfil"
-        android:layout_width="60dp"
-        android:layout_height="0dp"
+        android:layout_height="52dp"
+        android:layout_width="52dp"
         app:layout_constraintBottom_toTopOf="@+id/ListaMensajes"
         app:layout_constraintStart_toEndOf="@+id/Atras"
         app:layout_constraintTop_toTopOf="@+id/Header"
-        app:srcCompat="@drawable/ic_person_white_24dp"
-        tools:ignore="VectorDrawableCompat" />
+         />
 
     <EditText
         android:layout_marginLeft="5dp"

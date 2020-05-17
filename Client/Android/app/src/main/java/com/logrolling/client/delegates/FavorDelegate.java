@@ -98,4 +98,13 @@ public class FavorDelegate {
                 null,
                 errorListener);
     }
+
+    public void getLatestFavor(ResponseListener<TransferFavor> responseListener, ErrorListener errorListener) {
+        client.getRequest("favors/last",
+                null,
+                SerializationService.getInstance().getResponseListener(TransferFavor.class, responseListener, errorListener),
+                AuthenticationService.getInstance().getAuthToken(),
+                errorListener
+                );
+    }
 }

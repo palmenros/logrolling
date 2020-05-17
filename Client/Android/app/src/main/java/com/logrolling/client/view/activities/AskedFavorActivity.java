@@ -1,19 +1,26 @@
-package com.logrolling.client.view;
+package com.logrolling.client.view.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.opengl.Visibility;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.logrolling.client.R;
 import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.services.LocationService;
 import com.logrolling.client.transfer.TransferFavor;
+import com.logrolling.client.view.CallableNetworkImageView;
+import com.logrolling.client.web.WebRequestQueue;
+
+import java.util.concurrent.Callable;
 
 public class AskedFavorActivity extends AppCompatActivity {
 
@@ -21,7 +28,8 @@ public class AskedFavorActivity extends AppCompatActivity {
     private Button chatButton, deleteComplete;
     private TextView numGrollies;
     private TextView name, description, deliveryLocation, deliveryDate, reward, worker;
-    private ImageView photo;
+    private CallableNetworkImageView photo;
+    private boolean isImageFitToScreen = false;
 
     private TransferFavor transferFavor;
 
@@ -41,13 +49,31 @@ public class AskedFavorActivity extends AppCompatActivity {
         deliveryLocation = (TextView) findViewById(R.id.lugarEntrega);
         deliveryDate = (TextView) findViewById(R.id.fechaLimite);
         reward = (TextView) findViewById(R.id.recompensa);
-        photo = (ImageView) findViewById(R.id.foto);
 
         worker = (TextView) findViewById(R.id.realizador);
 
-
         Bundle b = getIntent().getExtras();
         int favorId = b.getInt("favorId");
+
+        photo = (CallableNetworkImageView) findViewById(R.id.foto);
+        photo.setClipToOutline(true);
+
+        photo.setResponseObserver(new CallableNetworkImageView.ResponseObserver() {
+             @Override
+             public void onError() {
+                photo.setVisibility(View.GONE);
+             }
+
+             @Override
+             public void onSuccess() {
+                 //TODO: Maybe on click zoom?
+             }
+         });
+
+        photo.setImageUrl(
+                Controller.getInstance().getUncheckedFavorImageURL(favorId),
+                WebRequestQueue.getInstance().getImageLoader()
+        );
 
         Controller.getInstance().getFavorById(favorId, favor -> {
             transferFavor = favor;
@@ -78,6 +104,7 @@ public class AskedFavorActivity extends AppCompatActivity {
                 }).show();
         });
     }
+
 
     private void loadGrolliesAmount() {
         Controller.getInstance().getCurrentUserGrollies((grollies) -> {

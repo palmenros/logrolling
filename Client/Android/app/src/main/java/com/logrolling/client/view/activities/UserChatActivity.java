@@ -1,8 +1,7 @@
-package com.logrolling.client.view;
+package com.logrolling.client.view.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,17 +12,17 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.logrolling.client.R;
 
-import java.security.AccessControlException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.logrolling.client.adapter.ChatMessageAdapter;
 import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.transfer.TransferMessage;
+import com.logrolling.client.web.WebRequestQueue;
 
 public class UserChatActivity extends AppCompatActivity {
     private EditText writeMessage;
@@ -39,12 +38,18 @@ public class UserChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_user_chat);
+
         Bundle b = getIntent().getExtras();
         otherPerson = b.getString("otherUser");
 
-        //TODO: Customize image
+        NetworkImageView photo = (NetworkImageView) findViewById(R.id.FotoPerfil);
+        photo.setImageUrl(
+                Controller.getInstance().getUserImageURL(otherPerson),
+                WebRequestQueue.getInstance().getImageLoader()
+        );
 
-        setContentView(R.layout.activity_user_chat);
+        photo.setClipToOutline(true);
 
         recycler = (RecyclerView) findViewById(R.id.ListaMensajes);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

@@ -22,13 +22,12 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.android.volley.toolbox.NetworkImageView
                 android:adjustViewBounds="true"
                 android:id="@+id/Photo"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:background="@drawable/image_background"
-                app:srcCompat="@drawable/nintendo_switch" />
+                android:background="@drawable/image_background" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AskedFavorActivity">
+    tools:context=".view.activities.AskedFavorActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Header"
@@ -130,20 +130,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/borrar" />
 
-            <ImageView
+            <com.logrolling.client.view.CallableNetworkImageView
                 android:id="@+id/foto"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginStart="100dp"
                 android:layout_marginLeft="100dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="100dp"
                 android:layout_marginRight="100dp"
+                android:background="@drawable/image_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descrFavor"
-                app:srcCompat="@drawable/ic_insert_photo_black_24dp"
-                tools:srcCompat="@drawable/ic_insert_photo_black_24dp" />
+                />
 
             <TextView
                 android:id="@+id/Recompensa"

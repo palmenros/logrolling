@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondotienda"
-    tools:context=".view.ShopActivity">
+    tools:context=".view.activities.ShopActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Header"

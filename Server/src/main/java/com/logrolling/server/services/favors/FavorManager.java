@@ -307,4 +307,28 @@ public class FavorManager {
         }
         return favor;
     }
+
+    public static Favor getLatestFavorFromUser(String username) {
+        Favor favor = null;
+
+        Database db = DatabaseFactory.createInstance();
+        ResultSet rs = db.executeQuery("select * from favors where creator = ? order by id desc",
+                new String[]{
+                        username
+                });
+
+        try {
+            if (rs.next()) {
+                favor = getFavorFromResultSet(rs);
+            }
+        }  catch(SQLException e) {
+            throw new DatabaseException(e);
+        }
+        db.close();
+
+        if(favor == null) {
+            throw new DataNotFoundException("Favor not found");
+        }
+        return favor;
+    }
 }

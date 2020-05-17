@@ -19,12 +19,11 @@
         android:paddingRight="5dp"
         android:orientation="horizontal">
 
-        <ImageView
+        <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/Photo"
             android:layout_width="81dp"
             android:layout_height="81dp"
-            android:background="@drawable/image_background"
-            app:srcCompat="@drawable/profile_photo_test" />
+            android:background="@drawable/image_background" />
 
         <LinearLayout
             android:padding="7dp"

@@ -1,4 +1,4 @@
-package com.logrolling.client.view;
+package com.logrolling.client.view.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

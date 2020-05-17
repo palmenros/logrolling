@@ -1,4 +1,4 @@
-package com.logrolling.client.view;
+package com.logrolling.client.view.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,17 +7,23 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -31,12 +37,15 @@ import com.logrolling.client.R;
 import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.services.LocationService;
 import com.logrolling.client.transfer.Coordinates;
+import com.logrolling.client.web.WebRequestQueue;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.ResourceBundle;
 
 public class AskFavorActivity extends AppCompatActivity {
     private TextView numGrollies;
@@ -46,9 +55,11 @@ public class AskFavorActivity extends AppCompatActivity {
 
     private EditText nameEditText, descriptionEditText, rewardEditText;
 
+    private Bitmap favorBitmap = null;
     private Date dueDate = null;
     private Coordinates deliveryLocation = null;
     private boolean askingFavor = false;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +70,9 @@ public class AskFavorActivity extends AppCompatActivity {
         loadGrolliesAmount();
 
         dueTimeButton = (Button) findViewById(R.id.FechaLimite);
+        imageView = (ImageView) findViewById(R.id.Foto);
+
+        imageView.setClipToOutline(true);
 
         nameEditText = (EditText) findViewById(R.id.Nombre);
         descriptionEditText = (EditText) findViewById(R.id.DescripcionFavor);
@@ -252,9 +266,56 @@ public class AskFavorActivity extends AppCompatActivity {
                             askingFavor = true;
 
                             controller.createFavor(name, description, dueDate, reward, deliveryLocation, () -> {
-                                askingFavor = false;
-                                Intent i = new Intent(this, MyFavorsActivity.class);
-                                startActivity(i);
+
+                                //Favor created successfully
+                                if(favorBitmap != null) {
+                                    //Upload bitmap
+
+                                    controller.getLatestFavor(favor -> {
+                                        ProgressDialog progressDialog = new ProgressDialog(this);
+                                        progressDialog.setMessage("Subiendo imagen...");
+                                        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                        progressDialog.setCancelable(false);
+                                        progressDialog.show();
+
+                                        Controller.getInstance().uploadFavorImage(favorBitmap, favor.getId(), () -> {
+                                            progressDialog.dismiss();
+                                            //Success
+                                            //Change photo
+                                            imageView.setImageBitmap(favorBitmap);
+
+                                            new AlertDialog.Builder(this)
+                                                .setTitle("Éxito")
+                                                .setMessage("Éxito al subir la foto del favor. El cambio se mostrará en unos segundos.")
+                                                .setCancelable(false)
+                                                .setNeutralButton("Ok", (d, w) -> {
+                                                     WebRequestQueue.getInstance().getImageCache().evictAll();
+                                                     askingFavor = false;
+                                                     Intent i = new Intent(this, MyFavorsActivity.class);
+
+                                                     startActivity(i);
+                                                }).show();
+
+                                        }, (error) -> {
+                                            new AlertDialog.Builder(this)
+                                                .setTitle("Error")
+                                                .setMessage("Error al subir la foto del favor.")
+                                                .setNeutralButton("Ok", (d, w) -> {}).show();
+                                        });
+
+                                    }, error -> {
+                                        new AlertDialog.Builder(this)
+                                                .setTitle("Error")
+                                                .setMessage("Error al subir la foto del favor.")
+                                                .setNeutralButton("Ok", (d, w) -> {}).show();
+                                    });
+
+                                } else {
+                                    askingFavor = false;
+                                    Intent i = new Intent(this, MyFavorsActivity.class);
+                                    startActivity(i);
+                                }
+
                             }, error -> {
                                 askingFavor = false;
                                 new AlertDialog.Builder(this)
@@ -287,11 +348,49 @@ public class AskFavorActivity extends AppCompatActivity {
     }
 
     public void addPhoto(View view) {
-        //Añadir foto
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setAspectRatio(1, 1)
+                .setFixAspectRatio(true)
+                .setMinCropResultSize(200, 200)
+                .start(this);
+
     }
 
-    public void editPhoto(View view) {
-        //Añadir foto
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                try {
+
+                    //Store in favorBitmap selected photo
+
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), resultUri);
+                    favorBitmap = Bitmap.createScaledBitmap(bitmap, 700, 700, false);
+
+                    //Set photo
+                    imageView.setImageBitmap(favorBitmap);
+
+                } catch (IOException e) {
+                   new AlertDialog.Builder(this)
+                            .setTitle("Error")
+                            .setMessage("Error al seleccionar la foto. Vuelve a intentarlo en unos instantes.")
+                            .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                }
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+
+                new AlertDialog.Builder(this)
+                            .setTitle("Error")
+                            .setMessage("Error al seleccionar la foto. Vuelve a intentarlo en unos instantes.")
+                            .setNeutralButton("Ok", (dialog, which) -> {}).show();
+
+            }
+        }
     }
 
 }

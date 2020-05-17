@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/azul"
     android:clickable="true"
-    tools:context=".view.MainActivity">
+    tools:context=".view.activities.MainActivity">
 
     <ImageView
         android:id="@+id/logo_logrolling"

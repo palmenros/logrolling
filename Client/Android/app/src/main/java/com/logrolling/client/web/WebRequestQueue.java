@@ -26,16 +26,21 @@ public class WebRequestQueue {
     //Image loader that will be used for NetworkImageView
     private ImageLoader imageLoader;
 
+    private LruCache<String, Bitmap> imageCache;
+
     private WebRequestQueue(Context context) {
         WebRequestQueue.context = context;
 
         //Pass application context so request queue lives during all application execution
         requestQueue = Volley.newRequestQueue(context.getApplicationContext());
 
+        //Initialize Image Cache
+        imageCache =  new LruCache<String, Bitmap>(20);
+
         //Initialize imageLoader
         imageLoader = new ImageLoader(requestQueue,
                 new ImageLoader.ImageCache() {
-                    private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(20);
+                    private final LruCache<String, Bitmap> cache = imageCache;
 
                     @Override
                     public Bitmap getBitmap(String url) {
@@ -52,11 +57,6 @@ public class WebRequestQueue {
 
     //Creates a new instance
     public static synchronized void createInstance(Context context) {
-        //TODO: Maybe uncomment this to prevent recreation. However, it is useful for quick Main Activity reload
-        //if(instance != null) {
-        //    throw new IllegalStateException("WebRequestQueue instance is already created");
-        //}
-
         instance = new WebRequestQueue(context);
     }
 
@@ -77,5 +77,9 @@ public class WebRequestQueue {
 
     public ImageLoader getImageLoader() {
         return imageLoader;
+    }
+
+    public LruCache<String, Bitmap> getImageCache() {
+        return imageCache;
     }
 }

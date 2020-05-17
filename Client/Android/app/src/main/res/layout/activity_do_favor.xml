@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DoFavorActivity">
+    tools:context=".view.activities.DoFavorActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Header"
@@ -169,9 +169,10 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/DescripcionFavor" />
 
-                <ImageView
+                <com.logrolling.client.view.CallableNetworkImageView
                     android:id="@+id/Foto"
-                    android:layout_width="0dp"
+                    android:background="@drawable/image_background"
+                    android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:layout_marginStart="100dp"
                     android:layout_marginLeft="100dp"

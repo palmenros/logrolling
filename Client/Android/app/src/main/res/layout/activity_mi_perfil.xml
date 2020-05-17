@@ -109,28 +109,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/repContrasenna" />
 
-        <ImageView
+        <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/imagenPerfil"
-            android:layout_width="0dp"
             android:layout_height="140dp"
+            android:layout_width="140dp"
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="140dp"
             android:layout_marginRight="140dp"
-            android:background="#00FFFFFF"
-            android:onClick="cambiarFoto"
+            android:background="@drawable/image_background"
+            android:onClick="changeProfilePicture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_person_outline_black_24dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iconoImagen"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:onClick="cambiarFoto"
+            android:onClick="changeProfilePicture"
             app:layout_constraintBottom_toBottomOf="@+id/imagenPerfil"
             app:layout_constraintEnd_toEndOf="@+id/imagenPerfil"
             app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />

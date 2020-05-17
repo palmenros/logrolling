@@ -83,6 +83,11 @@ public class Favor {
         return new TransferFavor(FavorManager.getFavorById(id));
     }
 
+    public static TransferFavor getLatestCreatedFavor(String token) {
+        String username = AuthenticationService.authenticateWithToken(token);
+        return new TransferFavor(FavorManager.getLatestFavorFromUser(username));
+    }
+
     public int getId() {
         return id;
     }

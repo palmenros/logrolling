@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AskFavorActivity">
+    tools:context=".view.activities.AskFavorActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Header"
@@ -195,8 +195,9 @@
 
                     <ImageView
                         android:id="@+id/Foto"
-                        android:layout_width="0dp"
-                        android:layout_height="119dp"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/image_background"
+                        android:layout_height="120dp"
                         android:layout_marginStart="100dp"
                         android:layout_marginLeft="100dp"
                         android:layout_marginTop="18dp"

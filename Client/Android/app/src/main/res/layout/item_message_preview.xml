@@ -20,11 +20,10 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.android.volley.toolbox.NetworkImageView
                 android:id="@+id/Photo"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                app:srcCompat="@drawable/profile_photo_test"
                 android:background="@drawable/image_background"
                 />
 

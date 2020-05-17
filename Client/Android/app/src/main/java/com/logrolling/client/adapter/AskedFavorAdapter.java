@@ -4,16 +4,18 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.logrolling.client.R;
+import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.transfer.TransferFavor;
-import com.logrolling.client.view.ClickListener;
+import com.logrolling.client.view.activities.ClickListener;
+import com.logrolling.client.web.WebRequestQueue;
 
 import java.util.ArrayList;
 
@@ -46,7 +48,10 @@ public class AskedFavorAdapter extends RecyclerView.Adapter<AskedFavorAdapter.Fa
 
         holder.distance.setText(favorList.get(position).getDistance());
         holder.maxTime.setText(favorList.get(position).getFormattedDueTime());
-        //holder.photo.setImageResource(listaFavores.get(position).getPhoto());
+        holder.photo.setImageUrl(
+                Controller.getInstance().getFavorImageURL(favorList.get(position).getId()),
+                WebRequestQueue.getInstance().getImageLoader()
+        );
         holder.adress.setText(favorList.get(position).getAddress());
         holder.favor.setText(favorList.get(position).getTitle());
         holder.price.setText(Integer.toString(favorList.get(position).getReward()));
@@ -59,7 +64,7 @@ public class AskedFavorAdapter extends RecyclerView.Adapter<AskedFavorAdapter.Fa
 
     public class FavorViewHolder extends RecyclerView.ViewHolder {
         TextView name, maxTime, distance, adress, favor, price;
-        ImageView photo;
+        NetworkImageView photo;
 
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public FavorViewHolder(@NonNull View itemView) {
@@ -67,7 +72,7 @@ public class AskedFavorAdapter extends RecyclerView.Adapter<AskedFavorAdapter.Fa
             name = (TextView) itemView.findViewById(R.id.Name);
             maxTime = (TextView) itemView.findViewById(R.id.Tiempo);
             distance = (TextView) itemView.findViewById(R.id.Distancia);
-            photo = (ImageView) itemView.findViewById(R.id.Photo);
+            photo = (NetworkImageView) itemView.findViewById(R.id.Photo);
             adress = (TextView) itemView.findViewById(R.id.Adress);
             favor = (TextView) itemView.findViewById(R.id.Favor);
             price = (TextView) itemView.findViewById(R.id.Price);

@@ -1,8 +1,7 @@
-package com.logrolling.client.view;
+package com.logrolling.client.view.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,16 +13,14 @@ import com.logrolling.client.R;
 import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.services.LocationService;
 import com.logrolling.client.transfer.TransferFavor;
-
-import org.ocpsoft.prettytime.PrettyTime;
-
-import java.util.ResourceBundle;
+import com.logrolling.client.view.CallableNetworkImageView;
+import com.logrolling.client.web.WebRequestQueue;
 
 public class FavorToBeDoneActivity extends AppCompatActivity {
 
     private TextView numGrollies;
     private TextView name, description, deliveryLocation, deliveryDate, reward;
-    private ImageView photo;
+    private CallableNetworkImageView photo;
 
     TransferFavor transferFavor = null;
 
@@ -40,10 +37,29 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         deliveryLocation = (TextView) findViewById(R.id.lugarEntrega);
         deliveryDate = (TextView) findViewById(R.id.fechaLimite);
         reward = (TextView) findViewById(R.id.recompensa);
-        photo = (ImageView) findViewById(R.id.Foto);
+        photo = (CallableNetworkImageView) findViewById(R.id.Foto);
 
         Bundle b = getIntent().getExtras();
         int favorId = b.getInt("favorId");
+
+        photo = (CallableNetworkImageView) findViewById(R.id.Foto);
+        photo.setClipToOutline(true);
+
+        photo.setResponseObserver(new CallableNetworkImageView.ResponseObserver() {
+             @Override
+             public void onError() {
+                photo.setVisibility(View.GONE);
+             }
+
+             @Override
+             public void onSuccess() {
+             }
+         });
+
+        photo.setImageUrl(
+                Controller.getInstance().getUncheckedFavorImageURL(favorId),
+                WebRequestQueue.getInstance().getImageLoader()
+        );
 
         Controller.getInstance().getFavorById(favorId, favor -> {
             transferFavor = favor;

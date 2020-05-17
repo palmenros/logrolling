@@ -3,10 +3,12 @@ package com.logrolling.client.web;
 import android.renderscript.ScriptGroup;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
@@ -26,6 +28,59 @@ public class WebServiceClient {
 
     public String formCompleteURL(String relativeURL) {
         return Settings.getBaseURL() + relativeURL;
+    }
+
+    public void postBytes(String relativeURL,
+                          byte[] input,
+                          final SuccessListener successListener,
+                          final String authenticationToken,
+                          final ErrorListener errorListener)
+    {
+        String url = formCompleteURL(relativeURL);
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String str) {
+                        if (successListener != null) {
+                            successListener.onSuccess();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (errorListener != null) {
+                            errorListener.onError(new RequestException(error));
+                        }
+                    }
+                }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                //Set header params
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("User-Agent", "Logrolling");
+                //params.put("Content-Type", "image/jpeg");
+
+                if (authenticationToken != null) {
+                    params.put("token", authenticationToken);
+                }
+
+                return params;
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return input;
+            }
+
+        };
+
+
+        WebRequestQueue.getInstance().addToRequestQueue(request);
     }
 
     public <InputObject> void request(
@@ -69,6 +124,15 @@ public class WebServiceClient {
                 }) {
 
             @Override
+            @SuppressWarnings("DefaultCharset")
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                String parsed;
+                parsed = new String(response.data);
+
+                return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));
+            }
+
+            @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
 
                 //Set header params
@@ -85,16 +149,11 @@ public class WebServiceClient {
 
             @Override
             public byte[] getBody() throws AuthFailureError {
-                try {
                     if (responseBody == null) {
                         return new byte[]{};
                     } else {
-                        return responseBody.getBytes("utf-8");
+                        return responseBody.getBytes();
                     }
-                } catch (UnsupportedEncodingException e) {
-                    VolleyLog.wtf("Unsopported encoding exception when sending request");
-                    return null;
-                }
             }
 
         };

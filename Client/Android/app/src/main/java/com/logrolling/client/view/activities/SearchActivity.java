@@ -1,4 +1,4 @@
-package com.logrolling.client.view;
+package com.logrolling.client.view.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +17,6 @@ import com.logrolling.client.R;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.ResourceBundle;
 
 import com.logrolling.client.adapter.FavorAdapter;
 import com.logrolling.client.controllers.Controller;

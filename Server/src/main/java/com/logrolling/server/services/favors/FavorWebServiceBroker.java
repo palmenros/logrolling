@@ -73,4 +73,10 @@ public class FavorWebServiceBroker {
         Favor.deleteFavor(id, token);
     }
 
+    @GET
+    @Path("/last")
+    public TransferFavor getLatestCreatedFavor(@HeaderParam("token") String token) {
+        return Favor.getLatestCreatedFavor(token);
+    }
+
 }
