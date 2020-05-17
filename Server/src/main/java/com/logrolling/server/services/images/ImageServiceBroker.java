@@ -93,9 +93,11 @@ public class ImageServiceBroker {
         String realPath = context.getRealPath(String.format("/images/user/%s.jpg", username));
 
         //Save input to realPath
-
-        try (FileOutputStream stream = new FileOutputStream(realPath)) {
+        try {
+            FileOutputStream stream = new FileOutputStream(realPath);
             stream.write(input);
+
+            stream.close();
         } catch (IOException e) {
             return Response.serverError().build();
         }
@@ -112,8 +114,11 @@ public class ImageServiceBroker {
         String realPath = context.getRealPath(String.format("/images/favor/%d.jpg", favorId));
 
         //Save input to realPath
-        try (FileOutputStream stream = new FileOutputStream(realPath)) {
+        try {
+            FileOutputStream stream = new FileOutputStream(realPath);
             stream.write(input);
+
+            stream.close();
         } catch (IOException e) {
             return Response.serverError().build();
         }
