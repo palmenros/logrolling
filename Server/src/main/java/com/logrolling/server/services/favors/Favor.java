@@ -218,9 +218,17 @@ public class Favor {
 
     public static void deleteFavor(int id, String token){
         String username = AuthenticationService.authenticateWithToken(token);
-        if(FavorManager.getFavorById(id).getCreator().equals(username)) {
+        Favor favor = FavorManager.getFavorById(id);
+        if(favor.getCreator().equals(username)) {
+            int reward = favor.getReward();
+
             //Favor was created by current user
             FavorManager.deleteFavorFromId(id);
+            
+            //Give user back their grollies
+            User user = UserManager.getUserByName(username);
+            UserManager.updateUserGrollies(username, user.getGrollies() + reward);
+
         } else {
             throw new UnauthorizedException();
         }
