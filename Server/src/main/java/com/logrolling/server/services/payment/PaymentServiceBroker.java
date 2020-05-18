@@ -22,10 +22,10 @@ public class PaymentServiceBroker {
     //TODO: Refactor
 
     private static BraintreeGateway gateway = new BraintreeGateway(
-      Environment.SANDBOX,
-      "3rq8z22jbdjwfjh5",
-      "xzthpz3c33sprfp2",
-      "76cf1dcc9561fc58dd7cb27db77e72cf"
+            Environment.SANDBOX,
+            "3rq8z22jbdjwfjh5",
+            "xzthpz3c33sprfp2",
+            "76cf1dcc9561fc58dd7cb27db77e72cf"
     );
 
     @GET
@@ -36,20 +36,19 @@ public class PaymentServiceBroker {
     }
 
     @POST
-    public void makePaymentTransaction(TransferTransaction transferTransaction, @HeaderParam("token") String authToken)
-    {
+    public void makePaymentTransaction(TransferTransaction transferTransaction, @HeaderParam("token") String authToken) {
         String username = AuthenticationService.authenticateWithToken(authToken);
 
         //Check if amount is a valid amount
-        if(!getPricesMap().containsKey(transferTransaction.getAmount())) {
+        if (!getPricesMap().containsKey(transferTransaction.getAmount())) {
             throw new BadRequestException();
         }
 
         TransactionRequest request = new TransactionRequest()
-          .amount(new BigDecimal(transferTransaction.getAmount()).divide(new BigDecimal(100)))
-          .paymentMethodNonce(transferTransaction.getNonce())
-          .options()
-            .submitForSettlement(true).done();
+                .amount(new BigDecimal(transferTransaction.getAmount()).divide(new BigDecimal(100)))
+                .paymentMethodNonce(transferTransaction.getNonce())
+                .options()
+                .submitForSettlement(true).done();
 
         Result<Transaction> saleResult = gateway.transaction().sale(request);
 

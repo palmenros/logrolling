@@ -1,24 +1,24 @@
 package com.logrolling;
 
- class DatabaseSetting {
+class DatabaseSetting {
 
-        String key;
-        String value;
+    String key;
+    String value;
 
-        public DatabaseSetting(String key, String value) {
-            this.key = key;
-            this.value = value;
-        }
+    public DatabaseSetting(String key, String value) {
+        this.key = key;
+        this.value = value;
+    }
 
-        public String getKey() {
-            return key;
-        }
+    public String getKey() {
+        return key;
+    }
 
-        public String getValue() {
-            return value;
-        }
+    public String getValue() {
+        return value;
+    }
 
- }
+}
 
 public class Settings {
 
@@ -32,13 +32,15 @@ public class Settings {
     private static String databaseProvider = "jdbc:mysql";
 
     private static DatabaseSetting[] databaseSettings = new DatabaseSetting[]{
-        new DatabaseSetting("useUnicode", "true"),
-        new DatabaseSetting("useJDBCCompliantTimezoneShift", "true"),
-        new DatabaseSetting("useLegacyDatetimeCode", "false"),
-        new DatabaseSetting("serverTimezone", "UTC")
+            new DatabaseSetting("useUnicode", "true"),
+            new DatabaseSetting("useJDBCCompliantTimezoneShift", "true"),
+            new DatabaseSetting("useLegacyDatetimeCode", "false"),
+            new DatabaseSetting("serverTimezone", "UTC")
     };
 
-    /** Getters **/
+    /**
+     * Getters
+     **/
 
     public static String getDatabaseDriver() {
         return databaseDriver;
@@ -51,16 +53,16 @@ public class Settings {
 
         //Encode database settings
         int settingsLength = databaseSettings.length;
-        if(settingsLength > 0 ) {
+        if (settingsLength > 0) {
             stringBuilder.append('?');
 
-            for(int i = 0; i < settingsLength; i++) {
+            for (int i = 0; i < settingsLength; i++) {
                 stringBuilder.append(databaseSettings[i].getKey());
                 stringBuilder.append("=");
                 stringBuilder.append(databaseSettings[i].getValue());
 
                 //Append & if not last setting
-                if(i != settingsLength - 1) {
+                if (i != settingsLength - 1) {
                     stringBuilder.append("&");
                 }
             }

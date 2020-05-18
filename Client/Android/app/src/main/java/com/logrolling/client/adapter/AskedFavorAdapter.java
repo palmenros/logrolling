@@ -40,7 +40,7 @@ public class AskedFavorAdapter extends RecyclerView.Adapter<AskedFavorAdapter.Fa
     @Override
     public void onBindViewHolder(@NonNull FavorViewHolder holder, int position) {
         String worker = favorList.get(position).getWorker();
-        if(worker != null) {
+        if (worker != null) {
             holder.name.setText("Asignado a: " + worker);
         } else {
             holder.name.setText("No asignado");

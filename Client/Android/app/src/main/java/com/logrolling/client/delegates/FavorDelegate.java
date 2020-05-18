@@ -105,6 +105,6 @@ public class FavorDelegate {
                 SerializationService.getInstance().getResponseListener(TransferFavor.class, responseListener, errorListener),
                 AuthenticationService.getInstance().getAuthToken(),
                 errorListener
-                );
+        );
     }
 }

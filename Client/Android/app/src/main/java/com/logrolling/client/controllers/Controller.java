@@ -3,6 +3,7 @@ package com.logrolling.client.controllers;
 import android.graphics.Bitmap;
 import android.media.Image;
 
+import com.logrolling.client.delegates.AdDelegate;
 import com.logrolling.client.delegates.ChatDelegate;
 import com.logrolling.client.delegates.FavorDelegate;
 import com.logrolling.client.delegates.GiftDelegate;
@@ -45,6 +46,7 @@ public class Controller {
     private UserDelegate userDelegate;
     private ImageDelegate imageDelegate;
     private PaymentDelegate paymentDelegate;
+    private AdDelegate adDelegate;
 
     private Controller() {
         tokenDelegate = new TokenDelegate();
@@ -54,6 +56,7 @@ public class Controller {
         userDelegate = new UserDelegate();
         imageDelegate = new ImageDelegate();
         paymentDelegate = new PaymentDelegate();
+        adDelegate = new AdDelegate();
     }
 
     static public Controller getInstance() {
@@ -252,16 +255,22 @@ public class Controller {
     //          PAYMENT DELEGATE         //
     ///////////////////////////////////////
 
-    public void getPaymentClientToken(ResponseListener<String> responseListener, ErrorListener errorListener)
-    {
+    public void getPaymentClientToken(ResponseListener<String> responseListener, ErrorListener errorListener) {
         paymentDelegate.getPaymentClientToken(token -> {
             responseListener.onResponse(token.getContent());
         }, errorListener);
     }
 
-    public void makeTransaction(int cents, String nonce, SuccessListener successListener, ErrorListener errorListener)
-    {
+    public void makeTransaction(int cents, String nonce, SuccessListener successListener, ErrorListener errorListener) {
         paymentDelegate.makeTransaction(new TransferTransaction(nonce, cents), successListener, errorListener);
+    }
+
+    ///////////////////////////////////////
+    //             AD DELEGATE           //
+    ///////////////////////////////////////
+
+    public void giveUserVideoReward(SuccessListener successListener, ErrorListener errorListener) {
+        adDelegate.giveUserVideoReward(successListener, errorListener);
     }
 
 }

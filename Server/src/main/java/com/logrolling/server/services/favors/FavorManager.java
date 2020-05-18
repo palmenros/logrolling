@@ -21,16 +21,15 @@ public class FavorManager {
         insertFavorToDatabase(favor);
     }
 
-    public static void createFavor(Favor favor){
+    public static void createFavor(Favor favor) {
 
         String username = favor.getCreator();
         User user = UserManager.getUserByName(username);
 
-        if(user.getGrollies() >= favor.getReward()) {
+        if (user.getGrollies() >= favor.getReward()) {
             insertFavorToDatabase(favor);
             UserManager.updateUserGrollies(username, user.getGrollies() - favor.getReward());
-        }
-        else
+        } else
             throw new NotEnoughGrolliesException();
 
     }
@@ -48,13 +47,13 @@ public class FavorManager {
                         favor.getLatCoord().toString(),
                         favor.getLongCoord().toString(),
                         favor.getWorker(),
-                        Integer.valueOf(favor.getCompleted() ? 1 : 0 ).toString()
+                        Integer.valueOf(favor.getCompleted() ? 1 : 0).toString()
                 });
 
         db.close();
     }
 
-    public static void deleteFavorFromId(Integer id){
+    public static void deleteFavorFromId(Integer id) {
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate("delete from favors where id = ?",
                 new String[]{
@@ -66,18 +65,18 @@ public class FavorManager {
 
     }
 
-    public static void deleteFavorFromCreatorAndTitle(String creator, String title){
+    public static void deleteFavorFromCreatorAndTitle(String creator, String title) {
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate("delete from favors where creator = ? and title = ?",
-        new String[]{
-           creator,
-           title
-        });
+                new String[]{
+                        creator,
+                        title
+                });
 
         db.close();
     }
-    
-    public static void updateFavor(int id, Favor newFavor){
+
+    public static void updateFavor(int id, Favor newFavor) {
         Database db = DatabaseFactory.createInstance();
         Favor favor = getFavorById(id);
         db.executeUpdate("replace into favors values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
@@ -92,7 +91,7 @@ public class FavorManager {
                         newFavor.getLatCoord().toString(),
                         newFavor.getLongCoord().toString(),
                         newFavor.getWorker(),
-                        Integer.valueOf(newFavor.getCompleted() ? 1 : 0 ).toString()
+                        Integer.valueOf(newFavor.getCompleted() ? 1 : 0).toString()
                 });
 
         db.close();
@@ -111,7 +110,7 @@ public class FavorManager {
     }
 
     //Get uncompleted favors created by username
-    public static List<Favor> getFavorsFromUsername(String username){
+    public static List<Favor> getFavorsFromUsername(String username) {
 
         List<Favor> favors = new ArrayList<Favor>();
 
@@ -126,7 +125,7 @@ public class FavorManager {
                 Favor favor = getFavorFromResultSet(rs);
                 favors.add(favor);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
@@ -146,14 +145,15 @@ public class FavorManager {
                 Favor favor = getFavorFromResultSet(rs);
                 favors.add(favor);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
         return favors;
     }
-    private static Favor getFavorFromResultSet(ResultSet rs) throws SQLException{
+
+    private static Favor getFavorFromResultSet(ResultSet rs) throws SQLException {
         return new Favor(
                 rs.getInt("id"),
                 rs.getString("creator"),
@@ -168,11 +168,11 @@ public class FavorManager {
         );
     }
 
-    public static List<Favor> getFavorsByFilter(String username, Filter filter){
+    public static List<Favor> getFavorsByFilter(String username, Filter filter) {
         List<Favor> favors = new ArrayList<Favor>();
 
         Database db = DatabaseFactory.createInstance();
-        if(filter.getMaxDistance() == -1) {
+        if (filter.getMaxDistance() == -1) {
             ResultSet rs = db.executeQuery("select * from favors where worker is null and dueTime >= ? and reward >= ? and creator <> ?",
                     new String[]{
                             filter.getMinDate().toString(),
@@ -188,8 +188,7 @@ public class FavorManager {
             } catch (SQLException e) {
                 throw new DatabaseException(e);
             }
-        }
-        else{
+        } else {
             ResultSet rs = db.executeQuery("select * from favors where creator <> ? and worker is null and dueTime >= ? and reward >= ? and (111.111*DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude))*COS(RADIANS(?))*COS(RADIANS(longitude-?)) + SIN(RADIANS(latitude))*SIN(RADIANS(?)))))) < ?",
                     new String[]{
                             username,
@@ -217,7 +216,7 @@ public class FavorManager {
         return favors;
     }
 
-    public static List<Favor> getAwardedFavors(String username){
+    public static List<Favor> getAwardedFavors(String username) {
 
         List<Favor> favors = new ArrayList<Favor>();
 
@@ -232,7 +231,7 @@ public class FavorManager {
                 Favor favor = getFavorFromResultSet(rs);
                 favors.add(favor);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
@@ -241,7 +240,7 @@ public class FavorManager {
     }
 
     // DELETE
-    public static List<Favor> getNonAwardedFavors(){
+    public static List<Favor> getNonAwardedFavors() {
 
         List<Favor> favors = new ArrayList<Favor>();
 
@@ -253,7 +252,7 @@ public class FavorManager {
                 Favor favor = getFavorFromResultSet(rs);
                 favors.add(favor);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
@@ -261,7 +260,7 @@ public class FavorManager {
         return favors;
     }
 
-    public static List<Favor> getAvailableFavors(String username){
+    public static List<Favor> getAvailableFavors(String username) {
 
         List<Favor> favors = new ArrayList<Favor>();
 
@@ -276,7 +275,7 @@ public class FavorManager {
                 Favor favor = getFavorFromResultSet(rs);
                 favors.add(favor);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
@@ -297,12 +296,12 @@ public class FavorManager {
             if (rs.next()) {
                 favor = getFavorFromResultSet(rs);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(favor == null) {
+        if (favor == null) {
             throw new DataNotFoundException("Favor not found");
         }
         return favor;
@@ -321,12 +320,12 @@ public class FavorManager {
             if (rs.next()) {
                 favor = getFavorFromResultSet(rs);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(favor == null) {
+        if (favor == null) {
             throw new DataNotFoundException("Favor not found");
         }
         return favor;

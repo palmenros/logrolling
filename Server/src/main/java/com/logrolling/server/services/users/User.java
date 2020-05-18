@@ -28,7 +28,7 @@ public class User {
         this.grollies = grollies;
     }
 
-    public User(String username, String password){
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.grollies = INITIAL_GROLLIES;
@@ -63,33 +63,37 @@ public class User {
         this.password = password;
     }
 
-    public Integer getGrollies(){ return grollies; }
+    public Integer getGrollies() {
+        return grollies;
+    }
 
-    public void setGrollies(int grollies){ this.grollies = grollies; }
+    public void setGrollies(int grollies) {
+        this.grollies = grollies;
+    }
 
-    public static List<TransferUser> getUsers(){
+    public static List<TransferUser> getUsers() {
         List<TransferUser> transferList = new ArrayList<TransferUser>();
 
-        for(User u : UserManager.getAllUsers()) {
+        for (User u : UserManager.getAllUsers()) {
             transferList.add(new TransferUser(u));
         }
         return transferList;
     }
 
-    public static void createUser(String username, String password){
+    public static void createUser(String username, String password) {
         UserManager.createUser(new User(username, password));
     }
 
-    public static void updateUserByName(String token, String password){
+    public static void updateUserByName(String token, String password) {
         String old = AuthenticationService.authenticateWithToken(token);
         UserManager.updateUserPassword(old, password);
     }
 
-    public static TransferUser getUserByName(String username){
+    public static TransferUser getUserByName(String username) {
         return new TransferUser(UserManager.getUserByName(username));
     }
 
-    public static void deleteUser(String token){
+    public static void deleteUser(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
         UserManager.deleteUserByName(username);
 

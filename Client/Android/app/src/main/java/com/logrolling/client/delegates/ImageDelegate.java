@@ -10,8 +10,7 @@ public class ImageDelegate {
 
     private WebServiceClient client;
 
-    public ImageDelegate()
-    {
+    public ImageDelegate() {
         client = new WebServiceClient();
     }
 
@@ -39,7 +38,7 @@ public class ImageDelegate {
         client.postBytes("images/user", image, successListener, AuthenticationService.getInstance().getAuthToken(), errorListener);
     }
 
-     public void uploadFavorImage(
+    public void uploadFavorImage(
             byte[] image,
             int favorId,
             SuccessListener successListener,

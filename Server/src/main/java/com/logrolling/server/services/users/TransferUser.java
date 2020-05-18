@@ -32,7 +32,11 @@ public class TransferUser {
         this.username = username;
     }
 
-    public Integer getGrollies(){ return grollies; }
+    public Integer getGrollies() {
+        return grollies;
+    }
 
-    public void setGrollies(int grollies){ this.grollies = grollies; }
+    public void setGrollies(int grollies) {
+        this.grollies = grollies;
+    }
 }

@@ -45,13 +45,13 @@ public class GiftsActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
@@ -62,7 +62,7 @@ public class GiftsActivity extends AppCompatActivity {
         Controller controller = Controller.getInstance();
         controller.getCurrentUserGrollies((grollies) -> {
 
-            if(grollies >= gift.getPrice()) {
+            if (grollies >= gift.getPrice()) {
                 //Ask for address
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Introduce tu dirección postal");
@@ -78,25 +78,26 @@ public class GiftsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String address = input.getText().toString();
 
-                        if(address.isEmpty()) {
-                                new AlertDialog.Builder(GiftsActivity.this)
+                        if (address.isEmpty()) {
+                            new AlertDialog.Builder(GiftsActivity.this)
                                     .setTitle("Error")
                                     .setMessage("La dirección no puede ser vacía.")
-                                    .setNeutralButton("Ok", (d, w) -> {}).show();
+                                    .setNeutralButton("Ok", (d, w) -> {
+                                    }).show();
                         } else {
                             controller.purchaseGift(gift.getTitle(), address, () -> {
-                            //Refresh remaining grollies
-                            loadGrolliesAmount();
-                        }, (error) -> {
-                            new AlertDialog.Builder(GiftsActivity.this)
-                                    .setTitle("Error de red")
-                                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                                    .setNeutralButton("Ok", (d, w) -> {
-                                           //Exit now
-                                        android.os.Process.killProcess(android.os.Process.myPid());
-                                        System.exit(1);
-                            }).show();
-                        });
+                                //Refresh remaining grollies
+                                loadGrolliesAmount();
+                            }, (error) -> {
+                                new AlertDialog.Builder(GiftsActivity.this)
+                                        .setTitle("Error de red")
+                                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                                        .setNeutralButton("Ok", (d, w) -> {
+                                            //Exit now
+                                            android.os.Process.killProcess(android.os.Process.myPid());
+                                            System.exit(1);
+                                        }).show();
+                            });
                         }
 
                     }
@@ -116,19 +117,20 @@ public class GiftsActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle("Error")
                         .setMessage("No tienes suficientes grollies para comprar ese regalo")
-                        .setNeutralButton("Ok", (dialog, which) -> {})
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                        })
                         .show();
             }
 
         }, (error) -> {
-               new AlertDialog.Builder(this)
-                           .setTitle("Error de red")
-                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                               android.os.Process.killProcess(android.os.Process.myPid());
-                               System.exit(1);
-                           }).show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
 
     }
@@ -144,14 +146,14 @@ public class GiftsActivity extends AppCompatActivity {
             giftRecyclerView.setAdapter(adapter);
 
         }, (error) -> {
-                new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
 
     }

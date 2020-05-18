@@ -35,7 +35,7 @@ public class WebRequestQueue {
         requestQueue = Volley.newRequestQueue(context.getApplicationContext());
 
         //Initialize Image Cache
-        imageCache =  new LruCache<String, Bitmap>(20);
+        imageCache = new LruCache<String, Bitmap>(20);
 
         //Initialize imageLoader
         imageLoader = new ImageLoader(requestQueue,

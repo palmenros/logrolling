@@ -50,14 +50,14 @@ public class DoFavorActivity extends AppCompatActivity {
         photo.setClipToOutline(true);
 
         photo.setResponseObserver(new CallableNetworkImageView.ResponseObserver() {
-             @Override
-             public void onError() {
+            @Override
+            public void onError() {
                 photo.setVisibility(View.GONE);
-             }
+            }
 
-             @Override
-             public void onSuccess(Bitmap bitmap) {
-                 photo.setOnClickListener(view -> {
+            @Override
+            public void onSuccess(Bitmap bitmap) {
+                photo.setOnClickListener(view -> {
 
                     Bitmap[] images = {bitmap};
 
@@ -68,8 +68,8 @@ public class DoFavorActivity extends AppCompatActivity {
                         }
                     }).show();
                 });
-             }
-         });
+            }
+        });
 
         photo.setImageUrl(
                 Controller.getInstance().getUncheckedFavorImageURL(favorId),
@@ -83,18 +83,18 @@ public class DoFavorActivity extends AppCompatActivity {
                     deliveryLocation.setText(LocationService.getInstance().getAddressFromCoordinates(transferFavor.getCoordinates()));
 
                     PrettyTime prettyTime = new PrettyTime();
-                    deliveryDate.setText(prettyTime.format( new Date(  transferFavor.getDueTime() * 1000L ) ));
+                    deliveryDate.setText(prettyTime.format(new Date(transferFavor.getDueTime() * 1000L)));
                     reward.setText(transferFavor.getReward() + " grollies");
                 },
                 error -> {
                     new AlertDialog.Builder(this)
-                                .setTitle("Error de red")
-                                .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                                .setNeutralButton("Ok", (dialog, which) -> {
-                                       //Exit now
-                                    android.os.Process.killProcess(android.os.Process.myPid());
-                                    System.exit(1);
-                        }).show();
+                            .setTitle("Error de red")
+                            .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                            .setNeutralButton("Ok", (dialog, which) -> {
+                                //Exit now
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                                System.exit(1);
+                            }).show();
                 });
     }
 
@@ -103,13 +103,13 @@ public class DoFavorActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
@@ -144,25 +144,25 @@ public class DoFavorActivity extends AppCompatActivity {
     public void doFavor(View view) {
 
         new AlertDialog.Builder(this)
-                        .setTitle("Confirmación")
-                        .setMessage("¿Seguro que te comprometes a realizar este favor?")
-                        .setNegativeButton("No", (dialog, which) -> {
-                        })
-                        .setPositiveButton("Sí", (dialog, which) -> {
-                            Controller.getInstance().doFavor(favorId, () -> {
-                                Intent i = new Intent(this, SearchActivity.class);
-                                startActivity(i);
-                            }, error -> {
-                                new AlertDialog.Builder(this)
-                                    .setTitle("Error de red")
-                                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                                    .setNeutralButton("Ok", (d, w) -> {
-                                           //Exit now
-                                        android.os.Process.killProcess(android.os.Process.myPid());
-                                        System.exit(1);
-                                 }).show();
-                            });
-                        }).show();
+                .setTitle("Confirmación")
+                .setMessage("¿Seguro que te comprometes a realizar este favor?")
+                .setNegativeButton("No", (dialog, which) -> {
+                })
+                .setPositiveButton("Sí", (dialog, which) -> {
+                    Controller.getInstance().doFavor(favorId, () -> {
+                        Intent i = new Intent(this, SearchActivity.class);
+                        startActivity(i);
+                    }, error -> {
+                        new AlertDialog.Builder(this)
+                                .setTitle("Error de red")
+                                .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                                .setNeutralButton("Ok", (d, w) -> {
+                                    //Exit now
+                                    android.os.Process.killProcess(android.os.Process.myPid());
+                                    System.exit(1);
+                                }).show();
+                    });
+                }).show();
 
     }
 

@@ -101,18 +101,18 @@ public class AskFavorActivity extends AppCompatActivity {
                 LatLng position = new LatLng(coordinates.getLatitude(), coordinates.getLongitude());
                 googleMap.getUiSettings().setZoomControlsEnabled(true);
 
-                if(ContextCompat.checkSelfPermission(AskFavorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(AskFavorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     googleMap.setMyLocationEnabled(true);
                 }
 
                 //Move camera with some delay to avoid bugs
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
-                     @Override
-                     public void run() {
-                         googleMap.moveCamera(CameraUpdateFactory.newLatLng(position));
-                         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                     }
+                    @Override
+                    public void run() {
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLng(position));
+                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                    }
                 }, 500);
 
             }
@@ -123,7 +123,7 @@ public class AskFavorActivity extends AppCompatActivity {
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mapView.getMapAsync((googleMap)-> {
+                mapView.getMapAsync((googleMap) -> {
                     LatLng center = googleMap.getCameraPosition().target;
                     deliveryLocation = new Coordinates(center.latitude, center.longitude);
                     deliveryLocationButton.setText(LocationService.getInstance().getAddressFromCoordinates(deliveryLocation));
@@ -141,13 +141,13 @@ public class AskFavorActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
@@ -211,7 +211,7 @@ public class AskFavorActivity extends AppCompatActivity {
         //Comprobar que la informacion del favor es correcta
         //(name, description, deliveryLocation, deliveryDate, reward)
 
-        if(askingFavor) {
+        if (askingFavor) {
             return;
         }
 
@@ -219,125 +219,132 @@ public class AskFavorActivity extends AppCompatActivity {
         String description = descriptionEditText.getText().toString();
         String rewardString = rewardEditText.getText().toString();
 
-        if(name.isEmpty() || description.isEmpty() || rewardString.isEmpty() || dueDate == null || deliveryLocation == null) {
+        if (name.isEmpty() || description.isEmpty() || rewardString.isEmpty() || dueDate == null || deliveryLocation == null) {
             new AlertDialog.Builder(this)
-                        .setTitle("Error")
-                        .setMessage("Todos los campos tienen que ser rellenados")
-                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                    .setTitle("Error")
+                    .setMessage("Todos los campos tienen que ser rellenados")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                    }).show();
             return;
         }
 
         //Check deliverDate
-        if(new Date().getTime() + 3600L * 1000L > dueDate.getTime()) {
+        if (new Date().getTime() + 3600L * 1000L > dueDate.getTime()) {
             new AlertDialog.Builder(this)
-                        .setTitle("Error")
-                        .setMessage("La fecha debe ser de al menos una hora en el futuro")
-                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                    .setTitle("Error")
+                    .setMessage("La fecha debe ser de al menos una hora en el futuro")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                    }).show();
             return;
         }
 
         //Check reward
         int reward = Integer.parseInt(rewardString);
 
-        if(reward < 10) {
+        if (reward < 10) {
             new AlertDialog.Builder(this)
-                        .setTitle("Error")
-                        .setMessage("La recompensa debe ser al menos de 10 grollies.")
-                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                    .setTitle("Error")
+                    .setMessage("La recompensa debe ser al menos de 10 grollies.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                    }).show();
             return;
         }
 
         Controller controller = Controller.getInstance();
         controller.getCurrentUserGrollies(grollies -> {
 
-            if(grollies < reward) {
-                 new AlertDialog.Builder(this)
+            if (grollies < reward) {
+                new AlertDialog.Builder(this)
                         .setTitle("Error")
                         .setMessage("No tienes suficientes grollies.")
-                        .setNeutralButton("Ok", (dialog, which) -> {}).show();
-                 return;
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                        }).show();
+                return;
             }
 
-             new AlertDialog.Builder(this)
-                        .setTitle("Confirmación")
-                        .setMessage("¿Seguro que quieres crear un favor? Una vez sea asignado a alguien no podrás modificarlo ni borrarlo.")
-                        .setNegativeButton("No", (dialog, which) -> { })
-                        .setPositiveButton("Sí", (dialog, which) -> {
-                            askingFavor = true;
+            new AlertDialog.Builder(this)
+                    .setTitle("Confirmación")
+                    .setMessage("¿Seguro que quieres crear un favor? Una vez sea asignado a alguien no podrás modificarlo ni borrarlo.")
+                    .setNegativeButton("No", (dialog, which) -> {
+                    })
+                    .setPositiveButton("Sí", (dialog, which) -> {
+                        askingFavor = true;
 
-                            controller.createFavor(name, description, dueDate, reward, deliveryLocation, () -> {
+                        controller.createFavor(name, description, dueDate, reward, deliveryLocation, () -> {
 
-                                //Favor created successfully
-                                if(favorBitmap != null) {
-                                    //Upload bitmap
+                            //Favor created successfully
+                            if (favorBitmap != null) {
+                                //Upload bitmap
 
-                                    controller.getLatestFavor(favor -> {
-                                        ProgressDialog progressDialog = new ProgressDialog(this);
-                                        progressDialog.setMessage("Subiendo imagen...");
-                                        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                        progressDialog.setCancelable(false);
-                                        progressDialog.show();
+                                controller.getLatestFavor(favor -> {
+                                    ProgressDialog progressDialog = new ProgressDialog(this);
+                                    progressDialog.setMessage("Subiendo imagen...");
+                                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                    progressDialog.setCancelable(false);
+                                    progressDialog.show();
 
-                                        Controller.getInstance().uploadFavorImage(favorBitmap, favor.getId(), () -> {
-                                            progressDialog.dismiss();
-                                            //Success
-                                            //Change photo
-                                            imageView.setImageBitmap(favorBitmap);
+                                    Controller.getInstance().uploadFavorImage(favorBitmap, favor.getId(), () -> {
+                                        progressDialog.dismiss();
+                                        //Success
+                                        //Change photo
+                                        imageView.setImageBitmap(favorBitmap);
 
-                                            new AlertDialog.Builder(this)
+                                        new AlertDialog.Builder(this)
                                                 .setTitle("Éxito")
                                                 .setMessage("Éxito al subir la foto del favor. El cambio se mostrará en unos segundos.")
                                                 .setCancelable(false)
                                                 .setNeutralButton("Ok", (d, w) -> {
-                                                     WebRequestQueue.getInstance().getImageCache().evictAll();
-                                                     askingFavor = false;
-                                                     Intent i = new Intent(this, MyFavorsActivity.class);
+                                                    WebRequestQueue.getInstance().getImageCache().evictAll();
+                                                    askingFavor = false;
+                                                    Intent i = new Intent(this, MyFavorsActivity.class);
 
-                                                     startActivity(i);
+                                                    startActivity(i);
                                                 }).show();
 
-                                        }, (error) -> {
-                                            new AlertDialog.Builder(this)
-                                                .setTitle("Error")
-                                                .setMessage("Error al subir la foto del favor.")
-                                                .setNeutralButton("Ok", (d, w) -> {}).show();
-                                        });
-
-                                    }, error -> {
+                                    }, (error) -> {
                                         new AlertDialog.Builder(this)
                                                 .setTitle("Error")
                                                 .setMessage("Error al subir la foto del favor.")
-                                                .setNeutralButton("Ok", (d, w) -> {}).show();
+                                                .setNeutralButton("Ok", (d, w) -> {
+                                                }).show();
                                     });
 
-                                } else {
-                                    askingFavor = false;
-                                    Intent i = new Intent(this, MyFavorsActivity.class);
-                                    startActivity(i);
-                                }
+                                }, error -> {
+                                    new AlertDialog.Builder(this)
+                                            .setTitle("Error")
+                                            .setMessage("Error al subir la foto del favor.")
+                                            .setNeutralButton("Ok", (d, w) -> {
+                                            }).show();
+                                });
 
-                            }, error -> {
+                            } else {
                                 askingFavor = false;
-                                new AlertDialog.Builder(this)
-                                        .setTitle("Error de red")
-                                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                                        .setNeutralButton("Ok", (d, w) -> {
-                                               //Exit now
-                                            android.os.Process.killProcess(android.os.Process.myPid());
-                                            System.exit(1);
-                                }).show();
-                            });
-                        }).show();
+                                Intent i = new Intent(this, MyFavorsActivity.class);
+                                startActivity(i);
+                            }
+
+                        }, error -> {
+                            askingFavor = false;
+                            new AlertDialog.Builder(this)
+                                    .setTitle("Error de red")
+                                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                                    .setNeutralButton("Ok", (d, w) -> {
+                                        //Exit now
+                                        android.os.Process.killProcess(android.os.Process.myPid());
+                                        System.exit(1);
+                                    }).show();
+                        });
+                    }).show();
 
         }, error -> {
             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
 
     }
@@ -376,18 +383,20 @@ public class AskFavorActivity extends AppCompatActivity {
                     imageView.setImageBitmap(favorBitmap);
 
                 } catch (IOException e) {
-                   new AlertDialog.Builder(this)
+                    new AlertDialog.Builder(this)
                             .setTitle("Error")
                             .setMessage("Error al seleccionar la foto. Vuelve a intentarlo en unos instantes.")
-                            .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                            .setNeutralButton("Ok", (dialog, which) -> {
+                            }).show();
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
 
                 new AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("Error al seleccionar la foto. Vuelve a intentarlo en unos instantes.")
-                            .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                        .setTitle("Error")
+                        .setMessage("Error al seleccionar la foto. Vuelve a intentarlo en unos instantes.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                        }).show();
 
             }
         }

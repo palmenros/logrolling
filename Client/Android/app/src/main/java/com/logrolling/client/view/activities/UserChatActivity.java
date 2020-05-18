@@ -68,10 +68,10 @@ public class UserChatActivity extends AppCompatActivity {
         //Schedule every second to refresh messages
 
         Handler handler = new Handler();
-        updateData = new Runnable(){
-            public void run(){
+        updateData = new Runnable() {
+            public void run() {
                 showMessages();
-                handler.postDelayed(updateData,1000);
+                handler.postDelayed(updateData, 1000);
             }
         };
 
@@ -84,7 +84,7 @@ public class UserChatActivity extends AppCompatActivity {
 
             dataList.clear();
 
-            for(TransferMessage message : transferChat.getMessages()) {
+            for (TransferMessage message : transferChat.getMessages()) {
                 dataList.add(Pair.create(message.getContent(), !message.getFrom().equals(otherPerson)));
             }
 
@@ -93,13 +93,13 @@ public class UserChatActivity extends AppCompatActivity {
 
         }, (error) -> {
             new AlertDialog.Builder(this)
-                                    .setTitle("Error de red")
-                                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                                    .setNeutralButton("Ok", (d, w) -> {
-                                           //Exit now
-                                        android.os.Process.killProcess(android.os.Process.myPid());
-                                        System.exit(1);
-                            }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (d, w) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
 
     }
@@ -115,13 +115,13 @@ public class UserChatActivity extends AppCompatActivity {
             Controller.getInstance().sendMessage(otherPerson, message, () -> {
             }, (error) -> {
                 new AlertDialog.Builder(this)
-                                    .setTitle("Error de red")
-                                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                                    .setNeutralButton("Ok", (d, w) -> {
-                                           //Exit now
-                                        android.os.Process.killProcess(android.os.Process.myPid());
-                                        System.exit(1);
-                            }).show();
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (d, w) -> {
+                            //Exit now
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }).show();
             });
 
         }

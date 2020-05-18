@@ -15,12 +15,12 @@ public class AuthenticationService {
             int tokenId = Integer.parseInt(tokenParts[0]);
 
             Token token = TokenManager.getToken(tokenId);
-            if(token == null) {
+            if (token == null) {
                 //Invalid token number
                 throw new AuthenticationException();
             }
 
-            if(Authenticator.matchToken(token.getContent(), tokenParts[1])) {
+            if (Authenticator.matchToken(token.getContent(), tokenParts[1])) {
                 //Successfully authorized user, return username
                 return token.getUser();
             } else {
@@ -38,6 +38,7 @@ public class AuthenticationService {
      * Authenticate an user with username and password
      * If authentication is not successful, throw an exception
      * Else generate a new token and return it
+     *
      * @param username Username
      * @param password Password
      * @return Newly generated token to identify this user
@@ -53,7 +54,7 @@ public class AuthenticationService {
             }
 
             //User is found
-            if(Authenticator.matchToken(user.getPassword(), password)) {
+            if (Authenticator.matchToken(user.getPassword(), password)) {
                 //Correct password, generate a new token for user
                 return TokenManager.createToken(username);
             } else {

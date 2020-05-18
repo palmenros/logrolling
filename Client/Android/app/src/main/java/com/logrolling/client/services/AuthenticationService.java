@@ -22,9 +22,8 @@ public class AuthenticationService {
         return instance;
     }
 
-    public void tryStoredTokenAuth(ResponseListener<Boolean>  responseListener, ErrorListener errorListener)
-    {
-        if(PersistentStorageService.getInstance().has("authToken")) {
+    public void tryStoredTokenAuth(ResponseListener<Boolean> responseListener, ErrorListener errorListener) {
+        if (PersistentStorageService.getInstance().has("authToken")) {
 
             authToken = PersistentStorageService.getInstance().get("authToken");
 

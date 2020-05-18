@@ -62,13 +62,13 @@ public class AskedFavorActivity extends AppCompatActivity {
         photo.setClipToOutline(true);
 
         photo.setResponseObserver(new CallableNetworkImageView.ResponseObserver() {
-             @Override
-             public void onError() {
+            @Override
+            public void onError() {
                 photo.setVisibility(View.GONE);
-             }
+            }
 
-             @Override
-             public void onSuccess(Bitmap bitmap) {
+            @Override
+            public void onSuccess(Bitmap bitmap) {
 
                 photo.setOnClickListener(view -> {
 
@@ -81,8 +81,8 @@ public class AskedFavorActivity extends AppCompatActivity {
                         }
                     }).show();
                 });
-             }
-         });
+            }
+        });
 
         photo.setImageUrl(
                 Controller.getInstance().getUncheckedFavorImageURL(favorId),
@@ -98,7 +98,7 @@ public class AskedFavorActivity extends AppCompatActivity {
             reward.setText(favor.getReward() + " grollies");
             assigned = favor.getWorker() != null;
 
-            if(assigned) {
+            if (assigned) {
                 deleteComplete.setText("Completar");
                 worker.setText(favor.getWorker());
             } else {
@@ -108,14 +108,14 @@ public class AskedFavorActivity extends AppCompatActivity {
             }
 
         }, error -> {
-             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
@@ -125,20 +125,20 @@ public class AskedFavorActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
     //Botones //Dependiendo de si el favor está assigned hacer una cosa u otra
     public void delete(View view) { //TENDRÁ QUE BORRAR
 
-        if(assigned) {
+        if (assigned) {
             //Complete
             Controller.getInstance().completeFavor(transferFavor.getId(), () -> {
                 new AlertDialog.Builder(this)
@@ -149,42 +149,43 @@ public class AskedFavorActivity extends AppCompatActivity {
                             startActivity(i);
                         }).show();
             }, (error) -> {
-                 new AlertDialog.Builder(this)
+                new AlertDialog.Builder(this)
                         .setTitle("Error de red")
                         .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
                         .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
+                            //Exit now
                             android.os.Process.killProcess(android.os.Process.myPid());
                             System.exit(1);
-                }).show();
+                        }).show();
             });
         } else {
             //Delete
             new AlertDialog.Builder(this)
-                        .setTitle("Confirmación")
-                        .setMessage("¿Seguro que quieres borrar el mensaje?")
-                        .setPositiveButton("Sí", (dialog, wich) -> {
-                            Controller.getInstance().deleteFavor(transferFavor.getId(), () -> {
-                                Intent i = new Intent(this, MyFavorsActivity.class);
-                                startActivity(i);
-                            }, (error) -> {
-                                new AlertDialog.Builder(this)
-                                        .setTitle("Error de red")
-                                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                                        .setNeutralButton("Ok", (d, w) -> {
-                                            //Exit now
-                                            android.os.Process.killProcess(android.os.Process.myPid());
-                                            System.exit(1);
-                                        }).show();
-                            });
-                        }).setNegativeButton("No", (dialog, which) -> {}).show();
+                    .setTitle("Confirmación")
+                    .setMessage("¿Seguro que quieres borrar el mensaje?")
+                    .setPositiveButton("Sí", (dialog, wich) -> {
+                        Controller.getInstance().deleteFavor(transferFavor.getId(), () -> {
+                            Intent i = new Intent(this, MyFavorsActivity.class);
+                            startActivity(i);
+                        }, (error) -> {
+                            new AlertDialog.Builder(this)
+                                    .setTitle("Error de red")
+                                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                                    .setNeutralButton("Ok", (d, w) -> {
+                                        //Exit now
+                                        android.os.Process.killProcess(android.os.Process.myPid());
+                                        System.exit(1);
+                                    }).show();
+                        });
+                    }).setNegativeButton("No", (dialog, which) -> {
+            }).show();
         }
 
 
     }
 
     public void chat(View view) {
-        if(transferFavor == null || !assigned) {
+        if (transferFavor == null || !assigned) {
             return;
         }
 

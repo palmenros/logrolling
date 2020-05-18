@@ -32,7 +32,7 @@ public class SignInActivity extends AppCompatActivity {
 
     public void signIn(View view) {
 
-        if(signingIn) {
+        if (signingIn) {
             return;
         }
 
@@ -50,11 +50,11 @@ public class SignInActivity extends AppCompatActivity {
                 (error) -> {
                     signingIn = false;
                     new AlertDialog.Builder(this)
-                           .setTitle("Error")
-                           .setMessage("Error al iniciar sesión.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
+                            .setTitle("Error")
+                            .setMessage("Error al iniciar sesión.")
+                            .setNeutralButton("Ok", (dialog, which) -> {
 
-                           }).show();
+                            }).show();
                 });
     }
 

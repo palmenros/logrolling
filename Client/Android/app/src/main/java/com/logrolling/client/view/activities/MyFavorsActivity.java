@@ -58,13 +58,13 @@ public class MyFavorsActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
@@ -85,7 +85,7 @@ public class MyFavorsActivity extends AppCompatActivity {
                     //Go to AskedFavorActivity
                     int id = favor.getId();
                     Intent i = new Intent(this, AskedFavorActivity.class);
-                    i.putExtra("favorId",favor.getId());
+                    i.putExtra("favorId", favor.getId());
                     startActivity(i);
                 });
                 askedFavorsRecyclerView.setAdapter(askedAdapter);
@@ -98,32 +98,32 @@ public class MyFavorsActivity extends AppCompatActivity {
                     //Go to FavorToBeDoneActivity
                     int id = favor.getId();
                     Intent i = new Intent(this, FavorToBeDoneActivity.class);
-                    i.putExtra("favorId",favor.getId());
+                    i.putExtra("favorId", favor.getId());
                     startActivity(i);
 
                 });
                 favorsToBeDoneRecyclerView.setAdapter(toBeDoneAdapter);
                 showAskedFavors();
             }, error -> {
-                 new AlertDialog.Builder(this)
+                new AlertDialog.Builder(this)
                         .setTitle("Error de red")
                         .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
                         .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
+                            //Exit now
                             android.os.Process.killProcess(android.os.Process.myPid());
                             System.exit(1);
-                }).show();
+                        }).show();
             });
 
         }, error -> {
-             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
 
     }
@@ -171,13 +171,13 @@ public class MyFavorsActivity extends AppCompatActivity {
         favorsToBeDoneRecyclerView.setVisibility(View.INVISIBLE);
         askedFavorsRecyclerView.setVisibility(View.VISIBLE);
 
-        if(favorsAskedArray.isEmpty()) {
+        if (favorsAskedArray.isEmpty()) {
             emptyTextView.setVisibility(View.VISIBLE);
             emptyTextView.setText("No has pedido ningún favor");
         } else {
             emptyTextView.setVisibility(View.GONE);
         }
-     }
+    }
 
     public void showAskedFavors(View view) {
         showAskedFavors();
@@ -192,7 +192,7 @@ public class MyFavorsActivity extends AppCompatActivity {
         favorsToBeDoneRecyclerView.setVisibility(View.VISIBLE);
         askedFavorsRecyclerView.setVisibility(View.INVISIBLE);
 
-        if(favorsDoneArray.isEmpty()) {
+        if (favorsDoneArray.isEmpty()) {
             emptyTextView.setVisibility(View.VISIBLE);
             emptyTextView.setText("No tienes ningún favor");
         } else {

@@ -8,7 +8,7 @@ public class TransferChat {
     private String user2;
     private List<TransferMessage> messages;
 
-    public TransferChat(String user1, String user2, List<TransferMessage> messages){
+    public TransferChat(String user1, String user2, List<TransferMessage> messages) {
         this.user1 = user1;
         this.user2 = user2;
         this.messages = messages;
@@ -18,7 +18,9 @@ public class TransferChat {
         return user1;
     }
 
-    public void setUser1(String user1) { this.user1 = user1; }
+    public void setUser1(String user1) {
+        this.user1 = user1;
+    }
 
     public String getUser2() {
         return user2;

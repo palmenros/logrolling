@@ -7,14 +7,14 @@ public class TransferGift {
     private int price;
 
 
-    public TransferGift(int id, String title, String content, int price){
+    public TransferGift(int id, String title, String content, int price) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.price = price;
     }
 
-    public TransferGift(String title, String content, int price){
+    public TransferGift(String title, String content, int price) {
         this.title = title;
         this.content = content;
         this.price = price;
@@ -24,21 +24,38 @@ public class TransferGift {
         this(gift.getId(), gift.getTitle(), gift.getContent(), gift.getPrice());
     }
 
-    public TransferGift(){}
+    public TransferGift() {
+    }
 
-    public Integer getId(){ return id; }
+    public Integer getId() {
+        return id;
+    }
 
-    public void setId(int id){ this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getContent(){ return content; }
+    public String getContent() {
+        return content;
+    }
 
-    public void setContent(String content){ this.content = content; }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-    public String getTitle(){ return title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public void setTitle(String title){ this.title = title; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public Integer getPrice(){ return price; }
+    public Integer getPrice() {
+        return price;
+    }
 
-    public void setPrice(int price){ this.price = price; }
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

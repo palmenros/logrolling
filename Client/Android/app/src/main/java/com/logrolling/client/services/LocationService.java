@@ -62,7 +62,7 @@ public class LocationService {
         locationRequest = createLocationRequest();
 
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
-         .addLocationRequest(locationRequest);
+                .addLocationRequest(locationRequest);
 
         SettingsClient client = LocationServices.getSettingsClient(activity);
         Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
@@ -74,35 +74,35 @@ public class LocationService {
                 // location requests here.
 
                 fusedLocationClient.getLastLocation().addOnSuccessListener((location) -> {
-                    if(location != null) {
+                    if (location != null) {
                         lastCoordinates = new Coordinates(location.getLatitude(), location.getLongitude());
                         lastProvider = location.getProvider();
 
                         successListener.onSuccess();
                     }
 
-                fusedLocationClient.requestLocationUpdates(locationRequest, new LocationCallback() {
-                    @Override
-                    public void onLocationResult(LocationResult locationResult) {
-                        if (locationResult == null) {
-                            if(lastCoordinates == null) {
-                                errorListener.onError(new RequestException("Could not get location"));
+                    fusedLocationClient.requestLocationUpdates(locationRequest, new LocationCallback() {
+                        @Override
+                        public void onLocationResult(LocationResult locationResult) {
+                            if (locationResult == null) {
+                                if (lastCoordinates == null) {
+                                    errorListener.onError(new RequestException("Could not get location"));
+                                }
+
+                                return;
                             }
 
-                            return;
-                        }
+                            boolean sendSuccess = lastCoordinates == null;
 
-                        boolean sendSuccess = lastCoordinates == null;
+                            for (Location location : locationResult.getLocations()) {
+                                lastCoordinates = new Coordinates(location.getLatitude(), location.getLongitude());
+                            }
 
-                        for (Location location : locationResult.getLocations()) {
-                            lastCoordinates = new Coordinates(location.getLatitude(), location.getLongitude());
+                            if (sendSuccess) {
+                                successListener.onSuccess();
+                            }
                         }
-
-                        if(sendSuccess) {
-                            successListener.onSuccess();
-                        }
-                    }
-                }, Looper.getMainLooper());
+                    }, Looper.getMainLooper());
 
                 }).addOnFailureListener((error) -> {
                     onErrorListener.onError(new RequestException(error.getMessage()));
@@ -152,11 +152,11 @@ public class LocationService {
         double latB = coordinates.getLatitude();
         double longB = coordinates.getLongitude();
 
-        return 111.111 * 1000 * Math.toDegrees( Math.acos(Math.min(1.0, Math.cos(Math.toRadians(latA))
-         * Math.cos(Math.toRadians(latB))
-         * Math.cos(Math.toRadians(longA - longB))
-         + Math.sin(Math.toRadians(latA))
-         * Math.sin(Math.toRadians(latB)))));
+        return 111.111 * 1000 * Math.toDegrees(Math.acos(Math.min(1.0, Math.cos(Math.toRadians(latA))
+                * Math.cos(Math.toRadians(latB))
+                * Math.cos(Math.toRadians(longA - longB))
+                + Math.sin(Math.toRadians(latA))
+                * Math.sin(Math.toRadians(latB)))));
     }
 
     public String getAddressFromCoordinates(Coordinates coordinates) {
@@ -164,7 +164,7 @@ public class LocationService {
 
         try {
             addresses = geocoder.getFromLocation(coordinates.getLatitude(), coordinates.getLongitude(), 1);
-            if(addresses.isEmpty()) {
+            if (addresses.isEmpty()) {
                 throw new Exception("Empty list");
             }
             return addresses.get(0).getAddressLine(0);

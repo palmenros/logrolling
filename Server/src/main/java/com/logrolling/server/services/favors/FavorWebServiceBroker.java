@@ -15,7 +15,7 @@ import java.util.List;
 public class FavorWebServiceBroker {
 
     @GET
-    public List<TransferFavor> getAvailableFavors(@HeaderParam("token") String token){
+    public List<TransferFavor> getAvailableFavors(@HeaderParam("token") String token) {
         return Favor.getAvailableFavors(token);
     }
 
@@ -27,7 +27,7 @@ public class FavorWebServiceBroker {
 
     @GET
     @Path("/user")
-    public List<TransferFavor> getFavorsFromUser(@HeaderParam("token") String token){
+    public List<TransferFavor> getFavorsFromUser(@HeaderParam("token") String token) {
         return Favor.getFavorsFromUser(token);
     }
 
@@ -40,13 +40,13 @@ public class FavorWebServiceBroker {
 
     @PUT
     @Path("/{id}/@do")
-    public void doFavor(@HeaderParam("token") String token, @PathParam("id") int id){
+    public void doFavor(@HeaderParam("token") String token, @PathParam("id") int id) {
         Favor.doFavor(id, token);
     }
 
     @PUT
     @Path("/{id}/@complete")
-    public void completeFavor(@HeaderParam("token") String token, @PathParam("id") int id){
+    public void completeFavor(@HeaderParam("token") String token, @PathParam("id") int id) {
         Favor.completeFavor(id, token);
     }
 
@@ -66,7 +66,7 @@ public class FavorWebServiceBroker {
     public void updateFavor(@HeaderParam("token") String token, @PathParam("id") int id, TransferFavor f) {
         Favor.updateFavor(f, id, token);
     }
-    
+
     @DELETE
     @Path("/{id}")
     public void deleteFavor(@HeaderParam("token") String token, @PathParam("id") int id) {

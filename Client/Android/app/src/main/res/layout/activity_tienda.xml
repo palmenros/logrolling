@@ -366,6 +366,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:visibility="invisible"
                     android:id="@+id/restantes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -18,21 +18,21 @@ public class MigrationManager {
      */
     private static Migration[] migrations = new Migration[]{
 
-        new UserMigration(),
-        new FavorMigration(),
-        new TokenMigration(),
-        new GiftMigration(),
-        new MessageMigration()
+            new UserMigration(),
+            new FavorMigration(),
+            new TokenMigration(),
+            new GiftMigration(),
+            new MessageMigration()
     };
 
     /**
-     *   A migration is a way to keep databases clean and testable between developers.
-     *   Every time the server is executed during development, all tables will be recreated
-     *   and filled with dummy data.
+     * A migration is a way to keep databases clean and testable between developers.
+     * Every time the server is executed during development, all tables will be recreated
+     * and filled with dummy data.
      */
     public synchronized static void migrate() {
 
-        for(Migration migration : migrations) {
+        for (Migration migration : migrations) {
             migration.migrate();
         }
     }
@@ -43,7 +43,7 @@ public class MigrationManager {
         database.deleteAllTables();
         database.close();
 
-        for(Migration migration : migrations) {
+        for (Migration migration : migrations) {
             migration.fillDummy();
         }
     }

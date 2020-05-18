@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
             // Ask for permission
             ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_READ_FINE_LOCATION);
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_READ_FINE_LOCATION);
 
         } else {
             // Permission has already been granted
@@ -56,29 +56,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-       if(requestCode == MY_PERMISSIONS_REQUEST_READ_FINE_LOCATION) {
-           if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-               onLocationPermissionGranted();
-           } else {
+        if (requestCode == MY_PERMISSIONS_REQUEST_READ_FINE_LOCATION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                onLocationPermissionGranted();
+            } else {
 
-               if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                   //User has clicked on don't ask again, explain that it is necessary for apps working
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    //User has clicked on don't ask again, explain that it is necessary for apps working
 
-                   new AlertDialog.Builder(this)
-                           .setTitle("Permiso necesario")
-                           .setMessage("El permiso de localización es necesario para el funcionamiento de Logrolling. Por favor, actívalo en ajustes y vuelve a entrar en la aplicación.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                               android.os.Process.killProcess(android.os.Process.myPid());
-                               System.exit(1);
-                           }).show();
-               } else {
-                   //Exit
-                   android.os.Process.killProcess(android.os.Process.myPid());
-                   System.exit(1);
-               }
-           }
-       }
+                    new AlertDialog.Builder(this)
+                            .setTitle("Permiso necesario")
+                            .setMessage("El permiso de localización es necesario para el funcionamiento de Logrolling. Por favor, actívalo en ajustes y vuelve a entrar en la aplicación.")
+                            .setNeutralButton("Ok", (dialog, which) -> {
+                                //Exit now
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                                System.exit(1);
+                            }).show();
+                } else {
+                    //Exit
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                    System.exit(1);
+                }
+            }
+        }
     }
 
     public void onLocationPermissionGranted() {
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Entry point
             AuthenticationService.getInstance().tryStoredTokenAuth((authenticated) -> {
-                if(authenticated) {
+                if (authenticated) {
                     //Go to Explore Activity
                     Intent i = new Intent(this, SearchActivity.class);
                     startActivity(i);
@@ -98,24 +98,24 @@ public class MainActivity extends AppCompatActivity {
             }, (error) -> {
                 //Network error, exit
                 new AlertDialog.Builder(this)
-                           .setTitle("Error de red")
-                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                               Process.killProcess(Process.myPid());
-                               System.exit(1);
-                           }).show();
+                        .setTitle("Error de red")
+                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                            //Exit now
+                            Process.killProcess(Process.myPid());
+                            System.exit(1);
+                        }).show();
             });
 
         }, (error) -> {
             new AlertDialog.Builder(this)
-                           .setTitle("Localización")
-                           .setMessage("No se pudo obtener la localización del teléfono. Por favor, compruebe que está conectado.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                               Process.killProcess(Process.myPid());
-                               System.exit(1);
-                           }).show();
+                    .setTitle("Localización")
+                    .setMessage("No se pudo obtener la localización del teléfono. Por favor, compruebe que está conectado.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        Process.killProcess(Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
 
     }

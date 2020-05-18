@@ -12,12 +12,12 @@ import java.util.List;
 public class UserWebServiceBroker {
 
     @GET
-    public TransferUser getLoggedUser(@HeaderParam("token") String token)  {
+    public TransferUser getLoggedUser(@HeaderParam("token") String token) {
         return User.getLoggedUser(token);
     }
 
     @POST
-    public void createUser(TransferCredentials transferCredentials){
+    public void createUser(TransferCredentials transferCredentials) {
         User.createUser(transferCredentials.getUsername(), transferCredentials.getPassword());
     }
 
@@ -27,13 +27,13 @@ public class UserWebServiceBroker {
     }
 
     @DELETE
-    public void deleteUser(@HeaderParam("token") String token){
+    public void deleteUser(@HeaderParam("token") String token) {
         User.deleteUser(token);
     }
 
     @GET
     @Path("/{username}")
-    public TransferUser getUserByName(@PathParam("username") String username){
+    public TransferUser getUserByName(@PathParam("username") String username) {
         return User.getUserByName(username);
     }
 

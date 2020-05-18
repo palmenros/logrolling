@@ -23,7 +23,7 @@ public class GiftsAdapter extends RecyclerView.Adapter<GiftsAdapter.GiftViewHold
     private ArrayList<TransferGift> giftList;
     private ClickListener clickListener;
 
-    public GiftsAdapter(ArrayList<TransferGift> giftList, ClickListener clickListener ) {
+    public GiftsAdapter(ArrayList<TransferGift> giftList, ClickListener clickListener) {
         this.giftList = giftList;
         this.clickListener = clickListener;
     }

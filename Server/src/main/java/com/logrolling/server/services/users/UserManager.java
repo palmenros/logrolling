@@ -19,7 +19,7 @@ public class UserManager {
     public static void createUser(User user) {
 
 
-        if(getUserByName(user.getUsername()) == null) {
+        if (getUserByName(user.getUsername()) == null) {
             Database db = DatabaseFactory.createInstance();
             db.executeUpdate(
                     "INSERT INTO users (username, password, grollies) VALUES (?, ?, ?);",
@@ -30,8 +30,7 @@ public class UserManager {
                     });
 
             db.close();
-        }
-        else
+        } else
             throw new AlreadyAddedException("El nombre de usuario ya está cogido");
     }
 
@@ -46,42 +45,41 @@ public class UserManager {
                 }
         );
         try {
-           if(rs.next()){
-               user = getUserFromResultSet(rs);
-               db.close();
-               return user;
-           }
-           else
-               db.close();
-               return null;
-        }  catch(SQLException e) {
+            if (rs.next()) {
+                user = getUserFromResultSet(rs);
+                db.close();
+                return user;
+            } else
+                db.close();
+            return null;
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
 
     }
 
     public static void updateUserGrollies(String username, int newGrollies) {
-            Database db = DatabaseFactory.createInstance();
-            db.executeUpdate("update users set grollies=? where username = ?;",
-                    new String[]{
+        Database db = DatabaseFactory.createInstance();
+        db.executeUpdate("update users set grollies=? where username = ?;",
+                new String[]{
                         Integer.valueOf(newGrollies).toString(),
                         username
-                    });
+                });
 
-            db.close();
+        db.close();
     }
 
     public static void updateUserPassword(String username, String newPassword) {
 
-            Database db = DatabaseFactory.createInstance();
+        Database db = DatabaseFactory.createInstance();
 
-            db.executeUpdate("update users set password=? where username = ?;",
-                    new String[]{
-                            Authenticator.hashToken(newPassword),
-                            username
-                    });
+        db.executeUpdate("update users set password=? where username = ?;",
+                new String[]{
+                        Authenticator.hashToken(newPassword),
+                        username
+                });
 
-            db.close();
+        db.close();
 
     }
 
@@ -109,7 +107,7 @@ public class UserManager {
                 User user = getUserFromResultSet(rs);
                 users.add(user);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
@@ -117,7 +115,7 @@ public class UserManager {
         return users;
     }
 
-    private static User getUserFromResultSet(ResultSet rs) throws SQLException{
+    private static User getUserFromResultSet(ResultSet rs) throws SQLException {
         return new User(
                 rs.getInt("id"),
                 rs.getString("username"),

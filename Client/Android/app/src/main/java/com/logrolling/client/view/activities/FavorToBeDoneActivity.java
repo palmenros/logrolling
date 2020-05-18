@@ -49,14 +49,14 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
         photo.setClipToOutline(true);
 
         photo.setResponseObserver(new CallableNetworkImageView.ResponseObserver() {
-             @Override
-             public void onError() {
+            @Override
+            public void onError() {
                 photo.setVisibility(View.GONE);
-             }
+            }
 
-             @Override
-             public void onSuccess(Bitmap bitmap) {
-                 photo.setOnClickListener(view -> {
+            @Override
+            public void onSuccess(Bitmap bitmap) {
+                photo.setOnClickListener(view -> {
 
                     Bitmap[] images = {bitmap};
 
@@ -67,8 +67,8 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
                         }
                     }).show();
                 });
-             }
-         });
+            }
+        });
 
         photo.setImageUrl(
                 Controller.getInstance().getUncheckedFavorImageURL(favorId),
@@ -83,14 +83,14 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
             deliveryDate.setText(favor.getFormattedDueTime());
             reward.setText(favor.getReward() + " grollies");
         }, error -> {
-             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
 
     }
@@ -100,18 +100,18 @@ public class FavorToBeDoneActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                        .setTitle("Error de red")
-                        .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                        .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                            System.exit(1);
-                }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
     public void chat(View view) {
-        if(transferFavor == null) {
+        if (transferFavor == null) {
             return;
         }
 

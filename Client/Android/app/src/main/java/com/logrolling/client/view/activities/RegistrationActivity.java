@@ -39,7 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void register(View view) {
 
-        if(registering) {
+        if (registering) {
             return;
         }
 
@@ -50,30 +50,30 @@ public class RegistrationActivity extends AppCompatActivity {
 
         boolean acceptedConditions = conditionsSwitch.isChecked();
 
-        if(username.isEmpty() || password.isEmpty() || confirmation.isEmpty()) {
-             new AlertDialog.Builder(this)
-                           .setTitle("Error")
-                           .setMessage("Debes rellenar todos los campos.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                           }).show();
+        if (username.isEmpty() || password.isEmpty() || confirmation.isEmpty()) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Error")
+                    .setMessage("Debes rellenar todos los campos.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                    }).show();
             return;
         }
 
-        if(!acceptedConditions) {
+        if (!acceptedConditions) {
             new AlertDialog.Builder(this)
-                           .setTitle("Error")
-                           .setMessage("Tienes que aceptar las condiciones de uso.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                           }).show();
+                    .setTitle("Error")
+                    .setMessage("Tienes que aceptar las condiciones de uso.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                    }).show();
             return;
         }
 
-        if(!password.equals(confirmation)) {
+        if (!password.equals(confirmation)) {
             new AlertDialog.Builder(this)
-                           .setTitle("Error")
-                           .setMessage("Las contraseñas no coinciden.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                           }).show();
+                    .setTitle("Error")
+                    .setMessage("Las contraseñas no coinciden.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                    }).show();
             return;
         }
 
@@ -82,19 +82,19 @@ public class RegistrationActivity extends AppCompatActivity {
         Controller.getInstance().registerUser(username, password, () -> {
             registering = false;
             new AlertDialog.Builder(this)
-                           .setTitle("Éxito")
-                           .setMessage("Tu cuenta se ha registrado correctamente. Introduce ahora tus datos para iniciar sesión.")
-                           .setPositiveButton("Inicia sesión", (dialog, which) -> {
-                               Intent i = new Intent(this, SignInActivity.class);
-                               startActivity(i);
-                           }).show();
+                    .setTitle("Éxito")
+                    .setMessage("Tu cuenta se ha registrado correctamente. Introduce ahora tus datos para iniciar sesión.")
+                    .setPositiveButton("Inicia sesión", (dialog, which) -> {
+                        Intent i = new Intent(this, SignInActivity.class);
+                        startActivity(i);
+                    }).show();
         }, (error) -> {
             registering = false;
             new AlertDialog.Builder(this)
-                           .setTitle("Error")
-                           .setMessage("Error al registrar. Prueba con otro nombre de usuario y vuelve a intentarlo más tarde.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                           }).show();
+                    .setTitle("Error")
+                    .setMessage("Error al registrar. Prueba con otro nombre de usuario y vuelve a intentarlo más tarde.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                    }).show();
         });
 
     }

@@ -89,8 +89,7 @@ public class ImageServiceBroker {
     @Consumes(MediaType.WILDCARD)
     @Produces(MediaType.WILDCARD)
     @Path("user")
-    public Response uploadUserImage(@Context HttpServletRequest request, byte[] input, @HeaderParam("token") String token)
-    {
+    public Response uploadUserImage(@Context HttpServletRequest request, byte[] input, @HeaderParam("token") String token) {
         String username = AuthenticationService.authenticateWithToken(token);
         String realPath = context.getRealPath(String.format("/images/user/%s.jpg", username));
 
@@ -111,8 +110,7 @@ public class ImageServiceBroker {
     @Consumes(MediaType.WILDCARD)
     @Produces(MediaType.WILDCARD)
     @Path("favor/{favorId}")
-    public Response uploadUserImage(@Context HttpServletRequest request, byte[] input, @PathParam("favorId") int favorId)
-    {
+    public Response uploadUserImage(@Context HttpServletRequest request, byte[] input, @PathParam("favorId") int favorId) {
         String realPath = context.getRealPath(String.format("/images/favor/%d.jpg", favorId));
 
         //Save input to realPath

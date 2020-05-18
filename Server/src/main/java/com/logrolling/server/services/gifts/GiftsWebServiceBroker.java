@@ -24,10 +24,10 @@ public class GiftsWebServiceBroker {
 
     @GET
     @Path("/purchased")
-    public List<TransferPurchasedGift> getPurchasedGifts(){
+    public List<TransferPurchasedGift> getPurchasedGifts() {
         return Gift.getPurchasedGifts();
     }
-    
+
     @POST
     @Path("@purchase/")
     public void purchaseGift(@HeaderParam("token") String token, TransferPurchase transferPurchase) {

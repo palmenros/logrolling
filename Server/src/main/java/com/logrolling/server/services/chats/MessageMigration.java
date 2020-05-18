@@ -26,14 +26,14 @@ public class MessageMigration implements Migration {
     @Override
     public void fillDummy() {
 
-        Message[] messageList = new Message[] {
-                new Message("pablo", "pedro" , "Primer mensaje"),
+        Message[] messageList = new Message[]{
+                new Message("pablo", "pedro", "Primer mensaje"),
                 new Message("pedro", "pablo", "Recibido"),
                 new Message("pablo", "pedro", "ok"),
                 new Message("juancarlos", "pedro", "Soy Juan Carlos")
         };
 
-        for(Message message : messageList) {
+        for (Message message : messageList) {
             MessageManager.createMessage(message);
         }
     }

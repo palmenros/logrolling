@@ -18,9 +18,9 @@ import com.android.volley.toolbox.ImageLoader.ImageListener;
  */
 public class CallableNetworkImageView extends ImageView {
 
-    public interface ResponseObserver
-    {
+    public interface ResponseObserver {
         public void onError();
+
         public void onSuccess(Bitmap bitmap);
     }
 
@@ -71,7 +71,7 @@ public class CallableNetworkImageView extends ImageView {
      * Sets URL of the image that should be loaded into this view. Note that calling this will
      * immediately either set the cached image (if available) or the default image specified by
      * {@link CallableNetworkImageView#setDefaultImageResId(int)} on the view.
-     *
+     * <p>
      * NOTE: If applicable, {@link CallableNetworkImageView#setDefaultImageResId(int)} and {@link
      * CallableNetworkImageView#setErrorImageResId(int)} should be called prior to calling this function.
      *
@@ -152,8 +152,7 @@ public class CallableNetworkImageView extends ImageView {
                             setImageResource(mErrorImageId);
                         }
 
-                        if(mObserver!=null)
-                        {
+                        if (mObserver != null) {
                             mObserver.onError();
                         }
                     }
@@ -180,8 +179,7 @@ public class CallableNetworkImageView extends ImageView {
                             setImageResource(mDefaultImageId);
                         }
 
-                        if(mObserver!=null)
-                        {
+                        if (mObserver != null) {
                             mObserver.onSuccess(response.getBitmap());
                         }
                     }

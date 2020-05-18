@@ -16,7 +16,7 @@ public class Favor {
     private String creator;
     private String title;
     private String description;
-    private  Integer dueTime;
+    private Integer dueTime;
     private int reward;
     private Coordinates coordinates;
     private String worker;
@@ -68,7 +68,7 @@ public class Favor {
         this.completed = completed;
     }
 
-    public Favor(TransferFavor f){
+    public Favor(TransferFavor f) {
         this.creator = f.getCreator();
         this.title = f.getTitle();
         this.description = f.getDescription();
@@ -96,7 +96,9 @@ public class Favor {
         this.id = id;
     }
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -110,38 +112,62 @@ public class Favor {
         this.creator = creator;
     }
 
-    public String getDescription(){ return description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String description){ this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public Integer getDueTime(){ return dueTime; }
+    public Integer getDueTime() {
+        return dueTime;
+    }
 
-    public void setDueTime(Integer dueTime){ this.dueTime = dueTime; }
+    public void setDueTime(Integer dueTime) {
+        this.dueTime = dueTime;
+    }
 
-    public Integer getReward(){ return reward; }
+    public Integer getReward() {
+        return reward;
+    }
 
-    public void setReward(int reward){ this.reward = reward; }
+    public void setReward(int reward) {
+        this.reward = reward;
+    }
 
-    public Double getLatCoord(){ return coordinates.getLatitude(); }
+    public Double getLatCoord() {
+        return coordinates.getLatitude();
+    }
 
-    public Double getLongCoord(){return coordinates.getLongitude(); }
+    public Double getLongCoord() {
+        return coordinates.getLongitude();
+    }
 
-    public Coordinates getCoordinates(){ return coordinates; }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 
-    public void setCoordinates(double latitude, double longitude){
+    public void setCoordinates(double latitude, double longitude) {
         coordinates.setLatitude(latitude);
         coordinates.setLongitude(longitude);
     }
 
-    public String getWorker() { return worker; }
+    public String getWorker() {
+        return worker;
+    }
 
     public void setWorker(String worker) {
         this.worker = worker;
     }
 
-    public boolean getCompleted(){ return completed; }
+    public boolean getCompleted() {
+        return completed;
+    }
 
-    public void setCompleted(boolean b){ this.completed = b; }
+    public void setCompleted(boolean b) {
+        this.completed = b;
+    }
 
     public static List<TransferFavor> getAvailableFavors(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
@@ -153,7 +179,7 @@ public class Favor {
         return transfers;
     }
 
-    public static List<TransferFavor> getFavorsFromFilter(String token, Filter filter){
+    public static List<TransferFavor> getFavorsFromFilter(String token, Filter filter) {
         String username = AuthenticationService.authenticateWithToken(token);
         List<Favor> favors = FavorManager.getFavorsByFilter(username, filter);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
@@ -163,7 +189,7 @@ public class Favor {
         return transfers;
     }
 
-    public static List<TransferFavor> getFavorsFromUser(String token){
+    public static List<TransferFavor> getFavorsFromUser(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
         List<Favor> favors = FavorManager.getFavorsFromUsername(username);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
@@ -173,7 +199,7 @@ public class Favor {
         return transfers;
     }
 
-    public static List<TransferFavor> getAwardedFavors(String token){
+    public static List<TransferFavor> getAwardedFavors(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         List<Favor> favors = FavorManager.getAwardedFavors(username);
@@ -183,11 +209,11 @@ public class Favor {
         return transfers;
     }
 
-    public static void completeFavor(int id, String token){
+    public static void completeFavor(int id, String token) {
         String username = AuthenticationService.authenticateWithToken(token);
         Favor favor = FavorManager.getFavorById(id);
 
-        if(favor.getCreator().equals(username)) {
+        if (favor.getCreator().equals(username)) {
             //Favor was created by current user
             favor.setCompleted(true);
 
@@ -195,15 +221,15 @@ public class Favor {
             User worker = UserManager.getUserByName(favor.getWorker());
             UserManager.updateUserGrollies(favor.getWorker(), worker.getGrollies() + favor.getReward());
 
-            FavorManager.updateFavor(id,favor);
+            FavorManager.updateFavor(id, favor);
         } else {
             throw new UnauthorizedException();
         }
     }
 
-    public static void addFavor(TransferFavor f, String token){
+    public static void addFavor(TransferFavor f, String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        if(f.getCreator().equals(username)) {
+        if (f.getCreator().equals(username)) {
             //Favor was created by current user
             FavorManager.createFavor(new Favor(f));
         } else {
@@ -211,9 +237,9 @@ public class Favor {
         }
     }
 
-    public static void updateFavor(TransferFavor f, int id, String token){
+    public static void updateFavor(TransferFavor f, int id, String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        if(FavorManager.getFavorById(id).getCreator().equals(username)) {
+        if (FavorManager.getFavorById(id).getCreator().equals(username)) {
             //Favor was created by current user
             FavorManager.updateFavor(id, new Favor(f));
         } else {
@@ -221,15 +247,15 @@ public class Favor {
         }
     }
 
-    public static void deleteFavor(int id, String token){
+    public static void deleteFavor(int id, String token) {
         String username = AuthenticationService.authenticateWithToken(token);
         Favor favor = FavorManager.getFavorById(id);
-        if(favor.getCreator().equals(username)) {
+        if (favor.getCreator().equals(username)) {
             int reward = favor.getReward();
 
             //Favor was created by current user
             FavorManager.deleteFavorFromId(id);
-            
+
             //Give user back their grollies
             User user = UserManager.getUserByName(username);
             UserManager.updateUserGrollies(username, user.getGrollies() + reward);
@@ -239,17 +265,17 @@ public class Favor {
         }
     }
 
-    public static void doFavor(int id, String token){
+    public static void doFavor(int id, String token) {
 
         Favor favor = FavorManager.getFavorById(id);
         String username = AuthenticationService.authenticateWithToken(token);
 
-        if(favor.getWorker() != null || username.equals(favor.getCreator())) {
+        if (favor.getWorker() != null || username.equals(favor.getCreator())) {
             throw new AuthenticationException();
         }
 
         favor.setWorker(username);
-        FavorManager.updateFavor(id,favor);
+        FavorManager.updateFavor(id, favor);
     }
 
 }

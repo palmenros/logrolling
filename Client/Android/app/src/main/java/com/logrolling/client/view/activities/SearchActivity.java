@@ -28,7 +28,7 @@ public class SearchActivity extends AppCompatActivity {
     private boolean filters;
     private ConstraintLayout constrainFilters;
     private TextView minGrolliesText, maxDistanceText, minTimeText, noResults;
-    private SeekBar minGrolliesBar, maxDistanceBar,minTimeBar;
+    private SeekBar minGrolliesBar, maxDistanceBar, minTimeBar;
 
     //minTime representa numero de horas desde ahora
     public int minGrollies = 10, minTimeHoursFromNow = 1;
@@ -52,7 +52,7 @@ public class SearchActivity extends AppCompatActivity {
                     .setTitle("Error de red")
                     .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
                     .setNeutralButton("Ok", (d, w) -> {
-                            //Exit now
+                        //Exit now
                         android.os.Process.killProcess(android.os.Process.myPid());
                         System.exit(1);
                     }).show();
@@ -70,7 +70,7 @@ public class SearchActivity extends AppCompatActivity {
             TransferFavor favor = favorsArray.get(position);
 
             Intent i = new Intent(this, DoFavorActivity.class);
-            i.putExtra("favorId",favor.getId());
+            i.putExtra("favorId", favor.getId());
             startActivity(i);
         });
         recyclerViewFavors.setAdapter(adapter);
@@ -89,14 +89,14 @@ public class SearchActivity extends AppCompatActivity {
 
     void refreshFavors() {
 
-        int minDate = (int)(new Date().getTime() / 1000L) + 3600 * minTimeHoursFromNow;
+        int minDate = (int) (new Date().getTime() / 1000L) + 3600 * minTimeHoursFromNow;
 
         Controller.getInstance().getAvailableFavorsFiltered(minGrollies, maxDistance, minDate, favorList -> {
             favorsArray.clear();
             Collections.addAll(favorsArray, favorList);
             adapter.notifyDataSetChanged();
 
-            if(favorList.length == 0) {
+            if (favorList.length == 0) {
                 //Show
                 noResults.setVisibility(View.VISIBLE);
             } else {
@@ -109,7 +109,7 @@ public class SearchActivity extends AppCompatActivity {
                     .setTitle("Error de red")
                     .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
                     .setNeutralButton("Ok", (d, w) -> {
-                            //Exit now
+                        //Exit now
                         android.os.Process.killProcess(android.os.Process.myPid());
                         System.exit(1);
                     }).show();
@@ -251,10 +251,10 @@ public class SearchActivity extends AppCompatActivity {
         minTimeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                minTimeHoursFromNow = (int) (1+2.39*progress);
-                if(progress==100)
-                    minTimeHoursFromNow =240;
-                minTimeText.setText("Dentro de "+toHours(minTimeHoursFromNow));
+                minTimeHoursFromNow = (int) (1 + 2.39 * progress);
+                if (progress == 100)
+                    minTimeHoursFromNow = 240;
+                minTimeText.setText("Dentro de " + toHours(minTimeHoursFromNow));
 
             }
 

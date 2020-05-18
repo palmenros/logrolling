@@ -21,7 +21,7 @@ public class Main implements ServletContextListener {
 
             //Uncomment when developing
             //MigrationManager.fillDummy();
-        } catch(DatabaseException ex) {
+        } catch (DatabaseException ex) {
             ex.printStackTrace();
         }
     }

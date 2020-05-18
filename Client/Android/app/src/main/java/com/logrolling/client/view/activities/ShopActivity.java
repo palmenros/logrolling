@@ -8,24 +8,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.braintreepayments.api.dropin.DropInActivity;
 import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 import com.braintreepayments.api.models.PaymentMethodNonce;
+import com.facebook.ads.Ad;
+import com.facebook.ads.AdError;
+import com.facebook.ads.RewardedVideoAd;
+import com.facebook.ads.RewardedVideoAdListener;
 import com.logrolling.client.R;
 import com.logrolling.client.controllers.Controller;
+import com.logrolling.client.services.AdService;
 
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class ShopActivity extends AppCompatActivity {
     private TextView numGrollies;
     public TextView remaining;
     public int selectedPrice;
+    private boolean rewarded = false;
+
 
     private static final int REQUEST_CODE = 23;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +50,13 @@ public class ShopActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                           .setTitle("Error de red")
-                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                               android.os.Process.killProcess(android.os.Process.myPid());
-                               System.exit(1);
-                           }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
@@ -85,16 +91,87 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     public void TenGrollies(View view) {
-        //Pedir videosRestantes=lo que sea
-        /*
-        if(videosRestantes<=0){
-            //Mensaje de info
-        }else{
-            //Meter video
-            remaining.setText("("+(videosRestantes-1)+" remaining)");
-            //notificar a quien sea que ha gastado un video
-        }
-        */
+
+        //Create progress bar
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Cargando anuncio...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        AdService.initialize(this, () -> {
+            RewardedVideoAd rewardedVideoAd = new RewardedVideoAd(this, "YOUR_PLACEMENT_ID");
+
+            String TAG = "ANUNCIOS_FACEBOOK";
+
+            rewardedVideoAd.setAdListener(new RewardedVideoAdListener() {
+                @Override
+                public void onError(Ad ad, AdError error) {
+                    progressDialog.dismiss();
+                    // Rewarded video ad failed to load
+                    new AlertDialog.Builder(ShopActivity.this)
+                            .setTitle("Error")
+                            .setMessage("Error al cargar el anuncio. Inténtalo en unos instantes.")
+                            .setNeutralButton("Ok", (d, w) -> {
+                            }).show();
+                }
+
+                @Override
+                public void onAdLoaded(Ad ad) {
+                    progressDialog.dismiss();
+                    rewardedVideoAd.show();
+                }
+
+                @Override
+                public void onAdClicked(Ad ad) {
+                    // Rewarded video ad clicked
+                }
+
+                @Override
+                public void onLoggingImpression(Ad ad) {
+                    // Rewarded Video ad impression - the event will fire when the
+                    // video starts playing
+                }
+
+                @Override
+                public void onRewardedVideoCompleted() {
+                    // Rewarded Video View Complete - the video has been played to the end.
+                    // You can use this event to initialize your reward
+                    rewarded = true;
+
+                    Controller.getInstance().giveUserVideoReward(() -> {
+                        updateUserGrollies();
+                    }, error -> {
+                        new AlertDialog.Builder(ShopActivity.this)
+                                .setTitle("Error")
+                                .setMessage("Error al cargar el anuncio. Inténtalo en unos instantes.")
+                                .setNeutralButton("Ok", (d, w) -> {
+                                }).show();
+                    });
+                }
+
+                @Override
+                public void onRewardedVideoClosed() {
+                    // The Rewarded Video ad was closed - this can occur during the video
+                    // by closing the app, or closing the end card.
+                    if (rewarded) {
+                        rewarded = false;
+                        new AlertDialog.Builder(ShopActivity.this)
+                                .setTitle("Éxito")
+                                .setMessage("Se han añadido los grollies.")
+                                .setNeutralButton("Ok", (d, w) -> {
+                                }).show();
+                    }
+                }
+            });
+            rewardedVideoAd.loadAd();
+        }, error -> {
+            new AlertDialog.Builder(ShopActivity.this)
+                    .setTitle("Error")
+                    .setMessage("Error al cargar el anuncio. Inténtalo en unos instantes.")
+                    .setNeutralButton("Ok", (d, w) -> {
+                    }).show();
+        });
     }
 
     public void TwoThousandGrollies(View view) {
@@ -149,7 +226,8 @@ public class ShopActivity extends AppCompatActivity {
                     new AlertDialog.Builder(this)
                             .setTitle("Éxito")
                             .setMessage("Pago realizado con éxito.")
-                            .setNeutralButton("Ok", (d, w) -> {}).show();
+                            .setNeutralButton("Ok", (d, w) -> {
+                            }).show();
 
                     updateUserGrollies();
 
@@ -158,20 +236,23 @@ public class ShopActivity extends AppCompatActivity {
                     new AlertDialog.Builder(this)
                             .setTitle("Error")
                             .setMessage("Error al tramitar el pago. Inténtalo en unos instantes.")
-                            .setNeutralButton("Ok", (d, w) -> {}).show();
+                            .setNeutralButton("Ok", (d, w) -> {
+                            }).show();
                 });
 
             } else if (resultCode == RESULT_CANCELED) {
                 new AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("Pago cancelado.")
-                            .setNeutralButton("Ok", (d, w) -> {}).show();
+                        .setTitle("Error")
+                        .setMessage("Pago cancelado.")
+                        .setNeutralButton("Ok", (d, w) -> {
+                        }).show();
             } else {
                 Exception error = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
                 new AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("Error al tramitar el pago. Inténtalo en unos instantes.")
-                            .setNeutralButton("Ok", (d, w) -> {}).show();
+                        .setTitle("Error")
+                        .setMessage("Error al tramitar el pago. Inténtalo en unos instantes.")
+                        .setNeutralButton("Ok", (d, w) -> {
+                        }).show();
             }
         }
     }
@@ -182,8 +263,8 @@ public class ShopActivity extends AppCompatActivity {
 
         new AlertDialog.Builder(this)
                 .setTitle("Confirmación")
-                .setMessage( String.format( "¿Seguro que quieres comprar grollies por " + df.format(selectedPrice / 100d) + "€ ?"))
-                .setNegativeButton("No", (dialog, which)-> {
+                .setMessage(String.format("¿Seguro que quieres comprar grollies por " + df.format(selectedPrice / 100d) + "€ ?"))
+                .setNegativeButton("No", (dialog, which) -> {
                     //No hacer nada
                 })
                 .setPositiveButton("Sí", (dialog, which) -> {
@@ -197,15 +278,16 @@ public class ShopActivity extends AppCompatActivity {
                     Controller.getInstance().getPaymentClientToken(token -> {
                         progressDialog.dismiss();
                         DropInRequest dropInRequest = new DropInRequest()
-                        .clientToken(token);
+                                .clientToken(token);
 
                         startActivityForResult(dropInRequest.getIntent(this), REQUEST_CODE);
                     }, error -> {
                         progressDialog.dismiss();
                         new AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("Error al tramitar el pago. Inténtalo en unos instantes.")
-                            .setNeutralButton("Ok", (d, w) -> {}).show();
+                                .setTitle("Error")
+                                .setMessage("Error al tramitar el pago. Inténtalo en unos instantes.")
+                                .setNeutralButton("Ok", (d, w) -> {
+                                }).show();
                     });
 
                 }).show();

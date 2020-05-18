@@ -17,8 +17,7 @@ public class PaymentDelegate {
         client = new WebServiceClient();
     }
 
-    public void getPaymentClientToken(ResponseListener<TransferPaymentToken> responseListener, ErrorListener errorListener)
-    {
+    public void getPaymentClientToken(ResponseListener<TransferPaymentToken> responseListener, ErrorListener errorListener) {
         client.getRequest("payment",
                 null,
                 SerializationService.getInstance().getResponseListener(TransferPaymentToken.class, responseListener, errorListener),
@@ -26,8 +25,7 @@ public class PaymentDelegate {
                 errorListener);
     }
 
-    public void makeTransaction(TransferTransaction transferTransaction, SuccessListener successListener, ErrorListener errorListener)
-    {
+    public void makeTransaction(TransferTransaction transferTransaction, SuccessListener successListener, ErrorListener errorListener) {
         client.postRequest("payment",
                 transferTransaction,
                 WebServiceClient.getSuccessResponseListener(successListener),

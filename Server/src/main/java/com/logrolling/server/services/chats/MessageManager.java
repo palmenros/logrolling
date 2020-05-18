@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MessageManager {
 
-    public static void createMessage(Message message){//add message
+    public static void createMessage(Message message) {//add message
 
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate(
@@ -28,7 +28,7 @@ public class MessageManager {
 
     }
 
-    public static List<Message> getMessagesFromConversation(String userA, String userB){
+    public static List<Message> getMessagesFromConversation(String userA, String userB) {
 
         List<Message> messages = new ArrayList<Message>();
 
@@ -46,7 +46,7 @@ public class MessageManager {
                 Message message = getMessageFromResultSet(rs);
                 messages.add(message);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
@@ -63,14 +63,14 @@ public class MessageManager {
                         content
                 });
         try {
-                message = getMessageFromResultSet(rs);
-        }  catch(SQLException e) {
+            message = getMessageFromResultSet(rs);
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         return message;
     }
 
-    private static Message getMessageFromResultSet(ResultSet rs) throws SQLException{
+    private static Message getMessageFromResultSet(ResultSet rs) throws SQLException {
         return new Message(
                 rs.getInt("id"),
                 rs.getString("origin"),
@@ -91,7 +91,7 @@ public class MessageManager {
                 Message message = getMessageFromResultSet(rs);
                 messages.add(message);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();

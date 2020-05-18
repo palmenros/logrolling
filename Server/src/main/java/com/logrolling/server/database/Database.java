@@ -9,6 +9,7 @@ public interface Database {
     /**
      * Executes given query in the database
      * Used for queries that retrieve data
+     *
      * @param queryString Database query such as SQL
      * @return result set given by database
      */
@@ -18,7 +19,8 @@ public interface Database {
      * Execute a parametrized query to avoid injections.
      * Query should have placeholders given by the character "?"
      * Query params will be replaced in given order by given placeholders
-     * @param query Database query pattern with placeholders
+     *
+     * @param query       Database query pattern with placeholders
      * @param queryParams Params to replace placeholders in order
      * @return result set given by database
      */
@@ -27,6 +29,7 @@ public interface Database {
     /**
      * Execute given query in the database
      * Used for queries that update or modify the database
+     *
      * @param queryString Database query such as SQL
      * @return Number of rows affected by query
      * @throws DatabaseException
@@ -36,8 +39,9 @@ public interface Database {
     /**
      * Executes a parametrized query to avoid injections
      * Query should have placeholders given by the character "?"
-        * Used for queries that update or modify the database
-     * @param query Database query such as SQL with placeholders
+     * Used for queries that update or modify the database
+     *
+     * @param query       Database query such as SQL with placeholders
      * @param queryParams Params to replace placeholders in order
      * @return Number of rows affected by query
      * @throws DatabaseException

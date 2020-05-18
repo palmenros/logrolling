@@ -29,7 +29,7 @@ public class GiftsManager {
         db.close();
     }
 
-    public static void updateGift(Gift newGift){
+    public static void updateGift(Gift newGift) {
 
         Database db = DatabaseFactory.createInstance();
 
@@ -69,14 +69,15 @@ public class GiftsManager {
                 Gift gift = getGiftFromResultSet(rs);
                 gifts.add(gift);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
         return gifts;
     }
-    private static Gift getGiftFromResultSet(ResultSet rs) throws SQLException{
+
+    private static Gift getGiftFromResultSet(ResultSet rs) throws SQLException {
         return new Gift(
                 rs.getInt("id"),
                 rs.getString("title"),
@@ -99,12 +100,12 @@ public class GiftsManager {
             if (rs.next()) {
                 gift = getGiftFromResultSet(rs);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(gift == null) {
+        if (gift == null) {
             throw new DataNotFoundException("Gift not found");
         }
         return gift;
@@ -123,12 +124,12 @@ public class GiftsManager {
             if (rs.next()) {
                 gift = getGiftFromResultSet(rs);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(gift == null) {
+        if (gift == null) {
             throw new DataNotFoundException("Gift not found");
         }
         return gift;
@@ -150,12 +151,12 @@ public class GiftsManager {
                     gifts.add(gift);
                 }
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(gifts.size() == 0) {
+        if (gifts.size() == 0) {
             throw new DataNotFoundException("There are no gifts in database with price : " + price);
         }
         return gifts;
@@ -178,18 +179,18 @@ public class GiftsManager {
                     gifts.add(gift);
                 }
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(gifts.size() == 0) {
+        if (gifts.size() == 0) {
             throw new DataNotFoundException("There are no gifts in database with content : " + content);
         }
         return gifts;
     }
 
-    public static boolean alreadyAddedGift(String title){
+    public static boolean alreadyAddedGift(String title) {
         Gift gift = null;
 
         Database db = DatabaseFactory.createInstance();
@@ -202,17 +203,17 @@ public class GiftsManager {
             if (rs.next()) {
                 gift = getGiftFromResultSet(rs);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
 
-        if(gift == null) {
+        if (gift == null) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
-    public static void deleteGiftFromTitleAndContent(String title, String content){
+
+    public static void deleteGiftFromTitleAndContent(String title, String content) {
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate("delete from gifts where title = ? and content = ?",
                 new String[]{
@@ -229,7 +230,7 @@ public class GiftsManager {
         User user = UserManager.getUserByName(username);
         Gift gift2 = getGiftById(gift.getGiftId());
 
-        if(user.getGrollies() >= gift2.getPrice()) {
+        if (user.getGrollies() >= gift2.getPrice()) {
             Database db = DatabaseFactory.createInstance();
             db.executeUpdate(
                     "INSERT INTO purchasedGifts(idGift, address, user, sent) VALUES (?, ?, ?, ?);",
@@ -242,11 +243,9 @@ public class GiftsManager {
 
             db.close();
             UserManager.updateUserGrollies(username, user.getGrollies() - gift2.getPrice());
-        }
-        else
+        } else
             throw new NotEnoughGrolliesException();
     }
-
 
 
     public static List<PurchasedGift> getPurchasedGifts() {
@@ -260,7 +259,7 @@ public class GiftsManager {
                 PurchasedGift gift = getPurchasedGiftFromResultSet(rs);
                 gifts.add(gift);
             }
-        }  catch(SQLException e) {
+        } catch (SQLException e) {
             throw new DatabaseException(e);
         }
         db.close();
@@ -268,7 +267,7 @@ public class GiftsManager {
         return gifts;
     }
 
-    private static PurchasedGift getPurchasedGiftFromResultSet(ResultSet rs) throws SQLException{
+    private static PurchasedGift getPurchasedGiftFromResultSet(ResultSet rs) throws SQLException {
         return new PurchasedGift(
                 rs.getInt("id"),
                 rs.getInt("giftId"),

@@ -14,41 +14,55 @@ public class Gift {
     private String content;
     private int price;
 
-    public Gift(int id, String title, String content, int price){
+    public Gift(int id, String title, String content, int price) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.price = price;
     }
 
-    public Gift(String title, String content, int price){
+    public Gift(String title, String content, int price) {
         this.title = title;
         this.content = content;
         this.price = price;
     }
 
-    public Gift(TransferGift g){
+    public Gift(TransferGift g) {
         this.title = g.getTitle();
         this.content = g.getContent();
         this.price = g.getPrice();
     }
 
-    public Gift(){
+    public Gift() {
     }
 
-    public Integer getId(){ return id; }
+    public Integer getId() {
+        return id;
+    }
 
-    public void setId(int id){ this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getContent(){ return content; }
+    public String getContent() {
+        return content;
+    }
 
-    public void setContent(String content){ this.content = content; }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-    public String getTitle(){ return title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public void setTitle(String title){ this.title = title; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public Integer getPrice(){ return price; }
+    public Integer getPrice() {
+        return price;
+    }
 
     public static List<TransferGift> getAllGifts() {
         List<Gift> gifts = GiftsManager.getAllGifts();
@@ -62,16 +76,15 @@ public class Gift {
     public static TransferGift getGiftByTitle(String title) {
         try {
             return new TransferGift(GiftsManager.getGiftByTitle(title));
-        }
-        catch(DataNotFoundException e){
+        } catch (DataNotFoundException e) {
             throw new DataNotFoundException(e.getMessage());
         }
     }
 
-    public static List<TransferPurchasedGift> getPurchasedGifts(){
+    public static List<TransferPurchasedGift> getPurchasedGifts() {
         List<PurchasedGift> purchased = GiftsManager.getPurchasedGifts();
         List<TransferPurchasedGift> transfers = new ArrayList<TransferPurchasedGift>();
-        for(PurchasedGift p : purchased)
+        for (PurchasedGift p : purchased)
             transfers.add(new TransferPurchasedGift(p));
         return transfers;
     }

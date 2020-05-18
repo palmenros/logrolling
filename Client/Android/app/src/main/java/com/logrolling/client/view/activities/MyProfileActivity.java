@@ -187,25 +187,27 @@ public class MyProfileActivity extends AppCompatActivity {
                         imageView.setImageBitmap(scaled);
 
                         new AlertDialog.Builder(this)
-                            .setTitle("Éxito")
-                            .setMessage("Éxito al cambiar la foto de perfil. El cambio se mostrará en unos segundos.")
-                            .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                                .setTitle("Éxito")
+                                .setMessage("Éxito al cambiar la foto de perfil. El cambio se mostrará en unos segundos.")
+                                .setNeutralButton("Ok", (dialog, which) -> {
+                                }).show();
 
                     }, (error) -> {
                         progressDialog.dismiss();
 
                         new AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("Error al cambiar la foto de perfil. Inténtalo en unos instantes.")
-                            .setNeutralButton("Ok", (dialog, which) -> {}).show();
+                                .setTitle("Error")
+                                .setMessage("Error al cambiar la foto de perfil. Inténtalo en unos instantes.")
+                                .setNeutralButton("Ok", (dialog, which) -> {
+                                }).show();
                     });
 
                 } catch (IOException e) {
-                   new AlertDialog.Builder(this)
-                    .setTitle("Error")
-                    .setMessage("Error al cambiar la foto de perfil")
-                    .setNeutralButton("Ok", (dialog, which) -> {
-                    }).show();
+                    new AlertDialog.Builder(this)
+                            .setTitle("Error")
+                            .setMessage("Error al cambiar la foto de perfil")
+                            .setNeutralButton("Ok", (dialog, which) -> {
+                            }).show();
                 }
 
 
@@ -213,10 +215,10 @@ public class MyProfileActivity extends AppCompatActivity {
                 Exception error = result.getError();
 
                 new AlertDialog.Builder(this)
-                    .setTitle("Error")
-                    .setMessage("Error al cambiar la foto de perfil")
-                    .setNeutralButton("Ok", (dialog, which) -> {
-                    }).show();
+                        .setTitle("Error")
+                        .setMessage("Error al cambiar la foto de perfil")
+                        .setNeutralButton("Ok", (dialog, which) -> {
+                        }).show();
 
             }
         }

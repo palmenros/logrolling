@@ -17,17 +17,16 @@ public class UserMigration implements Migration {
         //Create User Table
         String sqlQuery =
                 "create table if not exists users (" +
-                    "id int auto_increment," +
-                    "username varchar(50) not null," +
-                    "password varchar(165) not null," +
-                    "grollies int," +
-                    "constraint users_pk primary key (id)" +
-                ");";
+                        "id int auto_increment," +
+                        "username varchar(50) not null," +
+                        "password varchar(165) not null," +
+                        "grollies int," +
+                        "constraint users_pk primary key (id)" +
+                        ");";
 
         Database db = DatabaseFactory.createInstance();
         db.executeUpdate(sqlQuery);
     }
-
 
 
     /**
@@ -36,13 +35,13 @@ public class UserMigration implements Migration {
     @Override
     public void fillDummy() {
 
-        User[] userList = new User[] {
-            new User("pedro", "password", 50000),
-            new User("pablo", "1234", 30),
-            new User ("juancarlos", "defrutos", 0)
+        User[] userList = new User[]{
+                new User("pedro", "password", 50000),
+                new User("pablo", "1234", 30),
+                new User("juancarlos", "defrutos", 0)
         };
 
-        for(User user : userList) {
+        for (User user : userList) {
             UserManager.createUser(user);
         }
     }

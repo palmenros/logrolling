@@ -28,13 +28,13 @@ public class ConfigurationActivity extends AppCompatActivity {
             numGrollies.setText(Integer.valueOf(grollies).toString());
         }, (error) -> {
             new AlertDialog.Builder(this)
-                           .setTitle("Error de red")
-                           .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
-                           .setNeutralButton("Ok", (dialog, which) -> {
-                               //Exit now
-                               android.os.Process.killProcess(android.os.Process.myPid());
-                               System.exit(1);
-                           }).show();
+                    .setTitle("Error de red")
+                    .setMessage("No se ha podido conectar con el servidor. Compruebe la conexión e intentelo otra vez.")
+                    .setNeutralButton("Ok", (dialog, which) -> {
+                        //Exit now
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        System.exit(1);
+                    }).show();
         });
     }
 
@@ -74,15 +74,16 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     //SignOut
     public void signOut(View view) {
-         new AlertDialog.Builder(this)
-                           .setTitle("Confirmación")
-                           .setMessage("¿Seguro que quieres cerrar sesión?")
-                           .setNegativeButton("No", (dialog, which) -> {})
-                            .setPositiveButton("Si", (dialog, which) -> {
-                                AuthenticationService.getInstance().signOut();
-                                Intent i = new Intent(this, MainActivity.class);
-                                startActivity(i);
-                           }).show();
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmación")
+                .setMessage("¿Seguro que quieres cerrar sesión?")
+                .setNegativeButton("No", (dialog, which) -> {
+                })
+                .setPositiveButton("Si", (dialog, which) -> {
+                    AuthenticationService.getInstance().signOut();
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+                }).show();
 
     }
 

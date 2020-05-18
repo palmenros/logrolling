@@ -14,9 +14,9 @@ public class TokenMigration implements Migration {
         //Create User Table
         String sqlQuery =
                 "create table if not exists tokens (" +
-                        "id int auto_increment,"+
+                        "id int auto_increment," +
                         "content varchar(165) not null," +
-                        "user varchar(50) not null,"+
+                        "user varchar(50) not null," +
                         "constraint tokens_pk primary key (id)" +
                         ");";
 
@@ -26,7 +26,6 @@ public class TokenMigration implements Migration {
     }
 
 
-
     /**
      * Fills tables affected by this migration with dummy data
      */
@@ -34,14 +33,14 @@ public class TokenMigration implements Migration {
     public void fillDummy() {
 
         //For authenticating, use tokens as in comment (without quotes)
-        Token[] tokenlist = new Token[] {
+        Token[] tokenlist = new Token[]{
                 //authToken = "1:hola"
                 new Token("hola", "pedro"),
                 //authToken = "2:mundo"
                 new Token("mundo", "pablo")
         };
 
-        for(Token token : tokenlist) {
+        for (Token token : tokenlist) {
             TokenManager.createToken(token);
         }
     }

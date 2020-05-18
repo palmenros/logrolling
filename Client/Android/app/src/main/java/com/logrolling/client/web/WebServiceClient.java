@@ -34,8 +34,7 @@ public class WebServiceClient {
                           byte[] input,
                           final SuccessListener successListener,
                           final String authenticationToken,
-                          final ErrorListener errorListener)
-    {
+                          final ErrorListener errorListener) {
         String url = formCompleteURL(relativeURL);
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -149,11 +148,11 @@ public class WebServiceClient {
 
             @Override
             public byte[] getBody() throws AuthFailureError {
-                    if (responseBody == null) {
-                        return new byte[]{};
-                    } else {
-                        return responseBody.getBytes();
-                    }
+                if (responseBody == null) {
+                    return new byte[]{};
+                } else {
+                    return responseBody.getBytes();
+                }
             }
 
         };

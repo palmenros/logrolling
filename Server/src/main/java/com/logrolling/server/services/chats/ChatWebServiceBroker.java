@@ -24,7 +24,7 @@ public class ChatWebServiceBroker {
 
     @GET
     @Path("/interactions")
-    public List<TransferMessagePreview> getInteractions(@HeaderParam("token") String token){
+    public List<TransferMessagePreview> getInteractions(@HeaderParam("token") String token) {
         return Chat.getInteractions(token);
     }
 
