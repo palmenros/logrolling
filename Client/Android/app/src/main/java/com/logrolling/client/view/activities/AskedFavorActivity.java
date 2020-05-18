@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.opengl.Visibility;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import com.logrolling.client.services.LocationService;
 import com.logrolling.client.transfer.TransferFavor;
 import com.logrolling.client.view.CallableNetworkImageView;
 import com.logrolling.client.web.WebRequestQueue;
+import com.stfalcon.imageviewer.StfalconImageViewer;
+import com.stfalcon.imageviewer.loader.ImageLoader;
 
 import java.util.concurrent.Callable;
 
@@ -65,8 +68,19 @@ public class AskedFavorActivity extends AppCompatActivity {
              }
 
              @Override
-             public void onSuccess() {
-                 //TODO: Maybe on click zoom?
+             public void onSuccess(Bitmap bitmap) {
+
+                photo.setOnClickListener(view -> {
+
+                    Bitmap[] images = {bitmap};
+
+                    new StfalconImageViewer.Builder<Bitmap>(AskedFavorActivity.this, images, new ImageLoader<Bitmap>() {
+                        @Override
+                        public void loadImage(ImageView imageView, Bitmap image) {
+                            imageView.setImageBitmap(image);
+                        }
+                    }).show();
+                });
              }
          });
 

@@ -13,7 +13,7 @@ public class GiftMigration implements Migration {
 
         //Create User Table
         String sqlQuery =
-                "create table gifts (" +
+                "create table if not exists gifts (" +
                         "id int auto_increment," +
                         "title varchar(50) not null," +
                         "content varchar(150) not null," +
@@ -25,7 +25,7 @@ public class GiftMigration implements Migration {
         db.executeUpdate(sqlQuery);
 
         sqlQuery =
-                "create table purchasedGifts (" +
+                "create table if not exists purchasedGifts (" +
                         "id int auto_increment," +
                         "idGift int," +
                         "address varchar(150) not null," +

@@ -1,6 +1,7 @@
 package com.logrolling.client.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
@@ -20,7 +21,7 @@ public class CallableNetworkImageView extends ImageView {
     public interface ResponseObserver
     {
         public void onError();
-        public void onSuccess();
+        public void onSuccess(Bitmap bitmap);
     }
 
     private ResponseObserver mObserver;
@@ -181,7 +182,7 @@ public class CallableNetworkImageView extends ImageView {
 
                         if(mObserver!=null)
                         {
-                            mObserver.onSuccess();
+                            mObserver.onSuccess(response.getBitmap());
                         }
                     }
                 });

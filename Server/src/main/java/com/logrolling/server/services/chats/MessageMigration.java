@@ -11,7 +11,7 @@ public class MessageMigration implements Migration {
     @Override
     public void migrate() {
         String sqlQuery =
-                "create table messages (" +
+                "create table if not exists messages (" +
                         "id int auto_increment," +
                         "origin varchar(50) not null," +
                         "destination varchar(50) not null," +

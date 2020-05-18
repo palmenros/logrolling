@@ -30,7 +30,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation 'com.github.stfalcon:stfalcon-imageviewer:1.0.1'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
     implementation 'androidx.appcompat:appcompat:1.1.0'

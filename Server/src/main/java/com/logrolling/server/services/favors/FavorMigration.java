@@ -18,7 +18,7 @@ public class FavorMigration implements Migration {
 
         //Create User Table
         String sqlQuery =
-                "create table favors (" +
+                "create table if not exists favors (" +
                         "id int auto_increment," +
                         "creator varchar(50) not null," +
                         "title varchar(50) not null," +

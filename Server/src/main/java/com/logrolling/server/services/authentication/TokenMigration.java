@@ -13,7 +13,7 @@ public class TokenMigration implements Migration {
 
         //Create User Table
         String sqlQuery =
-                "create table tokens (" +
+                "create table if not exists tokens (" +
                         "id int auto_increment,"+
                         "content varchar(165) not null," +
                         "user varchar(50) not null,"+

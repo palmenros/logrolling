@@ -16,7 +16,7 @@ public class UserMigration implements Migration {
 
         //Create User Table
         String sqlQuery =
-                "create table users (" +
+                "create table if not exists users (" +
                     "id int auto_increment," +
                     "username varchar(50) not null," +
                     "password varchar(165) not null," +
