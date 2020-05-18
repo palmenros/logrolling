@@ -15,13 +15,12 @@ public class Main implements ServletContextListener {
 
         //Use MySQL database by default
         DatabaseFactory.setFactory(new MySQLDatabaseFactory());
-
-        // TODO: Remove when deploying in production
-
         // Migrate all databases and fill them with dummy data for development and testing
         try {
             MigrationManager.migrate();
-            MigrationManager.fillDummy();
+
+            //Uncomment when developing
+            //MigrationManager.fillDummy();
         } catch(DatabaseException ex) {
             ex.printStackTrace();
         }

@@ -47,6 +47,20 @@
             <version>2.29.1</version>
         </dependency>
 
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.braintreepayments.gateway/braintree-java &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.braintreepayments.gateway</groupId>-->
+<!--            <artifactId>braintree-java</artifactId>-->
+<!--            <version>2.107.0</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--            <artifactId>jackson-core</artifactId>-->
+<!--            <version>2.10.1</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -64,6 +78,22 @@
             <artifactId>tomcat-embed-core</artifactId>
             <version>9.0.31</version>
         </dependency>
+
+        <dependency>
+          <groupId>com.braintreepayments.gateway</groupId>
+          <artifactId>braintree-java</artifactId>
+          <version>2.108.0</version>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.jr</groupId>
+                    <artifactId>jackson-jr-objects</artifactId>
+                </exclusion>
+
+            </exclusions>
+
+        </dependency>
+
     </dependencies>
 
     <build>

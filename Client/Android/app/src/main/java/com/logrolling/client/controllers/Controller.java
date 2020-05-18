@@ -7,6 +7,7 @@ import com.logrolling.client.delegates.ChatDelegate;
 import com.logrolling.client.delegates.FavorDelegate;
 import com.logrolling.client.delegates.GiftDelegate;
 import com.logrolling.client.delegates.ImageDelegate;
+import com.logrolling.client.delegates.PaymentDelegate;
 import com.logrolling.client.delegates.TokenDelegate;
 import com.logrolling.client.delegates.UserDelegate;
 import com.logrolling.client.services.AuthenticationService;
@@ -19,8 +20,10 @@ import com.logrolling.client.transfer.TransferFavor;
 import com.logrolling.client.transfer.TransferGift;
 import com.logrolling.client.transfer.TransferMessage;
 import com.logrolling.client.transfer.TransferMessagePreview;
+import com.logrolling.client.transfer.TransferPaymentToken;
 import com.logrolling.client.transfer.TransferPurchase;
 import com.logrolling.client.transfer.TransferToken;
+import com.logrolling.client.transfer.TransferTransaction;
 import com.logrolling.client.transfer.TransferUser;
 import com.logrolling.client.web.ErrorListener;
 import com.logrolling.client.web.ResponseListener;
@@ -41,6 +44,7 @@ public class Controller {
     private GiftDelegate giftDelegate;
     private UserDelegate userDelegate;
     private ImageDelegate imageDelegate;
+    private PaymentDelegate paymentDelegate;
 
     private Controller() {
         tokenDelegate = new TokenDelegate();
@@ -49,6 +53,7 @@ public class Controller {
         giftDelegate = new GiftDelegate();
         userDelegate = new UserDelegate();
         imageDelegate = new ImageDelegate();
+        paymentDelegate = new PaymentDelegate();
     }
 
     static public Controller getInstance() {
@@ -243,5 +248,20 @@ public class Controller {
         imageDelegate.uploadFavorImage(byteArray, favorId, successListener, errorListener);
     }
 
+    ///////////////////////////////////////
+    //          PAYMENT DELEGATE         //
+    ///////////////////////////////////////
+
+    public void getPaymentClientToken(ResponseListener<String> responseListener, ErrorListener errorListener)
+    {
+        paymentDelegate.getPaymentClientToken(token -> {
+            responseListener.onResponse(token.getContent());
+        }, errorListener);
+    }
+
+    public void makeTransaction(int cents, String nonce, SuccessListener successListener, ErrorListener errorListener)
+    {
+        paymentDelegate.makeTransaction(new TransferTransaction(nonce, cents), successListener, errorListener);
+    }
 
 }

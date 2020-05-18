@@ -192,6 +192,8 @@ public class MyProfileActivity extends AppCompatActivity {
                             .setNeutralButton("Ok", (dialog, which) -> {}).show();
 
                     }, (error) -> {
+                        progressDialog.dismiss();
+
                         new AlertDialog.Builder(this)
                             .setTitle("Error")
                             .setMessage("Error al cambiar la foto de perfil. Inténtalo en unos instantes.")

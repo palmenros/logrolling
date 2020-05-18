@@ -41,6 +41,16 @@
             </intent-filter>
         </activity>
 
+           <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+        android:launchMode="singleTask">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="${applicationId}.braintree" />
+        </intent-filter>
+    </activity>
+
         <!--   Camera crop and preview  -->
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
   android:theme="@style/Base.Theme.AppCompat"/>

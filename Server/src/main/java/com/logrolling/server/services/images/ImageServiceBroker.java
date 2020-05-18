@@ -21,6 +21,8 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 @RequestScoped
 public class ImageServiceBroker {
 
+    //TODO: Refactor
+
     @Inject
     ServletContext context;
 

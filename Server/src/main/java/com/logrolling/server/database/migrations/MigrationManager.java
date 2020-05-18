@@ -31,10 +31,6 @@ public class MigrationManager {
      *   and filled with dummy data.
      */
     public synchronized static void migrate() {
-        //Delete all tables
-        Database database = DatabaseFactory.createInstance();
-        database.deleteAllTables();
-        database.close();
 
         for(Migration migration : migrations) {
             migration.migrate();
@@ -42,6 +38,11 @@ public class MigrationManager {
     }
 
     public synchronized static void fillDummy() {
+        //Delete all tables
+        Database database = DatabaseFactory.createInstance();
+        database.deleteAllTables();
+        database.close();
+
         for(Migration migration : migrations) {
             migration.fillDummy();
         }
