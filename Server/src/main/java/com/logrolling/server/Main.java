@@ -20,7 +20,7 @@ public class Main implements ServletContextListener {
             MigrationManager.migrate();
 
             //Uncomment when developing
-            MigrationManager.fillDummy();
+            //MigrationManager.fillDummy();
         } catch (DatabaseException ex) {
             ex.printStackTrace();
         }
