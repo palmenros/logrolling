@@ -216,7 +216,7 @@
                         android:layout_marginStart="120dp"
                         android:layout_marginLeft="120dp"
                         android:layout_marginTop="70dp"
-                        android:onClick="editPhoto"
+                        android:onClick="addPhoto"
                         app:layout_constraintStart_toStartOf="@+id/Foto"
                         app:layout_constraintTop_toTopOf="@+id/Foto"
                         app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />

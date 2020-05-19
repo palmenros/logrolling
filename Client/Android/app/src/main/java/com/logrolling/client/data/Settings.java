@@ -7,7 +7,7 @@ public class Settings {
     //private static final String baseURL = "http://192.168.0.100:8080/";
     //private static final String baseURL = "http://192.168.0.100:8080/Server_war_exploded/";
 
-    private static final String baseURL = "http://logrolling.sytes.net:8080/";
+    private static final String baseURL = "http://51.136.44.210:8080/";
 
     public static String getBaseURL() {
         return baseURL;
