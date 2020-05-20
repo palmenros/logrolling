@@ -149,7 +149,6 @@
             android:hint="@string/NombreUsuario"
             android:inputType="none"
             android:editable="false"
-            android:textColor="@color/negro"
             android:textColorHint="@color/negro"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"

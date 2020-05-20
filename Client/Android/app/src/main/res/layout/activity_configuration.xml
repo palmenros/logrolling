@@ -154,10 +154,9 @@
 
         <ImageView
             android:id="@+id/iconoPerfil"
-            android:layout_width="75dp"
-            android:layout_height="102dp"
+            android:layout_width="59dp"
+            android:layout_height="78dp"
             android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="45dp"
             android:background="#00FFFFFF"
             android:onClick="myProfile"
