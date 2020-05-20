@@ -82,6 +82,11 @@ public class UserChatActivity extends AppCompatActivity {
 
         Controller.getInstance().getChatWithUser(otherPerson, transferChat -> {
 
+            if(transferChat.getMessages().size() <= dataList.size()) {
+                //Only update if number of messages > number of messages in list to avoid glitches
+                return;
+            }
+
             dataList.clear();
 
             for (TransferMessage message : transferChat.getMessages()) {

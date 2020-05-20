@@ -162,7 +162,7 @@ public class AskedFavorActivity extends AppCompatActivity {
             //Delete
             new AlertDialog.Builder(this)
                     .setTitle("Confirmación")
-                    .setMessage("¿Seguro que quieres borrar el mensaje?")
+                    .setMessage("¿Seguro que quieres borrar el favor?")
                     .setPositiveButton("Sí", (dialog, wich) -> {
                         Controller.getInstance().deleteFavor(transferFavor.getId(), () -> {
                             Intent i = new Intent(this, MyFavorsActivity.class);
