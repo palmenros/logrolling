@@ -42,7 +42,9 @@ FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
 
     -Vista: Juan Carlos
 
-	-Añadir más regalos
-	-Poner números con punto de miles
-	-Cambiar precio regalos actuales
 	-Cambiar texto Términos y Condiciones
+
+    -Base de datos: Pablo
+	
+	-Añadir más regalos
+	-Cambiar precio regalos actuales
