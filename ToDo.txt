@@ -1,67 +1,38 @@
 IMPORTANTE: Mirar los ejemplos del año pasado y compararlo
 IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no estén implementados todavía
 
+FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
+
 -Entrega final:
+    -Extras: Juan Carlos
+        -Página web API: https://palmenros.github.io/logrolling/
+        -Microsoft Azure
+        -Términos y condiciones
+        -Plataforma de pagos (Braintree)
+        -Anuncios (Facebook ads)
+        -Coordenadas a direcciones (API Google Maps)
+        -Soporte UTF-8, emoticonos (internacialización)
+
 	-SRS, revisar PDP y Planificación temporal: Juan Carlos
-	-Memoria de arquitectura:
-		-Servidor: Alberto y Pablo
-		-Vista: Adri y Pedro
-		-Visión general y cohesión general: Pedro
+	
+	-Reestructurar clases del servidor [22]:
+        -Cambiar Manager a DAO
+        -Revisar que en DAO no haya lógica de negocio
+        -Quitar código inutil
+        -Mover DAO a paquete con nombre "integration"
+	
+	-Diseño del proyecto [28 antes de las 18.00]:
+        -Memoria de arquitectura (Google Drive) [23]:
+            -Servidor: Alberto y Pablo
+            -Vista: Pedro
+            -Visión general y cohesión general: Pedro
+        -Diagramas definitivos de clases (Separados por paquetes y android/cliente): Adri -> Vista | Rubén -> Servidor
+        -Diagramas definitivos de secuencia (Separados y bonitos): Santiago / Adri 
+        -Diagramas de actividad:	Jaime / Santiago	
+        -Diagramas de casos de uso:	Jaime / Santiago
+        
+        -Pasar a limpio: Alberto
+	
 	-Gestión del proyecto: Santiago
-	-Términos y condiciones / legalidad: Alberto
-	-Memoria de cada miembro: Jaime
-	-Diagramas definitivos de clases (Separados por paquetes y android/cliente): Adri -> Vista | Rubén -> Servidor
-	-Diagramas definitivos de secuencia (Separados y bonitos): Santiago / Adri 
-	-Diagramas de actividad:	Jaime / Santiago	
-	-Diagramas de casos de uso:	Jaime / Santiago
--SRS:
-    
-    -Introducción y apartado 2 SRS: Adri
-        -Añadir lista de cambios (redactar los cambios)
-	-Actualizarlo
-    
-    -Interfaces (gráficas, 3.1.1): Rubén
-        -Actualizarlo
-    
-    -Interfaces de software / comunicación: Jaime
-        -Actualizarlo
-        
-    -Quitar apartado CRC y sustituirlo por diagramas de clase: Rubén   
-     
-    -Casos de uso (Santiago)
-        -Explicar bien como se navega a través de la aplicación (ver diagramas de secuencia) //hecho en CU, falta diagramas de secuencia.
-        -Añadir diagramas de secuencia
-	-Marcar favor como realizado, Iniciar sesion, Modificar Favor.//hecho
-        
-    -Requisitos lógicos u de la base de datos y atributos: Jaime
-        -Actualizarlo
-
-    -Especificación de requisitos
-        -Lista de cambios: Adri
-    -Arquitectura: 
-        -Visión global: Pedro
-        -Vista: Juan Carlos
-        -Server: Alberto / Jaime / Pablo
-    -Patrones: Pedro
-    
--Pasarlo todo a bonito: Alberto
-
-
-
-LISTA DE CAMBIOS:
-
--Admin eliminado, eliminadas funciones de banear, etc //quitado en CU
--Solo hay un tipo de usuario
--Cambiar idioma / Cambiar email / leer normas de uso / conectarse con Facebook fuera //quitado en CU
--Favor múltiple fuera
--Negociar grollies fuera //quitado en CU
--Email quitado 
--Filtro de tiempo quitado
--Favores a realizar incluidos (ver Android Studio)
--Doble Tick confirmación quitados
--Al pulsar en un regalo, te pregunta por la dirección
--Configuración MUY reducida, solo cerrar sesión y modificar perfil //hecho CU
--Lugar de entrega = Lugar de realización, se elimina lugar de realización
--Una única foto por favor
--En mensajes no tienen fechas
--Quitados adjuntar fotos, emoticonos y audios en mensajes
+    -Memoria de cada miembro: Jaime
+	
