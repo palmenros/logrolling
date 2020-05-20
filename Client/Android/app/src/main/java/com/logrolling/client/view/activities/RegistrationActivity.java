@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Switch;
 
 import com.logrolling.client.R;
 import com.logrolling.client.controllers.Controller;
+import com.logrolling.client.data.Settings;
 
 public class RegistrationActivity extends AppCompatActivity {
     private EditText userEditText, passwordEditText, repPasswordEditText;
@@ -101,6 +103,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void showPrivacyPolicy(View view) {
         //Mostrar la política de privacidad
+        Uri uri = Uri.parse(Settings.getTermsAndConditionsURL());
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
 }
