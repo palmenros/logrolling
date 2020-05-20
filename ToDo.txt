@@ -14,19 +14,6 @@ IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no esté
 	-Diagramas definitivos de secuencia (Separados y bonitos): Santiago / Adri 
 	-Diagramas de actividad:	Jaime / Santiago	
 	-Diagramas de casos de uso:	Jaime / Santiago
--Preguntas:
-	-Controlador / Service Broker / Servicios (Pedro)
-	-Diagramas	(Rubén) 
-	-Capa de persistencia (Pablo)	
-	-Diagramas de actividades y casos de uso (Santiago)
-	
-	Santiago:
-	-Decir que preferimos tutoría en directo (recordar disponibilidad total)
-	-¿Modelo de clases del dominio?
-	-En el SRS no aparecen diagramas, ¿donde?
-	-¿Que es y que tiene que llevar el documento de diseño?
-	-Documentes independientes, ¿duplicar el trabajo?
-	-¿Qué documentos hay que entregar? ¿Formato? ¿Índice y qué lleva cada uno?
 -SRS:
     
     -Introducción y apartado 2 SRS: Adri
@@ -53,7 +40,7 @@ IMPORTANTE: Tener en cuenta los LoginService, FavorQuerier, ..., aunque no esté
         -Lista de cambios: Adri
     -Arquitectura: 
         -Visión global: Pedro
-        -Vista: Juan Carlos 
+        -Vista: Juan Carlos
         -Server: Alberto / Jaime / Pablo
     -Patrones: Pedro
     
