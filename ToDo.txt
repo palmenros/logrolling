@@ -5,6 +5,7 @@ FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
 
 -Entrega final:
     -Extras: Juan Carlos
+
         -Página web API: https://palmenros.github.io/logrolling/
         -Microsoft Azure
         -Términos y condiciones
@@ -13,15 +14,17 @@ FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
         -Coordenadas a direcciones (API Google Maps)
         -Soporte UTF-8, emoticonos (internacialización)
 
-	-SRS, revisar PDP y Planificación temporal: Juan Carlos
+    -SRS, revisar PDP y Planificación temporal: Juan Carlos
 	
-	-Reestructurar clases del servidor [22]:
+    -Reestructurar clases del servidor [22]:
+
         -Cambiar Manager a DAO
         -Revisar que en DAO no haya lógica de negocio
         -Quitar código inutil
         -Mover DAO a paquete con nombre "integration"
 	
-	-Diseño del proyecto [28 antes de las 18.00]:
+    -Diseño del proyecto [28 antes de las 18.00]:
+
         -Memoria de arquitectura (Google Drive) [23]:
             -Servidor: Alberto y Pablo
             -Vista: Pedro
@@ -30,9 +33,16 @@ FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
         -Diagramas definitivos de secuencia (Separados y bonitos): Santiago / Adri 
         -Diagramas de actividad:	Jaime / Santiago	
         -Diagramas de casos de uso:	Jaime / Santiago
-        
+
         -Pasar a limpio: Alberto
 	
-	-Gestión del proyecto: Santiago
+    -Gestión del proyecto: Santiago
+
     -Memoria de cada miembro: Jaime
-	
+
+    -Vista: Juan Carlos
+
+	-Añadir más regalos
+	-Poner números con punto de miles
+	-Cambiar precio regalos actuales
+	-Cambiar texto Términos y Condiciones
