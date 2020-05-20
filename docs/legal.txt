@@ -189,9 +189,7 @@ Logrolling se reserva el derecho a variar el número de anuncios gratuitos.
 
 10. Visualización de anuncios
 
-El Servicio incluye una opción limitada diariamente de visualización de anuncios y otro tipo de contenidos similares a cambio de la obtención grollies. El número de anuncios disponibles por día y su recompensa puede ser objeto de cambio sin previo aviso.
-
-La renovación de este contenido se llevará a cabo a las 0:00 (CEST) y no será acumulable.
+El Servicio incluye una opción de visualización de anuncios y otro tipo de contenidos similares a cambio de la obtención grollies. El número de anuncios disponibles por día (actualmente ilimitados) y su recompensa puede ser objeto de cambio sin previo aviso o pueden sufrir limitaciones de cualquier tipo.
 
 11. Servicio de envío de premios
 

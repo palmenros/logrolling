@@ -40,10 +40,6 @@ FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
 
     -Memoria de cada miembro: Jaime
 
-    -Vista: Juan Carlos
-
-	-Cambiar texto Términos y Condiciones
-
     -Base de datos: Pablo
 	
 	-Añadir más regalos
