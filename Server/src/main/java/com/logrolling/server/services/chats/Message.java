@@ -40,7 +40,7 @@ public class Message {
         return from;
     }
 
-    public void setFrom(String title) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
