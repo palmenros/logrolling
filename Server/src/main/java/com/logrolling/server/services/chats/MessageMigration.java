@@ -3,8 +3,7 @@ package com.logrolling.server.services.chats;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.services.chats.MessageManager;
-import com.logrolling.server.services.chats.Message;
+import com.logrolling.server.integrationLayer.MessageDAO;
 
 
 public class MessageMigration implements Migration {
@@ -34,7 +33,7 @@ public class MessageMigration implements Migration {
         };
 
         for (Message message : messageList) {
-            MessageManager.createMessage(message);
+            MessageDAO.createMessage(message);
         }
     }
 }

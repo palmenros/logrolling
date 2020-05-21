@@ -1,19 +1,19 @@
 package com.logrolling.server.services.chats;
 
+import com.logrolling.server.integrationLayer.MessageDAO;
 import com.logrolling.server.services.authentication.AuthenticationService;
-import com.logrolling.server.services.users.UserManager;
+import com.logrolling.server.integrationLayer.UserDAO;
 import com.logrolling.server.services.users.User;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 public class ChatAssembler {
 
     public static TransferChat getChat(String token, String user2) {
         String user1 = AuthenticationService.authenticateWithToken(token);
-        List<Message> messages = MessageManager.getMessagesFromConversation(user1, user2);
+        List<Message> messages = MessageDAO.getMessagesFromConversation(user1, user2);
         List<TransferMessage> transfers = new ArrayList<TransferMessage>();
         for (Message m : messages)
             transfers.add(new TransferMessage(m));
@@ -24,7 +24,7 @@ public class ChatAssembler {
         //Be sure that user cannot see that there are no messages if they are not logged in
         AuthenticationService.authenticateWithToken(token);
         List<TransferChat> chats = new ArrayList<TransferChat>();
-        for (User u : UserManager.getAllUsers()) {
+        for (User u : UserDAO.getAllUsers()) {
             TransferChat chat = getChat(token, u.getUsername());
             if (!chat.getMessages().isEmpty())
                 chats.add(chat);
@@ -38,14 +38,14 @@ public class ChatAssembler {
         List<Message> chatMessages = new ArrayList<Message>();
         List<Message> lastMessages = new ArrayList<Message>();
 
-        for (User u : UserManager.getAllUsers()) {
+        for (User u : UserDAO.getAllUsers()) {
 
             //Skip self user
             if (u.getUsername().equals(username)) {
                 continue;
             }
 
-            chatMessages = MessageManager.getMessagesFromConversation(username, u.getUsername());
+            chatMessages = MessageDAO.getMessagesFromConversation(username, u.getUsername());
 
             if (!chatMessages.isEmpty()) {
                 lastMessages.add(chatMessages.get(chatMessages.size() - 1));
@@ -72,7 +72,7 @@ public class ChatAssembler {
     public static void addMessage(String token, String username2, String content) {
         String username1 = AuthenticationService.authenticateWithToken(token);
         Message message = new Message(username1, username2, content);
-        MessageManager.createMessage(message);
+        MessageDAO.createMessage(message);
     }
 
 }

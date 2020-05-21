@@ -2,6 +2,7 @@ package com.logrolling.server.services.gifts;
 
 import com.logrolling.server.exceptions.DataNotFoundException;
 import com.logrolling.server.exceptions.NotEnoughGrolliesException;
+import com.logrolling.server.integrationLayer.GiftsDAO;
 import com.logrolling.server.services.authentication.AuthenticationService;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class Gift {
     }
 
     public static List<TransferGift> getAllGifts() {
-        List<Gift> gifts = GiftsManager.getAllGifts();
+        List<Gift> gifts = GiftsDAO.getAllGifts();
         List<TransferGift> transfers = new ArrayList<TransferGift>();
         for (Gift g : gifts) {
             transfers.add(new TransferGift(g));
@@ -75,14 +76,14 @@ public class Gift {
 
     public static TransferGift getGiftByTitle(String title) {
         try {
-            return new TransferGift(GiftsManager.getGiftByTitle(title));
+            return new TransferGift(GiftsDAO.getGiftByTitle(title));
         } catch (DataNotFoundException e) {
             throw new DataNotFoundException(e.getMessage());
         }
     }
 
     public static List<TransferPurchasedGift> getPurchasedGifts() {
-        List<PurchasedGift> purchased = GiftsManager.getPurchasedGifts();
+        List<PurchasedGift> purchased = GiftsDAO.getPurchasedGifts();
         List<TransferPurchasedGift> transfers = new ArrayList<TransferPurchasedGift>();
         for (PurchasedGift p : purchased)
             transfers.add(new TransferPurchasedGift(p));
@@ -91,9 +92,9 @@ public class Gift {
 
     public static void purchaseGift(String token, String title, String address) {
         String username = AuthenticationService.authenticateWithToken(token);
-        Gift gift = GiftsManager.getGiftByTitle(title);
+        Gift gift = GiftsDAO.getGiftByTitle(title);
         try {
-            GiftsManager.purchaseGift(username, new PurchasedGift(gift.getId(), address, username));
+            GiftsDAO.purchaseGift(username, new PurchasedGift(gift.getId(), address, username));
         } catch (NotEnoughGrolliesException e) {
             throw new NotEnoughGrolliesException();
         }

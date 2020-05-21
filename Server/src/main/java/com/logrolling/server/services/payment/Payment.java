@@ -4,7 +4,7 @@ import com.braintreegateway.*;
 import com.logrolling.server.exceptions.PaymentErrorException;
 import com.logrolling.server.services.authentication.AuthenticationService;
 import com.logrolling.server.services.users.User;
-import com.logrolling.server.services.users.UserManager;
+import com.logrolling.server.integrationLayer.UserDAO;
 
 import javax.ws.rs.BadRequestException;
 import java.math.BigDecimal;
@@ -47,8 +47,8 @@ public class Payment {
             throw new PaymentErrorException();
         } else {
             //Add grollies to user
-            User user = UserManager.getUserByName(username);
-            UserManager.updateUserGrollies(username, user.getGrollies() + priceToGrollies(transferTransaction.getAmount()));
+            User user = UserDAO.getUserByName(username);
+            UserDAO.updateUserGrollies(username, user.getGrollies() + priceToGrollies(transferTransaction.getAmount()));
         }
     }
 

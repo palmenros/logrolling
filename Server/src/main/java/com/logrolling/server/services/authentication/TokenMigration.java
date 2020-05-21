@@ -3,8 +3,7 @@ package com.logrolling.server.services.authentication;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.services.authentication.TokenManager;
-import com.logrolling.server.services.authentication.Token;
+import com.logrolling.server.integrationLayer.TokenDAO;
 
 public class TokenMigration implements Migration {
 
@@ -41,7 +40,7 @@ public class TokenMigration implements Migration {
         };
 
         for (Token token : tokenlist) {
-            TokenManager.createToken(token);
+            TokenDAO.createToken(token);
         }
     }
 }

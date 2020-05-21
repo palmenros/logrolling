@@ -2,11 +2,11 @@ package com.logrolling.server.services.favors;
 
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.exceptions.UnauthorizedException;
+import com.logrolling.server.integrationLayer.FavorDAO;
 import com.logrolling.server.services.authentication.AuthenticationService;
 import com.logrolling.server.services.users.User;
-import com.logrolling.server.services.users.UserManager;
+import com.logrolling.server.integrationLayer.UserDAO;
 
-import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,12 +80,12 @@ public class Favor {
     }
 
     public static TransferFavor getFavorById(int id) {
-        return new TransferFavor(FavorManager.getFavorById(id));
+        return new TransferFavor(FavorDAO.getFavorById(id));
     }
 
     public static TransferFavor getLatestCreatedFavor(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        return new TransferFavor(FavorManager.getLatestFavorFromUser(username));
+        return new TransferFavor(FavorDAO.getLatestFavorFromUser(username));
     }
 
     public int getId() {
@@ -171,7 +171,7 @@ public class Favor {
 
     public static List<TransferFavor> getAvailableFavors(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        List<Favor> favors = FavorManager.getAvailableFavors(username);
+        List<Favor> favors = FavorDAO.getAvailableFavors(username);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
@@ -181,7 +181,7 @@ public class Favor {
 
     public static List<TransferFavor> getFavorsFromFilter(String token, Filter filter) {
         String username = AuthenticationService.authenticateWithToken(token);
-        List<Favor> favors = FavorManager.getFavorsByFilter(username, filter);
+        List<Favor> favors = FavorDAO.getFavorsByFilter(username, filter);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
@@ -191,7 +191,7 @@ public class Favor {
 
     public static List<TransferFavor> getFavorsFromUser(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        List<Favor> favors = FavorManager.getFavorsFromUsername(username);
+        List<Favor> favors = FavorDAO.getFavorsFromUsername(username);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
@@ -202,7 +202,7 @@ public class Favor {
     public static List<TransferFavor> getAwardedFavors(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
         List<TransferFavor> transfers = new ArrayList<TransferFavor>();
-        List<Favor> favors = FavorManager.getAwardedFavors(username);
+        List<Favor> favors = FavorDAO.getAwardedFavors(username);
         for (Favor f : favors) {
             transfers.add(new TransferFavor(f));
         }
@@ -211,17 +211,17 @@ public class Favor {
 
     public static void completeFavor(int id, String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        Favor favor = FavorManager.getFavorById(id);
+        Favor favor = FavorDAO.getFavorById(id);
 
         if (favor.getCreator().equals(username)) {
             //Favor was created by current user
             favor.setCompleted(true);
 
             //Give grollies to worker
-            User worker = UserManager.getUserByName(favor.getWorker());
-            UserManager.updateUserGrollies(favor.getWorker(), worker.getGrollies() + favor.getReward());
+            User worker = UserDAO.getUserByName(favor.getWorker());
+            UserDAO.updateUserGrollies(favor.getWorker(), worker.getGrollies() + favor.getReward());
 
-            FavorManager.updateFavor(id, favor);
+            FavorDAO.updateFavor(id, favor);
         } else {
             throw new UnauthorizedException();
         }
@@ -231,7 +231,7 @@ public class Favor {
         String username = AuthenticationService.authenticateWithToken(token);
         if (f.getCreator().equals(username)) {
             //Favor was created by current user
-            FavorManager.createFavor(new Favor(f));
+            FavorDAO.createFavor(new Favor(f));
         } else {
             throw new UnauthorizedException();
         }
@@ -239,9 +239,9 @@ public class Favor {
 
     public static void updateFavor(TransferFavor f, int id, String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        if (FavorManager.getFavorById(id).getCreator().equals(username)) {
+        if (FavorDAO.getFavorById(id).getCreator().equals(username)) {
             //Favor was created by current user
-            FavorManager.updateFavor(id, new Favor(f));
+            FavorDAO.updateFavor(id, new Favor(f));
         } else {
             throw new UnauthorizedException();
         }
@@ -249,16 +249,16 @@ public class Favor {
 
     public static void deleteFavor(int id, String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        Favor favor = FavorManager.getFavorById(id);
+        Favor favor = FavorDAO.getFavorById(id);
         if (favor.getCreator().equals(username)) {
             int reward = favor.getReward();
 
             //Favor was created by current user
-            FavorManager.deleteFavorFromId(id);
+            FavorDAO.deleteFavorFromId(id);
 
             //Give user back their grollies
-            User user = UserManager.getUserByName(username);
-            UserManager.updateUserGrollies(username, user.getGrollies() + reward);
+            User user = UserDAO.getUserByName(username);
+            UserDAO.updateUserGrollies(username, user.getGrollies() + reward);
 
         } else {
             throw new UnauthorizedException();
@@ -267,7 +267,7 @@ public class Favor {
 
     public static void doFavor(int id, String token) {
 
-        Favor favor = FavorManager.getFavorById(id);
+        Favor favor = FavorDAO.getFavorById(id);
         String username = AuthenticationService.authenticateWithToken(token);
 
         if (favor.getWorker() != null || username.equals(favor.getCreator())) {
@@ -275,7 +275,7 @@ public class Favor {
         }
 
         favor.setWorker(username);
-        FavorManager.updateFavor(id, favor);
+        FavorDAO.updateFavor(id, favor);
     }
 
 }

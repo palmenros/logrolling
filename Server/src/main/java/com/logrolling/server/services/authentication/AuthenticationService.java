@@ -1,7 +1,8 @@
 package com.logrolling.server.services.authentication;
 
 
-import com.logrolling.server.services.users.UserManager;
+import com.logrolling.server.integrationLayer.TokenDAO;
+import com.logrolling.server.integrationLayer.UserDAO;
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.services.users.User;
 
@@ -14,7 +15,7 @@ public class AuthenticationService {
             String[] tokenParts = tokenString.split(":", 2);
             int tokenId = Integer.parseInt(tokenParts[0]);
 
-            Token token = TokenManager.getToken(tokenId);
+            Token token = TokenDAO.getToken(tokenId);
             if (token == null) {
                 //Invalid token number
                 throw new AuthenticationException();
@@ -46,7 +47,7 @@ public class AuthenticationService {
      */
     public static String authenticateWithPassword(String username, String password) throws AuthenticationException {
         try {
-            User user = UserManager.getUserByName(username);
+            User user = UserDAO.getUserByName(username);
 
             if (user == null) {
                 //User not found
@@ -56,7 +57,7 @@ public class AuthenticationService {
             //User is found
             if (Authenticator.matchToken(user.getPassword(), password)) {
                 //Correct password, generate a new token for user
-                return TokenManager.createToken(username);
+                return TokenDAO.createToken(username);
             } else {
                 //Incorrect password
                 throw new AuthenticationException();

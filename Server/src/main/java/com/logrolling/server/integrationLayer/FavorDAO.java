@@ -1,7 +1,8 @@
-package com.logrolling.server.services.favors;
+package com.logrolling.server.integrationLayer;
 
 
-import com.logrolling.server.services.users.UserManager;
+import com.logrolling.server.services.favors.Favor;
+import com.logrolling.server.services.favors.Filter;
 import com.logrolling.server.exceptions.DataNotFoundException;
 import com.logrolling.server.exceptions.NotEnoughGrolliesException;
 import com.logrolling.server.database.Database;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FavorManager {
+public class FavorDAO {
 
     public static void createFavorUnchecked(Favor favor) {
         insertFavorToDatabase(favor);
@@ -24,11 +25,11 @@ public class FavorManager {
     public static void createFavor(Favor favor) {
 
         String username = favor.getCreator();
-        User user = UserManager.getUserByName(username);
+        User user = UserDAO.getUserByName(username);
 
         if (user.getGrollies() >= favor.getReward()) {
             insertFavorToDatabase(favor);
-            UserManager.updateUserGrollies(username, user.getGrollies() - favor.getReward());
+            UserDAO.updateUserGrollies(username, user.getGrollies() - favor.getReward());
         } else
             throw new NotEnoughGrolliesException();
 
@@ -65,16 +66,6 @@ public class FavorManager {
 
     }
 
-    public static void deleteFavorFromCreatorAndTitle(String creator, String title) {
-        Database db = DatabaseFactory.createInstance();
-        db.executeUpdate("delete from favors where creator = ? and title = ?",
-                new String[]{
-                        creator,
-                        title
-                });
-
-        db.close();
-    }
 
     public static void updateFavor(int id, Favor newFavor) {
         Database db = DatabaseFactory.createInstance();
@@ -98,18 +89,7 @@ public class FavorManager {
 
     }
 
-    public static void deleteFavor(Favor favor) {
-        Database db = DatabaseFactory.createInstance();
-        db.executeUpdate("delete from favors where id = ?",
-                new String[]{
-                        Integer.toString(favor.getId())
 
-                });
-
-        db.close();
-    }
-
-    //Get uncompleted favors created by username
     public static List<Favor> getFavorsFromUsername(String username) {
 
         List<Favor> favors = new ArrayList<Favor>();
@@ -134,24 +114,6 @@ public class FavorManager {
 
     }
 
-    public static List<Favor> getAllFavors() {
-        List<Favor> favors = new ArrayList<Favor>();
-
-        Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from favors");
-
-        try {
-            while (rs.next()) {
-                Favor favor = getFavorFromResultSet(rs);
-                favors.add(favor);
-            }
-        } catch (SQLException e) {
-            throw new DatabaseException(e);
-        }
-        db.close();
-
-        return favors;
-    }
 
     private static Favor getFavorFromResultSet(ResultSet rs) throws SQLException {
         return new Favor(
@@ -225,27 +187,6 @@ public class FavorManager {
                 new String[]{
                         username
                 });
-
-        try {
-            while (rs.next()) {
-                Favor favor = getFavorFromResultSet(rs);
-                favors.add(favor);
-            }
-        } catch (SQLException e) {
-            throw new DatabaseException(e);
-        }
-        db.close();
-
-        return favors;
-    }
-
-    // DELETE
-    public static List<Favor> getNonAwardedFavors() {
-
-        List<Favor> favors = new ArrayList<Favor>();
-
-        Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from favors where worker is null");
 
         try {
             while (rs.next()) {

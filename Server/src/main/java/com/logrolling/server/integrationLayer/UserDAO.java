@@ -1,10 +1,11 @@
-package com.logrolling.server.services.users;
+package com.logrolling.server.integrationLayer;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.services.authentication.Authenticator;
 import com.logrolling.server.exceptions.AlreadyAddedException;
+import com.logrolling.server.services.users.User;
 
 import javax.validation.constraints.NotNull;
 import java.sql.ResultSet;
@@ -12,9 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManager {
-
-    //TODO: Finish implementing
+public class UserDAO {
+    
 
     public static void createUser(User user) {
 

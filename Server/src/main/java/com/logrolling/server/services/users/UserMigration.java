@@ -3,8 +3,7 @@ package com.logrolling.server.services.users;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.services.users.UserManager;
-import com.logrolling.server.services.users.User;
+import com.logrolling.server.integrationLayer.UserDAO;
 
 public class UserMigration implements Migration {
 
@@ -42,7 +41,7 @@ public class UserMigration implements Migration {
         };
 
         for (User user : userList) {
-            UserManager.createUser(user);
+            UserDAO.createUser(user);
         }
     }
 }

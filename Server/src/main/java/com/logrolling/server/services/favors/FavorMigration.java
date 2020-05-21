@@ -3,8 +3,7 @@ package com.logrolling.server.services.favors;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.services.favors.FavorManager;
-import com.logrolling.server.services.favors.Favor;
+import com.logrolling.server.integrationLayer.FavorDAO;
 
 import java.util.Date;
 
@@ -50,7 +49,7 @@ public class FavorMigration implements Migration {
         };
 
         for (Favor favor : favorList) {
-            FavorManager.createFavorUnchecked(favor);
+            FavorDAO.createFavorUnchecked(favor);
         }
     }
 }

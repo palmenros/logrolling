@@ -1,9 +1,5 @@
 package com.logrolling.server.services.ad;
 
-import com.logrolling.server.services.authentication.AuthenticationService;
-import com.logrolling.server.services.users.User;
-import com.logrolling.server.services.users.UserManager;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 

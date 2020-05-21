@@ -1,8 +1,9 @@
-package com.logrolling.server.services.chats;
+package com.logrolling.server.integrationLayer;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.services.chats.Message;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MessageManager {
+public class MessageDAO {
 
     public static void createMessage(Message message) {//add message
 
@@ -54,22 +55,6 @@ public class MessageManager {
         return messages;
     }
 
-    public static Message getMessageByContent(String content) {
-        Message message;
-
-        Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from messages where content = ?",
-                new String[]{
-                        content
-                });
-        try {
-            message = getMessageFromResultSet(rs);
-        } catch (SQLException e) {
-            throw new DatabaseException(e);
-        }
-        return message;
-    }
-
     private static Message getMessageFromResultSet(ResultSet rs) throws SQLException {
         return new Message(
                 rs.getInt("id"),
@@ -80,22 +65,4 @@ public class MessageManager {
         );
     }
 
-    public static List<Message> getAllMessages() {
-        List<Message> messages = new ArrayList<Message>();
-
-        Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from messages");
-
-        try {
-            while (rs.next()) {
-                Message message = getMessageFromResultSet(rs);
-                messages.add(message);
-            }
-        } catch (SQLException e) {
-            throw new DatabaseException(e);
-        }
-        db.close();
-
-        return messages;
-    }
 }

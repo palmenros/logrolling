@@ -1,7 +1,8 @@
 package com.logrolling.server.services.users;
 
+import com.logrolling.server.integrationLayer.UserDAO;
 import com.logrolling.server.services.authentication.AuthenticationService;
-import com.logrolling.server.services.authentication.TokenManager;
+import com.logrolling.server.integrationLayer.TokenDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,31 +75,31 @@ public class User {
     public static List<TransferUser> getUsers() {
         List<TransferUser> transferList = new ArrayList<TransferUser>();
 
-        for (User u : UserManager.getAllUsers()) {
+        for (User u : UserDAO.getAllUsers()) {
             transferList.add(new TransferUser(u));
         }
         return transferList;
     }
 
     public static void createUser(String username, String password) {
-        UserManager.createUser(new User(username, password));
+        UserDAO.createUser(new User(username, password));
     }
 
     public static void updateUserByName(String token, String password) {
         String old = AuthenticationService.authenticateWithToken(token);
-        UserManager.updateUserPassword(old, password);
+        UserDAO.updateUserPassword(old, password);
     }
 
     public static TransferUser getUserByName(String username) {
-        return new TransferUser(UserManager.getUserByName(username));
+        return new TransferUser(UserDAO.getUserByName(username));
     }
 
     public static void deleteUser(String token) {
         String username = AuthenticationService.authenticateWithToken(token);
-        UserManager.deleteUserByName(username);
+        UserDAO.deleteUserByName(username);
 
         //Delete all auth tokens corresponding to deleted user 
-        TokenManager.deleteAllTokensFromUser(username);
+        TokenDAO.deleteAllTokensFromUser(username);
     }
 
 }
