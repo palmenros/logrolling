@@ -1,8 +1,8 @@
 package com.logrolling.server.services.chats;
 
-import com.logrolling.server.integrationLayer.MessageDAO;
+import com.logrolling.server.integration.MessageDAO;
 import com.logrolling.server.services.authentication.AuthenticationService;
-import com.logrolling.server.integrationLayer.UserDAO;
+import com.logrolling.server.integration.UserDAO;
 import com.logrolling.server.services.users.User;
 
 import java.util.ArrayList;

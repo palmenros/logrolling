@@ -3,7 +3,7 @@ package com.logrolling.server.services.gifts;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.integrationLayer.GiftsDAO;
+import com.logrolling.server.integration.GiftsDAO;
 
 public class GiftMigration implements Migration {
 

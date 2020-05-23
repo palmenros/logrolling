@@ -2,7 +2,6 @@ package com.logrolling.server.services.images;
 
 import com.logrolling.server.services.authentication.AuthenticationService;
 
-import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -15,10 +14,7 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 public class Image {
 
-    @Inject
-    static ServletContext context;
-
-    public static Response userImage(final String user) {
+    public static Response userImage(final String user, ServletContext context) {
         InputStream resource = context.getResourceAsStream(String.format("/images/user/%s.jpg", user));
 
         if (resource == null) {
@@ -31,7 +27,7 @@ public class Image {
         }
     }
 
-    public static Response uncheckedFavorImage(final String favor) {
+    public static Response uncheckedFavorImage(final String favor, ServletContext context) {
         InputStream resource = context.getResourceAsStream(String.format("/images/favor/%s.jpg", favor));
         if (resource == null) {
             //Return 404
@@ -43,7 +39,7 @@ public class Image {
 
     }
 
-    public static Response favorImage(final String favor) {
+    public static Response favorImage(final String favor, ServletContext context) {
         InputStream resource = context.getResourceAsStream(String.format("/images/favor/%s.jpg", favor));
 
         if (resource == null) {
@@ -56,7 +52,7 @@ public class Image {
         }
     }
 
-    public static Response giftsImage(final String gift) {
+    public static Response giftsImage(final String gift, ServletContext context) {
         InputStream resource = context.getResourceAsStream(String.format("/images/gift/%s.jpg", gift));
 
         if (resource == null) {
@@ -69,7 +65,7 @@ public class Image {
         }
     }
 
-    public static Response uploadUserImage(HttpServletRequest request, byte[] input, @HeaderParam("token") String token) {
+    public static Response uploadUserImage(HttpServletRequest request, byte[] input, @HeaderParam("token") String token, ServletContext context) {
         String username = AuthenticationService.authenticateWithToken(token);
         String realPath = context.getRealPath(String.format("/images/user/%s.jpg", username));
 
@@ -86,7 +82,7 @@ public class Image {
         return Response.ok().build();
     }
 
-    public static Response uploadUserImage(HttpServletRequest request, byte[] input, int favorId) {
+    public static Response uploadUserImage(HttpServletRequest request, byte[] input, int favorId, ServletContext context) {
         String realPath = context.getRealPath(String.format("/images/favor/%d.jpg", favorId));
 
         //Save input to realPath

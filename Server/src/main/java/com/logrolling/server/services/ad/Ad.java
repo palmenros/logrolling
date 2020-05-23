@@ -2,7 +2,7 @@ package com.logrolling.server.services.ad;
 
 import com.logrolling.server.services.authentication.AuthenticationService;
 import com.logrolling.server.services.users.User;
-import com.logrolling.server.integrationLayer.UserDAO;
+import com.logrolling.server.integration.UserDAO;
 
 public class Ad {
 

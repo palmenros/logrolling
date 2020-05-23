@@ -28,7 +28,7 @@ FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
 
         -Pasar a limpio: Alberto
 	
-    -Gestión del proyecto: Santiago
+    -Gestión del proyecto: Santiago (Done)
 
     -Memoria de cada miembro: Jaime
 

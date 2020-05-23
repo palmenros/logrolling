@@ -167,7 +167,6 @@ public class Controller {
     }
 
     public void purchaseGift(String giftName, String address, SuccessListener successListener, ErrorListener errorListener) {
-        LocationService locationService = LocationService.getInstance();
         giftDelegate.purchaseGift(new TransferPurchase(
                 giftName,
                 address
