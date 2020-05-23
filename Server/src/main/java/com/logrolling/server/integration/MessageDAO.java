@@ -1,4 +1,4 @@
-package com.logrolling.server.integrationLayer;
+package com.logrolling.server.integration;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
