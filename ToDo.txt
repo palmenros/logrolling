@@ -14,15 +14,7 @@ FECHA LÍMITE TODO FORMATEADO: 29 a las 18.00
         -Coordenadas a direcciones (API Google Maps)
         -Soporte UTF-8, emoticonos (internacialización)
 
-    -SRS, revisar PDP y Planificación temporal: Juan Carlos
-	
-    -Reestructurar clases del servidor [22]:
-
-        -Cambiar Manager a DAO
-        -Revisar que en DAO no haya lógica de negocio
-        -Quitar código inutil
-        -Mover DAO a paquete con nombre "integration"
-	
+    -SRS, revisar PDP y Planificación temporal: Juan Carlos	
     -Diseño del proyecto [28 antes de las 18.00]:
 
         -Memoria de arquitectura (Google Drive) [23]:

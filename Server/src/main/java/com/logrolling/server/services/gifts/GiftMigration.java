@@ -47,8 +47,11 @@ public class GiftMigration implements Migration {
     public void fillDummy() {
 
         Gift[] giftsList = new Gift[]{
-                new Gift("PlayStation", "Consola moderna", 500),
-                new Gift("Ordenador", "El ordenador mas veloz del mercado", 1200)
+                new Gift("PlayStation", "Consola moderna", 50000),
+                new Gift("Ordenador", "El ordenador mas veloz del mercado", 120000),
+                new Gift("RP", "Tarjeta con 10 euros para gastar en el league of legends", 2000),
+                new Gift("Bicicleta", "Bicicleta de montaña", 40000),
+                new Gift("Televisión", "Television de 56 pulgadas", 60000)
 
         };
 
