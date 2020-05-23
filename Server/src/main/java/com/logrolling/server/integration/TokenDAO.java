@@ -1,4 +1,4 @@
-package com.logrolling.server.integrationLayer;
+package com.logrolling.server.integration;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
@@ -8,8 +8,6 @@ import com.logrolling.server.services.authentication.Token;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TokenDAO {
 

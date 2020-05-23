@@ -4,7 +4,7 @@ import com.braintreegateway.*;
 import com.logrolling.server.exceptions.PaymentErrorException;
 import com.logrolling.server.services.authentication.AuthenticationService;
 import com.logrolling.server.services.users.User;
-import com.logrolling.server.integrationLayer.UserDAO;
+import com.logrolling.server.integration.UserDAO;
 
 import javax.ws.rs.BadRequestException;
 import java.math.BigDecimal;

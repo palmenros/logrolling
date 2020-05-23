@@ -3,7 +3,7 @@ package com.logrolling.server.services.users;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.integrationLayer.UserDAO;
+import com.logrolling.server.integration.UserDAO;
 
 public class UserMigration implements Migration {
 

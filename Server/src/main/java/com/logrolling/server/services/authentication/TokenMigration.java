@@ -3,7 +3,7 @@ package com.logrolling.server.services.authentication;
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.integrationLayer.TokenDAO;
+import com.logrolling.server.integration.TokenDAO;
 
 public class TokenMigration implements Migration {
 
