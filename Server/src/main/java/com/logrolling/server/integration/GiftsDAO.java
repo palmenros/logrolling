@@ -12,6 +12,8 @@ import com.logrolling.server.exceptions.NotEnoughGrolliesException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class GiftsDAO {
@@ -34,7 +36,8 @@ public class GiftsDAO {
         List<Gift> gifts = new ArrayList<Gift>();
 
         Database db = DatabaseFactory.createInstance();
-        ResultSet rs = db.executeQuery("select * from gifts");
+        ResultSet rs = db.executeQuery("select * from gifts order by price ASC");
+
 
         try {
             while (rs.next()) {
