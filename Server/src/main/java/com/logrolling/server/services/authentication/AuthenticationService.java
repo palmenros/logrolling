@@ -1,8 +1,8 @@
 package com.logrolling.server.services.authentication;
 
 
-import com.logrolling.server.integration.TokenDAO;
-import com.logrolling.server.integration.UserDAO;
+import com.logrolling.server.integration.authentication.TokenDAO;
+import com.logrolling.server.integration.users.UserDAO;
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.services.users.User;
 

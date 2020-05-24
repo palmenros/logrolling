@@ -1,6 +1,7 @@
-package com.logrolling.server.integration;
+package com.logrolling.server.integration.favor;
 
 
+import com.logrolling.server.integration.users.UserDAO;
 import com.logrolling.server.services.favors.Favor;
 import com.logrolling.server.services.favors.Filter;
 import com.logrolling.server.exceptions.DataNotFoundException;

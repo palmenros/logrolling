@@ -2,10 +2,10 @@ package com.logrolling.server.services.favors;
 
 import com.logrolling.server.exceptions.AuthenticationException;
 import com.logrolling.server.exceptions.UnauthorizedException;
-import com.logrolling.server.integration.FavorDAO;
+import com.logrolling.server.integration.favor.FavorDAO;
 import com.logrolling.server.services.authentication.AuthenticationService;
 import com.logrolling.server.services.users.User;
-import com.logrolling.server.integration.UserDAO;
+import com.logrolling.server.integration.users.UserDAO;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,10 @@
-package com.logrolling.server.services.favors;
+package com.logrolling.server.integration.favor;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.integration.FavorDAO;
+import com.logrolling.server.integration.favor.FavorDAO;
+import com.logrolling.server.services.favors.Favor;
 
 import java.util.Date;
 

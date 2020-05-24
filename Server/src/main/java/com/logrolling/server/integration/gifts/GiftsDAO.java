@@ -1,8 +1,9 @@
-package com.logrolling.server.integration;
+package com.logrolling.server.integration.gifts;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;
 import com.logrolling.server.database.factories.DatabaseFactory;
+import com.logrolling.server.integration.users.UserDAO;
 import com.logrolling.server.services.gifts.Gift;
 import com.logrolling.server.services.gifts.PurchasedGift;
 import com.logrolling.server.services.users.User;
@@ -12,8 +13,6 @@ import com.logrolling.server.exceptions.NotEnoughGrolliesException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class GiftsDAO {

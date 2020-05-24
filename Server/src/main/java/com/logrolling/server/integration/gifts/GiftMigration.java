@@ -1,9 +1,10 @@
-package com.logrolling.server.services.gifts;
+package com.logrolling.server.integration.gifts;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.integration.GiftsDAO;
+import com.logrolling.server.integration.gifts.GiftsDAO;
+import com.logrolling.server.services.gifts.Gift;
 
 public class GiftMigration implements Migration {
 

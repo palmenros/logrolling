@@ -1,9 +1,10 @@
-package com.logrolling.server.services.chats;
+package com.logrolling.server.integration.chats;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.integration.MessageDAO;
+import com.logrolling.server.integration.chats.MessageDAO;
+import com.logrolling.server.services.chats.Message;
 
 
 public class MessageMigration implements Migration {

@@ -1,4 +1,4 @@
-package com.logrolling.server.integration;
+package com.logrolling.server.integration.authentication;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.DatabaseException;

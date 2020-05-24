@@ -1,9 +1,10 @@
-package com.logrolling.server.services.users;
+package com.logrolling.server.integration.users;
 
 import com.logrolling.server.database.Database;
 import com.logrolling.server.database.factories.DatabaseFactory;
 import com.logrolling.server.database.migrations.Migration;
-import com.logrolling.server.integration.UserDAO;
+import com.logrolling.server.integration.users.UserDAO;
+import com.logrolling.server.services.users.User;
 
 public class UserMigration implements Migration {
 

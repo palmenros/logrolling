@@ -2,7 +2,7 @@ package com.logrolling.server.services.gifts;
 
 import com.logrolling.server.exceptions.DataNotFoundException;
 import com.logrolling.server.exceptions.NotEnoughGrolliesException;
-import com.logrolling.server.integration.GiftsDAO;
+import com.logrolling.server.integration.gifts.GiftsDAO;
 import com.logrolling.server.services.authentication.AuthenticationService;
 
 import java.util.ArrayList;
