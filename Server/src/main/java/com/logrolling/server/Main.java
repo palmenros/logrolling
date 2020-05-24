@@ -17,10 +17,15 @@ public class Main implements ServletContextListener {
         DatabaseFactory.setFactory(new MySQLDatabaseFactory());
         // Migrate all databases and fill them with dummy data for development and testing
         try {
-            MigrationManager.migrate();
 
-            //Uncomment when developing
-            //MigrationManager.fillDummy();
+            String systemProperty = System.getProperty("LOGROLLING_RECREATE_TABLES");
+            boolean recreateTables = "TRUE".equals(systemProperty);
+
+            MigrationManager.migrate(recreateTables);
+
+            if(recreateTables) {
+                MigrationManager.fillDummy();
+            }
         } catch (DatabaseException ex) {
             ex.printStackTrace();
         }

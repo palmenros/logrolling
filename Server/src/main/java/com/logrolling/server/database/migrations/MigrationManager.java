@@ -30,14 +30,16 @@ public class MigrationManager {
      * Every time the server is executed during development, all tables will be recreated
      * and filled with dummy data.
      */
-    public synchronized static void migrate() {
+    public synchronized static void migrate(boolean recreateTables) {
 
         //Only development code
 
-        //Delete all tables
-        //Database database = DatabaseFactory.createInstance();
-        //database.deleteAllTables();
-        //database.close();
+        if(recreateTables) {
+            //Delete all tables
+            Database database = DatabaseFactory.createInstance();
+            database.deleteAllTables();
+            database.close();
+        }
 
         for (Migration migration : migrations) {
             migration.migrate();
