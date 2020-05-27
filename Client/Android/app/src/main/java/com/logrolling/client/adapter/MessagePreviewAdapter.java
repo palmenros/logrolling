@@ -14,7 +14,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.logrolling.client.R;
 import com.logrolling.client.controllers.Controller;
 import com.logrolling.client.transfer.TransferMessagePreview;
-import com.logrolling.client.view.activities.ClickListener;
+import com.logrolling.client.view.ClickListener;
 import com.logrolling.client.web.WebRequestQueue;
 
 import java.util.ArrayList;
