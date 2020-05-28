@@ -1,4 +1,4 @@
-package com.logrolling.client.view.activities;
+package com.logrolling.client.view;
 
 import android.view.View;
 
