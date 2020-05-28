@@ -8,7 +8,7 @@
     <string name="RepCotraseña">\ Repetir contraseña</string>
     <string name="Registro">Registro</string>
     <string name="Logo">Logrolling</string>
-    <string name="TerminosCondiciones">Acepto los Términos y condiciones y la política de privacidad</string>
+    <string name="TerminosCondiciones">Acepto los <u>Términos y Condiciones y la Política de Privacidad</u></string>
     <string name="CuentaYa">¿Ya tienes una cuenta?</string>
     <string name="Explorar">Explorar</string>
     <string name="Favores">Favores</string>
@@ -25,7 +25,7 @@
     <string name="FechaLimite">Fecha límite</string>
     <string name="Recompensa">Recompensa ofrecida</string>
     <string name="PedirFavor">Pedir nuevo favor</string>
-    <string name="TextoPerfil">Cambia tu foto, nombre o contraseña</string>
+    <string name="TextoPerfil">Cambia tu foto de perfil o contraseña</string>
     <string name="TextoNotificaciones">Cambia la luz, la configuración de notificaciones...</string>
     <string name="Notificaciones">Notificaciones</string>
     <string name="TextoAyuda">Aprende todo lo que debes saber sobre Logrolling</string>
