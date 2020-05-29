@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MiPefil">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Header"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/cuadroGrollies"
+            android:layout_width="134dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/blanco"
+            android:onClick="buyGrollies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/grollies"
+            android:layout_width="62dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toStartOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            tools:text="grollies" />
+
+        <ImageView
+            android:id="@+id/masGrollies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blanco"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintEnd_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/logoGrollies"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toEndOf="@+id/grollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@drawable/grollies" />
+
+        <TextView
+            android:id="@+id/TituloPantalla"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/azul"
+            android:gravity="center"
+            android:text="@string/Perfil"
+            android:textColor="@color/blanco"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/MiPerfilInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blanco"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header">
+
+        <Button
+            android:id="@+id/GuardarCambios"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginRight="70dp"
+            android:background="@color/blanco"
+            android:fadingEdge="horizontal|vertical"
+            android:fontFamily="@font/rubik"
+            android:onClick="guardarCambios"
+            android:text="@string/GuardarCambios"
+            android:textColor="@color/azul"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repContrasenna" />
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/imagenPerfil"
+            android:layout_height="140dp"
+            android:layout_width="140dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="140dp"
+            android:layout_marginRight="140dp"
+            android:background="@drawable/image_background"
+            android:onClick="changeProfilePicture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iconoImagen"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="changeProfilePicture"
+            app:layout_constraintBottom_toBottomOf="@+id/imagenPerfil"
+            app:layout_constraintEnd_toEndOf="@+id/imagenPerfil"
+            app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
+
+        <EditText
+            android:id="@+id/nombreUsuario"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:ems="10"
+            android:fontFamily="@font/rubik"
+            android:hint="@string/NombreUsuario"
+            android:inputType="none"
+            android:editable="false"
+            android:textColorHint="@color/negro"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.518"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenPerfil" />
+
+        <EditText
+            android:id="@+id/repContrasenna"
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:drawableStart="@drawable/ic_lock_negro_24dp"
+            android:drawableLeft="@drawable/ic_lock_negro_24dp"
+            android:ems="10"
+            android:hint="@string/RepCotraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/negro"
+            android:textColorHint="@color/negro"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contrasenna" />
+
+        <EditText
+            android:id="@+id/contrasenna"
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:drawableStart="@drawable/ic_lock_negro_24dp"
+            android:drawableLeft="@drawable/ic_lock_negro_24dp"
+            android:ems="10"
+            android:hint="@string/Cotraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/negro"
+            android:textColorHint="@color/negro"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombreUsuario" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/GuardarCambios" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/MenuInferior"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/azul"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Explorar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="search"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="412dp">
+
+            <ImageView
+                android:id="@+id/IconoExplorar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/ExplorarTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_search_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/ExplorarTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Explorar"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Favores"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="favors">
+
+            <ImageView
+                android:id="@+id/IconoFavores"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/FavoresTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/exchange_white"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/FavoresTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/MisFavoresbis"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Mensajes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="messages">
+
+            <ImageView
+                android:id="@+id/IconoMensajes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/MensajesTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_message_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/MensajesTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Mensajes"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Regalos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="gifts"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="412dp">
+
+            <ImageView
+                android:id="@+id/IconoRegalos"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/RegalosTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_card_giftcard_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/RegalosTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Regalos"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Configuracion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="configuration">
+
+            <ImageView
+                android:id="@+id/IconoConfiguracion"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toTopOf="@+id/ConfiguracionTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_settings_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/ConfiguracionTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Configuracion"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

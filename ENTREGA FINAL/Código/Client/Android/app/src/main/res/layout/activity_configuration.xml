@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activities.ConfigurationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Header"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/cuadroGrollies"
+            android:layout_width="134dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/blanco"
+            android:onClick="buyGrollies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/grollies"
+            android:layout_width="62dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toStartOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            tools:text="grollies" />
+
+        <ImageView
+            android:id="@+id/masGrollies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blanco"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintEnd_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/logoGrollies"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toEndOf="@+id/grollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@drawable/grollies" />
+
+        <TextView
+            android:id="@+id/TituloPantalla"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/azul"
+            android:gravity="center"
+            android:text="@string/Configuracion"
+            android:textColor="@color/blanco"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/MenuConfiguracion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blanco"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header">
+
+        <ImageView
+            android:id="@+id/iconoCerrar"
+            android:layout_width="0dp"
+            android:layout_height="103dp"
+            android:layout_marginTop="56dp"
+            android:onClick="signOut"
+            app:layout_constraintEnd_toEndOf="@+id/iconoPerfil"
+            app:layout_constraintStart_toStartOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/iconoPerfil"
+            app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
+
+        <TextView
+            android:id="@+id/CerrarSesion"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#00FFFFFF"
+            android:gravity="center_vertical"
+            android:onClick="signOut"
+            android:text="@string/CerrarSesion"
+            android:textColor="@color/negro"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
+            app:layout_constraintTop_toTopOf="@+id/iconoCerrar" />
+
+        <TextView
+            android:id="@+id/Perfil"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
+            android:onClick="myProfile"
+            android:text="@string/Perfil"
+            android:textColor="@color/negro"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toTopOf="@+id/iconoPerfil" />
+
+        <TextView
+            android:id="@+id/textoPerfil"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:onClick="myProfile"
+            android:text="@string/TextoPerfil"
+            android:textColor="@color/grisClaro"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/Perfil" />
+
+        <ImageView
+            android:id="@+id/iconoPerfil"
+            android:layout_width="59dp"
+            android:layout_height="78dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="45dp"
+            android:background="#00FFFFFF"
+            android:onClick="myProfile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_person_black_24dp" />
+
+        <TextView
+            android:id="@+id/textoCerrarSesion"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:onClick="signOut"
+            android:text="@string/TextoCerrarSesion"
+            android:textColor="@color/grisClaro"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconoCerrar"
+            app:layout_constraintTop_toBottomOf="@+id/CerrarSesion" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textoCerrarSesion" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/MenuInferior"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/azul"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Explorar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="search"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="412dp">
+
+            <ImageView
+                android:id="@+id/IconoExplorar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/ExplorarTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_search_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/ExplorarTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Explorar"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Favores"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="favors">
+
+            <ImageView
+                android:id="@+id/IconoFavores"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/FavoresTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/exchange_white"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/FavoresTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/MisFavoresbis"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Mensajes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="messages">
+
+            <ImageView
+                android:id="@+id/IconoMensajes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/MensajesTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_message_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/MensajesTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Mensajes"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Regalos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="gifts"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="412dp">
+
+            <ImageView
+                android:id="@+id/IconoRegalos"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/RegalosTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_card_giftcard_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/RegalosTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Regalos"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Configuracion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/IconoConfiguracion"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toTopOf="@+id/ConfiguracionTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_settings_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/ConfiguracionTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Configuracion"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

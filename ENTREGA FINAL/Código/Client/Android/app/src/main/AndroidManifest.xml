@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.logrolling.client">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!--  For accessing camera  -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyApWSJ9hXbvrgES2SJZOXHf_Pe4s8F0T90"/>
+        <activity android:name=".view.activities.FavorToBeDoneActivity"/>
+        <activity android:name=".view.activities.UserChatActivity" />
+        <activity android:name=".view.activities.AskedFavorActivity" />
+        <activity android:name=".view.activities.DoFavorActivity"/>
+        <activity android:name=".view.activities.MessageActivity"/>
+        <activity android:name=".view.activities.SearchActivity"/>
+        <activity android:name=".view.activities.ShopActivity"/>
+        <activity android:name=".view.activities.MyProfileActivity"/>
+        <activity android:name=".view.activities.ConfigurationActivity"/>
+        <activity android:name=".view.activities.GiftsActivity"/>
+        <activity android:name=".view.activities.AskFavorActivity"/>
+        <activity android:name=".view.activities.MyFavorsActivity"/>
+        <activity android:name=".view.activities.RegistrationActivity"/>
+        <activity android:name=".view.activities.SignInActivity"/>
+        <activity android:name=".view.activities.MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+           <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+        android:launchMode="singleTask">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="${applicationId}.braintree" />
+        </intent-filter>
+    </activity>
+
+        <!--   Camera crop and preview  -->
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+  android:theme="@style/Base.Theme.AppCompat"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
