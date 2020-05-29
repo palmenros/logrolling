@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul"
+    tools:context=".view.activities.SignInActivity">
+
+
+    <ImageView
+        android:id="@+id/logo_logrolling"
+        android:layout_width="179dp"
+        android:layout_height="172dp"
+        android:contentDescription="@string/Logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IniciarSesion"
+        app:srcCompat="@drawable/logrollinglogo" />
+
+    <TextView
+        android:id="@+id/IniciarSesion"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="34dp"
+        android:gravity="center"
+        android:text="@string/IniciarSesion"
+        android:textColor="@color/blancoSucio"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/NombreUsuario"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableStart="@drawable/ic_person_white_24dp"
+        android:drawableLeft="@drawable/ic_person_white_24dp"
+        android:ems="10"
+        android:fadeScrollbars="false"
+        android:hint="@string/NombreUsuario"
+        android:inputType="textPersonName"
+        android:scrollbarSize="45sp"
+        android:scrollbarStyle="insideInset"
+        android:singleLine="false"
+        android:textColor="@color/blancoSucio"
+        android:textColorHint="@color/blancoSucio"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_logrolling" />
+
+    <EditText
+        android:id="@+id/Contrasenna"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:ems="10"
+        android:hint="@string/Cotraseña"
+        android:inputType="textPassword"
+        android:textColor="@color/blancoSucio"
+        android:textColorHint="@color/blancoSucio"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NombreUsuario" />
+
+
+    <TextView
+        android:id="@+id/Cuenta"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:text="@string/Cuenta"
+        android:textColor="@color/blanco"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InicioSesion" />
+
+    <TextView
+        android:id="@+id/Registro"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:onClick="registration"
+        android:text="@string/Registrate"
+        android:textColor="@color/blanco"
+        android:textStyle="bold"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Cuenta" />
+
+     <Button
+
+        android:id="@+id/InicioSesion"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/blanco"
+        android:onClick="signIn"
+        android:text="@string/IniciarSesion"
+        android:textColor="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Contrasenna" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

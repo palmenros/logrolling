@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activities.SearchActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Header"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:background="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/cuadroGrollies"
+            android:layout_width="134dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/blanco"
+            android:onClick="buyGrollies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/grollies"
+            android:layout_width="62dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toStartOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            tools:text="grollies" />
+
+        <ImageView
+            android:id="@+id/masGrollies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blanco"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintEnd_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/logoGrollies"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadroGrollies"
+            app:layout_constraintStart_toEndOf="@+id/grollies"
+            app:layout_constraintTop_toTopOf="@+id/cuadroGrollies"
+            app:srcCompat="@drawable/grollies" />
+
+        <TextView
+            android:id="@+id/TituloPantalla"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:background="@color/azul"
+            android:gravity="center"
+            android:text="@string/Explorar"
+            android:textColor="@color/blanco"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cuadroGrollies"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iconoFiltros"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="filters"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/TituloPantalla"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_tune_black_24dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListFavors"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/MenuInferior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
+
+    <TextView
+        android:id="@+id/sinFavores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Ningún favor disponible"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Filtros"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:background="@color/blanco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        android:elevation="10dp"
+        >
+
+        <TextView
+            android:id="@+id/MinGrollies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/RecompensaTxt"
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
+
+        <TextView
+            android:id="@+id/MinTiempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/TiempoTxt"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/MaxDistancia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/DistanciaTxt"
+            app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
+
+        <SeekBar
+            android:id="@+id/maxDistanciaBar"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@color/blanco"
+            android:max="7"
+            android:progress="7"
+            android:progressDrawable="@drawable/barra"
+            android:thumb="@drawable/grollies_mini2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DistanciaTxt"
+            app:tickMarkTint="#C3C3C3" />
+
+        <TextView
+            android:id="@+id/DistanciaTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/DistanciaMaxima"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
+
+        <TextView
+            android:id="@+id/Distancias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/distancias"
+            android:textColor="@color/azul"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/maxDistanciaBar"
+            app:layout_constraintStart_toStartOf="@+id/maxDistanciaBar"
+            app:layout_constraintTop_toBottomOf="@+id/maxDistanciaBar" />
+
+        <TextView
+            android:id="@+id/RecompensaTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/RecompensaG"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
+
+        <TextView
+            android:id="@+id/TiempoTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/TiempoRealizacion"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/BuscarBoton"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@color/blanco"
+            android:fadingEdge="horizontal|vertical"
+            android:fontFamily="@font/rubik"
+            android:onClick="findFilter"
+            android:text="@string/Buscar"
+            android:textColor="@color/azul"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Distancias" />
+
+        <SeekBar
+            android:id="@+id/minGrolliesBar"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:background="#FFFFFF"
+            android:progressDrawable="@drawable/barra"
+            android:thumb="@drawable/grollies_mini2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RecompensaTxt" />
+
+        <SeekBar
+            android:id="@+id/minTiempoBar"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:background="#FFFFFF"
+            android:progressDrawable="@drawable/barra"
+            android:thumb="@drawable/grollies_mini2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TiempoTxt" />
+
+        <TextView
+            android:id="@+id/Diez"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:text="@string/Diez"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/minGrolliesBar"
+            app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
+
+        <TextView
+            android:id="@+id/UnaHora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/UnaHora"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/minTiempoBar"
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
+
+        <TextView
+            android:id="@+id/DiezDias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DiezDias"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/minTiempoBar"
+            app:layout_constraintTop_toBottomOf="@+id/minTiempoBar" />
+
+        <TextView
+            android:id="@+id/G1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:text="@string/G"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/Diez"
+            app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
+
+        <TextView
+            android:id="@+id/G2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:text="@string/G"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/minGrolliesBar"
+            app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
+
+        <TextView
+            android:id="@+id/DosCientosMil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:text="@string/DosCientosMil"
+            android:textColor="@color/azul"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/G2"
+            app:layout_constraintTop_toBottomOf="@+id/minGrolliesBar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/MenuInferior"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/azul"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Explorar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="412dp">
+
+            <ImageView
+                android:id="@+id/IconoExplorar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/ExplorarTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_search_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/ExplorarTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Explorar"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Favores"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="favors">
+
+            <ImageView
+                android:id="@+id/IconoFavores"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/FavoresTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/exchange_white"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/FavoresTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/MisFavoresbis"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Mensajes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="messages">
+
+            <ImageView
+                android:id="@+id/IconoMensajes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/MensajesTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_message_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/MensajesTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Mensajes"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Regalos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="gifts"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="412dp">
+
+            <ImageView
+                android:id="@+id/IconoRegalos"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/RegalosTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_card_giftcard_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/RegalosTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Regalos"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Configuracion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="configuration">
+
+            <ImageView
+                android:id="@+id/IconoConfiguracion"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layout_constraintBottom_toTopOf="@+id/ConfiguracionTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_settings_black_24dp"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/ConfiguracionTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/azul"
+                android:gravity="center"
+                android:text="@string/Configuracion"
+                android:textColor="@color/blanco"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

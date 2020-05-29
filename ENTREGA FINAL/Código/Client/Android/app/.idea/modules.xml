@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Android-Logrolling.iml" filepath="$PROJECT_DIR$/../Android-Logrolling.iml" group="Logrolling" />
+      <module fileurl="file://$PROJECT_DIR$/Android-app.iml" filepath="$PROJECT_DIR$/Android-app.iml" group="Logrolling/app" />
+      <module fileurl="file://$PROJECT_DIR$/../Logrolling.iml" filepath="$PROJECT_DIR$/../Logrolling.iml" group="Logrolling" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="Logrolling/app" />
+    </modules>
+  </component>
+</project>
