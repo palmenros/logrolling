@@ -1,0 +1,83 @@
+﻿----------------------
+Política de Privacidad
+----------------------
+
+Logrolling será responsable de los datos personales (en adelante, los “Datos”) que proporcione al utilizar los servicios y la aplicación Logrolling (en adelante, “el Servicio”), que es una plataforma que permite a los usuarios publicar pequeñas tareas o recados (en adelante, “favores”) a cambio de la moneda virtual usada en la aplicación (en adelante, “grollies”), así como la comunicación entre los usuarios ofertantes y los usuarios interesados en realizar los favores y la localización geográfica de los mismos, para completar la operación.
+
+El uso del Servicio atribuye a quien lo realiza la condición de usuario del mismo (en adelante, “el Usuario”) e implica la aceptación íntegra de esta Política de Privacidad. En caso de no estar de acuerdo con todo o parte de esta Política de Privacidad, el Usuario debe abstenerse de instalar y utilizar el Servicio. El Usuario deberá crear una cuenta de usuario (en adelante, “Cuenta”) para poder utilizar el Servicio.
+
+1. Aplicación de esta Política
+
+La utilización del Servicio no está dirigida a menores de 18 años y, por consiguiente, éstos deberán abstenerse de facilitar cualquier información de carácter personal. Para ello, Logrolling se reserva el derecho a comprobar en cualquier momento la edad de los usuarios de su Página Web y de su Aplicación.
+
+2. Recabación de datos personales 
+
+Logrolling recaba y trata datos de carácter personal de usuarios que se hayan registrado en el Servicio. De esta manera, Logrolling obtiene y utiliza los datos de la IP y demás identificadores proporcionados por el dispositivo desde el que el Usuario navegue por el Servicio, a la vez que recaba los Datos que proporcione en el momento de su registro, así como aquellos Datos obtenidos como consecuencia de su navegación, solicitudes, realizaciones, conversaciones, búsquedas, compras, y los Datos derivados.
+
+Adicionalmente, y con el consentimiento del Usuario, Logrolling también tratará la ubicación de su dispositivo para informarle de los favores más cercanos, permitiéndole así disfrutar de nuestros servicios de manera completa.
+
+3. Datos recabados
+
+Logrolling solamente recaba los Datos que resultan estrictamente necesarios para la consecución de las finalidades de obtención de los mismos, las cuales detallamos en el apartado “Finalidades del tratado de Datos” de la presente Política de Privacidad. Es por ello que, en caso de no facilitarnos dichos Datos no podremos, gestionar el registro solicitado, prestarle el servicio solicitado, llevar a cabo el envío solicitada, facilitarle la información requerida, etc., que en cada caso corresponda.
+
+Asimismo, el Usuario queda informado de que determinadas funcionalidades del Servicio utilizan la navegación considerando su ubicación para poder proporcionarle la información más relevante en cada caso, así como para ofrecerle ciertos servicios. Aunque la navegación considerando la ubicación es siempre una elección del Usuario, en los casos en los que la rechace la Página Web y/o la Aplicación de Logrolling no podrán ofrecerle las funcionalidades o proporcionarle los contenidos basados en dicha ubicación.  
+
+4. Finalidades del tratado de Datos
+
+En el caso de que el Usuario se haya registrado en el Servicio, Logrolling tratará la IP de su dispositivo para las siguientes finalidades:
+
+– Conocer el origen de la descarga de nuestra Aplicación, llevando a cabo dicho tratamiento en atención a nuestro interés legítimo para la mejora de la oferta comercial.
+
+– Acceder a su ubicación mientras navega por el Servicio para mostrarle los favores más cercanos. Dicho tratamiento lo llevaremos a cabo únicamente si el Usuario nos da su consentimiento para ello, mediante la aceptación de nuestra política de cookies o los ajustes de su dispositivo. 
+
+– Gestionar su alta y sus preferencias de usuario dentro del área de usuario registrado, así como para prestarle los servicios del Servicio que Usted haya solicitado. La base de legitimación que habilita a Logrolling a tratar sus datos para la presente finalidad es su solicitud de registro.
+
+– Para velar por el buen uso de nuestros servicios y productos, impidiendo que se lleven a cabo usos ilícitos o contrarios a nuestra política y valores, pudiendo incluso darle de baja como usuario registrado. La base legitimadora de dicho tratamiento es el cumplimiento por parte de Logrolling de determinadas obligaciones legales, así como el interés legítimo de proteger nuestros servicios y productos.
+
+– Mostrar publicidad ajustada a los hábitos de consumo y navegación del Usuario, obtenidos del uso del Servicio, en atención a nuestro interés legítimo para la mejora de la oferta comercial.
+
+– Remitirle comunicaciones comerciales en relación a los productos y servicios ofrecidos por Logrolling, comunicaciones que podrán dirigirse en atención a sus hábitos de consumo, navegación o utilización del Servicio. Logrolling realizará dicho tratamiento en atención a la relación mantenida con el Usuario, teniendo en cuenta que las citadas comunicaciones siempre versarán sobre nuestros productos y servicios. 
+
+– Analizar el contenido de los chats en los que interactúe con otros usuarios, al objeto de verificar que se hace un uso lícito de nuestros servicios. Tratamiento que realizaremos al amparo de nuestro interés legítimo para para evitar fraude o actos ilícitos.
+
+– Realizar un seguimiento de la entrega de los productos y/o servicios adquiridos a través de nuestra Página Web y/o de nuestra Aplicación. Logrolling realiza dicho tratamiento como consecuencia de la aceptación por su parte de las condiciones generales de contratación realizada en el momento de solicitar dicho servicio de entrega de producto o servicios solicitados.
+
+– Gestionar y controlar las ventas de grollies. La base legitimadora para la realización de dicho tratamiento es la aceptación por parte del Usuario de nuestras condiciones generales de contratación realizada en el momento de realizar la compra.
+
+– Gestionar las quejas y consultas sobre los productos y/o servicios adquiridos a través del Servicio, siendo la base legitimadora de este tratamiento la obligación legal de Logrolling de acuerdo con la normativa de defensa de los consumidores y usuarios.
+
+5. Conservación de los Datos
+
+El tiempo de conservación de sus datos de carácter personal por parte de Logrolling será el siguiente:
+
+– El tratamiento realizado de la IP o de cualquier otro identificador de su dispositivo para conocer el origen de la descarga de nuestra web y/o Aplicación se llevará a cabo únicamente en el momento en que tenga lugar dicha descarga.
+
+– Por su parte Logrolling tratará y conservará la ubicación del dispositivo del Usuario con las finalidades antes indicadas, mientras no deshabilite la geolocalización de su dispositivo.
+
+– Los datos recabados para permitir el registro del Usuario en el Servicio se conservarán mientras el Usuario no solicite la cancelación de su cuenta. 
+
+– Los datos recabados para gestionar las preferencias del Usuario se conservarán mientras que el Usuario no se oponga a dicho tratamiento. 
+
+– Aquellos datos recabados y tratados para velar por el bueno uso de nuestros servicios y productos se conservarán hasta que se haya llevado a cabo la acción de verificación correspondiente. 
+
+– Aquellos datos recabados para remitir al Usuario comunicaciones comerciales sobre nuestros propios servicios se conservarán mientas no se oponga a dicho tratamiento o no solicite la anulación de este servicio.
+
+– Conservaremos los datos que el Usuario facilite a través de nuestro chat mientras realicemos la comprobación correspondiente sobre el uso lícito de nuestros servicios.
+
+– Los datos obtenidos como consecuencia de la contratación por parte del Usuario de los servicios de entrega se conservarán hasta que prescriba la responsabilidad civil derivada de dicho servicio.
+
+– Aquellos datos obtenidos como consecuencia de las quejas o consultas que nos pueda dirigir el Usuario se conservarán hasta que se haya resuelto la queja o consulta correspondiente.
+
+– Los datos relativos a los hábitos de navegación o de consumo del Usuario que podamos haber obtenido de terceros serán mantenidos mientras que no revoque el consentimiento otorgado.
+
+De manera general, cuando el Usuario se dé de baja como usuario registrado de Logrolling, esta eliminará toda la información de que dispusiera de aquel. Sin embargo, Logrolling conservará datos meramente estadísticos de utilización por parte de los usuarios de sus recursos y herramientas.
+
+6. Compartición de los Datos
+
+Terceros podrán acceder a los datos personales del Usuario con la única finalidad de prestarnos servicios que son necesarios para poder gestionar y ofrecerles a nuestros usuarios nuestros servicios y productos. A este respecto, informamos al Usuario que seleccionamos únicamente a los proveedores de servicios que ofrecen adecuadas garantías de protección de sus Datos.
+
+7. Derechos en materia de protección datos de carácter personal
+
+El Usuario podrá ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación al tratamiento y portabilidad de sus Datos, así como la revocación, en cualquier momento, de los consentimientos, en su caso, prestados ante Logrolling adjuntando fotocopia de su DNI o documento identificativo válido equivalente.
+
+Igualmente, el Usuario posee la posibilidad de dirigir una reclamación ante la Agencia Española de Protección de Datos, especialmente cuando considere que Logrolling no ha satisfecho debidamente el ejercicio de sus derechos. Dicha reclamación podrá presentarla ante la citada autoridad mediante las diferentes opciones que la sede electrónica de la Agencia Española de Protección de datos ofrece (https://www.aepd.es/reglamento/derechos/index.html).
